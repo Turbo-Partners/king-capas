@@ -12,13 +12,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
         "title": {
           "type": "title",
           "settings": {}
@@ -36,6 +29,7 @@
             "bundle_label": "Escolha sua quantidade",
             "buy_button_text": "Comprar agora",
             "security_text": "Pagamento 100% Seguro",
+            "shipping_text": "Frete grátis acima de R$200",
             "pix_text": "no pix",
             "default_option_1_quantity": "3",
             "default_option_1_discount": 10,
@@ -87,7 +81,6 @@
         }
       },
       "block_order": [
-        "vendor",
         "title",
         "price",
         "bundle_Y7E9MY",
@@ -100,7 +93,7 @@
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "",
-        "media_size": "large",
+        "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "gallery_layout": "stacked",
