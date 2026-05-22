@@ -65,11 +65,11 @@
         "announcement_mjLjfM": {
           "type": "announcement",
           "settings": {
-            "text": "<p>Bem-vindo à nossa loja</p>",
+            "text": "",
             "text_color": "",
             "link": "",
             "image": "shopify://shop_images/694.svg",
-            "image_width": 24,
+            "image_width": 12,
             "image_position": "before",
             "item_bg_type": "none",
             "item_bg_color": "",
