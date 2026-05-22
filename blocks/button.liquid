@@ -1,0 +1,177 @@
+{% style %}
+.tp-block-button-{{ block.id }} {
+  display: inline-flex;
+  {% if block.settings.width == 'fill' %}
+    width: 100%;
+  {% elsif block.settings.width == 'custom' %}
+    width: {{ block.settings.custom_width }}%;
+  {% else %}
+    width: fit-content;
+  {% endif %}
+}
+
+.tp-block-button-{{ block.id }} a,
+.tp-block-button-{{ block.id }} button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  width: 100%;
+  
+  {% case block.settings.style_class %}
+    {% when 'button' %}
+      background-color: var(--color-button, #000);
+      color: var(--color-button-text, #fff);
+      padding: 14px 28px;
+      border-radius: 4px;
+      font-weight: 600;
+    {% when 'button-secondary' %}
+      background-color: transparent;
+      color: var(--color-text, #000);
+      padding: 14px 28px;
+      border: 1px solid currentColor;
+      border-radius: 4px;
+      font-weight: 600;
+    {% when 'button-unstyled' %}
+      background-color: transparent;
+      color: var(--color-text, #000);
+      padding: 14px 28px;
+      font-weight: 600;
+    {% when 'link' %}
+      background-color: transparent;
+      color: var(--color-text, #000);
+      padding: 0;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+  {% endcase %}
+}
+
+.tp-block-button-{{ block.id }} a:hover,
+.tp-block-button-{{ block.id }} button:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 749px) {
+  .tp-block-button-{{ block.id }} {
+    {% if block.settings.width_mobile == 'fill' %}
+      width: 100%;
+    {% elsif block.settings.width_mobile == 'custom' %}
+      width: {{ block.settings.custom_width_mobile }}%;
+    {% else %}
+      width: fit-content;
+    {% endif %}
+  }
+}
+{% endstyle %}
+
+<div class="tp-block-button tp-block-button-{{ block.id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.link != blank %}
+    <a href="{{ block.settings.link }}" {% if block.settings.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>
+      {{ block.settings.label }}
+    </a>
+  {% else %}
+    <button type="button">
+      {{ block.settings.label }}
+    </button>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Botão",
+  "presets": [
+    {
+      "name": "Botão",
+      "category": "Ação"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Texto do botão",
+      "default": "Clique aqui"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab",
+      "label": "Abrir em nova aba",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Estilo"
+    },
+    {
+      "type": "select",
+      "id": "style_class",
+      "label": "Estilo",
+      "options": [
+        { "value": "button", "label": "Botão primário" },
+        { "value": "button-secondary", "label": "Botão secundário" },
+        { "value": "button-unstyled", "label": "Sem estilo" },
+        { "value": "link", "label": "Link" }
+      ],
+      "default": "button"
+    },
+    {
+      "type": "header",
+      "content": "Tamanho"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Largura",
+      "options": [
+        { "value": "fit-content", "label": "Ajustar ao conteúdo" },
+        { "value": "fill", "label": "Preencher" },
+        { "value": "custom", "label": "Personalizado" }
+      ],
+      "default": "fit-content"
+    },
+    {
+      "type": "range",
+      "id": "custom_width",
+      "label": "Largura personalizada",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 100,
+      "unit": "%",
+      "visible_if": "{{ block.settings.width == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "width_mobile",
+      "label": "Largura (mobile)",
+      "options": [
+        { "value": "fit-content", "label": "Ajustar ao conteúdo" },
+        { "value": "fill", "label": "Preencher" },
+        { "value": "custom", "label": "Personalizado" }
+      ],
+      "default": "fit-content"
+    },
+    {
+      "type": "range",
+      "id": "custom_width_mobile",
+      "label": "Largura mobile personalizada",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 100,
+      "unit": "%",
+      "visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+    }
+  ]
+}
+{% endschema %}

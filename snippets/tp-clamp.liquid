@@ -1,0 +1,25 @@
+{%- assign min_px = min_px | default: 16 -%}
+{%- assign max_px = max_px | default: 64 -%}
+{%- assign min_vw = min_vw | default: 390 -%}
+{%- assign max_vw = max_vw | default: 1440 -%}
+{%- assign use_rem = use_rem | default: true -%}
+{%- assign base_font = base_font | default: 10 -%}
+
+{%- assign delta_px = max_px | minus: min_px -%}
+{%- assign delta_vw = max_vw | minus: min_vw -%}
+
+{%- assign slope = delta_px | times: 1.0 | divided_by: delta_vw -%}
+{%- assign slope_vw = slope | times: 100 -%}
+
+{%- comment -%} intercept = min_px - (slope * min_vw) {%- endcomment -%}
+{%- assign slope_times_minvw = slope | times: min_vw -%}
+{%- assign intercept = min_px | minus: slope_times_minvw -%}
+
+{%- if use_rem -%}
+  {%- assign min_out = min_px | times: 1.0 | divided_by: base_font -%}
+  {%- assign max_out = max_px | times: 1.0 | divided_by: base_font -%}
+  {%- assign intercept_out = intercept | times: 1.0 | divided_by: base_font -%}
+  clamp({{ min_out }}rem, {{ intercept_out }}rem + {{ slope_vw }}vw, {{ max_out }}rem)
+{%- else -%}
+  clamp({{ min_px }}px, {{ intercept }}px + {{ slope_vw }}vw, {{ max_px }}px)
+{%- endif -%}

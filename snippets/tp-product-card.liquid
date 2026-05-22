@@ -1,0 +1,165 @@
+{% comment %}
+  O css do tp-product-card está em assets/tp-product-card.css
+
+   usage:
+   {% render 'tp-product-card',
+      tp_product: product
+      show_price: boolean,
+      show_installments: boolean,
+      show_button: boolean,
+      add_to_cart: boolean,
+      show_badges: boolean
+      change_image_hover: boolean,
+      %}
+{% endcomment %}
+
+{%- if tp_product != blank -%}
+  {%- assign product_form_id = 'product-form-' | append: section.id | append: '-' | append: tp_product.id -%}
+
+  <div class="tp-product-card">
+    <a class="tp-product-card__link" href="{{ tp_product.url }}">
+      <div class="tp-product-card__media">
+        <div class="tp-images {% if change_image_hover == true and tp_product.images.size > 1 %}tp-images--with-hover{% endif %}">
+          {% if tp_product.featured_image != blank %}
+            <img
+              class="tp-image--main tp-image"
+              src="{{ tp_product.featured_image | image_url }}"
+              alt="{{ tp_product.title | escape }}"
+              width="{{ tp_product.featured_image.width }}"
+              height="{{ tp_product.featured_image.height }}"
+              loading="lazy"
+            >
+          {% endif %}
+          {% if change_image_hover == true and tp_product.images.size > 1 %}
+            <img
+              class="tp-image--hover tp-image"
+              src="{{ tp_product.images[1] | image_url }}"
+              alt="{{ tp_product.title | escape }}"
+              width="{{ tp_product.images[1].width }}"
+              height="{{ tp_product.images[1].height }}"
+              loading="lazy"
+            >
+          {% endif %}
+        </div>
+
+        {% if tp_product.tags %}
+          <div class="wrapper-tp-badge">
+            {% for item in tp_product.tags %}
+              <div class="tp-badge">{{ item }}</div>
+            {% endfor %}
+            {% if tp_product.compare_at_price > tp_product.price %}
+              {% assign discount = tp_product.compare_at_price
+                | minus: tp_product.price
+                | times: 100
+                | divided_by: tp_product.compare_at_price
+              %}
+              <div class="tp-badge">{{ discount }}% OFF</div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+      <div class="tp-product-card__content">
+        <h4>
+          {{ tp_product.title }}
+        </h4>
+        {% if show_price == true %}
+          <div class="tp-price">
+            <div class="tp-price__wrapper">
+              {% if tp_product.compare_at_price != blank and tp_product.compare_at_price > tp_product.price %}
+                <s class="tp-compare-at-price">
+                  {{- tp_product.compare_at_price | money_with_currency | remove: 'BRL' -}}
+                </s>
+              {% endif %}
+              <span class="tp-normal-price">
+                {{ tp_product.price | money_with_currency | remove: 'BRL' }}
+              </span>
+            </div>
+            {% if show_installments %}
+              {% render 'tp-installments', tp_price: tp_product.price %}
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </a>
+
+    {% if show_button == true %}
+      {% if add_to_cart == true %}
+        {% if tp_product.available %}
+          <product-form data-section-id="{{ section.id }}">
+            {%- form 'product',
+              tp_product,
+              id: product_form_id,
+              class: 'tp-product-card__form',
+              novalidate: 'novalidate',
+              data-type: 'add-to-cart-form'
+            -%}
+              <input
+                type="hidden"
+                name="id"
+                value="{{ tp_product.selected_or_first_available_variant.id }}"
+                class="product-variant-id"
+                {% if tp_product.selected_or_first_available_variant.available == false %}
+                  disabled
+                {% endif %}
+              >
+              <button
+                id="{{ product_form_id }}-submit"
+                class="tp-button"
+                type="submit"
+                name="add"
+                {% if tp_product.selected_or_first_available_variant.available == false %}
+                  disabled
+                {% endif %}
+              >
+                <span>{{ settings.tp_pc_btn_text | default: 'Adicionar ao carrinho' }}</span>
+                {%- render 'loading-spinner' -%}
+              </button>
+            {%- endform -%}
+          </product-form>
+        {% else %}
+          <button class="tp-button tp-button--disabled" type="button" disabled aria-disabled="true">Esgotado</button>
+        {% endif %}
+      {% else %}
+        <a class="tp-button" href="{{ tp_product.url }}">
+          {% if tp_product.available %}
+            Ver produto
+          {% else %}
+            Esgotado
+          {% endif %}
+        </a>
+      {% endif %}
+    {% endif %}
+  </div>
+
+{%- else -%}
+  <div class="tp-product-card tp-product-card--placeholder">
+    <div class="tp-product-card__link">
+      <div class="tp-product-card__media">
+        <div class="tp-images">
+          {{ 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg tp-image tp-image--main' }}
+        </div>
+      </div>
+      <div class="tp-product-card__content">
+        <h4 class="tp-product-card__heading--placeholder">
+          {{ 'onboarding.product_title' | t }}
+        </h4>
+        {% if show_price == true %}
+          <div class="tp-price">
+            <div class="tp-price__wrapper">
+              <s class="tp-compare-at-price tp-compare-at-price--placeholder">R$ 199,90</s>
+              <span class="tp-normal-price tp-normal-price--placeholder">R$ 99,90</span>
+            </div>
+            {% if show_installments %}
+              <span class="tp-installments tp-installments--placeholder">10x de R$ 9,99</span>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    {% if show_button == true %}
+      <button class="tp-button tp-button--placeholder" type="button" disabled aria-disabled="true">
+        Adicionar ao carrinho
+      </button>
+    {% endif %}
+  </div>
+{%- endif -%}

@@ -1,0 +1,302 @@
+{% style %}
+.tp-block-contact-form-{{ block.id }} {
+  {% if block.settings.width == 'fill' %}
+    width: 100%;
+  {% elsif block.settings.width == 'custom' %}
+    width: {{ block.settings.custom_width }}%;
+  {% else %}
+    width: fit-content;
+  {% endif %}
+  
+  padding-block-start: {{ block.settings.padding-block-start }}px;
+  padding-block-end: {{ block.settings.padding-block-end }}px;
+  padding-inline-start: {{ block.settings.padding-inline-start }}px;
+  padding-inline-end: {{ block.settings.padding-inline-end }}px;
+}
+
+.tp-block-contact-form-{{ block.id }} form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tp-block-contact-form-{{ block.id }} .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tp-block-contact-form-{{ block.id }} label {
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.tp-block-contact-form-{{ block.id }} input,
+.tp-block-contact-form-{{ block.id }} textarea {
+  padding: 12px 16px;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: transparent;
+  width: 100%;
+}
+
+.tp-block-contact-form-{{ block.id }} textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.tp-block-contact-form-{{ block.id }} input:focus,
+.tp-block-contact-form-{{ block.id }} textarea:focus {
+  outline: 2px solid var(--color-button, #000);
+  outline-offset: -2px;
+}
+
+.tp-block-contact-form-{{ block.id }} button[type="submit"] {
+  padding: 14px 28px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: opacity 0.3s ease;
+  background-color: var(--color-button, #000);
+  color: var(--color-button-text, #fff);
+  
+  {% if block.settings.button_width == 'full' %}
+    width: 100%;
+  {% else %}
+    width: fit-content;
+  {% endif %}
+}
+
+.tp-block-contact-form-{{ block.id }} button[type="submit"]:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 749px) {
+  .tp-block-contact-form-{{ block.id }} {
+    {% if block.settings.width_mobile == 'fill' %}
+      width: 100%;
+    {% elsif block.settings.width_mobile == 'custom' %}
+      width: {{ block.settings.custom_width_mobile }}%;
+    {% else %}
+      width: fit-content;
+    {% endif %}
+  }
+}
+{% endstyle %}
+
+<div class="tp-block-contact-form tp-block-contact-form-{{ block.id }}" {{ block.shopify_attributes }}>
+  {% form 'contact', id: block.id %}
+    {% if form.posted_successfully? %}
+      <p class="success-message">{{ block.settings.success_message | default: 'Obrigado! Entraremos em contato em breve.' }}</p>
+    {% else %}
+      <div class="form-field">
+        <label for="contact-name-{{ block.id }}">Nome</label>
+        <input 
+          type="text" 
+          id="contact-name-{{ block.id }}"
+          name="contact[name]" 
+          placeholder="Seu nome"
+          required
+          autocomplete="name"
+        >
+      </div>
+      
+      <div class="form-field">
+        <label for="contact-email-{{ block.id }}">E-mail</label>
+        <input 
+          type="email" 
+          id="contact-email-{{ block.id }}"
+          name="contact[email]" 
+          placeholder="seu@email.com"
+          required
+          autocomplete="email"
+        >
+      </div>
+      
+      {% if block.settings.show_phone %}
+        <div class="form-field">
+          <label for="contact-phone-{{ block.id }}">Telefone</label>
+          <input 
+            type="tel" 
+            id="contact-phone-{{ block.id }}"
+            name="contact[phone]" 
+            placeholder="(00) 00000-0000"
+            autocomplete="tel"
+          >
+        </div>
+      {% endif %}
+      
+      <div class="form-field">
+        <label for="contact-message-{{ block.id }}">Mensagem</label>
+        <textarea 
+          id="contact-message-{{ block.id }}"
+          name="contact[body]" 
+          placeholder="Sua mensagem..."
+          required
+        ></textarea>
+      </div>
+      
+      {% content_for 'blocks' %}
+      
+      <button type="submit">{{ block.settings.submit_label | default: 'Enviar' }}</button>
+    {% endif %}
+  {% endform %}
+</div>
+
+{% schema %}
+{
+  "name": "Formulário de Contato",
+  "presets": [
+    {
+      "name": "Formulário de Contato",
+      "category": "Formulários"
+    }
+  ],
+  "blocks": [
+    { "type": "@theme" },
+    { "type": "@app" }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "Texto do botão",
+      "default": "Enviar mensagem"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Mensagem de sucesso",
+      "default": "Obrigado! Entraremos em contato em breve."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "label": "Mostrar campo de telefone",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "button_width",
+      "label": "Largura do botão",
+      "options": [
+        { "value": "fit", "label": "Ajustar ao conteúdo" },
+        { "value": "full", "label": "Largura total" }
+      ],
+      "default": "fit"
+    },
+    {
+      "type": "header",
+      "content": "Tamanho"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Largura",
+      "options": [
+        { "value": "fit-content", "label": "Ajustar ao conteúdo" },
+        { "value": "fill", "label": "Preencher" },
+        { "value": "custom", "label": "Personalizado" }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "custom_width",
+      "label": "Largura personalizada",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 50,
+      "unit": "%",
+      "visible_if": "{{ block.settings.width == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "width_mobile",
+      "label": "Largura (mobile)",
+      "options": [
+        { "value": "fit-content", "label": "Ajustar ao conteúdo" },
+        { "value": "fill", "label": "Preencher" },
+        { "value": "custom", "label": "Personalizado" }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "custom_width_mobile",
+      "label": "Largura mobile",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 100,
+      "unit": "%",
+      "visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "header",
+      "content": "Aparência"
+    },
+    {
+      "type": "checkbox",
+      "id": "inherit_color_scheme",
+      "label": "Herdar esquema de cores",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de cores",
+      "visible_if": "{{ block.settings.inherit_color_scheme == false }}"
+    },
+    {
+      "type": "header",
+      "content": "Espaçamento"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Padding superior",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Padding inferior",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "Padding esquerdo",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "Padding direito",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    }
+  ]
+}
+{% endschema %}

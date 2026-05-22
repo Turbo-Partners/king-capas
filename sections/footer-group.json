@@ -1,0 +1,111 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "tp_footer": {
+      "type": "tp-footer",
+      "blocks": {
+        "logo_main": {
+          "type": "logo",
+          "settings": {
+            "alignment_mobile": "left",
+            "alignment_desktop": "left",
+            "logo_image": "",
+            "logo_url": "",
+            "logo_width": 120,
+            "informations": "<p></p>",
+            "pagamentos": "",
+            "newsletter": false,
+            "placeholder": "Seu email",
+            "button_text": "Enviar",
+            "error_message": "Email invalido.",
+            "success_message": "Obrigado por se inscrever."
+          }
+        },
+        "contact_main": {
+          "type": "contact",
+          "settings": {
+            "alignment_mobile": "left",
+            "alignment_desktop": "left",
+            "title": "Contato",
+            "informations": "<p></p>",
+            "rede_social1": false,
+            "social1_url": "",
+            "social1_image": "",
+            "rede_social2": false,
+            "social2_url": "",
+            "social2_image": "",
+            "rede_social3": false,
+            "social3_url": "",
+            "social3_image": "",
+            "rede_social4": false,
+            "social4_url": "",
+            "social4_image": ""
+          }
+        },
+        "links_main": {
+          "type": "links",
+          "settings": {
+            "alignment_mobile": "left",
+            "alignment_desktop": "left",
+            "title": "Links",
+            "link_list": "",
+            "informations": "<p></p>"
+          }
+        }
+      },
+      "block_order": [
+        "logo_main",
+        "contact_main",
+        "links_main"
+      ],
+      "settings": {
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "background_image_mobile": "",
+        "background_image_desktop": "",
+        "columns_desktop": 4,
+        "columns_tablet": 1,
+        "columns_mobile": "1",
+        "pagamento_mobile": "",
+        "pagamento_desktop": "",
+        "shopify_image": "",
+        "copyright": "Todos os direitos reservados.",
+        "enable_terms_links": false,
+        "link1_text": "",
+        "link1_url": "",
+        "link2_text": "",
+        "link2_url": "",
+        "link3_text": "",
+        "link3_url": "",
+        "turbo_image": "",
+        "turbo_url": "",
+        "pad_top_min": 48,
+        "pad_top_max": 96,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    }
+  },
+  "order": [
+    "tp_footer"
+  ]
+}

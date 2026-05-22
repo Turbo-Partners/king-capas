@@ -1,0 +1,23 @@
+<style>
+  .flash-offer {
+    text-align: center;
+    background-color: #5d89bb;
+    color: #fff;
+    font-weight: bold;
+    font-size: 13px;
+  }
+</style>
+
+<flash-offer-timer
+  data-repeat="{{settings.repeat_flash_offer }}"
+  data-duration="{{settings.flash_duration_minutes }}"
+  data-start="{{settings.flash_start_date }}"
+  data-end="{{settings.flash_end_date }}"
+  data-key="flash-offer-{{ settings.id }}"
+>
+  <div class="flash-offer">
+    ⚡ Oferta acaba em
+    <span data-hours>00</span>: <span data-minutes>00</span>:
+    <span data-seconds>00</span>
+  </div>
+</flash-offer-timer>

@@ -1,0 +1,30 @@
+<details {{ block.shopify_attributes }}>
+  <summary>{{ block.settings.heading | default: 'Título do acordeão' }}</summary>
+  <div class="accordion-content">
+    {% content_for 'blocks' %}
+  </div>
+</details>
+
+{% schema %}
+{
+  "name": "Item do Acordeão",
+  "presets": [
+    {
+      "name": "Item do Acordeão",
+      "category": "Interativo"
+    }
+  ],
+  "blocks": [
+    { "type": "@theme" },
+    { "type": "@app" }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Qual é a política de devolução?"
+    }
+  ]
+}
+{% endschema %}

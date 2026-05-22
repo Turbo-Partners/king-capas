@@ -1,0 +1,118 @@
+{% style %}
+.tp-block-heading {
+  width: 100%;
+}
+
+.tp-block-heading__title {
+  color: {{ block.settings.heading_color }};
+  font-size: {{ block.settings.heading_size }}px;
+  font-weight: {{ block.settings.heading_weight }};
+  text-align: {{ block.settings.heading_align }};
+  line-height: 1.2;
+  margin: 0;
+
+  @media (max-width: 750px) {
+    font-size: {{ block.settings.heading_size_mobile }}px;
+  }
+}
+{% endstyle %}
+
+<div class="tp-block-heading" {{ block.shopify_attributes }}>
+  {% if block.settings.heading_tag == 'h1' %}
+    <h1 class="tp-block-heading__title">{{ block.settings.heading }}</h1>
+  {% elsif block.settings.heading_tag == 'h2' %}
+    <h2 class="tp-block-heading__title">{{ block.settings.heading }}</h2>
+  {% elsif block.settings.heading_tag == 'h3' %}
+    <h3 class="tp-block-heading__title">{{ block.settings.heading }}</h3>
+  {% elsif block.settings.heading_tag == 'h4' %}
+    <h4 class="tp-block-heading__title">{{ block.settings.heading }}</h4>
+  {% elsif block.settings.heading_tag == 'h5' %}
+    <h5 class="tp-block-heading__title">{{ block.settings.heading }}</h5>
+  {% else %}
+    <h6 class="tp-block-heading__title">{{ block.settings.heading }}</h6>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Título",
+  "presets": [
+    {
+      "name": "Título",
+      "category": "Texto"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Título da seção"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Tag HTML",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Cor do título",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "Alinhamento",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Esquerda" },
+        { "value": "center", "label": "Centro" },
+        { "value": "right", "label": "Direita" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Tamanho (desktop)",
+      "min": 16,
+      "max": 80,
+      "step": 2,
+      "default": 32,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Tamanho (mobile)",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Peso da fonte",
+      "default": "600",
+      "options": [
+        { "value": "400", "label": "Normal (400)" },
+        { "value": "500", "label": "Médio (500)" },
+        { "value": "600", "label": "Semi-bold (600)" },
+        { "value": "700", "label": "Bold (700)" },
+        { "value": "800", "label": "Extra-bold (800)" }
+      ]
+    }
+  ]
+}
+{% endschema %}

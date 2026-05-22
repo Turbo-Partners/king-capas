@@ -1,0 +1,197 @@
+{% comment %}
+  Renders a megamenu for the header.
+
+  Usage:
+  {% render 'header-mega-menu' %}
+{% endcomment %}
+
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in section.settings.menu.links -%}
+      <li>
+        {%- if link.links != blank -%}
+          <header-menu>
+            <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
+              <summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link focus-inset"
+              >
+                <span
+                  {%- if link.child_active %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                >
+                  {{- link.title | escape -}}
+                </span>
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </summary>
+              <div
+                id="MegaMenu-Content-{{ forloop.index }}"
+                class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
+                tabindex="-1"
+              >
+                <div class="mega-menu__cards-container page-width">
+                  {%- for childlink in link.links -%}
+                    {%- if childlink.links == blank -%}
+                      {%- assign product_handle = childlink.url | split: '/products/' | last | split: '?' | first -%}
+                      {%- assign linked_product = all_products[product_handle] -%}
+
+                      {%- assign collection_handle = childlink.url
+                        | split: '/collections/'
+                        | last
+                        | split: '?'
+                        | first
+                      -%}
+                      {%- assign linked_collection = collections[collection_handle] -%}
+
+                      {%- assign page_handle = childlink.url | split: '/pages/' | last | split: '?' | first -%}
+                      {%- assign linked_page = pages[page_handle] -%}
+
+                      <a
+                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                        href="{{ childlink.url }}"
+                        class="header__menu-card{% if childlink.current %} header__menu-card--active{% endif %}"
+                        {% if childlink.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        <div class="header__menu-card-image">
+                          {%- if childlink.type == 'product_link'
+                            and linked_product != blank
+                            and linked_product.featured_image != blank
+                          -%}
+                            <!-- Product featured image -->
+                            <img
+                              src="{{ linked_product.featured_image | image_url: width: 480 }}"
+                              alt="{{ linked_product.title | escape }}"
+                              loading="lazy"
+                              width="240"
+                              height="280"
+                            >
+
+                          {%- elsif childlink.type == 'collection_link'
+                            and linked_collection != blank
+                            and linked_collection.image != blank
+                          -%}
+                            <!-- Collection image -->
+                            <img
+                              src="{{ linked_collection.image | image_url: width: 480 }}"
+                              alt="{{ linked_collection.title | escape }}"
+                              loading="lazy"
+                              width="240"
+                              height="280"
+                            >
+
+                          {%- elsif linked_collection != blank
+                            and linked_collection.products.first != blank
+                            and linked_collection.products.first.featured_image != blank
+                          -%}
+                            <!-- Fallback: first product from collection -->
+                            <img
+                              src="{{ linked_collection.products.first.featured_image | image_url: width: 480 }}"
+                              alt="{{ linked_collection.products.first.title | escape }}"
+                              loading="lazy"
+                              width="240"
+                              height="280"
+                            >
+
+                          {%- elsif childlink.type == 'page_link'
+                            and linked_page.metafields.custom.imagem_da_pagina != blank
+                          -%}
+                            <!-- Page metafield image -->
+                            <img
+                              src="{{ linked_page.metafields.custom.imagem_da_pagina | image_url: width: 480 }}"
+                              alt="{{ childlink.title | escape }}"
+                              loading="lazy"
+                              width="240"
+                              height="280"
+                            >
+
+                          {%- else -%}
+                            <!-- Placeholder -->
+                            <img
+                              src="https://placehold.co/240x280"
+                              alt="{{ childlink.title | escape }}"
+                              loading="lazy"
+                              width="240"
+                              height="280"
+                            >
+                          {%- endif -%}
+                        </div>
+
+                        <div class="header__menu-card-content">
+                          <span class="header__menu-card-title">
+                            {{ childlink.title | escape }}
+                          </span>
+                          {% comment %} <span class="header__menu-card-link">
+                            <span>conferir</span>
+                            <img
+                              src="https://cdn.shopify.com/s/files/1/0785/2051/6834/files/arrow_right.svg?v=1766459584"
+                              alt=""
+                              width="14"
+                              height="14"
+                              style="display: inline-block;"
+                            >
+                          </span> {% endcomment %}
+                        </div>
+                      </a>
+
+                    {%- else -%}
+                      <!-- Normal menu link -->
+                      <a
+                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                        href="{{ childlink.url }}"
+                        class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                        {% if childlink.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        {{ childlink.title | escape }}
+                      </a>
+
+                      {%- if childlink.links != blank -%}
+                        <ul class="list-unstyled" role="list">
+                          {%- for grandchildlink in childlink.links -%}
+                            <li>
+                              <a
+                                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                href="{{ grandchildlink.url }}"
+                                class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
+                                {% if grandchildlink.current %}
+                                  aria-current="page"
+                                {% endif %}
+                              >
+                                {{ grandchildlink.title | escape }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- endif -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              </div>
+            </details> 
+          </header-menu>
+        {%- else -%}
+          <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{- link.title | escape -}}
+            </span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>

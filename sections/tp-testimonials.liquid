@@ -1,0 +1,452 @@
+{{ 'tp-testimonials.css' | asset_url | stylesheet_tag }}
+
+{% render 'tp-section-padding',
+  pad_top_min: section.settings.pad_top_min,
+  pad_top_max: section.settings.pad_top_max,
+  pad_bottom_min: section.settings.pad_bottom_min,
+  pad_bottom_max: section.settings.pad_bottom_max,
+  enable_pad_top_mobile: section.settings.enable_pad_top_mobile,
+  pad_top_mobile: section.settings.pad_top_mobile,
+  enable_pad_bottom_mobile: section.settings.enable_pad_bottom_mobile,
+  pad_bottom_mobile: section.settings.pad_bottom_mobile,
+  enable_pad_top_desktop: section.settings.enable_pad_top_desktop,
+  pad_top_desktop: section.settings.pad_top_desktop,
+  enable_pad_bottom_desktop: section.settings.enable_pad_bottom_desktop,
+  pad_bottom_desktop: section.settings.pad_bottom_desktop
+%}
+
+{% liquid
+  assign background_type = section.settings.background_type
+  assign pagination = section.settings.pagination
+  assign navigation = section.settings.navigation
+%}
+
+{% style %}
+.{{ section.id }} {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+
+	{% if background_type == "image" and section.settings.background_image_mobile != blank %}
+		background-image: url('{{ section.settings.background_image_mobile | image_url }}');
+
+		{% if section.settings.background_image_desktop != blank %}
+			@media screen and (min-width: 1024px) {
+				background-image: url('{{ section.settings.background_image_desktop | image_url }}');
+			}
+		{% endif %}
+	{% elsif background_type == "color" and section.settings.background_color != blank %}
+		background: {{ section.settings.background_color }};
+	{% elsif background_type == "gradient" and section.settings.background_gradient != blank %}
+		background: {{ section.settings.background_gradient }};
+	{% endif %}
+
+    {% if pagination %}
+        .swiper-pagination {
+            position: relative;
+
+            .swiper-pagination-bullet {
+                background: {{ section.settings.pagination_color }};
+            }
+
+            .swiper-pagination-bullet-active {
+                background: {{ section.settings.pagination_color_active }};
+            }
+        }
+    {% endif %}
+
+	{% if navigation %}
+		.swiper-button-prev, .swiper-button-next {
+			width: clamp(2.4rem, 2.1029rem + 0.7619vw, 3.2rem);
+
+            svg {
+                fill: none;
+            }
+
+			&::after {
+				content: '';
+                color: transparent;
+			}
+		}
+	{% endif %}
+}
+{% endstyle %}
+
+<section class="tp-testimonials {{ section.id }}">
+    <div class="tp-wrapper" id="section-wrapper-{{ section.id }}">
+        {% if section.settings.title != blank or section.settings.title_image != blank %}
+            <div class="tp-title-wrapper">
+                {% if section.settings.title_image != blank %}
+                    <img src="{{ section.settings.title_image | image_url }}" loading="lazy">
+                {% endif %}
+
+                {% if section.settings.title != blank %}
+                    {{ section.settings.title }}
+                {% endif %}
+            </div>
+        {% endif %}
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                    <div class="swiper-slide">
+                        {% if block.type == "image" %}
+                            <div class="tp-image">
+                                {% if block.settings.image != blank %}
+                                    <img src="{{ block.settings.image | image_url }}" loading="lazy">
+                                {% endif %}
+                            </div>
+                        {% elsif block.type == "testimonial" %}
+                            <div class="tp-testimonial-block">
+                                {% if block.settings.image != blank %}
+                                    <img src="{{ block.settings.image | image_url }}" loading="lazy">
+                                {% endif %}
+                                <div class="tp-text-wrapper">
+                                    {{ block.settings.richtext }}
+                                </div>
+
+                                {% if block.settings.author == true %}
+                                    <div class="tp-author">
+                                        {% if block.settings.author_image != blank %}
+                                            <img src="{{ block.settings.author_image | image_url }}" loading="lazy">
+                                        {% endif %}
+                                        
+                                        <div class="tp-author__text-wrapper">
+                                            {% if block.settings.author_name != blank %}
+                                                <h6>{{ block.settings.author_name }}</h6>
+                                            {% endif %}
+                                            {% if block.settings.author_instagram != blank %}
+                                                <p>{{ block.settings.author_instagram }}</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if navigation == true %}
+                <div class="swiper-button-prev">
+                    {% if section.settings.navigation_prev_image != blank %}
+                        <img src="{{ section.settings.navigation_prev_image | image_url }}" alt="" loading="lazy">
+                    {% else %}
+                        {{ 'tp-button-prev.svg' | inline_asset_content }}
+                    {% endif %}
+                </div>
+                <div class="swiper-button-next">
+                    {% if section.settings.navigation_next_image != blank %}
+                        <img src="{{ section.settings.navigation_next_image | image_url }}" alt="" loading="lazy">
+                    {% else %}
+                        {{ 'tp-button-next.svg' | inline_asset_content }}
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+
+        {% if pagination %}
+            <div class="swiper-pagination"></div>
+        {% endif %}
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const swiper_{{ section.id | replace: '-', '_' }} = new Swiper('.{{ section.id }} .swiper', {
+            slidesPerView: 1.2,
+            spaceBetween: 12,
+            breakpoints: {
+                768: {
+                    slidesPerView: 2.2
+                },
+                1024: {
+                    slidesPerView: 3.2
+                },
+                1280: {
+                    spaceBetween: 32
+                }
+            },
+            {% if pagination %}
+                pagination: {
+                    el: '.{{ section.id }} .swiper-pagination',
+                    clickable: true,
+                },
+            {% endif %}
+            {% if navigation %}
+                navigation: {
+                    prevEl: '.{{ section.id }} .swiper-button-prev',
+                    nextEl: '.{{ section.id }} .swiper-button-next',
+                },
+            {% endif %}
+        });
+    });
+</script>
+
+{% schema %}
+{
+    "name": "TP - Depoimentos",
+    "settings": [
+        {
+            "type": "select",
+            "id": "background_type",
+            "label": "Tipo de Background",
+            "default": "color",
+            "options": [
+                { "label": "Cor", "value": "color" },
+                { "label": "Gradiente", "value": "gradient" },
+                { "label": "Imagem", "value": "image" }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Cor do Background",
+            "default": "#FFFFFF",
+            "visible_if": "{{ section.settings.background_type == 'color' }}"
+        },
+        {
+            "type": "color_background",
+            "id": "background_gradient",
+            "label": "Gradiente do Background",
+            "visible_if": "{{ section.settings.background_type == 'gradient' }}"
+        },
+        {
+            "type": "image_picker",
+            "id": "background_image_mobile",
+            "label": "Imagem Mobile do Background",
+            "visible_if": "{{ section.settings.background_type == 'image' }}"
+        },
+        {
+            "type": "image_picker",
+            "id": "background_image_desktop",
+            "label": "Imagem Desktop do Background",
+            "visible_if": "{{ section.settings.background_type == 'image' }}"
+        },
+        {
+            "type": "header",
+            "content": "Conteudo"
+        },
+        {
+            "type": "image_picker",
+            "id": "title_image",
+            "label": "Imagem do titulo"
+        },
+        {
+            "type": "richtext",
+            "id": "title",
+            "label": "Titulo",
+            "default": "<h2>Depoimentos</h2>"
+        },
+        {
+            "type": "header",
+            "content": "Slider"
+        },
+        {
+            "type": "checkbox",
+            "id": "pagination",
+            "label": "Paginação",
+            "default": true
+        },
+        {
+            "type": "color",
+            "id": "pagination_color",
+            "label": "Cor da Paginação",
+            "default": "#B1BFAB",
+            "visible_if": "{{ section.settings.pagination }}"
+        },
+        {
+            "type": "color",
+            "id": "pagination_color_active",
+            "label": "Cor da Paginação Ativa",
+            "default": "#000000",
+            "visible_if": "{{ section.settings.pagination }}"
+        },
+        {
+            "type": "checkbox",
+            "id": "navigation",
+            "label": "Navegação",
+            "default": true
+        },
+        {
+            "type": "image_picker",
+            "id": "navigation_prev_image",
+            "label": "Imagem botao anterior",
+            "visible_if": "{{ section.settings.navigation }}"
+        },
+        {
+            "type": "image_picker",
+            "id": "navigation_next_image",
+            "label": "Imagem botao proximo",
+            "visible_if": "{{ section.settings.navigation }}"
+        },
+        {
+            "type": "header",
+            "content": "Spacing"
+        },
+        {
+            "type": "range",
+            "id": "pad_top_min",
+            "label": "Padding TOP min (px)",
+            "min": 0,
+            "max": 120,
+            "step": 4,
+            "default": 48
+        },
+        {
+            "type": "range",
+            "id": "pad_top_max",
+            "label": "Padding TOP max (px)",
+            "min": 0,
+            "max": 120,
+            "step": 4,
+            "default": 96
+        },
+        {
+            "type": "range",
+            "id": "pad_bottom_min",
+            "label": "Padding BOTTOM min (px)",
+            "min": 0,
+            "max": 120,
+            "step": 4,
+            "default": 48
+        },
+        {
+            "type": "range",
+            "id": "pad_bottom_max",
+            "label": "Padding BOTTOM max (px)",
+            "min": 0,
+            "max": 120,
+            "step": 8,
+            "default": 96
+        },
+        {
+            "type": "header",
+            "content": "Spacing Overrides (opcional)"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_pad_top_mobile",
+            "label": "Ativar padding TOP no mobile",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "pad_top_mobile",
+            "label": "Padding TOP mobile (px)",
+            "min": 0,
+            "max": 120,
+            "step": 4,
+            "default": 0,
+            "visible_if": "{{ section.settings.enable_pad_top_mobile }}"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_pad_bottom_mobile",
+            "label": "Ativar padding BOTTOM no mobile",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "pad_bottom_mobile",
+            "label": "Padding BOTTOM mobile (px)",
+            "min": 0,
+            "max": 120,
+            "step": 4,
+            "default": 0,
+            "visible_if": "{{ section.settings.enable_pad_bottom_mobile }}"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_pad_top_desktop",
+            "label": "Ativar padding TOP no desktop",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "pad_top_desktop",
+            "label": "Padding TOP desktop (px)",
+            "min": 0,
+            "max": 120,
+            "step": 4,
+            "default": 0,
+            "visible_if": "{{ section.settings.enable_pad_top_desktop }}"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_pad_bottom_desktop",
+            "label": "Ativar padding BOTTOM no desktop",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "pad_bottom_desktop",
+            "label": "Padding BOTTOM desktop (px)",
+            "min": 0,
+            "max": 120,
+            "step": 4,
+            "default": 0,
+            "visible_if": "{{ section.settings.enable_pad_bottom_desktop }}"
+        }
+    ],
+    
+    "blocks": [
+        {
+            "type": "image",
+            "name": "Imagem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Imagem"
+                }
+            ]
+        },
+        {
+            "type": "testimonial",
+            "name": "Depoimento",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Imagem"
+                },
+                {
+                    "type": "richtext",
+                    "id": "richtext",
+                    "label": "Texto"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "author",
+                    "label": "Mostrar autor",
+                    "default": true
+                },
+                {
+                    "type": "image_picker",
+                    "id": "author_image",
+                    "label": "Foto do autor",
+                    "visible_if": "{{ block.settings.author }}"
+                },
+                {
+                    "type": "text",
+                    "id": "author_name",
+                    "label": "Nome do autor",
+                    "visible_if": "{{ block.settings.author }}"
+                },
+                {
+                    "type": "text",
+                    "id": "author_instagram",
+                    "label": "Instagram do autor",
+                    "visible_if": "{{ block.settings.author }}"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "TP - Depoimentos",
+            "category": "TP - Seções"
+        }
+    ]
+}
+{% endschema %}

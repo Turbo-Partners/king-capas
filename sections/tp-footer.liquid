@@ -1,0 +1,1086 @@
+{{ 'tp-footer.css' | asset_url | stylesheet_tag }}
+
+{% render 'tp-section-padding',
+  pad_top_min: section.settings.pad_top_min,
+  pad_top_max: section.settings.pad_top_max,
+  pad_bottom_min: section.settings.pad_bottom_min,
+  pad_bottom_max: section.settings.pad_bottom_max,
+  enable_pad_top_mobile: section.settings.enable_pad_top_mobile,
+  pad_top_mobile: section.settings.pad_top_mobile,
+  enable_pad_bottom_mobile: section.settings.enable_pad_bottom_mobile,
+  pad_bottom_mobile: section.settings.pad_bottom_mobile,
+  enable_pad_top_desktop: section.settings.enable_pad_top_desktop,
+  pad_top_desktop: section.settings.pad_top_desktop,
+  enable_pad_bottom_desktop: section.settings.enable_pad_bottom_desktop,
+  pad_bottom_desktop: section.settings.pad_bottom_desktop
+%}
+
+{% liquid
+  assign background_type = section.settings.background_type
+%}
+
+{% style %}
+.{{ section.id }} {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+
+	{% if background_type == "image" and section.settings.background_image_mobile != blank %}
+		background-image: url('{{ section.settings.background_image_mobile | image_url }}');
+
+		{% if section.settings.background_image_desktop != blank %}
+			@media screen and (min-width: 1024px) {
+				background-image: url('{{ section.settings.background_image_desktop | image_url }}');
+			}
+		{% endif %}
+	{% elsif background_type == "color" and section.settings.background_color != blank %}
+		background: {{ section.settings.background_color }};
+	{% elsif background_type == "gradient" and section.settings.background_gradient != blank %}
+		background: {{ section.settings.background_gradient }};
+	{% endif %}
+}
+
+.{{ section.id }} .tp-footer__grid {
+   --tp-footer-cols-mobile: {{ section.settings.columns_mobile }};
+    --tp-footer-cols-tablet: {{ section.settings.columns_tablet }};
+    --tp-footer-cols-desktop: {{ section.settings.columns_desktop }};
+}
+
+{% if section.settings.title_custom %}
+  .{{ section.id }} .tp-footer__title {
+    color: {{ section.settings.title_color }};
+    font-size: {{ section.settings.title_font_size_mobile }}px;
+    font-weight: {{ section.settings.title_font_weight }};
+  }
+
+  @media screen and (min-width: 768px) {
+    .{{ section.id }} .tp-banner-cta__title {
+      font-size: {{ section.settings.title_font_size_desktop }}px;
+    }
+  }
+{% endif %}
+{% endstyle %}
+
+<section class="tp-footer {{ section.id }}">
+    <div class="tp-wrapper tp-footer__wrapper" id="section-wrapper-{{ section.id }}">
+        <div class="tp-grid tp-footer__grid">
+            {% for block in section.blocks %}
+                {% case block.type %}
+                    {% when 'logo' %}
+                        <div class="tp-footer__logo-wrapper"
+                             style="--tp-block-text-align-mobile: {{ block.settings.alignment_mobile | default: block.settings.alignment | default: 'left' }};
+                                    --tp-block-text-align-desktop: {{ block.settings.alignment_desktop | default: block.settings.alignment | default: 'left' }};
+                                    --tp-block-align-items-mobile: {% assign logo_alignment_mobile = block.settings.alignment_mobile | default: block.settings.alignment | default: 'left' %}{% if logo_alignment_mobile == 'left' %}flex-start{% elsif logo_alignment_mobile == 'center' %}center{% else %}flex-end{% endif %};
+                                    --tp-block-align-items-desktop: {% assign logo_alignment_desktop = block.settings.alignment_desktop | default: block.settings.alignment | default: 'left' %}{% if logo_alignment_desktop == 'left' %}flex-start{% elsif logo_alignment_desktop == 'center' %}center{% else %}flex-end{% endif %};"
+                        >
+                            {% if block.settings.logo_image != blank %}
+                                {% if block.settings.logo_url != blank %}
+                                    <a href="{{ block.settings.logo_url }}" class="tp-footer__logo" style="width: {{ block.settings.logo_width }}px;">
+                                {% else %}
+                                    <div class="tp-footer__logo" style="width: {{ block.settings.logo_width }}px;">
+                                {% endif %}
+
+                                    <img src="{{ block.settings.logo_image | image_url }}" alt="{{ block.settings.logo_image.alt | default: shop.name | escape }}">
+
+                                {% if block.settings.logo_url != blank %}
+                                    </a>
+                                {% else %}
+                                    </div>
+                                {% endif %}
+                            {% else %}
+                                {% if block.settings.logo_url != blank %}
+                                    <a href="{{ block.settings.logo_url }}" class="tp-footer__logo" style="width: {{ block.settings.logo_width }}px;">
+                                {% else %}
+                                    <div class="tp-footer__logo" style="width: {{ block.settings.logo_width }}px;">
+                                {% endif %}
+
+                                    <img src="{{ 'tp-placeholder-logo.svg' | asset_url }}" alt="{{ shop.name | escape }}">
+
+                                {% if block.settings.logo_url != blank %}
+                                    </a>
+                                {% else %}
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+
+                            {% if block.settings.informations != blank %}
+                                <div class="tp-footer__info">
+                                    {{ block.settings.informations }}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.pagamentos != blank %}
+                                <img src="{{ block.settings.pagamentos | image_url }}" class="tp-footer__payments-image" alt="{{ block.settings.pagamentos.alt | default: 'Formas de pagamento' | escape }}">
+                            {% endif %}
+
+                            <div class="tp-footer__socials-wrapper">
+                                {% if block.settings.rede_social1 == true %}
+                                    {% if block.settings.social1_url != blank and block.settings.social1_image != blank %}
+                                        <a href="{{ block.settings.social1_url }}" class="tp-footer__social">
+                                            <img src="{{ block.settings.social1_image | image_url }}" alt="{{ block.settings.social1_image.alt | default: 'Social 1' | escape }}">
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                                {% if block.settings.rede_social2 == true %}
+                                    {% if block.settings.social2_url != blank and block.settings.social2_image != blank %}
+                                        <a href="{{ block.settings.social2_url }}" class="tp-footer__social">
+                                            <img src="{{ block.settings.social2_image | image_url }}" alt="{{ block.settings.social2_image.alt | default: 'Social 2' | escape }}">
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                                {% if block.settings.rede_social3 == true %}
+                                    {% if block.settings.social3_url != blank and block.settings.social3_image != blank %}
+                                        <a href="{{ block.settings.social3_url }}" class="tp-footer__social">
+                                            <img src="{{ block.settings.social3_image | image_url }}" alt="{{ block.settings.social3_image.alt | default: 'Social 3' | escape }}">
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                                {% if block.settings.rede_social4 == true %}
+                                    {% if block.settings.social4_url != blank and block.settings.social4_image != blank %}
+                                        <a href="{{ block.settings.social4_url }}" class="tp-footer__social">
+                                            <img src="{{ block.settings.social4_image | image_url }}" alt="{{ block.settings.social4_image.alt | default: 'Social 4' | escape }}">
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                
+
+                            {% if block.settings.newsletter != blank %}
+                                {% form 'customer', class: 'tp-footer__newsletter' %}
+                                    <input type="hidden" name="contact[tags]" value="newsletter">
+                                    <div class="tp-footer__newsletter-form">
+                                        <input
+                                            class="tp-footer__newsletter-input"
+                                            type="email"
+                                            name="contact[email]"
+                                            value="{{ form.email }}"
+                                            autocomplete="email"
+                                            autocorrect="off"
+                                            autocapitalize="off"
+                                            placeholder="{{ block.settings.placeholder | default: 'Seu email' }}"
+                                            aria-label="{{ block.settings.placeholder | default: 'Seu email' }}"
+                                            required
+                                        >
+                                        <button class="tp-footer__newsletter-button" type="submit">
+                                            {{ block.settings.button_text | default: 'Enviar' }}
+                                        </button>
+                                    </div>
+                                    {% if block.settings.error_message != blank %}
+                                        {% if form.errors %}
+                                            <h3 class="tp-footer__message--error">{{ block.settings.error_message }}</h3>
+                                        {% endif %}
+                                    {% endif %}
+                                    {% if block.settings.success_message != blank %}
+                                        {% if form.posted_successfully? %}
+                                            <h3 class="tp-footer__message--success">{{ block.settings.success_message }}</h3>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endform %}
+                            {% endif %}
+                        </div>
+                    {% when 'contact' %}
+                        <div class="tp-footer__contact-wrapper"
+                             style="--tp-block-text-align-mobile: {{ block.settings.alignment_mobile | default: block.settings.alignment | default: 'left' }};
+                                    --tp-block-text-align-desktop: {{ block.settings.alignment_desktop | default: block.settings.alignment | default: 'left' }};
+                                    --tp-block-align-items-mobile: {% assign contact_alignment_mobile = block.settings.alignment_mobile | default: block.settings.alignment | default: 'left' %}{% if contact_alignment_mobile == 'left' %}flex-start{% elsif contact_alignment_mobile == 'center' %}center{% else %}flex-end{% endif %};
+                                    --tp-block-align-items-desktop: {% assign contact_alignment_desktop = block.settings.alignment_desktop | default: block.settings.alignment | default: 'left' %}{% if contact_alignment_desktop == 'left' %}flex-start{% elsif contact_alignment_desktop == 'center' %}center{% else %}flex-end{% endif %};"
+                        >
+                            {% if block.settings.title != blank %}
+                                <h4 class="tp-footer__title">
+                                    {{ block.settings.title }}
+                                </h4>
+                            {% endif %}
+                            {% if block.settings.informations != blank %}
+                                <div class="tp-footer__info">
+                                    {{ block.settings.informations }}
+                                </div>
+                            {% endif %}
+
+                            <div class="tp-footer__socials-wrapper">
+                                {% if block.settings.rede_social1 == true %}
+                                    {% if block.settings.social1_url != blank and block.settings.social1_image != blank %}
+                                        <a href="{{ block.settings.social1_url }}" class="tp-footer__social">
+                                            <img src="{{ block.settings.social1_image | image_url }}" alt="{{ block.settings.social1_image.alt | default: 'Social 1' | escape }}">
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                                {% if block.settings.rede_social2 == true %}
+                                    {% if block.settings.social2_url != blank and block.settings.social2_image != blank %}
+                                        <a href="{{ block.settings.social2_url }}" class="tp-footer__social">
+                                            <img src="{{ block.settings.social2_image | image_url }}" alt="{{ block.settings.social2_image.alt | default: 'Social 2' | escape }}">
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                                {% if block.settings.rede_social3 == true %}
+                                    {% if block.settings.social3_url != blank and block.settings.social3_image != blank %}
+                                        <a href="{{ block.settings.social3_url }}" class="tp-footer__social">
+                                            <img src="{{ block.settings.social3_image | image_url }}" alt="{{ block.settings.social3_image.alt | default: 'Social 3' | escape }}">
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                                {% if block.settings.rede_social4 == true %}
+                                    {% if block.settings.social4_url != blank and block.settings.social4_image != blank %}
+                                        <a href="{{ block.settings.social4_url }}" class="tp-footer__social">
+                                            <img src="{{ block.settings.social4_image | image_url }}" alt="{{ block.settings.social4_image.alt | default: 'Social 4' | escape }}">
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+
+                            {% if block.settings.button == true %}
+                                <a class="tp-button tp-footer__contact-button" href="{{ block.settings.button_url }}">{{ block.settings.button_text }}</a>
+                            {% endif %}
+                        </div>
+
+                    {% when 'links' %}
+                        <div class="tp-footer__links"
+                             style="--tp-block-text-align-mobile: {{ block.settings.alignment_mobile | default: block.settings.alignment | default: 'left' }};
+                                    --tp-block-text-align-desktop: {{ block.settings.alignment_desktop | default: block.settings.alignment | default: 'left' }};
+                                    --tp-block-align-items-mobile: {% assign links_alignment_mobile = block.settings.alignment_mobile | default: block.settings.alignment | default: 'left' %}{% if links_alignment_mobile == 'left' %}flex-start{% elsif links_alignment_mobile == 'center' %}center{% else %}flex-end{% endif %};
+                                    --tp-block-align-items-desktop: {% assign links_alignment_desktop = block.settings.alignment_desktop | default: block.settings.alignment | default: 'left' %}{% if links_alignment_desktop == 'left' %}flex-start{% elsif links_alignment_desktop == 'center' %}center{% else %}flex-end{% endif %};"
+                        >
+                            {% if block.settings.title != blank %}
+                                <h4 class="tp-footer__title"{% if block.settings.color_custom and block.settings.title_color != blank %} style="color: {{ block.settings.title_color }};"{% endif %}>
+                                    {{ block.settings.title }}
+                                </h4>
+                            {% endif %}
+                            <div class="tp-footer__links-wrapper"{% if block.settings.color_custom and block.settings.links_color != blank %} style="--tp-footer-link-color: {{ block.settings.links_color }};"{% endif %}>
+                                {% if block.settings.link_list != blank %}
+                                    {% for link in block.settings.link_list.links %}
+                                        <a href="{{ link.url }}">
+                                            {{ link.title }}
+                                        </a>
+                                    {% endfor %}
+                                {% else %}
+                                    {{ block.settings.informations }}
+                                {% endif %}
+                            </div>
+                        </div>
+                {% endcase %}
+            {% endfor %}
+        </div>
+        <div class="tp-footer__bottom">
+            <div class="tp-footer__badges-wrapper">
+                {% if section.settings.pagamento_mobile != blank and section.settings.pagamento_desktop != blank %}
+                    <img src="{{ section.settings.pagamento_mobile | image_url }}" class="tp-footer__pagamento--mobile" alt="{{ section.settings.pagamento_mobile.alt | default: 'Formas de pagamento mobile' | escape }}">
+                    <img src="{{ section.settings.pagamento_desktop | image_url }}" class="tp-footer__pagamento--desktop" alt="{{ section.settings.pagamento_desktop.alt | default: 'Formas de pagamento desktop' | escape }}">
+                {% endif %}
+                <div class="tp-footer__turbo-shopify-wrapper">
+                    {% if section.settings.turbo_image != blank and section.settings.turbo_url != blank %}
+                        <a href="{{ section.settings.turbo_url }}" target="_blank" rel="noopener noreferrer" class="tp-footer__turbo-image">
+                            <img src="{{ section.settings.turbo_image | image_url }}" alt="{{ section.settings.turbo_image.alt | default: 'Turbo' | escape }}">
+                        </a>
+                    {% endif %}
+                    {% if section.settings.shopify_image != blank %}
+                        <img src="{{ section.settings.shopify_image | image_url }}" class="tp-footer__shopify-image" alt="{{ section.settings.shopify_image.alt | default: 'Shopify' | escape }}">
+                    {% endif %}
+                </div>
+            </div>
+
+
+            <div class="tp-footer__copyright-wrapper">
+                <h6 class="tp-footer__copyright">{{ section.settings.copyright }}</h6>
+                {% if section.settings.enable_terms_links %}
+                    <div class="tp-footer__terms-links">
+                        {% if section.settings.link1_text != blank and section.settings.link1_url != blank %}
+                            <a class="tp-footer__term-link" href="{{ section.settings.link1_url }}">
+                                {{ section.settings.link1_text }}
+                            </a>
+                        {% endif %}
+                        {% if section.settings.link2_text != blank and section.settings.link2_url != blank %}
+                            <a class="tp-footer__term-link" href="{{ section.settings.link2_url }}">
+                                {{ section.settings.link2_text }}
+                            </a>
+                        {% endif %}
+                        {% if section.settings.link3_text != blank and section.settings.link3_url != blank %}
+                            <a class="tp-footer__term-link" href="{{ section.settings.link3_url }}">
+                                {{ section.settings.link3_text }}
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+              </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Rodapé",
+  "class": "E__FOOTER_4COLUMN__V2",
+  "settings": [
+    {
+        "type": "select",
+        "id": "background_type",
+        "label": "Tipo de Background",
+        "default": "color",
+        "options": [
+            { "label": "Cor", "value": "color" },
+            { "label": "Gradiente", "value": "gradient" },
+            { "label": "Imagem", "value": "image" }
+        ]
+    },
+    {
+        "type": "color",
+        "id": "background_color",
+        "label": "Cor do Background",
+        "default": "#FFFFFF",
+        "visible_if": "{{ section.settings.background_type == 'color' }}"
+    },
+    {
+        "type": "color_background",
+        "id": "background_gradient",
+        "label": "Gradiente do Background",
+        "visible_if": "{{ section.settings.background_type == 'gradient' }}"
+    },
+    {
+        "type": "image_picker",
+        "id": "background_image_mobile",
+        "label": "Imagem Mobile do Background",
+        "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+        "type": "image_picker",
+        "id": "background_image_desktop",
+        "label": "Imagem Desktop do Background",
+        "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+        "type": "range",
+        "label": "Quantidade de Colunas Desktop",
+        "id": "columns_desktop",
+        "default": 4,
+        "step": 1,
+        "min": 1,
+        "max": 5
+    },
+    {
+        "type": "range",
+        "label": "Quantidade de Colunas Tablet",
+        "id": "columns_tablet",
+        "default": 1,
+        "step": 1,
+        "min": 1,
+        "max": 4
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Quantidade de Colunas Mobile",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ]
+    },
+    {
+        "type": "header",
+        "content": "Configurações Bottom"
+    },
+    {
+      "type": "image_picker",
+      "id": "pagamento_mobile",
+      "label": "Imagem pagamentos mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "pagamento_desktop",
+      "label": "Imagem pagamentos desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "shopify_image",
+      "label": "Imagem Shopify"
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright",
+      "default": "Todos os direitos reservados."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_terms_links",
+      "label": "Exibir links de termos",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "link1_text",
+      "label": "Texto link 1",
+      "visible_if": "{{ section.settings.enable_terms_links }}"
+    },
+    {
+      "type": "url",
+      "id": "link1_url",
+      "label": "URL link 1",
+      "visible_if": "{{ section.settings.enable_terms_links }}"
+    },
+    {
+      "type": "text",
+      "id": "link2_text",
+      "label": "Texto link 2",
+      "visible_if": "{{ section.settings.enable_terms_links }}"
+    },
+    {
+      "type": "url",
+      "id": "link2_url",
+      "label": "URL link 2",
+      "visible_if": "{{ section.settings.enable_terms_links }}"
+    },
+    {
+      "type": "text",
+      "id": "link3_text",
+      "label": "Texto link 3",
+      "visible_if": "{{ section.settings.enable_terms_links }}"
+    },
+    {
+      "type": "url",
+      "id": "link3_url",
+      "label": "URL link 3",
+      "visible_if": "{{ section.settings.enable_terms_links }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "turbo_image",
+      "label": "Imagem Turbo"
+    },
+    {
+      "type": "url",
+      "id": "turbo_url",
+      "label": "Link Turbo",
+      "visible_if": "{{ section.settings.turbo_image != blank }}"
+    },
+    {
+      "type": "header",
+      "content": "Customizações"
+    },
+    {
+      "type": "checkbox",
+      "id": "title_custom",
+      "default": false,
+      "label": "Título Personalizado"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Cor",
+      "default": "#2B2B2B",
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Tamanho (mobile)",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "default": 36,
+      "unit": "px",
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "label": "Tamanho (desktop)",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "default": 20,
+      "unit": "px",
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Peso",
+      "default": "600",
+      "visible_if": "{{ section.settings.title_custom }}",
+      "options": [
+        { "label": "Regular", "value": "400" },
+        { "label": "Medium", "value": "500" },
+        { "label": "Semi Bold", "value": "600" },
+        { "label": "Bold", "value": "700" },
+        { "label": "Extra Bold", "value": "800" }
+      ]
+    },
+    {
+        "type": "header",
+        "content": "Spacing"
+    },
+    {
+        "type": "range",
+        "id": "pad_top_min",
+        "label": "Padding TOP min (px)",
+        "min": 0,
+        "max": 120,
+        "step": 4,
+        "default": 48
+    },
+    {
+        "type": "range",
+        "id": "pad_top_max",
+        "label": "Padding TOP max (px)",
+        "min": 0,
+        "max": 120,
+        "step": 4,
+        "default": 64
+    },
+    {
+        "type": "range",
+        "id": "pad_bottom_min",
+        "label": "Padding BOTTOM min (px)",
+        "min": 0,
+        "max": 120,
+        "step": 4,
+        "default": 32
+    },
+    {
+        "type": "range",
+        "id": "pad_bottom_max",
+        "label": "Padding BOTTOM max (px)",
+        "min": 0,
+        "max": 120,
+        "step": 4,
+        "default": 32
+    },
+    {
+        "type": "header",
+        "content": "Spacing Overrides (opcional)"
+    },
+    {
+        "type": "checkbox",
+        "id": "enable_pad_top_mobile",
+        "label": "Ativar padding TOP no mobile",
+        "default": false
+    },
+    {
+        "type": "range",
+        "id": "pad_top_mobile",
+        "label": "Padding TOP mobile (px)",
+        "min": 0,
+        "max": 120,
+        "step": 4,
+        "default": 0,
+        "visible_if": "{{ section.settings.enable_pad_top_mobile }}"
+    },
+    {
+        "type": "checkbox",
+        "id": "enable_pad_bottom_mobile",
+        "label": "Ativar padding BOTTOM no mobile",
+        "default": false
+    },
+    {
+        "type": "range",
+        "id": "pad_bottom_mobile",
+        "label": "Padding BOTTOM mobile (px)",
+        "min": 0,
+        "max": 120,
+        "step": 4,
+        "default": 0,
+        "visible_if": "{{ section.settings.enable_pad_bottom_mobile }}"
+    },
+    {
+        "type": "checkbox",
+        "id": "enable_pad_top_desktop",
+        "label": "Ativar padding TOP no desktop",
+        "default": false
+    },
+    {
+        "type": "range",
+        "id": "pad_top_desktop",
+        "label": "Padding TOP desktop (px)",
+        "min": 0,
+        "max": 120,
+        "step": 4,
+        "default": 0,
+        "visible_if": "{{ section.settings.enable_pad_top_desktop }}"
+    },
+    {
+        "type": "checkbox",
+        "id": "enable_pad_bottom_desktop",
+        "label": "Ativar padding BOTTOM no desktop",
+        "default": false
+    },
+    {
+        "type": "range",
+        "id": "pad_bottom_desktop",
+        "label": "Padding BOTTOM desktop (px)",
+        "min": 0,
+        "max": 120,
+        "step": 4,
+        "default": 0,
+        "visible_if": "{{ section.settings.enable_pad_bottom_desktop }}"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "select",
+          "default": "left",
+          "label": "Alinhamento Mobile",
+          "id": "alignment_mobile",
+          "options": [
+            {
+              "label": "Esquerda",
+              "value": "left"
+            },
+            {
+              "label": "Centro",
+              "value": "center"
+            },
+            {
+              "label": "Direita",
+              "value": "right"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "default": "left",
+          "label": "Alinhamento Desktop",
+          "id": "alignment_desktop",
+          "options": [
+            {
+              "label": "Esquerda",
+              "value": "left"
+            },
+            {
+              "label": "Centro",
+              "value": "center"
+            },
+            {
+              "label": "Direita",
+              "value": "right"
+            }
+          ]
+        },
+        {
+            "type": "header",
+            "content": "Configurações de Conteúdo"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo"
+        },
+        {
+          "type": "url",
+          "id": "logo_url",
+          "label": "Link da logo"
+        },
+        {
+            "type": "range",
+            "id": "logo_width",
+            "label": "Largura Logo",
+            "default": 72,
+            "max": 240,
+            "min": 48,
+            "step": 2,
+            "unit": "px"
+        },
+        {
+            "type": "richtext",
+            "label": "Informações",
+            "id": "informations"
+        },
+        {
+          "type": "image_picker",
+          "id": "pagamentos",
+          "label": "Imagem de pagamentos"
+        },
+        {
+          "type": "checkbox",
+          "id": "newsletter",
+          "label": "Newsletter",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Placeholder do email",
+          "default": "Seu email",
+          "visible_if": "{{ block.settings.newsletter }}"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Texto do botao",
+          "default": "Enviar",
+          "visible_if": "{{ block.settings.newsletter }}"
+        },
+        {
+          "type": "text",
+          "id": "error_message",
+          "label": "Mensagem de erro",
+          "default": "Email invalido.",
+          "visible_if": "{{ block.settings.newsletter }}"
+        },
+        {
+          "type": "text",
+          "id": "success_message",
+          "label": "Mensagem de sucesso",
+          "default": "Obrigado por se inscrever.",
+          "visible_if": "{{ block.settings.newsletter }}"
+        },
+        {
+          "type": "checkbox",
+          "id": "rede_social1",
+          "label": "Social 1",
+          "default": false
+        },
+        {
+          "type": "url",
+          "id": "social1_url",
+          "label": "Link social 1",
+          "visible_if": "{{ block.settings.rede_social1 }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "social1_image",
+          "label": "Imagem social 1",
+          "visible_if": "{{ block.settings.rede_social1 }}"
+        },
+        {
+          "type": "checkbox",
+          "id": "rede_social2",
+          "label": "Social 2",
+          "default": false
+        },
+        {
+          "type": "url",
+          "id": "social2_url",
+          "label": "Link social 2",
+          "visible_if": "{{ block.settings.rede_social2 }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "social2_image",
+          "label": "Imagem social 2",
+          "visible_if": "{{ block.settings.rede_social2 }}"
+        },
+        {
+          "type": "checkbox",
+          "id": "rede_social3",
+          "label": "Social 3",
+          "default": false
+        },
+        {
+          "type": "url",
+          "id": "social3_url",
+          "label": "Link social 3",
+          "visible_if": "{{ block.settings.rede_social3 }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "social3_image",
+          "label": "Imagem social 3",
+          "visible_if": "{{ block.settings.rede_social3 }}"
+        },
+        {
+          "type": "checkbox",
+          "id": "rede_social4",
+          "label": "Social 4",
+          "default": false
+        },
+        {
+          "type": "url",
+          "id": "social4_url",
+          "label": "Link social 4",
+          "visible_if": "{{ block.settings.rede_social4 }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "social4_image",
+          "label": "Imagem social 4",
+          "visible_if": "{{ block.settings.rede_social4 }}"
+        }
+      ]
+    },
+    {
+      "type": "contact",
+      "name": "Contato",
+      "settings": [
+        {
+          "type": "select",
+          "default": "left",
+          "label": "Alinhamento Mobile",
+          "id": "alignment_mobile",
+          "options": [
+            {
+              "label": "Esquerda",
+              "value": "left"
+            },
+            {
+              "label": "Centro",
+              "value": "center"
+            },
+            {
+              "label": "Direita",
+              "value": "right"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "default": "left",
+          "label": "Alinhamento Desktop",
+          "id": "alignment_desktop",
+          "options": [
+            {
+              "label": "Esquerda",
+              "value": "left"
+            },
+            {
+              "label": "Centro",
+              "value": "center"
+            },
+            {
+              "label": "Direita",
+              "value": "right"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titulo"
+        },
+        {
+          "type": "richtext",
+          "id": "informations",
+          "label": "Informações"
+        },
+        {
+          "type": "checkbox",
+          "id": "rede_social1",
+          "label": "Social 1",
+          "default": false
+        },
+        {
+          "type": "url",
+          "id": "social1_url",
+          "label": "Link social 1",
+          "visible_if": "{{ block.settings.rede_social1 }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "social1_image",
+          "label": "Imagem social 1",
+          "visible_if": "{{ block.settings.rede_social1 }}"
+        },
+        {
+          "type": "checkbox",
+          "id": "rede_social2",
+          "label": "Social 2",
+          "default": false
+        },
+        {
+          "type": "url",
+          "id": "social2_url",
+          "label": "Link social 2",
+          "visible_if": "{{ block.settings.rede_social2 }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "social2_image",
+          "label": "Imagem social 2",
+          "visible_if": "{{ block.settings.rede_social2 }}"
+        },
+        {
+          "type": "checkbox",
+          "id": "rede_social3",
+          "label": "Social 3",
+          "default": false
+        },
+        {
+          "type": "url",
+          "id": "social3_url",
+          "label": "Link social 3",
+          "visible_if": "{{ block.settings.rede_social3 }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "social3_image",
+          "label": "Imagem social 3",
+          "visible_if": "{{ block.settings.rede_social3 }}"
+        },
+        {
+          "type": "checkbox",
+          "id": "rede_social4",
+          "label": "Social 4",
+          "default": false
+        },
+        {
+          "type": "url",
+          "id": "social4_url",
+          "label": "Link social 4",
+          "visible_if": "{{ block.settings.rede_social4 }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "social4_image",
+          "label": "Imagem social 4",
+          "visible_if": "{{ block.settings.rede_social4 }}"
+        },
+        {
+            "type": "checkbox",
+            "default": false,
+            "id": "button",
+            "label": "Button"
+        },
+        {
+            "type": "text",
+            "label": "Texto do Botão",
+            "id": "button_text",
+            "visible_if": "{{ block.settings.button }}"
+        },
+        {
+            "type": "url",
+            "label": "Link do Botão",
+            "id": "button_url",
+            "visible_if": "{{ block.settings.button }}"
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "name": "Links",
+      "settings": [
+        {
+          "type": "select",
+          "default": "left",
+          "label": "Alinhamento Mobile",
+          "id": "alignment_mobile",
+          "options": [
+            {
+              "label": "Esquerda",
+              "value": "left"
+            },
+            {
+              "label": "Centro",
+              "value": "center"
+            },
+            {
+              "label": "Direita",
+              "value": "right"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "default": "left",
+          "label": "Alinhamento Desktop",
+          "id": "alignment_desktop",
+          "options": [
+            {
+              "label": "Esquerda",
+              "value": "left"
+            },
+            {
+              "label": "Centro",
+              "value": "center"
+            },
+            {
+              "label": "Direita",
+              "value": "right"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titulo"
+        },
+        {
+          "type": "link_list",
+          "id": "link_list",
+          "label": "Lista de links"
+        },
+        {
+          "type": "richtext",
+          "id": "informations",
+          "label": "Informacoes"
+        },
+        {
+          "type": "header",
+          "content": "Cores"
+        },
+        {
+          "type": "checkbox",
+          "id": "color_custom",
+          "label": "Personalizar cores",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Cor do título",
+          "default": "#2B2B2B",
+          "visible_if": "{{ block.settings.color_custom }}"
+        },
+        {
+          "type": "color",
+          "id": "links_color",
+          "label": "Cor dos links",
+          "default": "#2B2B2B",
+          "visible_if": "{{ block.settings.color_custom }}"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rodapé",
+      "category": "Footer",
+      "blocks": [
+        {
+          "type": "logo",
+          "settings": {
+            "alignment_mobile": "left",
+            "alignment_desktop": "left",
+            "logo_width": 72,
+            "newsletter": true
+          }
+        },
+        {
+          "type": "contact",
+          "settings": {
+            "alignment_mobile": "left",
+            "alignment_desktop": "left",
+            "title": "Contato",
+            "button": false,
+            "informations": "<p>Links</p><p>Links</p><p>Links</p>"
+          }
+        },
+        {
+          "type": "links",
+          "settings": {
+            "alignment_mobile": "left",
+            "alignment_desktop": "left",
+            "title": "Institucional",
+            "informations": "<p>Links</p><p>Links</p><p>Links</p>"
+          }
+        },
+        {
+          "type": "links",
+          "settings": {
+            "alignment_mobile": "left",
+            "alignment_desktop": "left",
+            "title": "Ajuda",
+            "informations": "<p>Links</p><p>Links</p><p>Links</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

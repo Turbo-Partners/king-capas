@@ -1,0 +1,488 @@
+{% comment %}
+  Turbo Design System - CSS Custom Properties
+  Injetado no theme.liquid, disponivel globalmente em todas as secoes.
+  Os valores vem de Configuracoes do tema > Turbo - Design System.
+{% endcomment %}
+
+{% liquid
+  assign unit = settings.tp_spacing_unit
+  assign heading_font = settings.tp_font_heading
+  assign body_font = settings.tp_font_body
+  assign dawn_header_font = settings.type_header_font
+%}
+
+{%- unless heading_font.system? -%}
+  <link rel="preload" as="font" href="{{ heading_font | font_url }}" type="font/woff2" crossorigin>
+{%- endunless -%}
+{%- unless body_font.system? -%}
+  <link rel="preload" as="font" href="{{ body_font | font_url }}" type="font/woff2" crossorigin>
+{%- endunless -%}
+{%- unless dawn_header_font.system? -%}
+  <link rel="preload" as="font" href="{{ dawn_header_font | font_url }}" type="font/woff2" crossorigin>
+{%- endunless -%}
+
+<style>
+  {{ heading_font | font_face: font_display: 'swap' }}
+  {{ heading_font | font_modify: 'weight', 'bolder' | font_face: font_display: 'swap' }}
+  {{ heading_font | font_modify: 'weight', 'bolder' | font_modify: 'weight', 'bolder' | font_face: font_display: 'swap' }}
+  {{ heading_font | font_modify: 'weight', 'bold' | font_face: font_display: 'swap' }}
+  {{ heading_font | font_modify: 'weight', 'bold' | font_modify: 'weight', 'bolder' | font_face: font_display: 'swap' }}
+  {{ body_font | font_face: font_display: 'swap' }}
+  {{ body_font | font_modify: 'weight', 'bolder' | font_face: font_display: 'swap' }}
+  {{ body_font | font_modify: 'weight', 'bolder' | font_modify: 'weight', 'bolder' | font_face: font_display: 'swap' }}
+  {{ body_font | font_modify: 'weight', 'bold' | font_face: font_display: 'swap' }}
+  {{ body_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
+  {{ body_font | font_modify: 'weight', 'bold' | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
+  {{ dawn_header_font | font_face: font_display: 'swap' }}
+  {{ dawn_header_font | font_modify: 'weight', 'bolder' | font_face: font_display: 'swap' }}
+  {{ dawn_header_font | font_modify: 'weight', 'bold' | font_face: font_display: 'swap' }}
+  {{ dawn_header_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
+
+  /* @font-face para fontes customizadas (CDN Shopify) */
+  {% if settings.tp_font_heading_custom and settings.tp_font_heading_custom_name != blank and settings.tp_font_heading_custom_url != blank %}
+    @font-face {
+      font-family: '{{ settings.tp_font_heading_custom_name }}';
+      src: url('{{ settings.tp_font_heading_custom_url }}') format('woff2');
+      font-display: swap;
+    }
+  {% endif %}
+  {% if settings.tp_font_body_custom and settings.tp_font_body_custom_name != blank and settings.tp_font_body_custom_url != blank %}
+    @font-face {
+      font-family: '{{ settings.tp_font_body_custom_name }}';
+      src: url('{{ settings.tp_font_body_custom_url }}') format('woff2');
+      font-display: swap;
+    }
+  {% endif %}
+  {% if settings.tp_body_font_custom and settings.tp_body_font_custom_name != blank and settings.tp_body_font_custom_url != blank %}
+    @font-face {
+      font-family: '{{ settings.tp_body_font_custom_name }}';
+      src: url('{{ settings.tp_body_font_custom_url }}') format('woff2');
+      font-display: swap;
+    }
+  {% endif %}
+  {% if settings.tp_h1_font_custom and settings.tp_h1_font_custom_name != blank and settings.tp_h1_font_custom_url != blank %}
+    @font-face {
+      font-family: '{{ settings.tp_h1_font_custom_name }}';
+      src: url('{{ settings.tp_h1_font_custom_url }}') format('woff2');
+      font-display: swap;
+    }
+  {% endif %}
+  {% if settings.tp_h2_font_custom and settings.tp_h2_font_custom_name != blank and settings.tp_h2_font_custom_url != blank %}
+    @font-face {
+      font-family: '{{ settings.tp_h2_font_custom_name }}';
+      src: url('{{ settings.tp_h2_font_custom_url }}') format('woff2');
+      font-display: swap;
+    }
+  {% endif %}
+  {% if settings.tp_h3_font_custom and settings.tp_h3_font_custom_name != blank and settings.tp_h3_font_custom_url != blank %}
+    @font-face {
+      font-family: '{{ settings.tp_h3_font_custom_name }}';
+      src: url('{{ settings.tp_h3_font_custom_url }}') format('woff2');
+      font-display: swap;
+    }
+  {% endif %}
+  {% if settings.tp_h4_font_custom and settings.tp_h4_font_custom_name != blank and settings.tp_h4_font_custom_url != blank %}
+    @font-face {
+      font-family: '{{ settings.tp_h4_font_custom_name }}';
+      src: url('{{ settings.tp_h4_font_custom_url }}') format('woff2');
+      font-display: swap;
+    }
+  {% endif %}
+  {% if settings.tp_h5_font_custom and settings.tp_h5_font_custom_name != blank and settings.tp_h5_font_custom_url != blank %}
+    @font-face {
+      font-family: '{{ settings.tp_h5_font_custom_name }}';
+      src: url('{{ settings.tp_h5_font_custom_url }}') format('woff2');
+      font-display: swap;
+    }
+  {% endif %}
+  {% if settings.tp_h6_font_custom and settings.tp_h6_font_custom_name != blank and settings.tp_h6_font_custom_url != blank %}
+    @font-face {
+      font-family: '{{ settings.tp_h6_font_custom_name }}';
+      src: url('{{ settings.tp_h6_font_custom_url }}') format('woff2');
+      font-display: swap;
+    }
+  {% endif %}
+
+  :root {
+    /* Fontes globais */
+    --tp-font-system-heading: {{ heading_font.family }}, {{ heading_font.fallback_families }};
+    --tp-font-system-body: {{ body_font.family }}, {{ body_font.fallback_families }};
+    --tp-font-dawn-heading: {{ dawn_header_font.family }}, {{ dawn_header_font.fallback_families }};
+    {% if settings.tp_font_heading_custom and settings.tp_font_heading_custom_name != blank %}
+      --tp-font-heading: {{ settings.tp_font_heading_custom_name }}, sans-serif;
+    {% else %}
+      --tp-font-heading: var(--tp-font-system-heading);
+    {% endif %}
+    {% if settings.tp_font_body_custom and settings.tp_font_body_custom_name != blank %}
+      --tp-font-body: {{ settings.tp_font_body_custom_name }}, sans-serif;
+    {% else %}
+      --tp-font-body: var(--tp-font-system-body);
+    {% endif %}
+    --tp-font-heading-weight: {{ heading_font.weight }};
+    --tp-font-heading-style: {{ heading_font.style }};
+    --tp-font-body-weight: {{ body_font.weight }};
+    --tp-font-body-style: {{ body_font.style }};
+
+    /* Cores da Marca */
+    --tp-color-primary: {{ settings.tp_color_primary }};
+    --tp-color-secondary: {{ settings.tp_color_secondary }};
+    --tp-color-accent: {{ settings.tp_color_accent }};
+
+    /* Cores de Texto */
+    --tp-color-text-primary: {{ settings.tp_color_text_primary }};
+    --tp-color-text-secondary: {{ settings.tp_color_text_secondary }};
+    --tp-color-text-light: {{ settings.tp_color_text_light }};
+
+    /* Cores de Fundo */
+    --tp-color-bg-primary: {{ settings.tp_color_bg_primary }};
+    --tp-color-bg-secondary: {{ settings.tp_color_bg_secondary }};
+    --tp-color-bg-dark: {{ settings.tp_color_bg_dark }};
+
+    /* Cores de Status */
+    --tp-color-success: {{ settings.tp_color_success }};
+    --tp-color-warning: {{ settings.tp_color_warning }};
+    --tp-color-error: {{ settings.tp_color_error }};
+
+    /* Cores de Borda */
+    --tp-color-border: {{ settings.tp_color_border }};
+    --tp-color-border-dark: {{ settings.tp_color_border_dark }};
+
+    /* Border Radius */
+    --tp-radius-sm: {{ settings.tp_radius_sm }}px;
+    --tp-radius-md: {{ settings.tp_radius_md }}px;
+    --tp-radius-lg: {{ settings.tp_radius_lg }}px;
+    --tp-radius-xl: {{ settings.tp_radius_xl }}px;
+    --tp-radius-full: {{ settings.tp_radius_full }}px;
+
+    /* Escala de Espacamento (multiplos da unidade base) */
+    --tp-space-1: {{ unit }}px;
+    --tp-space-2: {{ unit | times: 2 }}px;
+    --tp-space-3: {{ unit | times: 3 }}px;
+    --tp-space-4: {{ unit | times: 4 }}px;
+    --tp-space-5: {{ unit | times: 5 }}px;
+    --tp-space-6: {{ unit | times: 6 }}px;
+    --tp-space-8: {{ unit | times: 8 }}px;
+    --tp-space-10: {{ unit | times: 10 }}px;
+    --tp-space-12: {{ unit | times: 12 }}px;
+    --tp-space-16: {{ unit | times: 16 }}px;
+
+    /* Tipografia - Corpo */
+    {% if settings.tp_body_font_custom and settings.tp_body_font_custom_name != blank %}
+      --tp-body-font: {{ settings.tp_body_font_custom_name }}, sans-serif;
+    {% else %}
+      --tp-body-font: var(--tp-font-body);
+    {% endif %}
+    --tp-body-size: {{ settings.tp_body_size }}px;
+    --tp-body-weight: {{ settings.tp_body_weight }};
+    --tp-body-leading: {{ settings.tp_body_leading | divided_by: 100.0 }};
+    --tp-body-tracking: {{ settings.tp_body_tracking }}px;
+
+    /* Tipografia - Headings (desktop) */
+    {% if settings.tp_h1_font_custom and settings.tp_h1_font_custom_name != blank %}
+      --tp-h1-font: {{ settings.tp_h1_font_custom_name }}, sans-serif;
+    {% else %}
+      --tp-h1-font: var(--tp-font-heading);
+    {% endif %}
+    --tp-h1-size: {{ settings.tp_h1_size_desktop }}px;
+    --tp-h1-weight: {{ settings.tp_h1_weight }};
+    --tp-h1-leading: {{ settings.tp_h1_leading | divided_by: 100.0 }};
+    --tp-h1-tracking: {{ settings.tp_h1_tracking }}px;
+
+    {% if settings.tp_h2_font_custom and settings.tp_h2_font_custom_name != blank %}
+      --tp-h2-font: {{ settings.tp_h2_font_custom_name }}, sans-serif;
+    {% else %}
+      --tp-h2-font: var(--tp-font-heading);
+    {% endif %}
+    --tp-h2-size: {{ settings.tp_h2_size_desktop }}px;
+    --tp-h2-weight: {{ settings.tp_h2_weight }};
+    --tp-h2-leading: {{ settings.tp_h2_leading | divided_by: 100.0 }};
+    --tp-h2-tracking: {{ settings.tp_h2_tracking }}px;
+
+    {% if settings.tp_h3_font_custom and settings.tp_h3_font_custom_name != blank %}
+      --tp-h3-font: {{ settings.tp_h3_font_custom_name }}, sans-serif;
+    {% else %}
+      --tp-h3-font: var(--tp-font-heading);
+    {% endif %}
+    --tp-h3-size: {{ settings.tp_h3_size_desktop }}px;
+    --tp-h3-weight: {{ settings.tp_h3_weight }};
+    --tp-h3-leading: {{ settings.tp_h3_leading | divided_by: 100.0 }};
+    --tp-h3-tracking: {{ settings.tp_h3_tracking }}px;
+
+    {% if settings.tp_h4_font_custom and settings.tp_h4_font_custom_name != blank %}
+      --tp-h4-font: {{ settings.tp_h4_font_custom_name }}, sans-serif;
+    {% else %}
+      --tp-h4-font: var(--tp-font-heading);
+    {% endif %}
+    --tp-h4-size: {{ settings.tp_h4_size_desktop }}px;
+    --tp-h4-weight: {{ settings.tp_h4_weight }};
+    --tp-h4-leading: {{ settings.tp_h4_leading | divided_by: 100.0 }};
+    --tp-h4-tracking: {{ settings.tp_h4_tracking }}px;
+
+    {% if settings.tp_h5_font_custom and settings.tp_h5_font_custom_name != blank %}
+      --tp-h5-font: {{ settings.tp_h5_font_custom_name }}, sans-serif;
+    {% else %}
+      --tp-h5-font: var(--tp-font-heading);
+    {% endif %}
+    --tp-h5-size: {{ settings.tp_h5_size_desktop }}px;
+    --tp-h5-weight: {{ settings.tp_h5_weight }};
+    --tp-h5-leading: {{ settings.tp_h5_leading | divided_by: 100.0 }};
+    --tp-h5-tracking: {{ settings.tp_h5_tracking }}px;
+
+    {% if settings.tp_h6_font_custom and settings.tp_h6_font_custom_name != blank %}
+      --tp-h6-font: {{ settings.tp_h6_font_custom_name }}, sans-serif;
+    {% else %}
+      --tp-h6-font: var(--tp-font-heading);
+    {% endif %}
+    --tp-h6-size: {{ settings.tp_h6_size_desktop }}px;
+    --tp-h6-weight: {{ settings.tp_h6_weight }};
+    --tp-h6-leading: {{ settings.tp_h6_leading | divided_by: 100.0 }};
+    --tp-h6-tracking: {{ settings.tp_h6_tracking }}px;
+
+    /* Escala Auxiliar de Tamanhos (derivada dos headings) */
+    --tp-font-size-xs: 12px;
+    --tp-font-size-sm: 14px;
+    --tp-font-size-base: var(--tp-body-size);
+    --tp-font-size-lg: var(--tp-h6-size);
+    --tp-font-size-xl: var(--tp-h5-size);
+    --tp-font-size-2xl: var(--tp-h4-size);
+    --tp-font-size-3xl: var(--tp-h3-size);
+    --tp-font-size-4xl: var(--tp-h2-size);
+    --tp-font-size-5xl: var(--tp-h1-size);
+
+    /* Line Heights (utilitarios) */
+    --tp-leading-tight: 1.2;
+    --tp-leading-normal: 1.4;
+    --tp-leading-relaxed: 1.6;
+
+    /* Font Weights (utilitarios) */
+    --tp-font-regular: 400;
+    --tp-font-medium: 500;
+    --tp-font-semibold: 600;
+    --tp-font-bold: 700;
+
+    /* Botao Primario */
+    --tp-btn-primary-bg: {{ settings.tp_btn_primary_bg }};
+    --tp-btn-primary-color: {{ settings.tp_btn_primary_color }};
+    --tp-btn-primary-radius: {{ settings.tp_btn_primary_radius }}px;
+    --tp-btn-primary-font-size: {{ settings.tp_btn_primary_font_size }}px;
+    --tp-btn-primary-font-weight: {{ settings.tp_btn_primary_font_weight }};
+    --tp-btn-primary-height: {{ settings.tp_btn_primary_height_desktop }}px;
+
+    /* Product Card - Título */
+    {% if settings.tp_pc_title_font == "body" %}
+      --tp-pc-title-font: var(--tp-font-body);
+    {% else %}
+      --tp-pc-title-font: var(--tp-font-heading);
+    {% endif %}
+    --tp-pc-title-size: {{ settings.tp_pc_title_size_desktop }}px;
+    --tp-pc-title-color: {{ settings.tp_pc_title_color }};
+    --tp-pc-title-weight: {{ settings.tp_pc_title_weight }};
+    --tp-pc-title-align: {{ settings.tp_pc_title_align }};
+
+    /* Product Card - Preço De */
+    --tp-pc-compare-size: {{ settings.tp_pc_compare_size_desktop }}px;
+    --tp-pc-compare-color: {{ settings.tp_pc_compare_color }};
+    --tp-pc-compare-weight: {{ settings.tp_pc_compare_weight }};
+    --tp-pc-compare-align: {{ settings.tp_pc_compare_align }};
+
+    /* Product Card - Preço Por */
+    --tp-pc-price-size: {{ settings.tp_pc_price_size_desktop }}px;
+    --tp-pc-price-color: {{ settings.tp_pc_price_color }};
+    --tp-pc-price-weight: {{ settings.tp_pc_price_weight }};
+    --tp-pc-price-align: {{ settings.tp_pc_price_align }};
+
+    /* Product Card - Parcelas */
+    --tp-pc-installments-size: {{ settings.tp_pc_installments_size_desktop }}px;
+    --tp-pc-installments-color: {{ settings.tp_pc_installments_color }};
+    --tp-pc-installments-weight: {{ settings.tp_pc_installments_weight }};
+    --tp-pc-installments-align: {{ settings.tp_pc_installments_align }};
+    --tp-pc-installments-icon-size: {{ settings.tp_pc_installments_icon_size_desktop }}px;
+    --tp-pc-installments-icon-order: {% if settings.tp_pc_installments_icon_position == 'right' %}1{% else %}-1{% endif %};
+
+    /* Product Card - Botão */
+    --tp-pc-btn-bg: {{ settings.tp_pc_btn_bg }};
+    --tp-pc-btn-color: {{ settings.tp_pc_btn_color }};
+    --tp-pc-btn-size: {{ settings.tp_pc_btn_size_desktop }}px;
+    --tp-pc-btn-height: {{ settings.tp_pc_btn_height_desktop }}px;
+    --tp-pc-btn-text-transform: {% if settings.tp_pc_btn_uppercase %}uppercase{% else %}none{% endif %};
+    --tp-pc-btn-border: {% if settings.tp_pc_btn_border_custom %}{{ settings.tp_pc_btn_border_width }}px solid {{ settings.tp_pc_btn_border_color }}{% else %}none{% endif %};
+    {% case settings.tp_pc_btn_radius %}
+      {% when "sm" %}--tp-pc-btn-radius: var(--tp-radius-sm);
+      {% when "md" %}--tp-pc-btn-radius: var(--tp-radius-md);
+      {% when "lg" %}--tp-pc-btn-radius: var(--tp-radius-lg);
+      {% when "xl" %}--tp-pc-btn-radius: var(--tp-radius-xl);
+      {% when "full" %}--tp-pc-btn-radius: var(--tp-radius-full);
+      {% else %}--tp-pc-btn-radius: 0px;
+    {% endcase %}
+
+    /* Product Card - Card */
+    {% case settings.tp_pc_card_radius %}
+      {% when "sm" %}--tp-pc-card-radius: var(--tp-radius-sm);
+      {% when "md" %}--tp-pc-card-radius: var(--tp-radius-md);
+      {% when "lg" %}--tp-pc-card-radius: var(--tp-radius-lg);
+      {% when "xl" %}--tp-pc-card-radius: var(--tp-radius-xl);
+      {% when "full" %}--tp-pc-card-radius: var(--tp-radius-full);
+      {% else %}--tp-pc-card-radius: 0px;
+    {% endcase %}
+    --tp-pc-card-bg: {{ settings.tp_pc_card_bg }};
+    --tp-pc-pad-top: {{ settings.tp_pc_pad_top_desktop }}px;
+    --tp-pc-pad-bottom: {{ settings.tp_pc_pad_bottom_desktop }}px;
+    --tp-pc-pad-left: {{ settings.tp_pc_pad_left_desktop }}px;
+    --tp-pc-pad-right: {{ settings.tp_pc_pad_right_desktop }}px;
+
+    /* Product Card - Imagem */
+    {% case settings.tp_pc_img_radius %}
+      {% when "sm" %}--tp-pc-img-radius: var(--tp-radius-sm);
+      {% when "md" %}--tp-pc-img-radius: var(--tp-radius-md);
+      {% when "lg" %}--tp-pc-img-radius: var(--tp-radius-lg);
+      {% when "xl" %}--tp-pc-img-radius: var(--tp-radius-xl);
+      {% when "full" %}--tp-pc-img-radius: var(--tp-radius-full);
+      {% else %}--tp-pc-img-radius: 0px;
+    {% endcase %}
+
+    /* Product Card - Badge */
+    --tp-pc-badge-bg: {{ settings.tp_pc_badge_bg }};
+    --tp-pc-badge-color: {{ settings.tp_pc_badge_color }};
+    {% case settings.tp_pc_badge_position %}
+      {% when 'top-left' %}
+        --tp-pc-badge-top: var(--tp-space-2);
+        --tp-pc-badge-bottom: auto;
+        --tp-pc-badge-left: var(--tp-space-2);
+        --tp-pc-badge-right: auto;
+        --tp-pc-badge-transform: none;
+      {% when 'top-right' %}
+        --tp-pc-badge-top: var(--tp-space-2);
+        --tp-pc-badge-bottom: auto;
+        --tp-pc-badge-left: auto;
+        --tp-pc-badge-right: var(--tp-space-2);
+        --tp-pc-badge-transform: none;
+      {% when 'mid-left' %}
+        --tp-pc-badge-top: 50%;
+        --tp-pc-badge-bottom: auto;
+        --tp-pc-badge-left: var(--tp-space-2);
+        --tp-pc-badge-right: auto;
+        --tp-pc-badge-transform: translateY(-50%);
+      {% when 'mid-right' %}
+        --tp-pc-badge-top: 50%;
+        --tp-pc-badge-bottom: auto;
+        --tp-pc-badge-left: auto;
+        --tp-pc-badge-right: var(--tp-space-2);
+        --tp-pc-badge-transform: translateY(-50%);
+      {% when 'bottom-left' %}
+        --tp-pc-badge-top: auto;
+        --tp-pc-badge-bottom: var(--tp-space-2);
+        --tp-pc-badge-left: var(--tp-space-2);
+        --tp-pc-badge-right: auto;
+        --tp-pc-badge-transform: none;
+      {% when 'bottom-right' %}
+        --tp-pc-badge-top: auto;
+        --tp-pc-badge-bottom: var(--tp-space-2);
+        --tp-pc-badge-left: auto;
+        --tp-pc-badge-right: var(--tp-space-2);
+        --tp-pc-badge-transform: none;
+      {% else %}
+        --tp-pc-badge-top: var(--tp-space-2);
+        --tp-pc-badge-bottom: auto;
+        --tp-pc-badge-left: auto;
+        --tp-pc-badge-right: var(--tp-space-2);
+        --tp-pc-badge-transform: none;
+    {% endcase %}
+
+    /* Sombras */
+    --tp-shadow-sm: {{ settings.tp_shadow_sm }};
+    --tp-shadow-md: {{ settings.tp_shadow_md }};
+    --tp-shadow-lg: {{ settings.tp_shadow_lg }};
+    --tp-shadow-xl: {{ settings.tp_shadow_xl }};
+
+    /* Transicoes */
+    --tp-transition-fast: 150ms ease;
+    --tp-transition-base: 300ms ease;
+    --tp-transition-slow: 500ms ease;
+  }
+
+  /* Tipografia - Headings (mobile) */
+  @media screen and (max-width: 767px) {
+    :root {
+      --tp-h1-size: {{ settings.tp_h1_size_mobile }}px;
+      --tp-h2-size: {{ settings.tp_h2_size_mobile }}px;
+      --tp-h3-size: {{ settings.tp_h3_size_mobile }}px;
+      --tp-h4-size: {{ settings.tp_h4_size_mobile }}px;
+      --tp-h5-size: {{ settings.tp_h5_size_mobile }}px;
+      --tp-h6-size: {{ settings.tp_h6_size_mobile }}px;
+
+      /* Product Card - mobile */
+      --tp-pc-title-size: {{ settings.tp_pc_title_size_mobile }}px;
+      --tp-pc-compare-size: {{ settings.tp_pc_compare_size_mobile }}px;
+      --tp-pc-price-size: {{ settings.tp_pc_price_size_mobile }}px;
+      --tp-pc-installments-size: {{ settings.tp_pc_installments_size_mobile }}px;
+      --tp-pc-installments-icon-size: {{ settings.tp_pc_installments_icon_size_mobile }}px;
+      --tp-btn-primary-height: {{ settings.tp_btn_primary_height_mobile }}px;
+      --tp-pc-btn-size: {{ settings.tp_pc_btn_size_mobile }}px;
+      --tp-pc-btn-height: {{ settings.tp_pc_btn_height_mobile }}px;
+      --tp-pc-pad-top: {{ settings.tp_pc_pad_top_mobile }}px;
+      --tp-pc-pad-bottom: {{ settings.tp_pc_pad_bottom_mobile }}px;
+      --tp-pc-pad-left: {{ settings.tp_pc_pad_left_mobile }}px;
+      --tp-pc-pad-right: {{ settings.tp_pc_pad_right_mobile }}px;
+    }
+  }
+
+  /* Tipografia Semantica - Headings (body prefix para vencer Dawn base.css) */
+  body h1, body .tp-h1 {
+    font-family: var(--tp-h1-font);
+    font-size: var(--tp-h1-size);
+    font-weight: var(--tp-h1-weight);
+    line-height: var(--tp-h1-leading);
+    letter-spacing: var(--tp-h1-tracking);
+  }
+
+  body h2, body .tp-h2 {
+    font-family: var(--tp-h2-font);
+    font-size: var(--tp-h2-size);
+    font-weight: var(--tp-h2-weight);
+    line-height: var(--tp-h2-leading);
+    letter-spacing: var(--tp-h2-tracking);
+  }
+
+  body h3, body .tp-h3 {
+    font-family: var(--tp-h3-font);
+    font-size: var(--tp-h3-size);
+    font-weight: var(--tp-h3-weight);
+    line-height: var(--tp-h3-leading);
+    letter-spacing: var(--tp-h3-tracking);
+  }
+
+  body h4, body .tp-h4 {
+    font-family: var(--tp-h4-font);
+    font-size: var(--tp-h4-size);
+    font-weight: var(--tp-h4-weight);
+    line-height: var(--tp-h4-leading);
+    letter-spacing: var(--tp-h4-tracking);
+  }
+
+  body h5, body .tp-h5 {
+    font-family: var(--tp-h5-font);
+    font-size: var(--tp-h5-size);
+    font-weight: var(--tp-h5-weight);
+    line-height: var(--tp-h5-leading);
+    letter-spacing: var(--tp-h5-tracking);
+  }
+
+  body h6, body .tp-h6 {
+    font-family: var(--tp-h6-font);
+    font-size: var(--tp-h6-size);
+    font-weight: var(--tp-h6-weight);
+    line-height: var(--tp-h6-leading);
+    letter-spacing: var(--tp-h6-tracking);
+  }
+
+  /* Tipografia Semantica - Body */
+  body, .tp-body {
+    font-family: var(--tp-body-font);
+    font-style: var(--tp-font-body-style);
+    font-weight: var(--tp-body-weight);
+    font-size: var(--tp-body-size);
+    line-height: var(--tp-body-leading);
+    letter-spacing: var(--tp-body-tracking);
+  }
+
+</style>

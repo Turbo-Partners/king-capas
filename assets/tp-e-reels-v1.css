@@ -1,0 +1,327 @@
+/* E__REELS__V1 — cache bust 20260330 */
+
+.tp-e-reels {
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+}
+
+.tp-e-reels--coverflow {
+  overflow-x: clip;
+}
+
+.tp-e-reels .tp-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--tp-space-8, 32px);
+  max-width: var(--page-width);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .tp-e-reels .tp-wrapper {
+    gap: var(--tp-space-16, 64px);
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+/* Header */
+
+.tp-e-reels__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--tp-space-2, 8px);
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (min-width: 750px) {
+  .tp-e-reels__header {
+    gap: var(--tp-space-4, 16px);
+  }
+}
+
+/* Title */
+
+.tp-e-reels__title {
+  color: var(--tp-color-text-primary);
+  font-family: var(--tp-font-heading);
+  font-weight: var(--tp-font-bold);
+  font-size: 3.2rem;
+  line-height: var(--tp-leading-tight);
+  margin: 0;
+  width: 100%;
+}
+
+@media screen and (min-width: 750px) {
+  .tp-e-reels__title {
+    font-size: var(--tp-font-size-5xl);
+  }
+}
+
+/* Subtitle */
+
+.tp-e-reels__subtitle {
+  color: var(--tp-color-text-secondary);
+  font-family: var(--tp-font-body);
+  font-weight: var(--tp-font-regular);
+  font-size: var(--tp-font-size-base);
+  line-height: var(--tp-leading-normal);
+  margin: 0;
+  width: 100%;
+}
+
+@media screen and (min-width: 750px) {
+  .tp-e-reels__subtitle {
+    font-size: var(--tp-font-size-lg);
+  }
+}
+
+/* Carousel */
+
+.tp-e-reels__carousel {
+  width: 100%;
+}
+
+.tp-e-reels__swiper {
+  width: 100%;
+  position: relative;
+}
+
+.tp-e-reels__swiper .swiper-slide {
+  height: auto;
+}
+
+/* Reel card */
+
+.tp-e-reels__card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--tp-radius-lg, 12px);
+  overflow: hidden;
+  background: var(--tp-color-bg-secondary, #ebebeb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 750px) {
+  .tp-e-reels__card {
+    border-radius: var(--tp-radius-xl, 16px);
+  }
+}
+
+.tp-e-reels__card-image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+}
+
+/* Cover + Video */
+
+.tp-e-reels__cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: opacity var(--tp-transition-base, 300ms);
+}
+
+.tp-e-reels__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.tp-e-reels__card--playing .tp-e-reels__cover {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Play icon */
+
+.tp-e-reels__play-icon {
+  position: relative;
+  z-index: 2;
+  width: 56px;
+  height: 56px;
+  color: var(--tp-color-primary);
+  opacity: 0.8;
+  transition: opacity var(--tp-transition-base, 300ms);
+}
+
+@media screen and (min-width: 750px) {
+  .tp-e-reels__play-icon {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+.tp-e-reels__card:hover .tp-e-reels__play-icon {
+  opacity: 1;
+}
+
+/* CTA button */
+
+.tp-e-reels__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 48px;
+  padding: 0 var(--tp-space-8, 32px);
+  background: var(--tp-btn-primary-bg);
+  color: var(--tp-btn-primary-color);
+  border-radius: var(--tp-btn-primary-radius);
+  font-family: var(--tp-font-body);
+  font-size: var(--tp-btn-primary-font-size, 16px);
+  font-weight: var(--tp-font-semibold, 600);
+  text-decoration: none;
+  border: none;
+  box-sizing: border-box;
+  transition: opacity var(--tp-transition-base, 300ms);
+}
+
+@media screen and (min-width: 750px) {
+  .tp-e-reels__cta {
+    width: 320px;
+    height: 56px;
+  }
+}
+
+.tp-e-reels__cta:hover {
+  opacity: 0.85;
+}
+
+/* Coverflow styles are inline via {% style %} to avoid cache issues */
+
+/* Product card */
+
+.tp-e-reels__product-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 10px;
+  margin-top: 16px;
+  background: var(--tp-color-bg-primary, #fff);
+  border: 1px solid #d8d8d8;
+  border-radius: var(--tp-radius-sm, 4px);
+  box-shadow: 0 4px 8px rgba(91, 91, 91, 0.04);
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+.tp-e-reels__product-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.tp-e-reels__product-image {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--tp-color-bg-secondary, #eaecf0);
+}
+
+.tp-e-reels__product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media screen and (min-width: 750px) {
+  .tp-e-reels__product-card {
+    padding: 8px 12px;
+    gap: 12px;
+  }
+
+  .tp-e-reels__product-image {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.tp-e-reels__product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tp-e-reels__product-name {
+  font-family: var(--tp-font-body);
+  font-weight: var(--tp-font-medium, 500);
+  font-size: 1.2rem;
+  line-height: var(--tp-leading-normal);
+  color: var(--tp-color-text-primary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media screen and (min-width: 750px) {
+  .tp-e-reels__product-name {
+    font-size: 1.6rem;
+  }
+}
+
+.tp-e-reels__product-price {
+  font-family: var(--tp-font-body);
+  font-weight: var(--tp-font-regular);
+  font-size: 1rem;
+  line-height: var(--tp-leading-normal);
+  color: var(--tp-color-text-secondary);
+  margin: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .tp-e-reels__product-price {
+    font-size: 1.2rem;
+  }
+}
+
+.tp-e-reels__product-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 8px;
+  background: var(--tp-btn-primary-bg);
+  color: var(--tp-btn-primary-color);
+  border-radius: var(--tp-btn-primary-radius);
+  font-family: var(--tp-font-body);
+  font-size: 1rem;
+  font-weight: var(--tp-font-semibold, 600);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .tp-e-reels__product-btn {
+    font-size: 1.2rem;
+    padding: 6px 8px;
+  }
+}

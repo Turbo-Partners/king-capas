@@ -1,0 +1,24 @@
+.tp-e-collection-v3__grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols-mobile, 1), 1fr);
+  gap: var(--grid-gap, 16px);
+}
+
+.tp-e-collection-v3__item {
+  border-radius: var(--card-radius, var(--tp-radius-lg));
+  overflow: hidden;
+  display: block;
+}
+
+.tp-e-collection-v3__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media screen and (min-width: 750px) {
+  .tp-e-collection-v3__grid {
+    grid-template-columns: repeat(var(--cols-desktop, 2), 1fr);
+  }
+}

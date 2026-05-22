@@ -1,0 +1,443 @@
+{{ 'tp-e-faq-v1.css' | asset_url | stylesheet_tag }}
+
+{% render 'tp-section-padding',
+  pad_top_min: section.settings.pad_top_min,
+  pad_top_max: section.settings.pad_top_max,
+  pad_bottom_min: section.settings.pad_bottom_min,
+  pad_bottom_max: section.settings.pad_bottom_max,
+  enable_pad_top_mobile: section.settings.enable_pad_top_mobile,
+  pad_top_mobile: section.settings.pad_top_mobile,
+  enable_pad_bottom_mobile: section.settings.enable_pad_bottom_mobile,
+  pad_bottom_mobile: section.settings.pad_bottom_mobile,
+  enable_pad_top_desktop: section.settings.enable_pad_top_desktop,
+  pad_top_desktop: section.settings.pad_top_desktop,
+  enable_pad_bottom_desktop: section.settings.enable_pad_bottom_desktop,
+  pad_bottom_desktop: section.settings.pad_bottom_desktop
+%}
+
+{% liquid
+  assign background_type = section.settings.background_type
+  assign faq_layout = section.settings.faq_layout
+%}
+
+{% style %}
+.{{ section.id }} {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	{% if section.settings.title_custom %}
+		--tp-e-faq-v1-title-color: {{ section.settings.title_color }};
+		--tp-e-faq-v1-title-size-mobile: {{ section.settings.title_size_mobile }}px;
+		--tp-e-faq-v1-title-size-desktop: {{ section.settings.title_size_desktop }}px;
+		--tp-e-faq-v1-title-weight: {{ section.settings.title_weight }};
+	{% endif %}
+	{% if section.settings.question_custom %}
+		--tp-e-faq-v1-question-color: {{ section.settings.question_color }};
+		--tp-e-faq-v1-question-size-mobile: {{ section.settings.question_size_mobile }}px;
+		--tp-e-faq-v1-question-size-desktop: {{ section.settings.question_size_desktop }}px;
+		--tp-e-faq-v1-question-weight: {{ section.settings.question_weight }};
+	{% endif %}
+	{% if section.settings.answer_custom %}
+		--tp-e-faq-v1-answer-color: {{ section.settings.answer_color }};
+		--tp-e-faq-v1-answer-size-mobile: {{ section.settings.answer_size_mobile }}px;
+		--tp-e-faq-v1-answer-size-desktop: {{ section.settings.answer_size_desktop }}px;
+		--tp-e-faq-v1-answer-weight: {{ section.settings.answer_weight }};
+	{% endif %}
+
+	{% if background_type == "image" and section.settings.background_image_mobile != blank %}
+		background-image: url('{{ section.settings.background_image_mobile | image_url }}');
+
+		{% if section.settings.background_image_desktop != blank %}
+			@media screen and (min-width: 1024px) {
+				background-image: url('{{ section.settings.background_image_desktop | image_url }}');
+			}
+		{% endif %}
+	{% elsif background_type == "color" and section.settings.background_color != blank %}
+		background: {{ section.settings.background_color }};
+	{% elsif background_type == "gradient" and section.settings.background_gradient != blank %}
+		background: {{ section.settings.background_gradient }};
+	{% endif %}
+}
+{% endstyle %}
+
+<section class="tp-e-faq-v1 {{ section.id }}" >
+    <div class="tp-wrapper tp-e-faq-v1__wrapper {% if faq_layout == 'stack' %}tp-e-faq-v1__wrapper--stack{% else %}tp-e-faq-v1__wrapper--split{% endif %}" id="section-wrapper-{{ section.id }}">
+        {% if section.settings.title != blank %}
+            <div class="tp-e-faq-v1__title-wrapper">
+                {{ section.settings.title }}
+            </div>
+        {% endif %}
+        <div class="tp-e-faq-v1__faq-wrapper">
+            {% for question in section.blocks %}
+                <details class="tp-e-faq-v1__details">
+                    <summary class="tp-e-faq-v1__summary">
+                        <span class="tp-e-faq-v1__summary-title">{{ question.settings.question | escape }}</span>
+                        <span class="tp-e-faq-v1__icon">
+                            <span class="tp-e-faq-v1__icon-plus" aria-hidden="true">{{ 'tp-faq-plus.svg' | inline_asset_content }}</span>
+                            <span class="tp-e-faq-v1__icon-minus" aria-hidden="true">{{ 'tp-faq-minus.svg' | inline_asset_content }}</span>
+                        </span>
+                        <span class="tp-e-faq-v1__sr-only tp-e-faq-v1__sr-open">Abrir</span>
+                        <span class="tp-e-faq-v1__sr-only tp-e-faq-v1__sr-close">Fechar</span>
+                    </summary>
+                    <div class="tp-e-faq-v1__answer">
+                        {{ question.settings.answer }}
+                    </div>
+                </details>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "TP - FAQ",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Tipo de Background",
+      "default": "color",
+      "options": [
+        { "label": "Cor", "value": "color" },
+        { "label": "Gradiente", "value": "gradient" },
+        { "label": "Imagem", "value": "image" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Cor do Background",
+      "default": "#FFFFFF",
+      "visible_if": "{{ section.settings.background_type == 'color' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Gradiente do Background",
+      "visible_if": "{{ section.settings.background_type == 'gradient' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Imagem Mobile do Background",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_desktop",
+      "label": "Imagem Desktop do Background",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+        "type": "select",
+        "id": "faq_layout",
+        "default": "stack",
+        "label": "Faq Layout",
+        "options": [
+            {
+                "label": "Stack",
+                "value": "stack"
+            },
+            {
+                "label": "Split",
+                "value": "split"
+            }
+        ]
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Titulo",
+      "default": "<h2>FAQ</h2>"
+    },
+    {
+      "type": "header",
+      "content": "Tipografia"
+    },
+    {
+      "type": "checkbox",
+      "id": "title_custom",
+      "label": "Customizar Titulo",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Cor do Titulo",
+      "default": "#111111",
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Tamanho do Titulo mobile (px)",
+      "min": 16,
+      "max": 80,
+      "step": 1,
+      "default": 36,
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "label": "Tamanho do Titulo desktop (px)",
+      "min": 16,
+      "max": 100,
+      "step": 1,
+      "default": 48,
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Peso do Titulo",
+      "default": "600",
+      "visible_if": "{{ section.settings.title_custom }}",
+      "options": [
+        { "value": "400", "label": "Regular (400)" },
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semibold (600)" },
+        { "value": "700", "label": "Bold (700)" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "question_custom",
+      "label": "Customizar Pergunta",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Cor da Pergunta",
+      "default": "#111111",
+      "visible_if": "{{ section.settings.question_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "question_size_mobile",
+      "label": "Tamanho da Pergunta mobile (px)",
+      "min": 12,
+      "max": 48,
+      "step": 1,
+      "default": 20,
+      "visible_if": "{{ section.settings.question_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "question_size_desktop",
+      "label": "Tamanho da Pergunta desktop (px)",
+      "min": 12,
+      "max": 64,
+      "step": 1,
+      "default": 24,
+      "visible_if": "{{ section.settings.question_custom }}"
+    },
+    {
+      "type": "select",
+      "id": "question_weight",
+      "label": "Peso da Pergunta",
+      "default": "400",
+      "visible_if": "{{ section.settings.question_custom }}",
+      "options": [
+        { "value": "400", "label": "Regular (400)" },
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semibold (600)" },
+        { "value": "700", "label": "Bold (700)" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "answer_custom",
+      "label": "Customizar Resposta",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Cor da Resposta",
+      "default": "#111111",
+      "visible_if": "{{ section.settings.answer_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "answer_size_mobile",
+      "label": "Tamanho da Resposta mobile (px)",
+      "min": 12,
+      "max": 40,
+      "step": 1,
+      "default": 16,
+      "visible_if": "{{ section.settings.answer_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "answer_size_desktop",
+      "label": "Tamanho da Resposta desktop (px)",
+      "min": 12,
+      "max": 56,
+      "step": 1,
+      "default": 18,
+      "visible_if": "{{ section.settings.answer_custom }}"
+    },
+    {
+      "type": "select",
+      "id": "answer_weight",
+      "label": "Peso da Resposta",
+      "default": "400",
+      "visible_if": "{{ section.settings.answer_custom }}",
+      "options": [
+        { "value": "400", "label": "Regular (400)" },
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semibold (600)" },
+        { "value": "700", "label": "Bold (700)" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "pad_top_min",
+      "label": "Padding TOP min (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "pad_top_max",
+      "label": "Padding TOP max (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_min",
+      "label": "Padding BOTTOM min (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_max",
+      "label": "Padding BOTTOM max (px)",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "default": 96
+    },
+    {
+      "type": "header",
+      "content": "Spacing Overrides (opcional)"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_top_mobile",
+      "label": "Ativar padding TOP no mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_top_mobile",
+      "label": "Padding TOP mobile (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_top_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_bottom_mobile",
+      "label": "Ativar padding BOTTOM no mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_mobile",
+      "label": "Padding BOTTOM mobile (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_bottom_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_top_desktop",
+      "label": "Ativar padding TOP no desktop",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_top_desktop",
+      "label": "Padding TOP desktop (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_top_desktop }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_bottom_desktop",
+      "label": "Ativar padding BOTTOM no desktop",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_desktop",
+      "label": "Padding BOTTOM desktop (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_bottom_desktop }}"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Pergunta",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Pergunta",
+          "default": "Qual e a sua pergunta?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Resposta",
+          "default": "<p>Escreva a resposta aqui.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Perguntas Frequentes",
+      "category": "Text",
+      "blocks": [
+        {
+          "type": "question"
+        },
+        {
+          "type": "question"
+        },
+        {
+          "type": "question"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

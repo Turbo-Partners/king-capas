@@ -1,0 +1,585 @@
+{{ 'tp-collection-v2.css' | asset_url | stylesheet_tag }}
+
+{% render 'tp-section-padding',
+  pad_top_min: section.settings.pad_top_min,
+  pad_top_max: section.settings.pad_top_max,
+  pad_bottom_min: section.settings.pad_bottom_min,
+  pad_bottom_max: section.settings.pad_bottom_max,
+  enable_pad_top_mobile: section.settings.enable_pad_top_mobile,
+  pad_top_mobile: section.settings.pad_top_mobile,
+  enable_pad_bottom_mobile: section.settings.enable_pad_bottom_mobile,
+  pad_bottom_mobile: section.settings.pad_bottom_mobile,
+  enable_pad_top_desktop: section.settings.enable_pad_top_desktop,
+  pad_top_desktop: section.settings.pad_top_desktop,
+  enable_pad_bottom_desktop: section.settings.enable_pad_bottom_desktop,
+  pad_bottom_desktop: section.settings.pad_bottom_desktop
+%}
+
+{% liquid
+  assign slides = section.blocks | where: 'type', 'slide'
+  assign cards = section.blocks | where: 'type', 'card'
+%}
+
+{% style %}
+  .{{ section.id }}.tp-collection-v2 {
+    background: {{ section.settings.section_bg_color }};
+  }
+
+  .{{ section.id }} .tp-collection-v2__pagination .swiper-pagination-bullet {
+    border-color: {{ section.settings.pagination_color }};
+  }
+
+  .{{ section.id }} .tp-collection-v2__pagination .swiper-pagination-bullet-active {
+    background: {{ section.settings.pagination_color_active }};
+    border-color: {{ section.settings.pagination_color_active }};
+  }
+
+
+  {% if section.settings.title_custom %}
+    .{{ section.id }} .tp-collection-v2__slide-title {
+      {% if section.settings.title_color != blank %}
+        color: {{ section.settings.title_color }};
+      {% endif %}
+      {% if section.settings.title_font_size_mobile > 0 %}
+        font-size: {{ section.settings.title_font_size_mobile }}px;
+      {% endif %}
+    }
+
+    @media (min-width: 750px) {
+      .{{ section.id }} .tp-collection-v2__slide-title {
+        {% if section.settings.title_font_size_desktop > 0 %}
+          font-size: {{ section.settings.title_font_size_desktop }}px;
+        {% endif %}
+      }
+    }
+  {% endif %}
+
+  {% if section.settings.cta_custom %}
+    .{{ section.id }} .tp-collection-v2__slide-cta {
+      {% if section.settings.cta_color != blank %}
+        color: {{ section.settings.cta_color }};
+        border-color: {{ section.settings.cta_color }};
+      {% endif %}
+    }
+  {% endif %}
+
+  {% if section.settings.button_custom %}
+    .{{ section.id }} .tp-collection-v2__card-btn {
+      {% if section.settings.button_bg_color != blank %}
+        background: {{ section.settings.button_bg_color }};
+      {% endif %}
+      {% if section.settings.button_text_color != blank %}
+        color: {{ section.settings.button_text_color }};
+      {% endif %}
+    }
+  {% endif %}
+{% endstyle %}
+
+<tp-e-collection-v2 class="scroll-trigger animate--slide-in" data-section-id="{{ section.id }}" data-equal-height="{{ section.settings.equal_height }}">
+  <section class="tp-collection-v2 {{ section.id }}{% if section.settings.equal_height %} tp-collection-v2--equal-height{% endif %}">
+    <div class="tp-collection-v2__wrapper" id="section-wrapper-{{ section.id }}">
+      <div class="tp-collection-v2__layout">
+
+        {%- comment -%} Slide Swiper (left on desktop, top on mobile) {%- endcomment -%}
+        <div class="tp-collection-v2__swiper-area">
+          <div class="swiper tp-collection-v2__swiper-top">
+            <div class="swiper-wrapper">
+              {% for block in slides %}
+                <div class="swiper-slide" {{ block.shopify_attributes }}>
+                  <div class="tp-collection-v2__slide">
+                    {% if block.settings.image != blank %}
+                      {{ block.settings.image | image_url: width: 1500 | image_tag:
+                        class: 'tp-collection-v2__slide-image',
+                        loading: 'lazy',
+                        sizes: '(min-width: 750px) 50vw, 100vw',
+                        widths: '375, 750, 1100, 1500'
+                      }}
+                    {% else %}
+                      {{ 'lifestyle-1' | placeholder_svg_tag: 'tp-collection-v2__slide-image placeholder-svg' }}
+                    {% endif %}
+                    <div class="tp-collection-v2__slide-content">
+                      {% if block.settings.title != blank %}
+                        <h3 class="tp-collection-v2__slide-title">
+                          {{ block.settings.title | escape }}
+                        </h3>
+                      {% endif %}
+                      {% if block.settings.cta_text != blank %}
+                        <a
+                          class="tp-collection-v2__slide-cta"
+                          {% if block.settings.cta_url != blank %}
+                            href="{{ block.settings.cta_url }}"
+                          {% endif %}
+                        >
+                          {{ block.settings.cta_text | escape }}
+                        </a>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="tp-collection-v2__pagination swiper-pagination"></div>
+        </div>
+
+        {%- comment -%} Grid (desktop) / Swiper (mobile) {%- endcomment -%}
+        <div class="tp-collection-v2__grid-area">
+          <div class="swiper tp-collection-v2__swiper-bottom">
+            <div class="swiper-wrapper">
+              {% for block in cards %}
+                {% liquid
+                  assign card_collection = block.settings.collection
+                  assign card_image = block.settings.image | default: card_collection.image
+                  if card_image == blank and card_collection != blank
+                    assign card_image = card_collection.products.first.featured_image
+                  endif
+                  assign card_title = card_collection.title | default: 'Collection'
+                  assign card_url = block.settings.button_url | default: card_collection.url
+                  assign card_button_text = block.settings.button_text
+                %}
+                <div class="swiper-slide" {{ block.shopify_attributes }}>
+                  <div class="tp-collection-v2__card">
+                    <div class="tp-collection-v2__card-media">
+                      {% if card_image != blank %}
+                        {{ card_image | image_url: width: 800 | image_tag:
+                          class: 'tp-collection-v2__card-image',
+                          loading: 'lazy',
+                          sizes: '(min-width: 750px) 25vw, 50vw',
+                          widths: '375, 750, 1100'
+                        }}
+                      {% else %}
+                        {{ 'collection-1' | placeholder_svg_tag: 'tp-collection-v2__card-image placeholder-svg' }}
+                      {% endif %}
+                      {% if card_button_text != blank %}
+                        <a
+                          class="tp-collection-v2__card-btn"
+                          {% if card_url != blank %}
+                            href="{{ card_url }}"
+                          {% endif %}
+                        >
+                          {{ card_button_text | escape }}
+                        </a>
+                      {% endif %}
+                    </div>
+                    <p class="tp-collection-v2__card-title">
+                      {{ card_title | escape }}
+                    </p>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</tp-e-collection-v2>
+
+<script defer>
+  if (!customElements.get('tp-e-collection-v2')) {
+    class TpECollectionV2 extends HTMLElement {
+      connectedCallback() {
+        this.topSwiper = null;
+        this.bottomSwiper = null;
+        this.desktopMql = window.matchMedia('(min-width: 750px)');
+        this._onMediaChange = this._handleBottomSwiper.bind(this);
+
+        requestAnimationFrame(() => {
+          this._initTopSwiper();
+          this._handleBottomSwiper();
+          this.desktopMql.addEventListener('change', this._onMediaChange);
+        });
+      }
+
+      _initTopSwiper() {
+        const el = this.querySelector('.tp-collection-v2__swiper-top');
+        if (!el) return;
+        const equalHeight = this.dataset.equalHeight === 'true';
+        this.topSwiper = new Swiper(el, {
+          slidesPerView: 1,
+          spaceBetween: 0,
+          loop: true,
+          autoHeight: !equalHeight,
+          pagination: {
+            el: this.querySelector('.tp-collection-v2__pagination'),
+            clickable: true
+          }
+        });
+      }
+
+      _handleBottomSwiper() {
+        if (this.bottomSwiper) {
+          this.bottomSwiper.destroy(true, true);
+          this.bottomSwiper = null;
+        }
+        const el = this.querySelector('.tp-collection-v2__swiper-bottom');
+        if (!el) return;
+
+        if (this.desktopMql.matches) {
+          const slideCount = el.querySelectorAll('.swiper-slide').length;
+          this.bottomSwiper = new Swiper(el, {
+            slidesPerView: 2,
+            grid: {
+              rows: Math.ceil(slideCount / 2),
+              fill: 'row'
+            },
+            spaceBetween: 8,
+            allowTouchMove: false
+          });
+        } else {
+          this.bottomSwiper = new Swiper(el, {
+            slidesPerView: 2.2,
+            spaceBetween: 8
+          });
+        }
+      }
+
+      disconnectedCallback() {
+        if (this.topSwiper) {
+          this.topSwiper.destroy(true, true);
+          this.topSwiper = null;
+        }
+        if (this.bottomSwiper) {
+          this.bottomSwiper.destroy(true, true);
+          this.bottomSwiper = null;
+        }
+        this.desktopMql.removeEventListener('change', this._onMediaChange);
+      }
+    }
+    customElements.define('tp-e-collection-v2', TpECollectionV2);
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Coleção V2",
+  "class": "E__COLLECTION__V2",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Aparência"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Cor de fundo",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "checkbox",
+      "id": "equal_height",
+      "label": "Mesma altura nos slides",
+      "info": "Todos os slides terão a altura do maior",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Paginação"
+    },
+    {
+      "type": "color",
+      "id": "pagination_color",
+      "label": "Cor inativa",
+      "default": "#CCCCCC"
+    },
+    {
+      "type": "color",
+      "id": "pagination_color_active",
+      "label": "Cor ativa",
+      "default": "#101828"
+    },
+    {
+      "type": "header",
+      "content": "Tipografia"
+    },
+    {
+      "type": "checkbox",
+      "id": "title_custom",
+      "label": "Personalizar título",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Cor",
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "label": "Tamanho (desktop)",
+      "min": 16,
+      "max": 64,
+      "step": 1,
+      "default": 32,
+      "unit": "px",
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Tamanho (mobile)",
+      "min": 14,
+      "max": 48,
+      "step": 1,
+      "default": 18,
+      "unit": "px",
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "cta_custom",
+      "label": "Personalizar CTA",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "cta_color",
+      "label": "Cor",
+      "visible_if": "{{ section.settings.cta_custom }}"
+    },
+    {
+      "type": "header",
+      "content": "Botão"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_custom",
+      "label": "Personalizar",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Cor de fundo",
+      "visible_if": "{{ section.settings.button_custom }}"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Cor do texto",
+      "visible_if": "{{ section.settings.button_custom }}"
+    },
+    {
+      "type": "header",
+      "content": "Espaçamento"
+    },
+    {
+      "type": "range",
+      "id": "pad_top_min",
+      "label": "Padding TOP min (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "pad_top_max",
+      "label": "Padding TOP max (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_min",
+      "label": "Padding BOTTOM min (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_max",
+      "label": "Padding BOTTOM max (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 96
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_top_mobile",
+      "label": "Personalizar padding top (mobile)",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_top_mobile",
+      "label": "Padding top mobile (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40,
+      "visible_if": "{{ section.settings.enable_pad_top_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_bottom_mobile",
+      "label": "Personalizar padding bottom (mobile)",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_mobile",
+      "label": "Padding bottom mobile (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40,
+      "visible_if": "{{ section.settings.enable_pad_bottom_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_top_desktop",
+      "label": "Personalizar padding top (desktop)",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_top_desktop",
+      "label": "Padding top desktop (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 96,
+      "visible_if": "{{ section.settings.enable_pad_top_desktop }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_bottom_desktop",
+      "label": "Personalizar padding bottom (desktop)",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_desktop",
+      "label": "Padding bottom desktop (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 96,
+      "visible_if": "{{ section.settings.enable_pad_bottom_desktop }}"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagem"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Lorem ipsum dolor sit amet"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "Texto do CTA",
+          "default": "CTA"
+        },
+        {
+          "type": "url",
+          "id": "cta_url",
+          "label": "Link do CTA"
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "name": "Coleção",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Coleção"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagem (override)"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Texto do botão",
+          "default": "COMPRAR"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Link (override)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Coleção V2",
+      "category": "Coleção",
+      "settings": {
+        "section_bg_color": "#FFFFFF",
+        "pagination_color": "#CCCCCC",
+        "pagination_color_active": "#101828"
+      },
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "title": "Lorem ipsum dolor sit amet",
+            "cta_text": "CTA"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "title": "Consectetur adipiscing elit",
+            "cta_text": "CTA"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "title": "Sed do eiusmod tempor",
+            "cta_text": "CTA"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "button_text": "COMPRAR"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "button_text": "COMPRAR"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "button_text": "COMPRAR"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "button_text": "COMPRAR"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

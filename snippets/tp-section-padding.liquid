@@ -1,0 +1,111 @@
+{%- assign min_vw = min_vw | default: 390 -%}
+{%- assign max_vw = max_vw | default: 1440 -%}
+
+{%- capture pad_top -%}
+  {% render 'tp-clamp',
+    min_px: pad_top_min,
+    max_px: pad_top_max,
+    min_vw: min_vw,
+    max_vw: max_vw,
+    use_rem: true,
+    base_font: 10
+  %}
+{%- endcapture -%}
+
+{%- capture pad_bottom -%}
+  {% render 'tp-clamp',
+    min_px: pad_bottom_min,
+    max_px: pad_bottom_max,
+    min_vw: min_vw,
+    max_vw: max_vw,
+    use_rem: true,
+    base_font: 10
+  %}
+{%- endcapture -%}
+
+<style>
+  #section-wrapper-{{ section.id }}{
+    --tp-pad-top: {{ pad_top | strip }};
+    --tp-pad-bottom: {{ pad_bottom | strip }};
+  }
+  {% if enable_pad_top_mobile or enable_pad_bottom_mobile %}
+    @media screen and (max-width: 1023px) {
+      #section-wrapper-{{ section.id }}{
+        {% if enable_pad_top_mobile %}
+          --tp-pad-top: {{ pad_top_mobile }}px;
+        {% endif %}
+        {% if enable_pad_bottom_mobile %}
+          --tp-pad-bottom: {{ pad_bottom_mobile }}px;
+        {% endif %}
+      }
+    }
+  {% endif %}
+  {% if enable_pad_top_desktop or enable_pad_bottom_desktop %}
+    @media screen and (min-width: 1024px) {
+      #section-wrapper-{{ section.id }}{
+        {% if enable_pad_top_desktop %}
+          --tp-pad-top: {{ pad_top_desktop }}px;
+        {% endif %}
+        {% if enable_pad_bottom_desktop %}
+          --tp-pad-bottom: {{ pad_bottom_desktop }}px;
+        {% endif %}
+      }
+    }
+  {% endif %}
+</style>
+
+
+{% comment %}
+  adicionar no início das seções que tem tp-wrapper
+
+    {% render 'tp-section-padding',
+        pad_top_min: section.settings.pad_top_min,
+        pad_top_max: section.settings.pad_top_max,
+        pad_bottom_min: section.settings.pad_bottom_min,
+        pad_bottom_max: section.settings.pad_bottom_max,
+        pad_top_mobile: section.settings.pad_top_mobile,
+        pad_bottom_mobile: section.settings.pad_bottom_mobile,
+        pad_top_desktop: section.settings.pad_top_desktop,
+        pad_bottom_desktop: section.settings.pad_bottom_desktop
+    %}
+
+    configuracoes na section
+
+    {
+        "type": "range",
+        "id": "pad_top_min",
+        "label": "Padding TOP min (px)",
+        "min": 0,
+        "max": 120,
+        "step": 4,
+        "default": 48
+    },
+    {
+        "type": "range",
+        "id": "pad_top_max",
+        "label": "Padding TOP max (px)",
+        "min": 0,
+        "max": 120,
+        "step": 4,
+        "default": 96
+    },
+    {
+        "type": "range",
+        "id": "pad_bottom_min",
+        "label": "Padding BOTTOM min (px)",
+        "min": 0,
+        "max": 120,
+        "step": 4,
+        "default": 48
+    },
+    {
+        "type": "range",
+        "id": "pad_bottom_max",
+        "label": "Padding BOTTOM max (px)",
+        "min": 0,
+        "max": 120,
+        "step": 8,
+        "default": 96
+    }
+
+{% endcomment %}

@@ -1,0 +1,758 @@
+{% comment %}
+  Renders cart drawer V2
+
+  Usage:
+  {% render 'cart-drawer', free_shipping_threshold: section.settings.free_shipping_threshold %}
+{% endcomment %}
+
+{{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+
+<style>
+  .drawer {
+    visibility: hidden;
+  }
+</style>
+
+<cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">
+  <div id="CartDrawer" class="cart-drawer">
+    <div id="CartDrawer-Overlay" class="cart-drawer__overlay"></div>
+    <div
+      class="drawer__inner gradient color-{{ settings.cart_color_scheme }}"
+      role="dialog"
+      aria-modal="true"
+      aria-label="{{ 'sections.cart.title' | t }}"
+      tabindex="-1"
+    >
+      {%- if cart == empty -%}
+        <div class="drawer__inner-empty">
+          <div class="cart-drawer__warnings center{% if settings.cart_drawer_collection != blank %} cart-drawer__warnings--has-collection{% endif %}">
+            <div class="cart-drawer__empty-content">
+              <h2 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h2>
+              <button
+                class="drawer__close"
+                type="button"
+                onclick="this.closest('cart-drawer').close()"
+                aria-label="{{ 'accessibility.close' | t }}"
+              >
+                <span class="svg-wrapper">
+                  {{- 'icon-close.svg' | inline_asset_content -}}
+                </span>
+              </button>
+              <a href="{{ routes.all_products_collection_url }}" class="button">
+                {{ 'general.continue_shopping' | t }}
+              </a>
+            </div>
+          </div>
+          {%- if settings.cart_drawer_collection != blank -%}
+            <div class="cart-drawer__collection">
+              {% render 'card-collection', card_collection: settings.cart_drawer_collection, columns: 1 %}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <!-- Header V2 -->
+      <div class="drawer__header cdv2-header">
+        <h2 class="cdv2-header__title">{{ 'sections.cart.title' | t | default: 'Carrinho' }}</h2>
+        <button
+          class="drawer__close cdv2-header__close"
+          type="button"
+          onclick="this.closest('cart-drawer').close()"
+          aria-label="{{ 'accessibility.close' | t }}"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Free Shipping Bar -->
+      {%- assign fs_threshold = settings.free_shipping_threshold | default: 0 -%}
+      {%- if fs_threshold > 0 and cart != empty -%}
+        {%- assign threshold_cents = fs_threshold | times: 100 -%}
+        {%- assign cart_total = cart.total_price -%}
+        {%- assign remaining_cents = threshold_cents | minus: cart_total -%}
+        {%- if remaining_cents < 0 -%}{%- assign remaining_cents = 0 -%}{%- endif -%}
+        {%- assign shipping_pct = cart_total | times: 100 | divided_by: threshold_cents -%}
+        {%- if shipping_pct > 100 -%}{%- assign shipping_pct = 100 -%}{%- endif -%}
+
+        <div class="cdv2-shipping{% if cart_total >= threshold_cents %} cdv2-shipping--free{% endif %}">
+          <div class="cdv2-shipping__bar" data-pct="{{ shipping_pct }}">
+            <div class="cdv2-shipping__fill" style="width: {{ shipping_pct }}%;"></div>
+          </div>
+          {%- if cart_total >= threshold_cents -%}
+            <p class="cdv2-shipping__text">Você ganhou o <strong>frete grátis</strong></p>
+          {%- else -%}
+            <p class="cdv2-shipping__text">
+              Faltam <strong>{{ remaining_cents | money }}</strong> para o frete grátis
+            </p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <!-- Cart Items -->
+      <cart-drawer-items
+        {% if cart == empty %}
+          class=" is-empty"
+        {% endif %}
+      >
+        <form
+          action="{{ routes.cart_url }}"
+          id="CartDrawer-Form"
+          class="cart__contents cart-drawer__form"
+          method="post"
+        >
+          <div id="CartDrawer-CartItems" class="drawer__contents js-contents">
+            {%- if cart != empty -%}
+              <div class="cdv2-items-header" aria-hidden="true">
+                <span class="cdv2-items-header__produto">Produto</span>
+                <span class="cdv2-items-header__total">Total</span>
+              </div>
+              <div class="drawer__cart-items-wrapper">
+                {%- for item in cart.items -%}
+                  <div
+                    id="CartDrawer-Item-{{ item.index | plus: 1 }}"
+                    class="cdv2-item"
+                  >
+                    <!-- Image -->
+                    {% if item.image %}
+                      <a href="{{ item.url }}" class="cdv2-item__media" tabindex="-1" aria-hidden="true">
+                        <img
+                          class="cdv2-item__image"
+                          src="{{ item.image | image_url: width: 200 }}"
+                          alt="{{ item.image.alt | escape }}"
+                          loading="lazy"
+                          width="96"
+                          height="96"
+                        >
+                      </a>
+                    {% endif %}
+
+                    <!-- Info -->
+                    <div class="cdv2-item__info">
+                      <div class="cdv2-item__name-row">
+                        <a href="{{ item.url }}" class="cdv2-item__name">
+                          {{- item.product.title -}}
+                        </a>
+                        <div class="cdv2-item__price" id="CartDrawer-Price-{{ item.index | plus: 1 }}">
+                          {% if item.original_line_price > item.final_line_price %}
+                            <span class="cdv2-item__price-compare">{{ item.original_line_price | money }}</span>
+                          {% endif %}
+                          <span>{{ item.final_line_price | money }}</span>
+                        </div>
+                      </div>
+
+                      {%- if item.product.has_only_default_variant == false -%}
+                        <span class="cdv2-item__variant">
+                          Variação:
+                          {%- for option in item.options_with_values -%}
+                            {{ ' ' }}{{ option.value -}}
+                            {%- unless forloop.last %} / {% endunless %}
+                          {%- endfor -%}
+                        </span>
+                      {%- endif -%}
+
+                      <!-- Quantity + Remove -->
+                      <div class="cdv2-item__qty-remove-row">
+                        <quantity-input class="quantity cart-quantity cdv2-qty">
+                          <button
+                            class="cdv2-qty__btn"
+                            name="minus"
+                            type="button"
+                            aria-label="{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}"
+                          >
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                              <path d="M2 7H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                          </button>
+                          <div class="cdv2-qty__value">
+                            <input
+                              class="cdv2-qty__input"
+                              type="number"
+                              data-quantity-variant-id="{{ item.variant.id }}"
+                              name="updates[]"
+                              value="{{ item.quantity }}"
+                              {% # theme-check-disable %}
+                              data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
+                              min="0"
+                              data-min="{{ item.variant.quantity_rule.min }}"
+                              {% if item.variant.quantity_rule.max != null %}
+                                max="{{ item.variant.quantity_rule.max }}"
+                              {% endif %}
+                              step="{{ item.variant.quantity_rule.increment }}"
+                              {% # theme-check-enable %}
+                              aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                              id="Drawer-quantity-{{ item.index | plus: 1 }}"
+                              data-index="{{ item.index | plus: 1 }}"
+                            >
+                          </div>
+                          <button
+                            class="cdv2-qty__btn"
+                            name="plus"
+                            type="button"
+                            aria-label="{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}"
+                          >
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                              <path d="M7 2V12M2 7H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                          </button>
+                        </quantity-input>
+
+                        <cart-remove-button
+                          id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
+                          data-index="{{ item.index | plus: 1 }}"
+                        >
+                          <button
+                            type="button"
+                            class="cdv2-item__trash"
+                            aria-label="{{ 'sections.cart.remove_title' | t: title: item.title | escape }}"
+                            data-variant-id="{{ item.variant.id }}"
+                          >
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                              <path d="M3.33 5.83h13.34M8.33 9.17v5M11.67 9.17v5M4.17 5.83l.83 10c0 .92.75 1.67 1.67 1.67h6.66c.92 0 1.67-.75 1.67-1.67l.83-10M7.5 5.83V3.33c0-.46.37-.83.83-.83h3.34c.46 0 .83.37.83.83v2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                          </button>
+                        </cart-remove-button>
+                      </div>
+
+                      {% if item.original_line_price > item.final_line_price %}
+                        {% assign savings_amount = item.original_line_price | minus: item.final_line_price %}
+                        {% assign savings_pct = savings_amount | times: 100 | divided_by: item.original_line_price %}
+                        <div class="cdv2-item__savings-row">
+                          <span class="cdv2-item__savings">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                              <circle cx="7" cy="7" r="7" fill="#22C55E"/><path d="M4 7.2L6.2 9.4L10 5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Você economiza {{ savings_pct }}%
+                          </span>
+                        </div>
+                      {% endif %}
+                    </div>
+
+                    <!-- Error -->
+                    <div
+                      id="CartDrawer-LineItemError-{{ item.index | plus: 1 }}"
+                      class="cart-item__error"
+                      role="alert"
+                    >
+                      <small class="cart-item__error-text"></small>
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+            <p id="CartDrawer-LiveRegionText" class="visually-hidden" role="status"></p>
+            <p id="CartDrawer-LineItemStatus" class="visually-hidden" aria-hidden="true" role="status">
+              {{ 'accessibility.loading' | t }}
+            </p>
+          </div>
+          <div id="CartDrawer-CartErrors" role="alert"></div>
+        </form>
+      </cart-drawer-items>
+
+      <!-- Footer -->
+
+      <div class="drawer__footer cdv2-footer">
+        {%- assign cart_pids = ',' -%}
+        {%- for ci in cart.items -%}
+          {%- assign cart_pids = cart_pids | append: ci.product.id | append: ',' -%}
+        {%- endfor -%}
+
+        {%- capture bump_cards -%}
+          {%- assign bump_shown = ',' -%}
+          {%- for item in cart.items -%}
+            {%- assign bump_meta = item.product.metafields['shopify--discovery--product_recommendation']['complementary_products'] -%}
+            {%- if bump_meta != blank -%}
+              {%- for rec in bump_meta.value -%}
+                {%- assign pid_tag = ',' | append: rec.id | append: ',' -%}
+                {%- unless cart_pids contains pid_tag -%}
+                  {%- unless bump_shown contains pid_tag -%}
+                    {%- assign bump_shown = bump_shown | append: rec.id | append: ',' -%}
+                    <div class="cdv2-bump__card" data-variants-count="{{ rec.variants.size }}">
+                      <div class="cdv2-bump__header">combina com</div>
+                      <div class="cdv2-bump__body">
+                        <a href="{{ rec.url }}" class="cdv2-bump__img-wrap">
+                          <img src="{{ rec.featured_image | image_url: width: 120 }}" alt="{{ rec.title | escape }}" class="cdv2-bump__img" loading="lazy">
+                        </a>
+                        <div class="cdv2-bump__info">
+                          <span class="cdv2-bump__name">{{ rec.title }}</span>
+                          <span class="cdv2-bump__price">
+                            {%- if rec.compare_at_price > rec.price -%}
+                              <s class="cdv2-bump__price-old">{{ rec.compare_at_price | money }}</s>
+                            {%- endif -%}
+                            {{ rec.price | money }}
+                          </span>
+                        </div>
+                        <button type="button" class="cdv2-bump__add" data-variant-id="{{ rec.variants.first.id }}" aria-label="Adicionar {{ rec.title | escape }}">
+                          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                            <path d="M6 6V5C6 3.93913 6.42143 2.92172 7.17157 2.17157C7.92172 1.42143 8.93913 1 10 1C11.0609 1 12.0783 1.42143 12.8284 2.17157C13.5786 2.92172 14 3.93913 14 5V6M3 6H17L16 19H4L3 6Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        </button>
+                      </div>
+                      {%- if rec.has_only_default_variant == false and rec.variants.size > 1 -%}
+                        <div class="cdv2-bump__variants">
+                          <div class="cdv2-bump__variants-inner">
+                            {%- for v in rec.variants -%}
+                              <button type="button" class="cdv2-bump__variant-btn" data-variant-id="{{ v.id }}">{{ v.title }}</button>
+                            {%- endfor -%}
+                          </div>
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  {%- endunless -%}
+                {%- endunless -%}
+              {%- endfor -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endcapture -%}
+
+        {%- assign bump_stripped = bump_cards | strip -%}
+        {%- if bump_stripped != '' -%}
+          <div class="cdv2-bump">
+            <div class="cdv2-bump__carousel">
+              <button type="button" class="cdv2-bump__arrow cdv2-bump__arrow--prev" aria-label="Anterior">
+                <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
+                  <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="cdv2-bump__track">
+                {{ bump_cards }}
+              </div>
+              <button type="button" class="cdv2-bump__arrow cdv2-bump__arrow--next" aria-label="Próximo">
+                <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
+                  <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if settings.cart_show_shipping -%}
+          <cart-shipping class="cdv2-shipping-cep" data-state="toggle">
+            <!-- Estado: toggle (padrão) -->
+            <button
+              type="button"
+              data-shipping-toggle
+              class="cdv2-footer__row cdv2-footer__row--shipping cdv2-shipping-cep__toggle-row"
+              data-shipping-state="toggle"
+              aria-label="Calcular frete"
+            >
+              <span class="cdv2-shipping-cep__label">Calcule seu frete</span>
+              <span class="cdv2-shipping-cep__toggle" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+
+            <!-- Estado: input -->
+            <div class="cdv2-shipping-cep__input-row" data-shipping-state="input">
+              <input
+                type="text"
+                data-shipping-input
+                class="cdv2-shipping-cep__input"
+                placeholder="CEP (ex: 01310-100)"
+                maxlength="9"
+                inputmode="numeric"
+                autocomplete="postal-code"
+              >
+              <button type="button" data-shipping-query class="cdv2-shipping-cep__btn">Consultar</button>
+            </div>
+
+            <!-- Estado: resultado -->
+            <div data-shipping-state="result">
+              <div class="cdv2-footer__row cdv2-footer__row--shipping">
+                <div class="cdv2-footer__label">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+                  </svg>
+                  <span>frete para <span data-shipping-cep-display></span></span>
+                </div>
+                <button type="button" data-shipping-change class="cdv2-footer__link">alterar &times;</button>
+              </div>
+              <div data-shipping-rates class="cdv2-shipping-cep__rates"></div>
+            </div>
+
+            <div data-shipping-feedback class="cdv2-shipping-cep__feedback"></div>
+          </cart-shipping>
+        {%- endif -%}
+
+        <div class="cdv2-footer__row cdv2-footer__row--total">
+          <span class="cdv2-footer__total-label">Subtotal</span>
+          <div class="cdv2-footer__total-value">
+            {%- if cart.cart_level_discount_applications.size > 0 -%}
+              <s class="cdv2-footer__total-old">{{ cart.items_subtotal_price | money }}</s>
+            {%- endif -%}
+            <span>{{ cart.total_price | money }}</span>
+          </div>
+        </div>
+
+        <div class="cdv2-footer__ctas">
+          <button
+            type="submit"
+            id="CartDrawer-Checkout"
+            class="cdv2-footer__btn-checkout"
+            name="checkout"
+            form="CartDrawer-Form"
+            {% if cart == empty %}
+              disabled
+            {% endif %}
+          >
+            Finalizar compra
+          </button>
+          <button
+            type="button"
+            class="cdv2-footer__btn-continue"
+            onclick="this.closest('cart-drawer').close()"
+          >
+            Continuar comprando
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</cart-drawer>
+
+<script>
+  (function () {
+    var STORAGE_KEY = 'cdv2_fs_pct';
+
+    function syncBar() {
+      var bar = document.querySelector('.cdv2-shipping__bar');
+      var fill = bar ? bar.querySelector('.cdv2-shipping__fill') : null;
+      if (!bar || !fill) return;
+
+      var target = parseFloat(bar.getAttribute('data-pct'));
+      if (isNaN(target)) target = 0;
+      target = Math.max(0, Math.min(100, target));
+
+      var previous = parseFloat(sessionStorage.getItem(STORAGE_KEY));
+      if (isNaN(previous)) previous = 0;
+
+      // Inicia da porcentagem anterior (sem transição) e anima até a nova.
+      var initial = previous;
+      fill.style.transition = 'none';
+      fill.style.width = initial + '%';
+
+      // Força reflow para que o "from" seja aplicado antes da transição.
+      // eslint-disable-next-line no-unused-expressions
+      fill.offsetWidth;
+
+      requestAnimationFrame(function () {
+        fill.style.transition = '';
+        fill.style.width = target + '%';
+      });
+
+      sessionStorage.setItem(STORAGE_KEY, String(target));
+
+      // Limpa o storage se o frete grátis foi atingido (para reiniciar do zero em novas sessões)
+      if (target >= 100) {
+        // mantém persistido para o próximo render mostrar a barra cheia
+      }
+    }
+
+    function init() {
+      syncBar();
+
+      var drawer = document.getElementById('CartDrawer');
+      if (!drawer) return;
+
+      // Re-sincroniza ao detectar troca de conteúdo do drawer (re-render após add/remove)
+      var debounceTimer;
+      var observer = new MutationObserver(function () {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(syncBar, 16);
+      });
+      observer.observe(drawer, { childList: true, subtree: true });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+
+<script>
+  (function () {
+    function bumpAddToCart(variantId, btn) {
+      btn.disabled = true;
+      btn.classList.add('cdv2-bump--loading');
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ items: [{ id: variantId, quantity: 1 }] }),
+      })
+        .then(function () {
+          return fetch('{{ routes.cart_url }}?sections=cart-drawer,cart-icon-bubble');
+        })
+        .then(function (r) {
+          return r.json();
+        })
+        .then(function (sections) {
+          if (sections['cart-drawer']) {
+            var parsed = new DOMParser().parseFromString(sections['cart-drawer'], 'text/html');
+            var newInner = parsed.querySelector('.drawer__inner');
+            var currentInner = document.querySelector('.drawer__inner');
+            if (newInner && currentInner) currentInner.innerHTML = newInner.innerHTML;
+          }
+          if (sections['cart-icon-bubble']) {
+            var parsed2 = new DOMParser().parseFromString(sections['cart-icon-bubble'], 'text/html');
+            var newBubble = parsed2.querySelector('.shopify-section');
+            var currentBubble = document.getElementById('cart-icon-bubble');
+            if (newBubble && currentBubble) currentBubble.innerHTML = newBubble.innerHTML;
+          }
+        })
+        .catch(function (err) {
+          console.error('Bump add error:', err);
+          btn.disabled = false;
+          btn.classList.remove('cdv2-bump--loading');
+        });
+    }
+
+    document.addEventListener('click', function (e) {
+      var prev = e.target.closest('.cdv2-bump__arrow--prev');
+      if (prev) {
+        var track = prev.closest('.cdv2-bump').querySelector('.cdv2-bump__track');
+        if (track) {
+          var card = track.querySelector('.cdv2-bump__card');
+          if (card) track.scrollBy({ left: -card.offsetWidth - 10, behavior: 'smooth' });
+        }
+      }
+
+      var next = e.target.closest('.cdv2-bump__arrow--next');
+      if (next) {
+        var track = next.closest('.cdv2-bump').querySelector('.cdv2-bump__track');
+        if (track) {
+          var card = track.querySelector('.cdv2-bump__card');
+          if (card) track.scrollBy({ left: card.offsetWidth + 10, behavior: 'smooth' });
+        }
+      }
+
+      var addBtn = e.target.closest('.cdv2-bump__add');
+      if (addBtn) {
+        e.preventDefault();
+        var card = addBtn.closest('.cdv2-bump__card');
+        var count = parseInt(card.dataset.variantsCount) || 1;
+        if (count > 1) {
+          card.classList.toggle('cdv2-bump__card--picking');
+          return;
+        }
+        bumpAddToCart(parseInt(addBtn.dataset.variantId), addBtn);
+      }
+
+      var variantBtn = e.target.closest('.cdv2-bump__variant-btn');
+      if (variantBtn) {
+        e.preventDefault();
+        bumpAddToCart(parseInt(variantBtn.dataset.variantId), variantBtn);
+      }
+    });
+  })();
+</script>
+
+<script>
+  class CartShipping extends HTMLElement {
+    connectedCallback() {
+      this._input      = this.querySelector('[data-shipping-input]');
+      this._queryBtn   = this.querySelector('[data-shipping-query]');
+      this._toggleBtn  = this.querySelector('[data-shipping-toggle]');
+      this._changeBtn  = this.querySelector('[data-shipping-change]');
+      this._feedback   = this.querySelector('[data-shipping-feedback]');
+      this._ratesEl    = this.querySelector('[data-shipping-rates]');
+      this._cepDisplay = this.querySelector('[data-shipping-cep-display]');
+
+      this._toggleBtn.addEventListener('click', () => {
+        this.dataset.state === 'input' ? this._setState('toggle') : this._setState('input');
+      });
+      this._queryBtn.addEventListener('click',  () => this._query());
+      this._changeBtn.addEventListener('click', () => this._setState('input'));
+      this._input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter')  this._query();
+        if (e.key === 'Escape') this._setState('toggle');
+      });
+      this._input.addEventListener('input', () => this._maskCep());
+
+      // Restaurar CEP salvo — preenche o input mas não re-consulta automaticamente
+      var saved = sessionStorage.getItem('cdv2_shipping_cep');
+      if (saved) {
+        this._input.value = saved.replace(/(\d{5})(\d{3})/, '$1-$2');
+      }
+
+      this._setState('toggle');
+    }
+
+    _maskCep() {
+      var v = this._input.value.replace(/\D/g, '').slice(0, 8);
+      if (v.length > 5) v = v.slice(0, 5) + '-' + v.slice(5);
+      this._input.value = v;
+    }
+
+    _setState(state) {
+      this.dataset.state = state;
+      if (state === 'input') {
+        var self = this;
+        setTimeout(function () { self._input && self._input.focus(); }, 50);
+      }
+    }
+
+    _showFeedback(msg, isError) {
+      if (!this._feedback) return;
+      this._feedback.textContent = msg;
+      this._feedback.hidden = false;
+      this._feedback.dataset.error = isError ? 'true' : 'false';
+      clearTimeout(this._feedbackTimer);
+      var el = this._feedback;
+      this._feedbackTimer = setTimeout(function () { el.hidden = true; }, 5000);
+    }
+
+    async _query() {
+      var raw = this._input.value.replace(/\D/g, '');
+      if (raw.length !== 8) {
+        this._showFeedback('CEP inválido. Digite os 8 dígitos.', true);
+        return;
+      }
+
+      this._queryBtn.disabled = true;
+      this._queryBtn.classList.add('is-loading');
+      this._queryBtn.setAttribute('aria-busy', 'true');
+
+      try {
+        // 1. Busca estado via ViaCEP
+        var cepResp = await fetch('https://viacep.com.br/ws/' + raw + '/json/');
+        var cepData = await cepResp.json();
+        if (cepData.erro) {
+          this._showFeedback('CEP não encontrado.', true);
+          return;
+        }
+        var province = cepData.uf;
+
+        // 2. Consulta fretes no Shopify com CEP + estado
+        var resp = await fetch(
+          '/cart/shipping_rates.json?shipping_address[zip]=' + raw +
+          '&shipping_address[country]=BR' +
+          '&shipping_address[province]=' + province,
+          { credentials: 'include' }
+        );
+        var data = await resp.json();
+        var rates = (data && data.shipping_rates) || [];
+
+        if (rates.length === 0) {
+          this._showFeedback('Nenhum frete disponível para este CEP.', true);
+          return;
+        }
+
+        sessionStorage.setItem('cdv2_shipping_cep', raw);
+
+        var html = rates.map(function (r) {
+          var price  = parseFloat(r.price);
+          var priceStr = price === 0 ? 'GRÁTIS' : 'R$\u00a0' + price.toFixed(2).replace('.', ',');
+          var delivery = '';
+          if (r.delivery_range && r.delivery_range.length === 2) {
+            delivery = r.delivery_range[0] === r.delivery_range[1]
+              ? r.delivery_range[0] + ' dia(s) úteis'
+              : r.delivery_range[0] + '–' + r.delivery_range[1] + ' dias úteis';
+          }
+          return '<div class="cdv2-shipping-cep__rate">' +
+            '<div class="cdv2-shipping-cep__rate-info">' +
+            '<span class="cdv2-shipping-cep__rate-name">' + r.name + '</span>' +
+            (delivery ? '<span class="cdv2-shipping-cep__rate-days">' + delivery + '</span>' : '') +
+            '</div>' +
+            '<span class="cdv2-shipping-cep__rate-price">' + priceStr + '</span>' +
+            '</div>';
+        }).join('');
+
+        this._ratesEl.innerHTML = html;
+
+        if (this._cepDisplay) {
+          this._cepDisplay.textContent = raw.replace(/(\d{5})(\d{3})/, '$1-$2');
+        }
+
+        this._setState('result');
+
+      } catch (err) {
+        console.error('[CartShipping] query error:', err);
+        this._showFeedback('Erro ao consultar frete. Tente novamente.', true);
+      } finally {
+        this._queryBtn.disabled = false;
+        this._queryBtn.classList.remove('is-loading');
+        this._queryBtn.removeAttribute('aria-busy');
+      }
+    }
+  }
+
+  if (!customElements.get('cart-shipping')) {
+    customElements.define('cart-shipping', CartShipping);
+  }
+</script>
+
+<script>
+  (function() {
+    if (window.__cdv2TrashAnimBound) return;
+    window.__cdv2TrashAnimBound = true;
+
+    var REMOVE_DURATION = 340; // deve casar com a transição mais longa em .cdv2-item
+
+    document.addEventListener('click', function(event) {
+      var trash = event.target.closest && event.target.closest('.cdv2-item__trash');
+      if (!trash) return;
+
+      var item = trash.closest('.cdv2-item');
+      var removeBtn = trash.closest('cart-remove-button');
+      if (!item || !removeBtn) return;
+
+      // Já está sendo removido: deixa a re-dispatch passar para o handler nativo do Dawn
+      if (item.classList.contains('cdv2-item--removing')) return;
+
+      // Intercepta o clique original, anima, e em seguida re-dispara para o handler nativo concluir a remoção
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+
+      trash.setAttribute('data-removing', 'true');
+      item.classList.add('cdv2-item--removing');
+
+      var fire = function() {
+        try {
+          removeBtn.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+        } catch (e) {
+          // Fallback: chama updateQuantity diretamente
+          var cartItems = removeBtn.closest('cart-items') || removeBtn.closest('cart-drawer-items');
+          if (cartItems && typeof cartItems.updateQuantity === 'function') {
+            cartItems.updateQuantity(removeBtn.dataset.index, 0, event);
+          }
+        }
+      };
+
+      // Aguarda a transição (com fallback para prefers-reduced-motion ou navegadores sem transitionend)
+      var done = false;
+      var finish = function() {
+        if (done) return;
+        done = true;
+        fire();
+      };
+
+      item.addEventListener('transitionend', function onEnd(e) {
+        if (e.target !== item) return;
+        if (e.propertyName !== 'max-height' && e.propertyName !== 'opacity') return;
+        item.removeEventListener('transitionend', onEnd);
+        finish();
+      });
+
+      setTimeout(finish, REMOVE_DURATION + 80);
+    }, true); // capture: roda antes do listener no <cart-remove-button>
+  })();
+</script>

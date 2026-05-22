@@ -1,0 +1,88 @@
+{% style %}
+.tp-block-divider-{{ block.id }} {
+  width: {{ block.settings.width }}%;
+  margin: 0 auto;
+}
+
+.tp-block-divider-{{ block.id }} hr {
+  border: none;
+  height: {{ block.settings.thickness }}px;
+  background-color: {% if block.settings.color != blank %}{{ block.settings.color }}{% else %}currentColor{% endif %};
+  opacity: {{ block.settings.opacity | divided_by: 100.0 }};
+  margin: {{ block.settings.margin_top }}px 0 {{ block.settings.margin_bottom }}px 0;
+}
+{% endstyle %}
+
+<div class="tp-block-divider tp-block-divider-{{ block.id }}" {{ block.shopify_attributes }}>
+  <hr>
+</div>
+
+{% schema %}
+{
+  "name": "Divisor",
+  "presets": [
+    {
+      "name": "Divisor",
+      "category": "Layout"
+    }
+  ],
+  "settings": [
+    {
+      "type": "range",
+      "id": "width",
+      "label": "Largura",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 100,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "thickness",
+      "label": "Espessura",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 1,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Cor",
+      "default": "#E5E5E5"
+    },
+    {
+      "type": "range",
+      "id": "opacity",
+      "label": "Opacidade",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 100,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margem superior",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margem inferior",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    }
+  ]
+}
+{% endschema %}

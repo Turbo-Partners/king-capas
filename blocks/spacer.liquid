@@ -1,0 +1,101 @@
+{% style %}
+.tp-block-spacer-{{ block.id }} {
+  {% if block.settings.size == 'pixel' %}
+    height: {{ block.settings.pixel_size }}px;
+  {% elsif block.settings.size == 'small' %}
+    height: 16px;
+  {% elsif block.settings.size == 'medium' %}
+    height: 32px;
+  {% elsif block.settings.size == 'large' %}
+    height: 64px;
+  {% elsif block.settings.size == 'xlarge' %}
+    height: 96px;
+  {% endif %}
+  
+  width: 100%;
+}
+
+@media (max-width: 749px) {
+  .tp-block-spacer-{{ block.id }} {
+    {% if block.settings.mobile_size == 'pixel' %}
+      height: {{ block.settings.mobile_pixel_size }}px;
+    {% elsif block.settings.mobile_size == 'same' %}
+      /* mantém o mesmo */
+    {% elsif block.settings.mobile_size == 'small' %}
+      height: 12px;
+    {% elsif block.settings.mobile_size == 'medium' %}
+      height: 24px;
+    {% elsif block.settings.mobile_size == 'large' %}
+      height: 48px;
+    {% endif %}
+  }
+}
+{% endstyle %}
+
+<div class="tp-block-spacer tp-block-spacer-{{ block.id }}" {{ block.shopify_attributes }}></div>
+
+{% schema %}
+{
+  "name": "Espaçador",
+  "presets": [
+    {
+      "name": "Espaçador",
+      "category": "Layout"
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "size",
+      "label": "Tamanho",
+      "options": [
+        { "value": "small", "label": "Pequeno (16px)" },
+        { "value": "medium", "label": "Médio (32px)" },
+        { "value": "large", "label": "Grande (64px)" },
+        { "value": "xlarge", "label": "Extra grande (96px)" },
+        { "value": "pixel", "label": "Personalizado" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "range",
+      "id": "pixel_size",
+      "label": "Altura personalizada",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 40,
+      "unit": "px",
+      "visible_if": "{{ block.settings.size == 'pixel' }}"
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "select",
+      "id": "mobile_size",
+      "label": "Tamanho no mobile",
+      "options": [
+        { "value": "same", "label": "Mesmo do desktop" },
+        { "value": "small", "label": "Pequeno (12px)" },
+        { "value": "medium", "label": "Médio (24px)" },
+        { "value": "large", "label": "Grande (48px)" },
+        { "value": "pixel", "label": "Personalizado" }
+      ],
+      "default": "same"
+    },
+    {
+      "type": "range",
+      "id": "mobile_pixel_size",
+      "label": "Altura mobile personalizada",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "visible_if": "{{ block.settings.mobile_size == 'pixel' }}"
+    }
+  ]
+}
+{% endschema %}

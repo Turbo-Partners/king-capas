@@ -1,0 +1,226 @@
+{% style %}
+.tp-block-accordion-{{ block.id }} {
+  width: 100%;
+  
+  padding-block-start: {{ block.settings.padding-block-start }}px;
+  padding-block-end: {{ block.settings.padding-block-end }}px;
+  padding-inline-start: {{ block.settings.padding-inline-start }}px;
+  padding-inline-end: {{ block.settings.padding-inline-end }}px;
+}
+
+.tp-block-accordion-{{ block.id }} details {
+  {% if block.settings.dividers %}
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  {% endif %}
+}
+
+.tp-block-accordion-{{ block.id }} summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  cursor: pointer;
+  list-style: none;
+  
+  {% case block.settings.type_preset %}
+    {% when 'h3' %}
+      font-size: 1.25rem;
+      font-weight: 600;
+    {% when 'h4' %}
+      font-size: 1.125rem;
+      font-weight: 600;
+    {% when 'h5' %}
+      font-size: 1rem;
+      font-weight: 600;
+    {% else %}
+      font-size: 1rem;
+      font-weight: 500;
+  {% endcase %}
+}
+
+.tp-block-accordion-{{ block.id }} summary::-webkit-details-marker {
+  display: none;
+}
+
+.tp-block-accordion-{{ block.id }} summary::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.tp-block-accordion-{{ block.id }} details[open] summary::after {
+  transform: rotate(-135deg);
+}
+
+.tp-block-accordion-{{ block.id }} .accordion-content {
+  padding-bottom: 16px;
+}
+
+{% if block.settings.border != 'none' %}
+.tp-block-accordion-{{ block.id }} {
+  border: {{ block.settings.border_width }}px {{ block.settings.border }} currentColor;
+  border-radius: {{ block.settings.border_radius }}px;
+  padding: 16px;
+  opacity: {{ block.settings.border_opacity | divided_by: 100.0 }};
+}
+{% endif %}
+{% endstyle %}
+
+<div class="tp-block-accordion tp-block-accordion-{{ block.id }}" {{ block.shopify_attributes }}>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Acordeão",
+  "presets": [
+    {
+      "name": "Acordeão",
+      "category": "Interativo"
+    }
+  ],
+  "blocks": [
+    { "type": "_accordion-row" },
+    { "type": "@theme" },
+    { "type": "@app" }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "Ícone",
+      "options": [
+        { "value": "caret", "label": "Seta" },
+        { "value": "plus", "label": "Mais/Menos" }
+      ],
+      "default": "caret"
+    },
+    {
+      "type": "checkbox",
+      "id": "dividers",
+      "label": "Mostrar divisores",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "type_preset",
+      "label": "Tamanho do título",
+      "options": [
+        { "value": "h3", "label": "Grande" },
+        { "value": "h4", "label": "Médio" },
+        { "value": "h5", "label": "Pequeno" }
+      ],
+      "default": "h5"
+    },
+    {
+      "type": "header",
+      "content": "Aparência"
+    },
+    {
+      "type": "checkbox",
+      "id": "inherit_color_scheme",
+      "label": "Herdar esquema de cores",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de cores",
+      "visible_if": "{{ block.settings.inherit_color_scheme == false }}"
+    },
+    {
+      "type": "select",
+      "id": "border",
+      "label": "Borda",
+      "options": [
+        { "value": "none", "label": "Nenhuma" },
+        { "value": "solid", "label": "Sólida" }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Espessura da borda",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 1,
+      "unit": "px",
+      "visible_if": "{{ block.settings.border != 'none' }}"
+    },
+    {
+      "type": "range",
+      "id": "border_opacity",
+      "label": "Opacidade da borda",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 100,
+      "unit": "%",
+      "visible_if": "{{ block.settings.border != 'none' }}"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Arredondamento",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "default": 0,
+      "unit": "px",
+      "visible_if": "{{ block.settings.border != 'none' }}"
+    },
+    {
+      "type": "header",
+      "content": "Espaçamento"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Padding superior",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Padding inferior",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "Padding esquerdo",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "Padding direito",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    }
+  ]
+}
+{% endschema %}

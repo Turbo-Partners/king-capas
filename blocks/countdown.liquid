@@ -1,0 +1,259 @@
+{% style %}
+.tp-block-countdown-{{ block.id }} {
+  display: flex;
+  gap: {{ block.settings.gap }}px;
+  justify-content: {{ block.settings.alignment }};
+  flex-wrap: wrap;
+}
+
+.tp-block-countdown-{{ block.id }} .countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 60px;
+  
+  {% if block.settings.style == 'boxed' %}
+    background: rgba(0,0,0,0.05);
+    padding: 16px;
+    border-radius: 8px;
+  {% endif %}
+}
+
+.tp-block-countdown-{{ block.id }} .countdown-value {
+  {% case block.settings.size %}
+    {% when 'small' %}
+      font-size: 1.5rem;
+    {% when 'medium' %}
+      font-size: 2rem;
+    {% when 'large' %}
+      font-size: 3rem;
+  {% endcase %}
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.tp-block-countdown-{{ block.id }} .countdown-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+
+.tp-block-countdown-{{ block.id }} .countdown-separator {
+  {% case block.settings.size %}
+    {% when 'small' %}
+      font-size: 1.5rem;
+    {% when 'medium' %}
+      font-size: 2rem;
+    {% when 'large' %}
+      font-size: 3rem;
+  {% endcase %}
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.5;
+}
+
+.tp-block-countdown-{{ block.id }} .countdown-ended {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+@media (max-width: 749px) {
+  .tp-block-countdown-{{ block.id }} .countdown-value {
+    {% case block.settings.size %}
+      {% when 'small' %}
+        font-size: 1.25rem;
+      {% when 'medium' %}
+        font-size: 1.5rem;
+      {% when 'large' %}
+        font-size: 2rem;
+    {% endcase %}
+  }
+}
+{% endstyle %}
+
+<div class="tp-block-countdown tp-block-countdown-{{ block.id }}" {{ block.shopify_attributes }} data-end-date="{{ block.settings.end_date }}">
+  <div class="countdown-item">
+    <span class="countdown-value" data-days>00</span>
+    <span class="countdown-label">{{ block.settings.label_days | default: 'Dias' }}</span>
+  </div>
+  
+  {% if block.settings.show_separator %}
+    <span class="countdown-separator">:</span>
+  {% endif %}
+  
+  <div class="countdown-item">
+    <span class="countdown-value" data-hours>00</span>
+    <span class="countdown-label">{{ block.settings.label_hours | default: 'Horas' }}</span>
+  </div>
+  
+  {% if block.settings.show_separator %}
+    <span class="countdown-separator">:</span>
+  {% endif %}
+  
+  <div class="countdown-item">
+    <span class="countdown-value" data-minutes>00</span>
+    <span class="countdown-label">{{ block.settings.label_minutes | default: 'Min' }}</span>
+  </div>
+  
+  {% if block.settings.show_seconds %}
+    {% if block.settings.show_separator %}
+      <span class="countdown-separator">:</span>
+    {% endif %}
+    
+    <div class="countdown-item">
+      <span class="countdown-value" data-seconds>00</span>
+      <span class="countdown-label">{{ block.settings.label_seconds | default: 'Seg' }}</span>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+(function() {
+  const container = document.querySelector('.tp-block-countdown-{{ block.id }}');
+  const endDate = new Date(container.dataset.endDate).getTime();
+  
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = endDate - now;
+    
+    if (distance < 0) {
+      container.innerHTML = '<span class="countdown-ended">{{ block.settings.ended_text | default: "Promoção encerrada" }}</span>';
+      return;
+    }
+    
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    const daysEl = container.querySelector('[data-days]');
+    const hoursEl = container.querySelector('[data-hours]');
+    const minutesEl = container.querySelector('[data-minutes]');
+    const secondsEl = container.querySelector('[data-seconds]');
+    
+    if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+    if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+    if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+  }
+  
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Contagem Regressiva",
+  "presets": [
+    {
+      "name": "Contagem Regressiva",
+      "category": "Interativo"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "end_date",
+      "label": "Data final",
+      "info": "Formato: YYYY-MM-DD HH:MM (ex: 2026-12-31 23:59)",
+      "default": "2026-12-31 23:59"
+    },
+    {
+      "type": "text",
+      "id": "ended_text",
+      "label": "Texto quando encerrado",
+      "default": "Promoção encerrada"
+    },
+    {
+      "type": "header",
+      "content": "Aparência"
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": "Tamanho",
+      "options": [
+        { "value": "small", "label": "Pequeno" },
+        { "value": "medium", "label": "Médio" },
+        { "value": "large", "label": "Grande" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Estilo",
+      "options": [
+        { "value": "minimal", "label": "Mínimo" },
+        { "value": "boxed", "label": "Com caixa" }
+      ],
+      "default": "minimal"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alinhamento",
+      "options": [
+        { "value": "flex-start", "label": "Esquerda" },
+        { "value": "center", "label": "Centro" },
+        { "value": "flex-end", "label": "Direita" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Espaçamento",
+      "min": 8,
+      "max": 40,
+      "step": 4,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_seconds",
+      "label": "Mostrar segundos",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_separator",
+      "label": "Mostrar separador",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Labels"
+    },
+    {
+      "type": "text",
+      "id": "label_days",
+      "label": "Label dias",
+      "default": "Dias"
+    },
+    {
+      "type": "text",
+      "id": "label_hours",
+      "label": "Label horas",
+      "default": "Horas"
+    },
+    {
+      "type": "text",
+      "id": "label_minutes",
+      "label": "Label minutos",
+      "default": "Min"
+    },
+    {
+      "type": "text",
+      "id": "label_seconds",
+      "label": "Label segundos",
+      "default": "Seg"
+    }
+  ]
+}
+{% endschema %}

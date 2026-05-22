@@ -1,0 +1,100 @@
+.tp-e-midia-v1 {
+  overflow: hidden;
+}
+
+.tp-e-midia-v1__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--tp-space-5, 20px);
+  padding-top: var(--tp-pad-top);
+  padding-bottom: var(--tp-pad-bottom);
+}
+
+.tp-e-midia-v1__title {
+  color: var(--tp-color-text-primary);
+  font-family: var(--tp-font-heading);
+  font-size: var(--tp-font-size-xl);
+  font-weight: var(--tp-font-medium);
+  line-height: 1.2;
+  text-align: center;
+  margin: 0;
+}
+
+.tp-e-midia-v1__track {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+.tp-e-midia-v1__logos {
+  display: flex;
+  align-items: center;
+  gap: var(--tp-midia-gap, 24px);
+  flex-shrink: 0;
+  animation: tp-midia-scroll var(--tp-midia-speed, 20s) linear infinite;
+  padding-right: var(--tp-midia-gap, 24px);
+}
+
+.tp-e-midia-v1__track:hover .tp-e-midia-v1__logos {
+  animation-play-state: var(--tp-midia-pause-hover, running);
+}
+
+@keyframes tp-midia-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.tp-e-midia-v1__item {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.tp-e-midia-v1__logo {
+  display: block;
+  flex-shrink: 0;
+  width: var(--tp-midia-logo-width, 120px);
+  height: var(--tp-midia-logo-height, 48px);
+  object-fit: contain;
+}
+
+.tp-e-midia-v1__logo-link {
+  display: block;
+  flex-shrink: 0;
+}
+
+.tp-e-midia-v1__logo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--tp-midia-logo-width, 120px);
+  height: var(--tp-midia-logo-height, 48px);
+  background: var(--tp-color-bg-secondary);
+  border-radius: var(--tp-radius-sm);
+}
+
+.tp-e-midia-v1__logo-placeholder svg {
+  width: 50%;
+  height: 50%;
+  opacity: 0.4;
+}
+
+.tp-e-midia-v1__divider {
+  display: block;
+  flex-shrink: 0;
+  width: 1px;
+  height: var(--tp-midia-logo-height, 48px);
+  background: var(--tp-midia-divider-color, var(--tp-color-border));
+}
+
+@media screen and (max-width: 767px) {
+  .tp-e-midia-v1__logo {
+    width: var(--tp-midia-logo-width-mobile, 100px);
+  }
+}

@@ -1,0 +1,203 @@
+.cart-drawer__order-bump {
+
+  /* ============================= */
+  /* 🎨 VARIABLES (LOCAL) */
+  /* ============================= */
+
+  --bg-color: #f6f6e5;
+  --dot-color: #c4c4c4;
+  --dot-active-color: #748f29;
+
+  --title-color: #727376;
+
+  --btn-gradient-start: #748f29;
+  --btn-gradient-end: #497717;
+  --btn-text-color: #fff;
+
+  --font-main: "Plus Jakarta Sans";
+
+  --font-title: 12px;
+  --font-button: 8px;
+
+  --radius-pill: 32px;
+  --radius-card: 0.8rem;
+
+  --spacing-lg: 2rem;
+  --spacing-md: 1rem;
+  --spacing-sm: 0.45rem;
+
+  /* ============================= */
+  /* BASE */
+  /* ============================= */
+
+  margin: var(--spacing-lg) 0;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--bg-color);
+
+  /* ---------- TITLE ---------- */
+  .order-bump__title {
+    color: var(--title-color);
+    font-family: var(--font-main);
+    font-size: var(--font-title);
+    font-weight: 500;
+    line-height: 130%;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    padding-top: var(--spacing-md);
+  }
+
+  /* ---------- SLIDER ---------- */
+  .order-bump__slider-wrapper {
+    position: relative;
+  }
+
+  .order-bump__slider {
+    display: flex;
+    gap: var(--spacing-md);
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: var(--spacing-md);
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  /* ---------- SLIDE ---------- */
+  .order-bump__slide {
+    width: 300px;
+    max-width: 90vw;
+    flex: 0 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:only-child {
+      width: 100%;
+    }
+  }
+
+  /* ---------- DOTS ---------- */
+  .order-bump__dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    padding-bottom: var(--spacing-sm);
+
+    button {
+      cursor: pointer;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      padding: 0;
+      background-color: var(--dot-color);
+
+      &.active {
+        background-color: var(--dot-active-color);
+      }
+    }
+  }
+
+  /* ---------- CARD ---------- */
+  .card-wrapper {
+    width: 100%;
+  }
+
+  .card--horizontal {
+    padding: 0.8rem 1.2rem;
+    border-radius: var(--radius-card);
+    gap: 1.2rem;
+    align-items: center;
+
+    .card__inner {
+      width: 5.6rem;
+      flex-shrink: 0;
+    }
+
+    .card__information {
+      padding: 0;
+    }
+
+    .card__heading,
+    .price,
+    .price:not(.price--on-sale) .price-item--regular {
+      font-size: 1.3rem;
+    }
+
+    .pix-price {
+      display: none;
+    }
+  }
+
+  /* ---------- CONTENT ---------- */
+  .card__content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .installments,
+  .badge-discount {
+    display: none;
+  }
+
+  /* ---------- BUTTON ---------- */
+  .card__content button {
+    border-radius: var(--radius-pill);
+    background: linear-gradient(
+      90deg,
+      var(--btn-gradient-start) 0%,
+      var(--btn-gradient-end) 100%
+    );
+
+    color: var(--btn-text-color);
+    font-family: var(--font-main);
+    text-transform: uppercase;
+    padding: 1rem;
+
+    min-width: unset;
+    min-height: unset;
+    height: fit-content;
+    width: fit-content;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+
+    .icon-wrap {
+      display: none;
+    }
+
+    * {
+      font-size: 0;
+      font-weight: 800;
+      line-height: 120%;
+
+      &::before {
+        content: "LEVAR JUNTO";
+        font-size: var(--font-button);
+        margin-left: 6px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 9px;
+      }
+    }
+  }
+}
+
+/* EMPTY CART FIX */
+cart-drawer.is-empty {
+  .cart-drawer__order-bump {
+    padding: 0 1.5rem;
+  }
+}

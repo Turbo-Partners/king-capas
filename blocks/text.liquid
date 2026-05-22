@@ -1,0 +1,308 @@
+{% style %}
+.tp-block-text-{{ block.id }} {
+  width: {{ block.settings.width }};
+  {% if block.settings.width == 'custom' %}
+    width: {{ block.settings.custom_width }}%;
+  {% endif %}
+  max-width: {% if block.settings.max_width == 'narrow' %}600px{% elsif block.settings.max_width == 'wide' %}900px{% else %}none{% endif %};
+  text-align: {{ block.settings.alignment }};
+  
+  {% if block.settings.background %}
+    background: var(--color-background);
+    padding: 16px;
+    border-radius: 8px;
+  {% endif %}
+  
+  padding-block-start: {{ block.settings.padding-block-start }}px;
+  padding-block-end: {{ block.settings.padding-block-end }}px;
+  padding-inline-start: {{ block.settings.padding-inline-start }}px;
+  padding-inline-end: {{ block.settings.padding-inline-end }}px;
+}
+
+.tp-block-text-{{ block.id }} * {
+  color: {{ block.settings.text_color }};
+  font-family: {{ block.settings.font }};
+  {% if block.settings.font_size != blank and block.settings.font_size != '' %}
+    font-size: {{ block.settings.font_size }};
+  {% endif %}
+  line-height: {{ block.settings.line_height }};
+  letter-spacing: {{ block.settings.letter_spacing }};
+  text-transform: {{ block.settings.case }};
+  text-wrap: {{ block.settings.wrap }};
+  margin: 0;
+}
+
+.tp-block-text-{{ block.id }} h1,
+.tp-block-text-{{ block.id }} h2,
+.tp-block-text-{{ block.id }} h3,
+.tp-block-text-{{ block.id }} h4,
+.tp-block-text-{{ block.id }} h5,
+.tp-block-text-{{ block.id }} h6 {
+  {% case block.settings.type_preset %}
+    {% when 'h1' %}
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+    {% when 'h2' %}
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 600;
+    {% when 'h3' %}
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 600;
+    {% when 'h4' %}
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      font-weight: 600;
+    {% when 'h5' %}
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 600;
+    {% when 'paragraph' %}
+      font-size: 1rem;
+      font-weight: 400;
+  {% endcase %}
+}
+
+@media (max-width: 749px) {
+  .tp-block-text-{{ block.id }} {
+    {% if block.settings.width_mobile == 'custom' %}
+      width: {{ block.settings.custom_width_mobile }}%;
+    {% elsif block.settings.width_mobile != blank %}
+      width: {{ block.settings.width_mobile }};
+    {% endif %}
+  }
+}
+{% endstyle %}
+
+<div class="tp-block-text tp-block-text-{{ block.id }}" {{ block.shopify_attributes }}>
+  {{ block.settings.text }}
+</div>
+
+{% schema %}
+{
+  "name": "Texto",
+  "presets": [
+    {
+      "name": "Texto",
+      "category": "Texto"
+    }
+  ],
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texto",
+      "default": "<p>Adicione seu texto aqui</p>"
+    },
+    {
+      "type": "header",
+      "content": "Tamanho"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Largura",
+      "options": [
+        { "value": "fit-content", "label": "Ajustar ao conteúdo" },
+        { "value": "100%", "label": "Largura total" },
+        { "value": "custom", "label": "Personalizado" }
+      ],
+      "default": "fit-content"
+    },
+    {
+      "type": "range",
+      "id": "custom_width",
+      "label": "Largura personalizada",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 100,
+      "unit": "%",
+      "visible_if": "{{ block.settings.width == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "width_mobile",
+      "label": "Largura (mobile)",
+      "options": [
+        { "value": "fit-content", "label": "Ajustar ao conteúdo" },
+        { "value": "100%", "label": "Largura total" },
+        { "value": "custom", "label": "Personalizado" }
+      ],
+      "default": "100%"
+    },
+    {
+      "type": "range",
+      "id": "custom_width_mobile",
+      "label": "Largura mobile personalizada",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 100,
+      "unit": "%",
+      "visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "max_width",
+      "label": "Largura máxima",
+      "options": [
+        { "value": "normal", "label": "Normal" },
+        { "value": "narrow", "label": "Estreito (600px)" },
+        { "value": "wide", "label": "Largo (900px)" }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "header",
+      "content": "Tipografia"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alinhamento",
+      "options": [
+        { "value": "left", "label": "Esquerda" },
+        { "value": "center", "label": "Centro" },
+        { "value": "right", "label": "Direita" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "type_preset",
+      "label": "Estilo de texto",
+      "options": [
+        { "value": "rte", "label": "Rich text" },
+        { "value": "h1", "label": "Título H1" },
+        { "value": "h2", "label": "Título H2" },
+        { "value": "h3", "label": "Título H3" },
+        { "value": "h4", "label": "Título H4" },
+        { "value": "h5", "label": "Título H5" },
+        { "value": "paragraph", "label": "Parágrafo" }
+      ],
+      "default": "rte"
+    },
+    {
+      "type": "select",
+      "id": "font",
+      "label": "Fonte",
+      "options": [
+        { "value": "var(--font-body--family)", "label": "Fonte do corpo" },
+        { "value": "var(--font-heading--family)", "label": "Fonte dos títulos" }
+      ],
+      "default": "var(--font-body--family)"
+    },
+    {
+      "type": "text",
+      "id": "font_size",
+      "label": "Tamanho da fonte",
+      "info": "Ex: 1rem, 16px, 1.2em"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Cor do texto"
+    },
+    {
+      "type": "select",
+      "id": "line_height",
+      "label": "Altura da linha",
+      "options": [
+        { "value": "normal", "label": "Normal" },
+        { "value": "1.2", "label": "Compacta (1.2)" },
+        { "value": "1.5", "label": "Confortável (1.5)" },
+        { "value": "1.8", "label": "Espaçosa (1.8)" },
+        { "value": "2", "label": "Dupla (2)" }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "select",
+      "id": "letter_spacing",
+      "label": "Espaçamento entre letras",
+      "options": [
+        { "value": "normal", "label": "Normal" },
+        { "value": "-0.02em", "label": "Compacto" },
+        { "value": "0.05em", "label": "Espaçado" },
+        { "value": "0.1em", "label": "Muito espaçado" }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "select",
+      "id": "case",
+      "label": "Transformação de texto",
+      "options": [
+        { "value": "none", "label": "Nenhuma" },
+        { "value": "uppercase", "label": "MAIÚSCULAS" },
+        { "value": "lowercase", "label": "minúsculas" },
+        { "value": "capitalize", "label": "Capitalizar" }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "select",
+      "id": "wrap",
+      "label": "Quebra de texto",
+      "options": [
+        { "value": "normal", "label": "Normal" },
+        { "value": "pretty", "label": "Otimizado" },
+        { "value": "balance", "label": "Balanceado" }
+      ],
+      "default": "pretty"
+    },
+    {
+      "type": "header",
+      "content": "Aparência"
+    },
+    {
+      "type": "checkbox",
+      "id": "background",
+      "label": "Mostrar fundo",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Espaçamento"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Padding superior",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Padding inferior",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "Padding esquerdo",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "Padding direito",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,61 @@
+{% style %}
+.tp-block-html-{{ block.id }} {
+  {% if block.settings.width == 'fill' %}
+    width: 100%;
+  {% elsif block.settings.width == 'custom' %}
+    width: {{ block.settings.custom_width }}%;
+  {% else %}
+    width: fit-content;
+  {% endif %}
+}
+{% endstyle %}
+
+<div class="tp-block-html tp-block-html-{{ block.id }}" {{ block.shopify_attributes }}>
+  {{ block.settings.html }}
+</div>
+
+{% schema %}
+{
+  "name": "HTML Personalizado",
+  "presets": [
+    {
+      "name": "HTML Personalizado",
+      "category": "Avançado"
+    }
+  ],
+  "settings": [
+    {
+      "type": "html",
+      "id": "html",
+      "label": "Código HTML",
+      "info": "Adicione HTML personalizado (scripts, embeds, etc.)"
+    },
+    {
+      "type": "header",
+      "content": "Tamanho"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Largura",
+      "options": [
+        { "value": "fit-content", "label": "Ajustar ao conteúdo" },
+        { "value": "fill", "label": "Preencher" },
+        { "value": "custom", "label": "Personalizado" }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "custom_width",
+      "label": "Largura personalizada",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 100,
+      "unit": "%",
+      "visible_if": "{{ block.settings.width == 'custom' }}"
+    }
+  ]
+}
+{% endschema %}

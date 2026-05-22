@@ -1,0 +1,522 @@
+{{ 'tp-e-comparison-v1.css' | asset_url | stylesheet_tag }}
+
+{% render 'tp-section-padding',
+  pad_top_min: section.settings.pad_top_min,
+  pad_top_max: section.settings.pad_top_max,
+  pad_bottom_min: section.settings.pad_bottom_min,
+  pad_bottom_max: section.settings.pad_bottom_max,
+  enable_pad_top_mobile: section.settings.enable_pad_top_mobile,
+  pad_top_mobile: section.settings.pad_top_mobile,
+  enable_pad_bottom_mobile: section.settings.enable_pad_bottom_mobile,
+  pad_bottom_mobile: section.settings.pad_bottom_mobile,
+  enable_pad_top_desktop: section.settings.enable_pad_top_desktop,
+  pad_top_desktop: section.settings.pad_top_desktop,
+  enable_pad_bottom_desktop: section.settings.enable_pad_bottom_desktop,
+  pad_bottom_desktop: section.settings.pad_bottom_desktop
+%}
+
+{% liquid
+  assign background_type = section.settings.background_type
+  assign brand_title = section.settings.brand_title
+  assign competitor_title = section.settings.competitor_title
+%}
+
+{% style %}
+.{{ section.id }} {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  {% if section.settings.brand_color != blank %}
+    --tp-e-ct-brand-bg: {{ section.settings.brand_color }};
+  {% endif %}
+  {% if section.settings.brand_header_color != blank %}
+    --tp-e-ct-brand-header-color: {{ section.settings.brand_header_color }};
+  {% endif %}
+
+  {% if section.settings.title_custom %}
+    {% if section.settings.title_color != blank %}
+      --tp-e-ct-title-color: {{ section.settings.title_color }};
+    {% endif %}
+    --tp-e-ct-title-size: {{ section.settings.title_size_desktop }}px;
+    --tp-e-ct-title-size-mobile: {{ section.settings.title_size_mobile }}px;
+    --tp-e-ct-title-weight: {{ section.settings.title_weight }};
+  {% endif %}
+
+  {% if section.settings.row_custom %}
+    {% if section.settings.row_color != blank %}
+      --tp-e-ct-row-color: {{ section.settings.row_color }};
+    {% endif %}
+    --tp-e-ct-row-size: {{ section.settings.row_size_desktop }}px;
+    --tp-e-ct-row-size-mobile: {{ section.settings.row_size_mobile }}px;
+    --tp-e-ct-row-weight: {{ section.settings.row_weight }};
+  {% endif %}
+
+  {% case section.settings.table_radius %}
+    {% when 'none' %}
+      --tp-e-ct-radius: 0;
+    {% when 'sm' %}
+      --tp-e-ct-radius: var(--tp-radius-sm);
+    {% when 'md' %}
+      --tp-e-ct-radius: var(--tp-radius-md);
+    {% when 'lg' %}
+      --tp-e-ct-radius: var(--tp-radius-lg);
+    {% when 'xl' %}
+      --tp-e-ct-radius: var(--tp-radius-xl);
+  {% endcase %}
+
+  {% if background_type == "image" and section.settings.background_image_mobile != blank %}
+    background-image: url('{{ section.settings.background_image_mobile | image_url }}');
+    {% if section.settings.background_image_desktop != blank %}
+      @media screen and (min-width: 1024px) {
+        background-image: url('{{ section.settings.background_image_desktop | image_url }}');
+      }
+    {% endif %}
+  {% elsif background_type == "color" and section.settings.background_color != blank %}
+    background: {{ section.settings.background_color }};
+  {% elsif background_type == "gradient" and section.settings.background_gradient != blank %}
+    background: {{ section.settings.background_gradient }};
+  {% endif %}
+}
+{% endstyle %}
+
+<section class="tp-e-comparison-v1 {{ section.id }} scroll-trigger animate--slide-in">
+  <div class="tp-wrapper tp-e-comparison-v1__wrapper" id="section-wrapper-{{ section.id }}">
+
+    {% if section.settings.title != blank %}
+      <div class="tp-e-comparison-v1__title">{{ section.settings.title }}</div>
+    {% endif %}
+
+    <div class="tp-e-comparison-v1__grid" role="table">
+      {%- comment -%} Header row {%- endcomment -%}
+      <div class="tp-e-comparison-v1__header-feature" role="columnheader">
+        <span class="visually-hidden">Recurso</span>
+      </div>
+      <div class="tp-e-comparison-v1__header-brand" role="columnheader">
+        {% if section.settings.brand_logo != blank %}
+          {{ section.settings.brand_logo | image_url: width: 200 | image_tag:
+            loading: 'lazy',
+            class: 'tp-e-comparison-v1__brand-logo',
+            alt: brand_title
+          }}
+        {% else %}
+          {{ brand_title | escape }}
+        {% endif %}
+      </div>
+      <div class="tp-e-comparison-v1__header-competitor" role="columnheader">
+        {{ competitor_title | escape }}
+      </div>
+
+      {%- comment -%} Body rows {%- endcomment -%}
+      {% for block in section.blocks %}
+        <div class="tp-e-comparison-v1__row" {{ block.shopify_attributes }}>
+          <div class="tp-e-comparison-v1__cell tp-e-comparison-v1__cell--feature" role="cell">
+            {{ block.settings.feature_text | escape }}
+          </div>
+          <div class="tp-e-comparison-v1__cell tp-e-comparison-v1__cell--brand" role="cell">
+            {% if block.settings.brand_has %}
+              <span class="tp-e-comparison-v1__icon tp-e-comparison-v1__icon--check" aria-label="Sim">
+                {% if section.settings.check != blank %}
+                  <img src="{{ section.settings.check | image_url }}">
+                {% else %}
+                  <img src="{{ 'tp-placeholder-check.svg' | asset_url }}">
+                {% endif %}
+              </span>
+            {% else %}
+              <span class="tp-e-comparison-v1__icon tp-e-comparison-v1__icon--cross" aria-label="Não">
+                {% if section.settings.false != blank %}
+                  <img src="{{ section.settings.false | image_url }}">
+                {% else %}
+                  <img src="{{ 'tp-placeholder-false.svg' | asset_url }}">
+                {% endif %}
+              </span>
+            {% endif %}
+          </div>
+          <div class="tp-e-comparison-v1__cell tp-e-comparison-v1__cell--competitor" role="cell">
+            {% if block.settings.competitor_has %}
+              <span class="tp-e-comparison-v1__icon tp-e-comparison-v1__icon--competitor-check" aria-label="Sim">
+                {% if section.settings.check != blank %}
+                  <img src="{{ section.settings.check | image_url }}">
+                {% else %}
+                  <img src="{{ 'tp-placeholder-check.svg' | asset_url }}">
+                {% endif %}
+              </span>
+            {% else %}
+              <span class="tp-e-comparison-v1__icon tp-e-comparison-v1__icon--cross" aria-label="Não">
+                {% if section.settings.false != blank %}
+                  <img src="{{ section.settings.false | image_url }}">
+                {% else %}
+                  <img src="{{ 'tp-placeholder-false.svg' | asset_url }}">
+                {% endif %}
+              </span>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Tabela Comparativa V1",
+  "class": "E__COMPARISON__V1",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Conteúdo"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Título",
+      "default": "<h2>Lorem ipsum dolor sit amet</h2>"
+    },
+    {
+      "type": "text",
+      "id": "brand_title",
+      "label": "Nome da marca",
+      "default": "LOGO"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_logo",
+      "label": "Logo da marca (opcional)"
+    },
+    {
+      "type": "text",
+      "id": "competitor_title",
+      "label": "Nome do concorrente",
+      "default": "Outros"
+    },
+    {
+      "type": "header",
+      "content": "Ícones"
+    },
+    {
+      "type": "image_picker",
+      "id": "check",
+      "label": "Ícone de check (opcional)"
+    },
+    {
+      "type": "image_picker",
+      "id": "false",
+      "label": "Ícone de negação (opcional)"
+    },
+    {
+      "type": "header",
+      "content": "Aparência"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Tipo de background",
+      "default": "color",
+      "options": [
+        { "label": "Cor", "value": "color" },
+        { "label": "Gradiente", "value": "gradient" },
+        { "label": "Imagem", "value": "image" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Cor",
+      "default": "#FFFFFF",
+      "visible_if": "{{ section.settings.background_type == 'color' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Gradiente",
+      "visible_if": "{{ section.settings.background_type == 'gradient' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Imagem mobile",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_desktop",
+      "label": "Imagem desktop",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "color",
+      "id": "brand_color",
+      "label": "Cor da coluna da marca",
+      "default": "#5B4FE9"
+    },
+    {
+      "type": "color",
+      "id": "brand_header_color",
+      "label": "Cor do texto da marca",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "select",
+      "id": "table_radius",
+      "label": "Arredondamento da tabela",
+      "default": "lg",
+      "options": [
+        { "label": "Nenhum", "value": "none" },
+        { "label": "Pequeno", "value": "sm" },
+        { "label": "Médio", "value": "md" },
+        { "label": "Grande", "value": "lg" },
+        { "label": "Extra grande", "value": "xl" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Tipografia"
+    },
+    {
+      "type": "checkbox",
+      "id": "title_custom",
+      "label": "Personalizar título",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Cor",
+      "default": "#111111",
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Tamanho mobile (px)",
+      "min": 16,
+      "max": 80,
+      "step": 1,
+      "default": 28,
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "label": "Tamanho desktop (px)",
+      "min": 16,
+      "max": 100,
+      "step": 1,
+      "default": 36,
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Peso",
+      "default": "700",
+      "visible_if": "{{ section.settings.title_custom }}",
+      "options": [
+        { "value": "400", "label": "Regular (400)" },
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semibold (600)" },
+        { "value": "700", "label": "Bold (700)" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "row_custom",
+      "label": "Personalizar texto das linhas",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "row_color",
+      "label": "Cor",
+      "visible_if": "{{ section.settings.row_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "row_size_mobile",
+      "label": "Tamanho mobile (px)",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "default": 14,
+      "visible_if": "{{ section.settings.row_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "row_size_desktop",
+      "label": "Tamanho desktop (px)",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "default": 16,
+      "visible_if": "{{ section.settings.row_custom }}"
+    },
+    {
+      "type": "select",
+      "id": "row_weight",
+      "label": "Peso",
+      "default": "600",
+      "visible_if": "{{ section.settings.row_custom }}",
+      "options": [
+        { "value": "400", "label": "Regular (400)" },
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semibold (600)" },
+        { "value": "700", "label": "Bold (700)" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Espaçamento"
+    },
+    {
+      "type": "range",
+      "id": "pad_top_min",
+      "label": "Padding TOP min (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "pad_top_max",
+      "label": "Padding TOP max (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_min",
+      "label": "Padding BOTTOM min (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_max",
+      "label": "Padding BOTTOM max (px)",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "default": 96
+    },
+    {
+      "type": "header",
+      "content": "Espaçamento - Overrides (opcional)"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_top_mobile",
+      "label": "Personalizar padding TOP mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_top_mobile",
+      "label": "Padding TOP mobile (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_top_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_bottom_mobile",
+      "label": "Personalizar padding BOTTOM mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_mobile",
+      "label": "Padding BOTTOM mobile (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_bottom_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_top_desktop",
+      "label": "Personalizar padding TOP desktop",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_top_desktop",
+      "label": "Padding TOP desktop (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_top_desktop }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_bottom_desktop",
+      "label": "Personalizar padding BOTTOM desktop",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_desktop",
+      "label": "Padding BOTTOM desktop (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_bottom_desktop }}"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Recurso",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_text",
+          "label": "Texto",
+          "default": "Lorem ipsum dolor sit amet"
+        },
+        {
+          "type": "checkbox",
+          "id": "brand_has",
+          "label": "Marca possui",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "competitor_has",
+          "label": "Concorrente possui",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabela de Comparação V1",
+      "category": "Texto",
+      "settings": {
+        "title": "<h2>Lorem ipsum dolor sit amet<\/h2>",
+        "brand_title": "LOGO",
+        "competitor_title": "Outros",
+        "brand_color": "#5B4FE9"
+      },
+      "blocks": [
+        { "type": "feature", "settings": { "feature_text": "Lorem ipsum dolor sit amet", "brand_has": true, "competitor_has": false } },
+        { "type": "feature", "settings": { "feature_text": "Lorem ipsum dolor sit amet", "brand_has": true, "competitor_has": false } },
+        { "type": "feature", "settings": { "feature_text": "Lorem ipsum dolor sit amet", "brand_has": true, "competitor_has": true } },
+        { "type": "feature", "settings": { "feature_text": "Lorem ipsum dolor sit amet", "brand_has": true, "competitor_has": false } },
+        { "type": "feature", "settings": { "feature_text": "Lorem ipsum dolor sit amet", "brand_has": true, "competitor_has": false } }
+      ]
+    }
+  ]
+}
+{% endschema %}

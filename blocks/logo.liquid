@@ -1,0 +1,159 @@
+{% style %}
+.tp-block-logo-{{ block.id }} {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tp-block-logo-{{ block.id }} img,
+.tp-block-logo-{{ block.id }} svg {
+  {% if block.settings.unit == 'pixel' %}
+    width: {{ block.settings.pixel_width }}px;
+    height: auto;
+  {% elsif block.settings.unit == 'percent' %}
+    width: {{ block.settings.percent_width }}%;
+    height: auto;
+  {% endif %}
+  max-width: 100%;
+}
+
+.tp-block-logo-{{ block.id }} a {
+  display: inline-flex;
+}
+
+@media (max-width: 749px) {
+  .tp-block-logo-{{ block.id }} img,
+  .tp-block-logo-{{ block.id }} svg {
+    {% if block.settings.mobile_unit == 'pixel' %}
+      width: {{ block.settings.mobile_pixel_width }}px;
+    {% elsif block.settings.mobile_unit == 'percent' %}
+      width: {{ block.settings.mobile_percent_width }}%;
+    {% endif %}
+  }
+}
+{% endstyle %}
+
+<div class="tp-block-logo tp-block-logo-{{ block.id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.link != blank %}
+    <a href="{{ block.settings.link }}" {% if block.settings.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}>
+  {% endif %}
+  
+  {% if block.settings.logo != blank %}
+    <img 
+      src="{{ block.settings.logo | image_url: width: 600 }}" 
+      srcset="{{ block.settings.logo | image_url: width: 200 }} 200w,
+              {{ block.settings.logo | image_url: width: 400 }} 400w,
+              {{ block.settings.logo | image_url: width: 600 }} 600w"
+      alt="{{ block.settings.logo.alt | default: shop.name | escape }}"
+      loading="lazy"
+    >
+  {% else %}
+    {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+  {% endif %}
+  
+  {% if block.settings.link != blank %}
+    </a>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Logo",
+  "presets": [
+    {
+      "name": "Logo",
+      "category": "Mídia"
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link (opcional)"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab",
+      "label": "Abrir em nova aba",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Tamanho (Desktop)"
+    },
+    {
+      "type": "select",
+      "id": "unit",
+      "label": "Unidade",
+      "options": [
+        { "value": "pixel", "label": "Pixels" },
+        { "value": "percent", "label": "Porcentagem" }
+      ],
+      "default": "pixel"
+    },
+    {
+      "type": "range",
+      "id": "pixel_width",
+      "label": "Largura (px)",
+      "min": 50,
+      "max": 500,
+      "step": 10,
+      "default": 200,
+      "unit": "px",
+      "visible_if": "{{ block.settings.unit == 'pixel' }}"
+    },
+    {
+      "type": "range",
+      "id": "percent_width",
+      "label": "Largura (%)",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 50,
+      "unit": "%",
+      "visible_if": "{{ block.settings.unit == 'percent' }}"
+    },
+    {
+      "type": "header",
+      "content": "Tamanho (Mobile)"
+    },
+    {
+      "type": "select",
+      "id": "mobile_unit",
+      "label": "Unidade (mobile)",
+      "options": [
+        { "value": "pixel", "label": "Pixels" },
+        { "value": "percent", "label": "Porcentagem" }
+      ],
+      "default": "pixel"
+    },
+    {
+      "type": "range",
+      "id": "mobile_pixel_width",
+      "label": "Largura mobile (px)",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "default": 150,
+      "unit": "px",
+      "visible_if": "{{ block.settings.mobile_unit == 'pixel' }}"
+    },
+    {
+      "type": "range",
+      "id": "mobile_percent_width",
+      "label": "Largura mobile (%)",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 70,
+      "unit": "%",
+      "visible_if": "{{ block.settings.mobile_unit == 'percent' }}"
+    }
+  ]
+}
+{% endschema %}

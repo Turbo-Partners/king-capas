@@ -1,0 +1,717 @@
+{% comment %}
+  Snippet: quantity-bundle.liquid
+  Usage: {% render 'quantity-bundle', block: block, product: product %}
+
+  Metafield: product.metafields.custom.pdp_bundle_de_quantidades
+  Estrutura do Metaobjeto (Lista de Bundle de Quantidades):
+    - quantidade: Integer (ex: 3)
+    - desconto: Integer (ex: 15 para 15%)
+    - titulo: String (ex: "3 unidades")
+    - selo: String (ex: "MAIS VENDIDO")
+{% endcomment %}
+
+{% comment %} Buscar primeira variante disponível {% endcomment %}
+{% assign available_variant = null %}
+{% for variant in product.variants %}
+  {% if variant.available and available_variant == null %}
+    {% assign available_variant = variant %}
+  {% endif %}
+{% endfor %}
+{% comment %} Fallback para primeira variante se nenhuma disponível {% endcomment %}
+{% unless available_variant %}
+  {% assign available_variant = product.variants.first %}
+{% endunless %}
+
+{% liquid
+  assign price = product.price
+  assign bundle_options = product.metafields.custom.pdp_bundle_de_quantidades.value
+
+  assign has_bundle_options = false
+  if bundle_options and bundle_options.size > 0
+    assign has_bundle_options = true
+  endif
+
+  assign pix_discount = block.settings.pix_discount
+  assign pix_discount_multiply = 100 | minus: pix_discount | divided_by: 100.00
+
+  assign parcelas = settings.installment_number | times: 1.00
+
+  comment
+    Valores iniciais baseados na primeira opção do bundle ou padrão
+  endcomment
+  if has_bundle_options
+    assign first_option = bundle_options[0]
+    assign initial_quantity = first_option.quantidade | times: 1
+    assign initial_discount = first_option.desconto | times: 1
+  else
+    assign initial_quantity = block.settings.default_option_1_quantity | times: 1
+    assign initial_discount = block.settings.default_option_1_discount | times: 1
+  endif
+
+  assign initial_discount_multiply = 100 | minus: initial_discount | divided_by: 100.00
+  assign initial_price_unit = price | times: initial_discount_multiply
+  assign initial_savings = price | minus: initial_price_unit | times: initial_quantity
+  assign initial_total = price | times: initial_quantity
+  assign initial_total_discounted = initial_total | minus: initial_savings
+  assign initial_total_discounted_pix = initial_total | minus: initial_savings | times: pix_discount_multiply
+  assign initial_parcelas = initial_total_discounted | divided_by: parcelas
+
+  comment
+    Construir string de descontos para data-attribute
+  endcomment
+  assign discounts_string = ''
+  if has_bundle_options
+    for opt in bundle_options
+      assign discounts_string = discounts_string | append: opt.desconto
+      unless forloop.last
+        assign discounts_string = discounts_string | append: '/'
+      endunless
+    endfor
+  else
+    if block.settings.default_option_1_quantity != blank and block.settings.default_option_1_quantity != '0'
+      assign discounts_string = block.settings.default_option_1_discount
+    endif
+    if block.settings.default_option_2_quantity != blank and block.settings.default_option_2_quantity != '0'
+      if discounts_string != blank
+        assign discounts_string = discounts_string | append: '/'
+      endif
+      assign discounts_string = discounts_string | append: block.settings.default_option_2_discount
+    endif
+    if block.settings.default_option_3_quantity != blank and block.settings.default_option_3_quantity != '0'
+      if discounts_string != blank
+        assign discounts_string = discounts_string | append: '/'
+      endif
+      assign discounts_string = discounts_string | append: block.settings.default_option_3_discount
+    endif
+  endif
+%}
+
+<div
+  class="quantity-bundle"
+  {{ block.shopify_attributes }}
+  data-product-id="{{ product.id }}"
+  data-variant-id="{{ available_variant.id }}"
+  data-variant-available="{{ available_variant.available }}"
+  data-product-handle="{{ product.handle }}"
+  data-discounts="{{ discounts_string }}"
+>
+  {% if block.settings.bundle_label != blank %}
+    <span class="quantity-bundle__label">{{ block.settings.bundle_label }}</span>
+  {% endif %}
+
+  <div class="quantity-bundle__options">
+    {% if has_bundle_options %}
+      {% for option in bundle_options %}
+        {% liquid
+          assign quantity = option.quantidade | times: 1
+          assign discount = option.desconto | times: 1
+          assign discount_multiply = 100 | minus: discount | divided_by: 100.00
+
+          assign highlight = option.selo
+          assign title = option.titulo
+          if title == blank
+            assign title = quantity | append: ' unidades'
+            if quantity == 1
+              assign title = '1 unidade'
+            endif
+          endif
+
+          assign price_money = price | money
+          assign price_unit = price | times: discount_multiply
+          assign price_unit_money = price_unit | money
+          assign savings = price | minus: price_unit | times: quantity
+
+          assign total = price | times: quantity
+          assign total_money = total | money
+
+          assign total_discounted = total | times: discount_multiply
+          assign total_discounted_money = total_discounted | money
+
+          assign economia = total | minus: total_discounted
+
+          assign position = forloop.index
+          assign is_first = forloop.first
+        %}
+
+        {%
+          render 'quantity-bundle-option',
+          block: block,
+          quantity: quantity,
+          discount: discount,
+          title: title,
+          highlight: highlight,
+          price: price,
+          price_money: price_money,
+          price_unit: price_unit,
+          price_unit_money: price_unit_money,
+          total: total,
+          total_money: total_money,
+          total_discounted: total_discounted,
+          total_discounted_money: total_discounted_money,
+          economia: economia,
+          position: position,
+          is_first: is_first
+        %}
+      {% endfor %}
+    {% else %}
+      {% assign rendered_index = 0 %}
+      {% for i in (1..3) %}
+        {% liquid
+          assign qty_id = 'default_option_' | append: i | append: '_quantity'
+          assign discount_id = 'default_option_' | append: i | append: '_discount'
+          assign title_id = 'default_option_' | append: i | append: '_title'
+          assign badge_id = 'default_option_' | append: i | append: '_badge'
+
+          assign quantity = block.settings[qty_id] | times: 1
+          assign discount = block.settings[discount_id] | times: 1
+          assign title = block.settings[title_id]
+          assign highlight = block.settings[badge_id]
+        %}
+
+        {% if quantity > 0 %}
+          {% liquid
+            assign rendered_index = rendered_index | plus: 1
+            assign discount_multiply = 100 | minus: discount | divided_by: 100.00
+
+            assign price_money = price | money
+            assign price_unit = price | times: discount_multiply
+            assign price_unit_money = price_unit | money
+            assign savings = price | minus: price_unit | times: quantity
+
+            assign total = price | times: quantity
+            assign total_money = total | money
+
+            assign total_discounted = total | times: discount_multiply
+            assign total_discounted_money = total_discounted | money
+
+            assign economia = total | minus: total_discounted
+
+            if title == blank
+              assign title = quantity | append: ' unidades'
+              if quantity == 1
+                assign title = '1 unidade'
+              endif
+            endif
+
+            assign is_first = false
+            if rendered_index == 1
+              assign is_first = true
+            endif
+          %}
+
+          {%
+            render 'quantity-bundle-option',
+            block: block,
+            quantity: quantity,
+            discount: discount,
+            title: title,
+            highlight: highlight,
+            price: price,
+            price_money: price_money,
+            price_unit: price_unit,
+            price_unit_money: price_unit_money,
+            total: total,
+            total_money: total_money,
+            total_discounted: total_discounted,
+            total_discounted_money: total_discounted_money,
+            economia: economia,
+            position: rendered_index,
+            is_first: is_first
+          %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  {%- comment -%} Preços Calculados - Oculto para uso futuro {%- endcomment -%}
+  <div class="quantity-bundle__pricing">
+    <span class="quantity-bundle__price-unit" style="display:none">{{ initial_price_unit | money }} cada</span>
+    <div class="quantity-bundle__price-wrapper">
+      <div class="quantity-bundle__price-line">
+        <div>
+          <span
+            class="quantity-bundle__compare-price"
+            data-compare-price="{{ product.compare_at_price | default: product.price }}"
+          >
+            {{ initial_total | money }}
+          </span>
+          <span class="quantity-bundle__current-price" data-current-price="{{ product.price }}">
+            {{ initial_total_discounted | money }}
+          </span>
+
+          <span
+            class="quantity-bundle__pix-price{% if pix_discount == 0 %} visually-hidden{% endif %}"
+            data-pix-discount="{{ pix_discount }}"
+          >
+            {{ initial_total_discounted_pix | money }}
+            {{ block.settings.pix_text }}
+          </span>
+          <span class="quantity-bundle__discount-tag"> {{ initial_discount | round: 0 }}% OFF </span>
+        </div>
+
+        <span
+          {% if settings.parcelas <= 0 %}
+            style="display:none"
+          {% endif %}
+          class="quantity-bundle__price-parcels"
+          data-parcelas="{{ parcelas }}"
+        >
+          ou {{ parcelas | round: 0 }}x de {{ initial_parcelas | money }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botão de Compra -->
+  <div class="quantity-bundle__actions">
+    <button type="button" class="quantity-bundle__buy-button button button--primary" data-product-id="{{ product.id }}">
+      {{ block.settings.buy_button_text }}
+    </button>
+
+    {% if block.settings.security_text != blank or block.settings.shipping_text != blank %}
+      <div class="quantity-bundle__badges">
+        {% if block.settings.security_text != blank %}
+          <span class="quantity-bundle__trust-badge">
+            <span class="quantity-bundle__trust-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor" d="M16 31S4 23 4 8a4 4 0 0 1 4-4h16a4 4 0 0 1 4 4c0 15-12 23-12 23zm-1.297-11.293L9.21 14.21l1.415-1.42l4.079 4.083l6.671-6.667l1.418 1.41z"/>
+              </svg>
+            </span>
+            <span class="quantity-bundle__trust-text">{{ block.settings.security_text }}</span>
+          </span>
+        {% endif %}
+        {% if block.settings.shipping_text != blank %}
+          <span class="quantity-bundle__trust-badge">
+            <span class="quantity-bundle__trust-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="7" cy="17" r="2"/>
+                <circle cx="17" cy="17" r="2"/>
+                <path d="M5 17H3v-4"/>
+                <path d="M2 5h11v12"/>
+                <path d="M13 8h5l3 5v4h-2"/>
+                <path d="M5 13H2V9h12"/>
+              </svg>
+            </span>
+            <span class="quantity-bundle__trust-text">{{ block.settings.shipping_text }}</span>
+          </span>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+
+{% style %}
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap');
+
+  .quantity-bundle {
+    --qb-border: {{ block.settings.border_color | default: '#D0D5DD' }};
+    --qb-border-active: {{ block.settings.border_color_active | default: '#1B1B1B' }};
+    --qb-tag-bg: {{ block.settings.badge_bg | default: '#1B1B1B' }};
+    --qb-tag-color: {{ block.settings.badge_color | default: '#FFFFFF' }};
+    --qb-text: #1B1B1B;
+    --qb-text-muted: #667085;
+    --qb-text-price: #0C111D;
+    --qb-text-title: #090909;
+    --qb-shipping-bg: #373737;
+    --qb-shipping-color: #FFFFFF;
+    --qb-font: 'Bebas Neue', 'Bebas Neue Pro', sans-serif;
+
+    margin: 2rem 0 1.2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quantity-bundle__label {
+    font-family: var(--qb-font);
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 1.4;
+    color: var(--qb-text-title);
+    margin: 0 0 1.6rem;
+    text-transform: uppercase;
+  }
+
+  .quantity-bundle__options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    overflow: visible;
+  }
+
+  .quantity-bundle__option {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .quantity-bundle__radio-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .quantity-bundle__tags {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 1.6rem;
+    pointer-events: none;
+  }
+
+  .quantity-bundle__tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem 1rem;
+    background-color: var(--qb-tag-bg);
+    color: var(--qb-tag-color);
+    border-radius: 4px 4px 0 0;
+    font-family: var(--qb-font);
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 1.4;
+    letter-spacing: 0.54px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .quantity-bundle__tag--off {
+    padding-inline: 0.6rem;
+  }
+
+  .quantity-bundle__card {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    min-height: 64px;
+    padding: 1.6rem;
+    border: 1px solid var(--qb-border);
+    border-radius: 4px;
+    background-color: #fff;
+    transition: border-color 180ms ease, border-width 180ms ease, padding 180ms ease;
+  }
+
+  .quantity-bundle__option:hover .quantity-bundle__card {
+    border-color: var(--qb-border-active);
+  }
+
+  .quantity-bundle__option:has(.quantity-bundle__radio-input:checked) .quantity-bundle__card,
+  .quantity-bundle__option--selected .quantity-bundle__card {
+    border: 2px solid var(--qb-border-active);
+    padding: calc(1.6rem - 1px);
+  }
+
+  .quantity-bundle__radio-control {
+    position: relative;
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    border: 1.5px solid var(--qb-border);
+    background-color: #fff;
+    transition: border-color 180ms ease;
+  }
+
+  .quantity-bundle__radio-control::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    background-color: var(--qb-border-active);
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 220ms cubic-bezier(.2, .9, .2, 1.2), opacity 140ms ease;
+  }
+
+  .quantity-bundle__option:hover .quantity-bundle__radio-control {
+    border-color: var(--qb-border-active);
+  }
+
+  .quantity-bundle__radio-input:checked ~ .quantity-bundle__card .quantity-bundle__radio-control,
+  .quantity-bundle__option--selected .quantity-bundle__radio-control {
+    border-color: var(--qb-border-active);
+  }
+
+  .quantity-bundle__radio-input:checked ~ .quantity-bundle__card .quantity-bundle__radio-control::after,
+  .quantity-bundle__option--selected .quantity-bundle__radio-control::after {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  .quantity-bundle__radio-input:focus-visible ~ .quantity-bundle__card {
+    outline: 2px solid var(--qb-border-active);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .quantity-bundle__card,
+    .quantity-bundle__radio-control,
+    .quantity-bundle__radio-control::after {
+      transition: none !important;
+    }
+  }
+
+  .quantity-bundle__main {
+    flex: 1 0 0;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+  }
+
+  .quantity-bundle__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+  }
+
+  .quantity-bundle__title-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .quantity-bundle__option-title {
+    margin: 0;
+    font-family: var(--qb-font);
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1.4;
+    color: var(--qb-text);
+    text-transform: uppercase;
+  }
+
+  .quantity-bundle__shipping {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem 0.8rem;
+    background-color: var(--qb-shipping-bg);
+    color: var(--qb-shipping-color);
+    border-radius: 4px;
+    font-family: var(--qb-font);
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1;
+    letter-spacing: 0.42px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .quantity-bundle__option-total {
+    margin: 0;
+    font-family: var(--qb-font);
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--qb-text-muted);
+    text-transform: uppercase;
+  }
+
+  .quantity-bundle__prices {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .quantity-bundle__option-strache {
+    margin: 0;
+    font-family: var(--qb-font);
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--qb-text-muted);
+    text-decoration: line-through;
+  }
+
+  .quantity-bundle__price-each {
+    margin: 0;
+    font-family: var(--qb-font);
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 1.4;
+    color: var(--qb-text-price);
+  }
+
+  /* Área de preços calculados abaixo das opções — oculta visualmente, mantida no DOM porque o JS depende destes elementos para calcular e exibir os totais ao trocar de opção. */
+  .quantity-bundle__pricing {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .quantity-bundle__price-unit {
+    color: rgba(var(--color-foreground), 0.8);
+    font-size: 1.4rem;
+    line-height: 1.5;
+  }
+
+  .quantity-bundle__price-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quantity-bundle__price-line {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: end;
+    gap: 0.4rem;
+    line-height: 1.5;
+    color: rgba(var(--color-foreground), 0.8);
+    font-size: 1.4rem;
+
+    @media (min-width: 750px) {
+      font-size: 1.6rem;
+    }
+  }
+
+  .quantity-bundle__compare-price {
+    text-decoration: line-through;
+  }
+
+  .quantity-bundle__current-price {
+    font-weight: 600;
+  }
+
+  .quantity-bundle__discount-tag {
+    background: {{ block.settings.tag_bg | default: '#1B1B1B' }};
+    color: {{ block.settings.tag_color | default: '#FFFFFF' }};
+    border-radius: 4px;
+    padding: 2px 6px;
+    line-height: 1.5;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-left: 4px;
+
+    @media (min-width: 750px) {
+      font-size: 1.4rem;
+      padding: 2px 8px;
+      border-radius: 8px;
+    }
+  }
+
+  .quantity-bundle__price-parcels {
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    color: rgba(var(--color-foreground), 0.8);
+
+    @media (min-width: 750px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .quantity-bundle__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 2rem 0 0;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .quantity-bundle__buy-button.button {
+    width: 100%;
+    max-width: unset;
+    margin: 0;
+    padding: 1.6rem 3.2rem;
+    border-radius: 999px;
+    background: #0e0e0e;
+    border: none !important;
+    box-shadow: none !important;
+    transition: background-color 180ms ease;
+    color: #f9fafb;
+    font-family: var(--qb-font);
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 1.4;
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
+  }
+
+  .quantity-bundle__buy-button.button:hover,
+  .quantity-bundle__buy-button.button:focus,
+  .quantity-bundle__buy-button.button:active {
+    border: none !important;
+    box-shadow: none !important;
+    background: #1f1f1f;
+  }
+
+  .quantity-bundle__buy-button.button::before,
+  .quantity-bundle__buy-button.button::after,
+  .quantity-bundle__buy-button.button:focus-visible {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .quantity-bundle__badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.6rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .quantity-bundle__trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #0c111d;
+  }
+
+  .quantity-bundle__trust-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    color: inherit;
+  }
+
+  .quantity-bundle__trust-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .quantity-bundle__trust-text {
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    color: inherit;
+  }
+{% endstyle %}

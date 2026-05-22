@@ -1,0 +1,98 @@
+/* =============================================
+   TP Barra de Avisos
+   ============================================= */
+
+.tp-aviso-barra {
+  width: 100%;
+  font-family: var(--tp-font-body, var(--font-body-family));
+}
+
+.tp-aviso-barra--bordas {
+  border-bottom: 1px solid var(--tp-color-border, #e0e0e0);
+}
+
+/* Marquee */
+.tp-aviso-barra__marquee {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.tp-aviso-barra__faixa {
+  display: flex;
+  width: max-content;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.tp-aviso-barra__faixa:hover {
+  animation-play-state: paused;
+}
+
+.tp-aviso-barra__item {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.tp-aviso-barra__conteudo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.tp-aviso-barra__conteudo:hover {
+  opacity: 0.8;
+}
+
+.tp-aviso-barra__texto {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.4;
+}
+
+.tp-aviso-barra__texto p {
+  margin: 0;
+  padding: 0;
+}
+
+.tp-aviso-barra__imagem {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.tp-aviso-barra__imagem img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Utilidades (social + localizacao) */
+.tp-aviso-barra__utilidades {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-inline: var(--page-width-padding, 1.5rem);
+}
+
+.tp-aviso-barra__utilidades--2-col {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+}
+
+/* Keyframes */
+@keyframes tp-marquee-ltr {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes tp-marquee-rtl {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}

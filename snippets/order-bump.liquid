@@ -1,0 +1,59 @@
+{{ 'component-order-bump.css' | asset_url | stylesheet_tag }}
+{% liquid
+  assign bump_collection = collections[settings.cart_drawer_collection]
+  assign cart_product_ids = cart.items | map: 'product_id'
+  assign bump_products = bump_collection.products
+  for id in cart_product_ids
+    assign bump_products = bump_products | reject: 'id', id
+  endfor
+%}
+
+<div class="cart-drawer__order-bump">
+  <h3 class="order-bump__title">
+    {% if cart.items.size > 0 %}
+      Compre junto:
+    {% else %}
+      Compre agora:
+    {% endif %}
+  </h3>
+
+  <div class="order-bump__slider-wrapper">
+    <div
+      class="order-bump__slider"
+      id="OrderBumpSlider-{{ section.id }}"
+    >
+        {% assign quick_add = 'standard' %}
+      {% if bump_products.size > 0 %}
+        {% for product in bump_products %}
+          <div class="order-bump__slide slide">
+            {% render 'card-product',
+              card_product: product,
+              media_aspect_ratio: block.settings.image_ratio,
+              show_secondary_image: false,
+              lazy_load: false,
+              skip_styles: skip_card_product_styles,
+              quick_add: quick_add,
+              section_id: section.id,
+              horizontal_class: true,
+              horizontal_quick_add: true
+            %}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    {% if bump_products.size > 1 %}
+      <slider-dots-controller
+        class="order-bump__dots slider-dots"
+        data-section-id="OrderBumpSlider-{{ section.id }}"
+      >
+        {% for product in bump_products %}
+          <button
+            class="slider-dot{% if forloop.first %} active{% endif %}"
+            aria-label="Ir para o item {{ forloop.index }}"
+          ></button>
+        {% endfor %}
+      </slider-dots-controller>
+    {% endif %}
+  </div>
+</div>

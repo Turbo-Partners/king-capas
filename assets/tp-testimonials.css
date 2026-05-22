@@ -1,0 +1,111 @@
+.tp-testimonials {
+    width: 100%;
+
+    .tp-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(3.2rem, 2.6057rem + 1.5238vw, 4.8rem);
+        align-items: center;
+        justify-content: center;
+
+        .tp-title-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(1.2rem, 1.0514rem + 0.381vw, 1.6rem);
+            align-items: center;
+
+            img {
+                width: clamp(7.2rem, 6.3086rem + 2.2857vw, 9.6rem);
+            }
+
+            h2 {
+                font-family: Inter;
+                font-size: clamp(3.2rem, 2.6057rem + 1.5238vw, 4.8rem);
+                line-height: 1;
+                color: #000;
+            }
+        }
+
+        .swiper {
+            width: 100%;
+
+            .swiper-wrapper {
+                .swiper-slide {
+                    height: auto;
+
+                    .tp-image {
+                        width: 100%;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+
+                    .tp-testimonial-block {
+                        display: flex;
+                        flex-direction: column;
+                        gap: clamp(1.2rem, 0.9029rem + 0.7619vw, 2.0rem);
+
+                        img {
+                            width: clamp(7.2rem, 6.3086rem + 2.2857vw, 9.6rem);
+                        }
+
+                        .tp-text-wrapper {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 8px;
+
+                            h4 {
+                                font-family: Inter;
+                                font-size: clamp(1.4rem, 1.3257rem + 0.1905vw, 1.6rem);
+                                font-weight: 500;
+                                line-height: 1;
+                            }
+
+                            p {
+                                font-family: Inter;
+                                font-size: clamp(1.4rem, 1.3257rem + 0.1905vw, 1.6rem);
+                                font-weight: 400;
+                                line-height: 1;
+                            }
+                        }
+
+                        .tp-author {
+                            padding-top: 16px;
+                            display: flex;
+                            flex-direction: row;
+                            gap: 12px;
+                            align-items: center;
+
+                            img {
+                                width: clamp(4.8rem, 4.2057rem + 1.5238vw, 6.4rem);
+                                aspect-ratio: 1;
+                                object-fit: cover;
+                            }
+
+                            .tp-author__text-wrapper {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 8px;
+
+                                h6 {
+                                    font-family: Inter;
+                                    font-size: clamp(1.4rem, 1.3257rem + 0.1905vw, 1.6rem);
+                                    font-weight: 400;
+                                    line-height: 1;
+                                }
+
+                                p {
+                                    font-family: Inter;
+                                    font-size: clamp(1.2rem, 1.1257rem + 0.1905vw, 1.4rem);
+                                    font-weight: 500;
+                                    line-height: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

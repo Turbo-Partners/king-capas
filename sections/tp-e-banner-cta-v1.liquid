@@ -1,0 +1,665 @@
+{{ 'tp-e-banner-cta-v1.css' | asset_url | stylesheet_tag }}
+
+{% render 'tp-section-padding',
+  pad_top_min: section.settings.pad_top_min,
+  pad_top_max: section.settings.pad_top_max,
+  pad_bottom_min: section.settings.pad_bottom_min,
+  pad_bottom_max: section.settings.pad_bottom_max,
+  enable_pad_top_mobile: section.settings.enable_pad_top_mobile,
+  pad_top_mobile: section.settings.pad_top_mobile,
+  enable_pad_bottom_mobile: section.settings.enable_pad_bottom_mobile,
+  pad_bottom_mobile: section.settings.pad_bottom_mobile,
+  enable_pad_top_desktop: section.settings.enable_pad_top_desktop,
+  pad_top_desktop: section.settings.pad_top_desktop,
+  enable_pad_bottom_desktop: section.settings.enable_pad_bottom_desktop,
+  pad_bottom_desktop: section.settings.pad_bottom_desktop
+%}
+
+{% liquid
+  assign button_animation = section.settings.button_animation
+%}
+
+{% style %}
+.{{ section.id }} .tp-banner-cta__container::before {
+  background: {{ section.settings.section_bg_color }};
+  {% if section.settings.card_border_radius == "none" %}
+    border-radius: 0;
+  {% else %}
+    border-radius: var(--tp-radius-{{ section.settings.card_border_radius }});
+  {% endif %}
+}
+
+.{{ section.id }} .tp-banner-cta__bg {
+  {% if section.settings.card_border_radius == "none" %}
+    border-radius: 0;
+  {% else %}
+    border-radius: var(--tp-radius-{{ section.settings.card_border_radius }});
+  {% endif %}
+  {% if section.settings.background_type == "image" and section.settings.background_image_mobile != blank %}
+    background-image: url('{{ section.settings.background_image_mobile | image_url }}');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  {% elsif section.settings.background_type == "color" %}
+    background: {{ section.settings.card_bg_color }};
+  {% elsif section.settings.background_type == "gradient" and section.settings.background_gradient != blank %}
+    background: {{ section.settings.background_gradient }};
+  {% endif %}
+}
+
+{% if section.settings.background_type == "image" and section.settings.background_image_desktop != blank %}
+  @media screen and (min-width: 768px) {
+    .{{ section.id }} .tp-banner-cta__bg {
+      background-image: url('{{ section.settings.background_image_desktop | image_url }}');
+    }
+  }
+{% endif %}
+
+.{{ section.id }} .tp-banner-cta__image,
+.{{ section.id }} .tp-banner-cta__placeholder {
+  object-fit: {{ section.settings.image_fit }};
+  object-position: {{ section.settings.image_position }};
+}
+
+.{{ section.id }} .tp-banner-cta__media {
+  width: {{ section.settings.image_width_desktop }}%;
+  height: {{ section.settings.image_height_desktop }}%;
+}
+
+@media screen and (max-width: 767px) {
+  .{{ section.id }} .tp-banner-cta__media {
+    width: {{ section.settings.image_width_mobile }}%;
+    height: {{ section.settings.image_height_mobile }}%;
+    bottom: {{ section.settings.image_offset_mobile }}%;
+  }
+}
+
+{% if section.settings.title_custom %}
+  .{{ section.id }} .tp-banner-cta__title {
+    color: {{ section.settings.title_color }};
+    font-size: {{ section.settings.title_font_size_mobile }}px;
+    font-weight: {{ section.settings.title_font_weight }};
+  }
+  @media screen and (min-width: 768px) {
+    .{{ section.id }} .tp-banner-cta__title {
+      font-size: {{ section.settings.title_font_size_desktop }}px;
+    }
+  }
+{% endif %}
+
+{% if section.settings.description_custom %}
+  .{{ section.id }} .tp-banner-cta__description {
+    color: {{ section.settings.description_color }};
+    font-size: {{ section.settings.description_font_size_mobile }}px;
+    font-weight: {{ section.settings.description_font_weight }};
+  }
+  @media screen and (min-width: 768px) {
+    .{{ section.id }} .tp-banner-cta__description {
+      font-size: {{ section.settings.description_font_size_desktop }}px;
+    }
+  }
+{% endif %}
+
+{% if section.settings.button_custom %}
+  .{{ section.id }} .tp-banner-cta__button {
+    {% if section.settings.button_bg_color != blank %}
+      background: {{ section.settings.button_bg_color }};
+    {% endif %}
+    {% if section.settings.button_text_color != blank %}
+      color: {{ section.settings.button_text_color }};
+    {% endif %}
+    {% if section.settings.button_border_radius != "default" %}
+      {% if section.settings.button_border_radius == "none" %}
+        border-radius: 0;
+      {% else %}
+        border-radius: var(--tp-radius-{{ section.settings.button_border_radius }});
+      {% endif %}
+    {% endif %}
+    font-size: {{ section.settings.button_font_size }}px;
+    font-weight: {{ section.settings.button_font_weight }};
+  }
+{% endif %}
+{% endstyle %}
+
+<section class="tp-banner-cta {{ section.id }}">
+  <div class="tp-wrapper" id="section-wrapper-{{ section.id }}">
+    <div class="tp-banner-cta__container">
+      <div class="tp-banner-cta__bg"></div>
+      <div class="tp-banner-cta__content">
+        <div class="tp-banner-cta__text">
+          <div class="tp-banner-cta__text-inner">
+            {% if section.settings.title != blank %}
+              <h2 class="tp-banner-cta__title">{{ section.settings.title }}</h2>
+            {% endif %}
+            {% if section.settings.description != blank %}
+              <div class="tp-banner-cta__description">{{ section.settings.description }}</div>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="tp-banner-cta__media">
+          {% if section.settings.image_mobile != blank %}
+            {{ section.settings.image_mobile | image_url: width: 750 | image_tag:
+              class: 'tp-banner-cta__image tp-banner-cta__image--mobile',
+              loading: 'lazy',
+              sizes: '70vw',
+              widths: '375, 550, 750'
+            }}
+            {% if section.settings.image != blank %}
+              {{ section.settings.image | image_url: width: 1200 | image_tag:
+                class: 'tp-banner-cta__image tp-banner-cta__image--desktop',
+                loading: 'lazy',
+                sizes: '35vw',
+                widths: '550, 750, 1000, 1200'
+              }}
+            {% endif %}
+          {% elsif section.settings.image != blank %}
+            {{ section.settings.image | image_url: width: 1200 | image_tag:
+              class: 'tp-banner-cta__image',
+              loading: 'lazy',
+              sizes: '(min-width: 768px) 35vw, 70vw',
+              widths: '375, 550, 750, 1000, 1200'
+            }}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'tp-banner-cta__image tp-banner-cta__placeholder' }}
+          {% endif %}
+        </div>
+
+        {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+          <div class="tp-banner-cta__action">
+            <a
+              class="tp-banner-cta__button{% if button_animation != 'none' %} tp-banner-cta__button--{{ button_animation }}{% endif %}"
+              href="{{ section.settings.button_url }}"
+            >
+              {{ section.settings.button_text }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Banner com CTA",
+  "class": "E__BANNER_CTA__V1",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Conteúdo"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Lorem ipsum dolor sit"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Descrição",
+      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagem"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Imagem Mobile"
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Preenchimento",
+      "default": "contain",
+      "options": [
+        { "label": "Conter", "value": "contain" },
+        { "label": "Cobrir", "value": "cover" },
+        { "label": "Preencher", "value": "fill" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Posição",
+      "default": "center bottom",
+      "options": [
+        { "label": "Centro", "value": "center center" },
+        { "label": "Centro inferior", "value": "center bottom" },
+        { "label": "Centro superior", "value": "center top" },
+        { "label": "Esquerda", "value": "left center" },
+        { "label": "Direita", "value": "right center" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "image_width_desktop",
+      "label": "Largura (desktop)",
+      "min": 15,
+      "max": 50,
+      "step": 1,
+      "default": 30,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "image_height_desktop",
+      "label": "Altura (desktop)",
+      "min": 80,
+      "max": 160,
+      "step": 5,
+      "default": 115,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "image_width_mobile",
+      "label": "Largura (mobile)",
+      "min": 20,
+      "max": 90,
+      "step": 2,
+      "default": 64,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "image_height_mobile",
+      "label": "Altura (mobile)",
+      "min": 40,
+      "max": 120,
+      "step": 2,
+      "default": 84,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "image_offset_mobile",
+      "label": "Posição vertical (mobile)",
+      "min": 20,
+      "max": 65,
+      "step": 1,
+      "default": 42,
+      "unit": "%"
+    },
+    {
+      "type": "header",
+      "content": "Botão"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Texto",
+      "default": "CTA"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "button_animation",
+      "label": "Animação",
+      "default": "none",
+      "options": [
+        { "label": "Nenhuma", "value": "none" },
+        { "label": "Zoom", "value": "zoom" },
+        { "label": "Troca de background", "value": "swap-bg" },
+        { "label": "Translate Y", "value": "translate-y" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "button_custom",
+      "label": "Personalizar",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Cor de fundo",
+      "visible_if": "{{ section.settings.button_custom }}"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Cor do texto",
+      "visible_if": "{{ section.settings.button_custom }}"
+    },
+    {
+      "type": "select",
+      "id": "button_border_radius",
+      "label": "Arredondamento",
+      "default": "default",
+      "visible_if": "{{ section.settings.button_custom }}",
+      "options": [
+        { "label": "Padrão (Design System)", "value": "default" },
+        { "label": "Nenhum", "value": "none" },
+        { "label": "Pequeno", "value": "sm" },
+        { "label": "Médio", "value": "md" },
+        { "label": "Grande", "value": "lg" },
+        { "label": "Extra Grande", "value": "xl" },
+        { "label": "Completo", "value": "full" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Tamanho do texto",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "default": 16,
+      "unit": "px",
+      "visible_if": "{{ section.settings.button_custom }}"
+    },
+    {
+      "type": "select",
+      "id": "button_font_weight",
+      "label": "Peso do texto",
+      "default": "600",
+      "visible_if": "{{ section.settings.button_custom }}",
+      "options": [
+        { "label": "Regular", "value": "400" },
+        { "label": "Medium", "value": "500" },
+        { "label": "Semi Bold", "value": "600" },
+        { "label": "Bold", "value": "700" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Aparência"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Cor externa",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Tipo de fundo",
+      "default": "color",
+      "options": [
+        { "label": "Cor", "value": "color" },
+        { "label": "Gradiente", "value": "gradient" },
+        { "label": "Imagem", "value": "image" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Cor",
+      "default": "#FFFFFF",
+      "visible_if": "{{ section.settings.background_type == 'color' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Gradiente",
+      "visible_if": "{{ section.settings.background_type == 'gradient' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Imagem Mobile",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_desktop",
+      "label": "Imagem Desktop",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "select",
+      "id": "card_border_radius",
+      "label": "Arredondamento",
+      "default": "xl",
+      "options": [
+        { "label": "Nenhum", "value": "none" },
+        { "label": "Pequeno", "value": "sm" },
+        { "label": "Médio", "value": "md" },
+        { "label": "Grande", "value": "lg" },
+        { "label": "Extra Grande", "value": "xl" },
+        { "label": "Completo", "value": "full" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Tipografia"
+    },
+    {
+      "type": "checkbox",
+      "id": "title_custom",
+      "label": "Personalizar título",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Cor",
+      "default": "#2B2B2B",
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Tamanho (mobile)",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "default": 36,
+      "unit": "px",
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "label": "Tamanho (desktop)",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "default": 48,
+      "unit": "px",
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Peso",
+      "default": "700",
+      "visible_if": "{{ section.settings.title_custom }}",
+      "options": [
+        { "label": "Regular", "value": "400" },
+        { "label": "Medium", "value": "500" },
+        { "label": "Semi Bold", "value": "600" },
+        { "label": "Bold", "value": "700" },
+        { "label": "Extra Bold", "value": "800" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "description_custom",
+      "label": "Personalizar descrição",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Cor",
+      "default": "#667085",
+      "visible_if": "{{ section.settings.description_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "description_font_size_mobile",
+      "label": "Tamanho (mobile)",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "default": 16,
+      "unit": "px",
+      "visible_if": "{{ section.settings.description_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "description_font_size_desktop",
+      "label": "Tamanho (desktop)",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "default": 18,
+      "unit": "px",
+      "visible_if": "{{ section.settings.description_custom }}"
+    },
+    {
+      "type": "select",
+      "id": "description_font_weight",
+      "label": "Peso",
+      "default": "400",
+      "visible_if": "{{ section.settings.description_custom }}",
+      "options": [
+        { "label": "Regular", "value": "400" },
+        { "label": "Medium", "value": "500" },
+        { "label": "Semi Bold", "value": "600" },
+        { "label": "Bold", "value": "700" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Espaçamento"
+    },
+    {
+      "type": "range",
+      "id": "pad_top_min",
+      "label": "Padding TOP min (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "pad_top_max",
+      "label": "Padding TOP max (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_min",
+      "label": "Padding BOTTOM min (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_max",
+      "label": "Padding BOTTOM max (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 96
+    },
+    {
+      "type": "checkbox",
+      "id": "spacing_custom_device",
+      "label": "Personalizar por dispositivo",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_top_mobile",
+      "label": "Ativar padding TOP mobile",
+      "default": false,
+      "visible_if": "{{ section.settings.spacing_custom_device }}"
+    },
+    {
+      "type": "range",
+      "id": "pad_top_mobile",
+      "label": "Padding TOP mobile (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_top_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_bottom_mobile",
+      "label": "Ativar padding BOTTOM mobile",
+      "default": false,
+      "visible_if": "{{ section.settings.spacing_custom_device }}"
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_mobile",
+      "label": "Padding BOTTOM mobile (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_bottom_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_top_desktop",
+      "label": "Ativar padding TOP desktop",
+      "default": false,
+      "visible_if": "{{ section.settings.spacing_custom_device }}"
+    },
+    {
+      "type": "range",
+      "id": "pad_top_desktop",
+      "label": "Padding TOP desktop (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_top_desktop }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_bottom_desktop",
+      "label": "Ativar padding BOTTOM desktop",
+      "default": false,
+      "visible_if": "{{ section.settings.spacing_custom_device }}"
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_desktop",
+      "label": "Padding BOTTOM desktop (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_bottom_desktop }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner com CTA",
+      "category": "Banner",
+      "settings": {
+        "title": "Lorem ipsum dolor sit",
+        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>",
+        "button_text": "CTA",
+        "button_url": "/",
+        "section_bg_color": "#F5F5F5",
+        "card_bg_color": "#FFFFFF",
+        "card_border_radius": "xl"
+      }
+    }
+  ]
+}
+{% endschema %}

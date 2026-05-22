@@ -1,0 +1,249 @@
+{%- if section.settings.enable -%}
+  {%- assign items = section.blocks | reverse -%}
+
+  {%- for block in items -%}
+    {%- assign url = block.settings.custom_font_url -%}
+    {%- if url != blank and block.settings.preload -%}
+      {%- liquid
+        if url contains '.woff2'
+          assign mime = 'font/woff2'
+        elsif url contains '.woff'
+          assign mime = 'font/woff'
+        elsif url contains '.ttf'
+          assign mime = 'font/ttf'
+        elsif url contains '.otf'
+          assign mime = 'font/otf'
+        else
+          assign mime = 'font/woff2'
+        endif
+      -%}
+      <link rel="preload" as="font" href="{{ url }}" type="{{ mime }}" crossorigin>
+    {%- endif -%}
+  {%- endfor -%}
+
+  <style>
+    {%- for block in items -%}
+      {%- assign name = block.settings.name -%}
+      {%- assign url = block.settings.custom_font_url -%}
+      {%- assign custom_font_weight = block.settings.custom_font_weight -%}
+      {%- assign custom_font_style = block.settings.custom_font_style -%}
+
+      {%- if url != blank -%}
+        {%- liquid
+          if url contains '.otf'
+            assign font_type = 'opentype'
+          elsif url contains '.ttf'
+            assign font_type = 'truetype'
+          elsif url contains '.woff2'
+            assign font_type = 'woff2'
+          elsif url contains '.svg'
+            assign font_type = 'svg'
+          else
+            assign font_type = 'woff'
+          endif
+        -%}
+
+        @font-face {
+          font-family: '{{ name }}';
+          src: url({{ url }}) format('{{ font_type }}');
+          font-display: swap;
+          {%- if custom_font_style != 'none' %}
+          font-style: {{ custom_font_style }};
+          {%- endif %}
+          {%- if custom_font_weight != 'none' %}
+          font-weight: {{ custom_font_weight }};
+          {%- endif %}
+        }
+
+        {%- if block.settings.apply_h1 %}
+        h1 { font-family: '{{ name }}', sans-serif; }
+        {%- endif %}
+        {%- if block.settings.apply_h2 %}
+        h2 { font-family: '{{ name }}', sans-serif; }
+        {%- endif %}
+        {%- if block.settings.apply_h3 %}
+        h3 { font-family: '{{ name }}', sans-serif; }
+        {%- endif %}
+        {%- if block.settings.apply_h4 %}
+        h4 { font-family: '{{ name }}', sans-serif; }
+        {%- endif %}
+        {%- if block.settings.apply_h5 %}
+        h5 { font-family: '{{ name }}', sans-serif; }
+        {%- endif %}
+        {%- if block.settings.apply_h6 %}
+        h6 { font-family: '{{ name }}', sans-serif; }
+        {%- endif %}
+        {%- if block.settings.apply_p %}
+        p { font-family: '{{ name }}', sans-serif; }
+        {%- endif %}
+        {%- if block.settings.apply_span %}
+        span { font-family: '{{ name }}', sans-serif; }
+        {%- endif %}
+        {%- if block.settings.apply_body %}
+        :root { --font-body-family: '{{ name }}', sans-serif; }
+        {%- endif %}
+        {%- if block.settings.apply_headings %}
+        :root { --font-heading-family: '{{ name }}', sans-serif; }
+        {%- endif %}
+
+        {%- if block.settings.apply_custom != blank -%}
+        {{ block.settings.apply_custom }} { font-family: '{{ name }}', sans-serif; }
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </style>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Fontes Customizadas",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "Habilitar",
+      "default": true
+    },
+    {
+      "type": "paragraph",
+      "content": "Adicione fontes customizadas ao tema. Faça upload dos arquivos em [Configurações > Arquivos](/admin/settings/files) e cole a URL aqui."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "font",
+      "name": "Fonte",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Nome da fonte",
+          "info": "Use apenas letras (A-Z), sem números, caracteres especiais ou espaços.",
+          "default": "customfont"
+        },
+        {
+          "type": "text",
+          "id": "custom_font_url",
+          "label": "URL da fonte",
+          "info": "Cole a URL do arquivo (.woff2 recomendado). Upload em [Configurações > Arquivos](/admin/settings/files)."
+        },
+        {
+          "type": "select",
+          "id": "custom_font_weight",
+          "label": "Peso da fonte",
+          "default": "none",
+          "options": [
+            { "value": "none", "label": "Nenhum" },
+            { "value": "normal", "label": "Normal" },
+            { "value": "bold", "label": "Bold" },
+            { "value": "100", "label": "100" },
+            { "value": "200", "label": "200" },
+            { "value": "300", "label": "300" },
+            { "value": "400", "label": "400" },
+            { "value": "500", "label": "500" },
+            { "value": "600", "label": "600" },
+            { "value": "700", "label": "700" },
+            { "value": "800", "label": "800" },
+            { "value": "900", "label": "900" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "custom_font_style",
+          "label": "Estilo da fonte",
+          "default": "none",
+          "options": [
+            { "value": "none", "label": "Nenhum" },
+            { "value": "normal", "label": "Normal" },
+            { "value": "italic", "label": "Itálico" }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Aplicar a"
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_headings",
+          "label": "Títulos (variável --font-heading-family)",
+          "info": "Sobrescreve a variável CSS do tema para todos os títulos.",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_body",
+          "label": "Corpo (variável --font-body-family)",
+          "info": "Sobrescreve a variável CSS do tema para todo o texto do corpo.",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_h1",
+          "label": "H1",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_h2",
+          "label": "H2",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_h3",
+          "label": "H3",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_h4",
+          "label": "H4",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_h5",
+          "label": "H5",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_h6",
+          "label": "H6",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_p",
+          "label": "Parágrafos (<p>)",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "apply_span",
+          "label": "Spans (<span>)",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "preload",
+          "label": "Preload",
+          "info": "Carrega a fonte com prioridade. Ative para fontes visíveis acima da dobra.",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Seletor customizado"
+        },
+        {
+          "type": "textarea",
+          "id": "apply_custom",
+          "label": "Seletor CSS",
+          "info": "Aplica a fonte a seletores específicos. Exemplo: .product-title, .banner__heading",
+          "placeholder": ".my-custom-text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

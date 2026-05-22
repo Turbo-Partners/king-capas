@@ -1,0 +1,259 @@
+{% style %}
+.tp-block-video-{{ block.id }} {
+  {% if block.settings.width == 'fill' %}
+    width: 100%;
+  {% elsif block.settings.width == 'custom' %}
+    width: {{ block.settings.custom_width }}%;
+  {% else %}
+    width: fit-content;
+  {% endif %}
+  
+  padding-block-start: {{ block.settings.padding-block-start }}px;
+  padding-block-end: {{ block.settings.padding-block-end }}px;
+  padding-inline-start: {{ block.settings.padding-inline-start }}px;
+  padding-inline-end: {{ block.settings.padding-inline-end }}px;
+}
+
+.tp-block-video-{{ block.id }} video,
+.tp-block-video-{{ block.id }} iframe {
+  width: 100%;
+  border-radius: {{ block.settings.border_radius }}px;
+  
+  {% case block.settings.aspect_ratio %}
+    {% when '16/9' %}
+      aspect-ratio: 16 / 9;
+    {% when '4/3' %}
+      aspect-ratio: 4 / 3;
+    {% when '1/1' %}
+      aspect-ratio: 1 / 1;
+    {% when '9/16' %}
+      aspect-ratio: 9 / 16;
+    {% when '21/9' %}
+      aspect-ratio: 21 / 9;
+  {% endcase %}
+  
+  object-fit: cover;
+}
+
+.tp-block-video-{{ block.id }} iframe {
+  border: none;
+}
+
+@media (max-width: 749px) {
+  .tp-block-video-{{ block.id }} {
+    {% if block.settings.width_mobile == 'fill' %}
+      width: 100%;
+    {% elsif block.settings.width_mobile == 'custom' %}
+      width: {{ block.settings.custom_width_mobile }}%;
+    {% else %}
+      width: fit-content;
+    {% endif %}
+  }
+}
+{% endstyle %}
+
+<div class="tp-block-video tp-block-video-{{ block.id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.video_url != blank %}
+    {% if block.settings.video_url.type == 'youtube' %}
+      <iframe 
+        src="https://www.youtube.com/embed/{{ block.settings.video_url.id }}{% if block.settings.autoplay %}?autoplay=1&mute=1{% endif %}{% if block.settings.loop %}&loop=1&playlist={{ block.settings.video_url.id }}{% endif %}" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    {% elsif block.settings.video_url.type == 'vimeo' %}
+      <iframe 
+        src="https://player.vimeo.com/video/{{ block.settings.video_url.id }}{% if block.settings.autoplay %}?autoplay=1&muted=1{% endif %}{% if block.settings.loop %}&loop=1{% endif %}" 
+        allow="autoplay; fullscreen; picture-in-picture" 
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    {% endif %}
+  {% elsif block.settings.video != blank %}
+    {{ block.settings.video | video_tag: 
+      autoplay: block.settings.autoplay, 
+      loop: block.settings.loop, 
+      muted: block.settings.muted, 
+      controls: block.settings.controls,
+      playsinline: true,
+      loading: 'lazy'
+    }}
+  {% else %}
+    <div class="placeholder-video" style="background: #f0f0f0; display: flex; align-items: center; justify-content: center; min-height: 200px;">
+      {{ 'video' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Vídeo",
+  "presets": [
+    {
+      "name": "Vídeo",
+      "category": "Mídia"
+    }
+  ],
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Vídeo hospedado"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "Vídeo externo",
+      "accept": ["youtube", "vimeo"],
+      "info": "YouTube ou Vimeo"
+    },
+    {
+      "type": "header",
+      "content": "Controles"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Reprodução automática",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "muted",
+      "label": "Iniciar mudo",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "controls",
+      "label": "Mostrar controles",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Tamanho"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Largura",
+      "options": [
+        { "value": "fit-content", "label": "Ajustar ao conteúdo" },
+        { "value": "fill", "label": "Preencher" },
+        { "value": "custom", "label": "Personalizado" }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "custom_width",
+      "label": "Largura personalizada",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 100,
+      "unit": "%",
+      "visible_if": "{{ block.settings.width == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "width_mobile",
+      "label": "Largura (mobile)",
+      "options": [
+        { "value": "fit-content", "label": "Ajustar ao conteúdo" },
+        { "value": "fill", "label": "Preencher" },
+        { "value": "custom", "label": "Personalizado" }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "custom_width_mobile",
+      "label": "Largura mobile personalizada",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 100,
+      "unit": "%",
+      "visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Proporção",
+      "options": [
+        { "value": "16/9", "label": "16:9 (Widescreen)" },
+        { "value": "4/3", "label": "4:3 (Padrão)" },
+        { "value": "1/1", "label": "1:1 (Quadrado)" },
+        { "value": "9/16", "label": "9:16 (Vertical)" },
+        { "value": "21/9", "label": "21:9 (Ultra-wide)" }
+      ],
+      "default": "16/9"
+    },
+    {
+      "type": "header",
+      "content": "Aparência"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Arredondamento",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Espaçamento"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Padding superior",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Padding inferior",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "Padding esquerdo",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "Padding direito",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    }
+  ]
+}
+{% endschema %}

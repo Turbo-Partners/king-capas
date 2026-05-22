@@ -1,0 +1,279 @@
+.tp-e-reviews-v4 {
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: var(--tp-pad-top, 48px);
+  padding-bottom: var(--tp-pad-bottom, 48px);
+}
+
+.tp-e-reviews-v4 .tp-wrapper {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* ── Header ── */
+
+.tp-e-reviews-v4__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--tp-space-4);
+  text-align: center;
+  padding-bottom: 5rem;
+
+  @media (max-width:547px) {
+    padding-bottom: 2rem;
+  }
+}
+
+.tp-e-reviews-v4__header-image {
+  width: clamp(7.2rem, 6.3rem + 2.3vw, 9.6rem);
+  height: auto;
+}
+
+/* ── Carousel ── */
+
+.tp-e-reviews-v4__carousel {
+  width: 100%;
+}
+
+.tp-e-reviews-v4__swiper {
+  width: 100%;
+}
+
+.tp-e-reviews-v4__swiper .swiper-slide {
+  height: auto;
+}
+
+@media screen and (max-width: 750px) {
+  .tp-e-reviews-v4__carousel .swiper-wrapper {
+    padding-left: 1rem;
+  }
+}
+
+/* ── Image block ── */
+
+.tp-e-reviews-v4__image {
+  width: 100%;
+}
+
+.tp-e-reviews-v4__image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--tp-radius-xl);
+  display: block;
+}
+
+/* ── Testimonial block ── */
+
+.tp-e-reviews-v4__testimonial {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tp-space-5);
+}
+
+.tp-e-reviews-v4__testimonial-logo {
+  width: clamp(7.2rem, 6.3rem + 2.3vw, 9.6rem);
+  height: auto;
+}
+
+.tp-e-reviews-v4__testimonial-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tp-space-2);
+}
+
+.tp-e-reviews-v4__testimonial-text h4,
+.tp-e-reviews-v4__testimonial-text h5,
+.tp-e-reviews-v4__testimonial-text h6 {
+  font-family: var(--tp-font-heading);
+  font-size: var(--tp-font-size-base);
+  font-weight: var(--tp-font-medium);
+  line-height: var(--tp-leading-normal);
+  color: var(--tp-color-text-primary);
+  margin: 0;
+}
+
+.tp-e-reviews-v4__testimonial-text p {
+  font-family: var(--tp-font-body);
+  font-size: var(--tp-font-size-base);
+  font-weight: var(--tp-font-regular);
+  line-height: var(--tp-leading-relaxed);
+  color: var(--tp-color-text-secondary);
+  margin: 0;
+}
+
+.tp-e-reviews-v4__author {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--tp-space-3);
+  padding-top: var(--tp-space-4);
+  border-top: 1px solid var(--tp-color-border);
+}
+
+.tp-e-reviews-v4__author-avatar {
+  width: clamp(4.8rem, 4.2rem + 1.5vw, 6.4rem);
+  aspect-ratio: 1;
+  border-radius: var(--tp-radius-full);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.tp-e-reviews-v4__author-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tp-space-1);
+}
+
+.tp-e-reviews-v4__author-name {
+  font-family: var(--tp-font-body);
+  font-size: var(--tp-font-size-sm);
+  font-weight: var(--tp-font-semibold);
+  line-height: var(--tp-leading-normal);
+  color: var(--tp-color-text-primary);
+  margin: 0;
+}
+
+.tp-e-reviews-v4__author-handle {
+  font-family: var(--tp-font-body);
+  font-size: var(--tp-font-size-xs);
+  font-weight: var(--tp-font-medium);
+  line-height: var(--tp-leading-normal);
+  color: var(--tp-color-text-secondary);
+  margin: 0;
+}
+
+/* ── Review card ── */
+
+.tp-e-reviews-v4__review {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--tp-radius-xl);
+  background: var(--tp-color-bg-secondary);
+  padding: var(--tp-space-6);
+  text-align: center;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 750px) {
+  .tp-e-reviews-v4__review {
+    padding: var(--tp-space-10);
+  }
+}
+
+.tp-e-reviews-v4__review-stars {
+  display: flex;
+  justify-content: center;
+  gap: var(--tp-space-1);
+  margin-bottom: var(--tp-space-3);
+}
+
+.tp-e-reviews-v4__star {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+}
+
+.tp-e-reviews-v4__review-title {
+  font-family: var(--tp-font-heading);
+  font-size: var(--tp-font-size-lg);
+  font-weight: var(--tp-font-semibold);
+  line-height: var(--tp-leading-normal);
+  color: var(--tp-color-text-primary);
+  margin: 0 0 var(--tp-space-3);
+}
+
+.tp-e-reviews-v4__review-subtitle {
+  font-family: var(--tp-font-body);
+  font-size: var(--tp-font-size-sm);
+  font-weight: var(--tp-font-regular);
+  color: var(--tp-color-text-secondary);
+  margin: 0 0 var(--tp-space-3);
+}
+
+.tp-e-reviews-v4__review-text {
+  font-family: var(--tp-font-body);
+  font-size: var(--tp-font-size-base);
+  font-weight: var(--tp-font-regular);
+  line-height: var(--tp-leading-relaxed);
+  color: var(--tp-color-text-secondary);
+  margin: 0;
+  flex: 1;
+
+  @media (max-width:547px) {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+}
+
+.tp-e-reviews-v4__review-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--tp-space-4);
+  border-top: 1px solid var(--tp-color-border);
+  padding-top: var(--tp-space-4);
+  margin-top: var(--tp-space-8);
+  text-align: left;
+}
+
+.tp-e-reviews-v4__review-author {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tp-space-1);
+  min-width: 0;
+}
+
+.tp-e-reviews-v4__review-name {
+  font-family: var(--tp-font-body);
+  font-size: var(--tp-font-size-sm);
+  font-weight: var(--tp-font-semibold);
+  line-height: var(--tp-leading-normal);
+  color: var(--tp-color-text-primary);
+  margin: 0;
+
+  @media (max-width:547px) {
+    font-size: 11px;
+  }
+}
+
+.tp-e-reviews-v4__review-profession {
+  font-family: var(--tp-font-body);
+  font-size: var(--tp-font-size-xs);
+  font-weight: var(--tp-font-regular);
+  line-height: var(--tp-leading-normal);
+  color: var(--tp-color-text-secondary);
+  margin: 0;
+
+  @media (max-width:547px) {
+    font-size: 10px;
+  }
+}
+
+.tp-e-reviews-v4__purchase {
+  display: flex;
+  align-items: center;
+  gap: var(--tp-space-2);
+  flex-shrink: 0;
+  color: var(--tp-color-text-secondary);
+  font-family: var(--tp-font-body);
+  font-size: var(--tp-font-size-xs);
+  font-weight: var(--tp-font-regular);
+
+  @media (max-width:547px) {
+    gap: var(--tp-space-1);
+  }
+}
+
+.tp-e-reviews-v4__purchase img {
+  display: block;
+  width: 20px;
+  height: auto;
+
+    @media (max-width:547px) {
+     width: 14px;
+  }
+}

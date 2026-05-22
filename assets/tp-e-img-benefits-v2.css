@@ -1,0 +1,128 @@
+.tp-e-img-benefits-v2__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--tp-space-6);
+    align-items: center;
+    justify-content: center;
+}
+
+.tp-e-img-benefits-v2__text-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tp-e-img-benefits-v2__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--tp-space-3);
+    width: 100%;
+    align-items: center;
+}
+
+.tp-e-img-benefits-v2__media {
+    width: 100%;
+    order: 0;
+}
+
+.tp-e-img-benefits-v2__image {
+    width: 100%;
+}
+
+.tp-e-img-benefits-v2__image--desktop {
+    display: none;
+}
+
+.tp-e-img-benefits-v2__image--mobile {
+    display: flex;
+}
+
+.tp-e-img-benefits-v2__block-wrapper {
+    display: flex;
+    gap: var(--tp-space-3);
+    flex-direction: column;
+    width: 100%;
+}
+
+.tp-e-img-benefits-v2__block-wrapper--first {
+    order: 1
+}
+
+.tp-e-img-benefits-v2__block-wrapper--second {
+    order: 2
+}
+
+.tp-e-img-benefits-v2__block {
+    display: flex;
+    flex-direction: row;
+    gap: var(--tp-space-3);
+    align-items: flex-start;
+}
+
+.tp-e-img-benefits-v2__block-image {
+    width: var(--tp-space-8);
+    height: auto;
+}
+
+.tp-e-img-benefits-v2__block-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--tp-space-1);
+}
+
+@media screen and (min-width: 1024px) {
+    .tp-e-img-benefits-v2__wrapper {
+        gap: var(--tp-space-16);
+    }
+
+    .tp-e-img-benefits-v2__grid {
+        grid-template-columns: 0.8fr 1fr 0.8fr;
+        gap: var(--tp-space-8);
+    }
+
+    .tp-e-img-benefits-v2__media {
+        order: 1;
+    }
+
+    .tp-e-img-benefits-v2__image--desktop {
+        display: flex;
+    }
+
+    .tp-e-img-benefits-v2__image--mobile {
+        display: none;
+    }
+
+    .tp-e-img-benefits-v2__block-wrapper {
+        gap: var(--tp-space-8);
+        justify-content: center;
+    }
+
+    .tp-e-img-benefits-v2__block-wrapper--first {
+        order: 0;
+    }
+
+    .tp-e-img-benefits-v2__block-wrapper--second {
+        order: 2;
+    }
+
+    .tp-e-img-benefits-v2__block {
+        gap: var(--tp-space-3);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: var(--tp-space-8);
+    }
+
+    .tp-e-img-benefits-v2__block-image {
+        width: var(--tp-space-10);
+        height: auto;
+    }
+
+    .tp-e-img-benefits-v2__block-text-wrapper {
+        align-items: center;
+    }
+
+    .tp-e-img-benefits-v2__block-text-wrapper p {
+        align-items: center;
+    }
+}

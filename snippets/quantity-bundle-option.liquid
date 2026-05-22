@@ -1,0 +1,85 @@
+{% comment %}
+  Renderiza uma opção do bundle (uma "linha" com tags + card).
+
+  @param {object} block - block do bundle (para id e settings).
+  @param {number} quantity - quantidade de unidades da opção.
+  @param {number} discount - desconto em % (0 a 100).
+  @param {string} title - título exibido (ex: "3 unidades").
+  @param {string} [highlight] - texto exibido como badge inline (ex: "FRETE GRÁTIS").
+  @param {number} price - preço unitário sem desconto (em centavos).
+  @param {string} price_money - preço unitário sem desconto formatado.
+  @param {number} price_unit - preço unitário com desconto aplicado (em centavos).
+  @param {string} price_unit_money - preço unitário com desconto formatado.
+  @param {number} total - preço bruto (price * quantity), em centavos.
+  @param {string} total_money - total bruto formatado.
+  @param {number} total_discounted - total com desconto, em centavos.
+  @param {string} total_discounted_money - total com desconto formatado.
+  @param {number} economia - economia em centavos (total - total_discounted).
+  @param {number} position - posição da opção (1-based).
+  @param {boolean} is_first - se é a primeira opção (selecionada por padrão).
+{% endcomment %}
+
+{%- assign show_save_tag = false -%}
+{%- if economia > 0 -%}{%- assign show_save_tag = true -%}{%- endif -%}
+
+{%- assign show_off_tag = false -%}
+{%- if discount > 0 -%}{%- assign show_off_tag = true -%}{%- endif -%}
+
+{%- assign has_tags = false -%}
+{%- if show_save_tag or show_off_tag -%}{%- assign has_tags = true -%}{%- endif -%}
+
+<label
+  class="quantity-bundle__option{% unless has_tags %} quantity-bundle__option--no-tags{% endunless %}{% if is_first %} quantity-bundle__option--selected{% endif %}"
+  data-quantity="{{ quantity }}"
+  for="quantity-{{ block.id }}-{{ position }}"
+>
+  <input
+    type="radio"
+    id="quantity-{{ block.id }}-{{ position }}"
+    name="quantity-{{ block.id }}"
+    value="{{ quantity }}"
+    class="quantity-bundle__radio-input"
+    data-position="{{ position }}"
+    {% if is_first %}checked{% endif %}
+  >
+
+  {% if has_tags %}
+    <div class="quantity-bundle__tags" aria-hidden="true">
+      {% if show_save_tag %}
+        <span class="quantity-bundle__tag quantity-bundle__tag--save">
+          Economize {{ economia | money }}
+        </span>
+      {% endif %}
+      {% if show_off_tag %}
+        <span class="quantity-bundle__tag quantity-bundle__tag--off">
+          {{ discount | round: 0 }}% OFF
+        </span>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="quantity-bundle__card">
+    <span class="quantity-bundle__radio-control" aria-hidden="true"></span>
+
+    <div class="quantity-bundle__main">
+      <div class="quantity-bundle__info">
+        <div class="quantity-bundle__title-row">
+          <p class="quantity-bundle__option-title">{{ title | upcase }}</p>
+          {% if highlight != blank and highlight != '0' %}
+            <span class="quantity-bundle__shipping">{{ highlight | upcase }}</span>
+          {% endif %}
+        </div>
+        {% if quantity > 1 %}
+          <p class="quantity-bundle__option-total">Total: {{ total_discounted_money }}</p>
+        {% endif %}
+      </div>
+
+      <div class="quantity-bundle__prices">
+        {% if discount > 0 %}
+          <p class="quantity-bundle__option-strache">{{ price_money }}</p>
+        {% endif %}
+        <p class="quantity-bundle__price-each">{{ price_unit_money }}</p>
+      </div>
+    </div>
+  </div>
+</label>

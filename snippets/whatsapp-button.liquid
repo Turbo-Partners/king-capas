@@ -1,0 +1,124 @@
+{%- comment -%}
+  Renders a floating WhatsApp button.
+
+  @param {string} [phone] - Custom phone number (optional, uses settings if not provided)
+  @param {string} [message] - Custom message (optional, uses settings if not provided)
+  @param {string} [bg_color] - Custom background color (optional, uses settings if not provided)
+  @param {string} [icon_color] - Custom icon color (optional, uses settings if not provided)
+  @param {string} [position] - Custom position: 'left' or 'right' (optional, uses settings if not provided)
+  @param {number} [bottom_spacing] - Custom bottom spacing in px (optional, uses settings if not provided)
+  @param {number} [side_spacing] - Custom side spacing in px (optional, uses settings if not provided)
+  @param {number} [button_size] - Custom button size in px (optional, uses settings if not provided)
+  @param {number} [icon_size] - Custom icon size in px (optional, uses settings if not provided)
+{%- endcomment -%}
+
+{%- if settings.whatsapp_button_enabled -%}
+  {%- liquid
+    # Phone number processing
+    assign whatsapp_phone = phone | default: settings.whatsapp_phone
+    if whatsapp_phone == blank
+      assign whatsapp_phone = shop.phone | remove: '+' | remove: ' ' | remove: '-' | remove: '(' | remove: ')'
+    else
+      # Remove caracteres não numéricos
+      assign whatsapp_phone = whatsapp_phone | replace: '+', '' | replace: ' ', '' | replace: '-', '' | replace: '(', '' | replace: ')', ''
+    endif
+    
+    # Adiciona código do país 55 se não estiver presente
+    if whatsapp_phone != blank
+      assign phone_length = whatsapp_phone | size
+      if phone_length >= 2
+        assign first_two = whatsapp_phone | slice: 0, 2
+        if first_two != '55'
+          assign whatsapp_phone = '55' | append: whatsapp_phone
+        endif
+      else
+        assign whatsapp_phone = '55' | append: whatsapp_phone
+      endif
+    endif
+    
+    # Message processing
+    assign whatsapp_message = message | default: settings.whatsapp_message | url_encode
+    
+    # Style settings
+    assign whatsapp_bg_color = bg_color | default: settings.whatsapp_bg_color | default: '#25D366'
+    assign whatsapp_icon_color = icon_color | default: settings.whatsapp_icon_color | default: '#FFFFFF'
+    assign whatsapp_position = position | default: settings.whatsapp_position | default: 'right'
+    assign whatsapp_bottom = bottom_spacing | default: settings.whatsapp_bottom_spacing | default: 20
+    assign whatsapp_side = side_spacing | default: settings.whatsapp_side_spacing | default: 20
+    assign whatsapp_button_size = button_size | default: settings.whatsapp_button_size | default: 60
+    assign whatsapp_icon_size = icon_size | default: settings.whatsapp_icon_size | default: 30
+    assign button_padding = whatsapp_button_size | minus: whatsapp_icon_size | divided_by: 2
+  -%}
+  
+  <style>
+    #whatsapp-float-button {
+      position: fixed;
+      bottom: {{ whatsapp_bottom }}px;
+      {% if whatsapp_position == 'left' %}
+        left: {{ whatsapp_side }}px;
+      {% else %}
+        right: {{ whatsapp_side }}px;
+      {% endif %}
+      background-color: {{ whatsapp_bg_color }};
+      border-radius: 50%;
+      padding: {{ button_padding }}px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 9999;
+      transition: box-shadow 0.3s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+  
+    #whatsapp-float-button:hover {
+      box-shadow: 0 0 0 8px {{ whatsapp_bg_color }}40,
+                  0 0 0 16px {{ whatsapp_bg_color }}20,
+                  0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  
+    #whatsapp-float-button svg {
+      width: {{ whatsapp_icon_size }}px;
+      height: {{ whatsapp_icon_size }}px;
+      fill: transparent;
+      stroke: {{ whatsapp_icon_color }};
+      display: block;
+    }
+  
+    #whatsapp-float-button:focus {
+      outline: 2px solid currentColor;
+      outline-offset: 4px;
+    }
+
+    #whatsapp-float-button:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #whatsapp-float-button {
+        transition: none;
+      }
+
+      #whatsapp-float-button:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+    }
+  </style>
+  
+  <a 
+    href="https://wa.me/{{ whatsapp_phone }}?text={{ whatsapp_message }}" 
+    target="_blank" 
+    id="whatsapp-float-button" 
+    aria-label="Converse conosco pelo WhatsApp" 
+    role="button"
+    rel="noopener noreferrer"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-whatsapp">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+      <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+    </svg>
+  </a>
+{%- endif -%}

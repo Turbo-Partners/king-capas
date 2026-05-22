@@ -1,0 +1,87 @@
+.tp-video-slides {
+    width: 100%;
+
+    .tp-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(3.2rem, 2.0114rem + 3.0476vw, 6.4rem);
+        align-items: center;
+
+        .text-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+
+			img {
+				width: 100%;
+				max-width: 240px;
+			}
+
+            h2 {
+                color: #000;
+                text-align: center;
+                font-family: Inter;
+                font-size: clamp(2.4rem, 1.5086rem + 2.2857vw, 4.8rem);
+                font-weight: 400;
+            }
+
+			p {
+				color: #000;
+				text-align: center;
+                font-family: Inter;
+                font-size: clamp(1.6rem, 1.4514rem + 0.381vw, 2.0rem);
+                font-weight: 400;
+			}
+        }
+
+        .swiper {
+            width: 100%;
+
+            .swiper-wrapper {
+
+                .swiper-slide {
+                    height: auto;
+                    
+                    .tp-block {
+                        border-radius: 4px;
+
+                        img {
+                            width: 100%;
+                            aspect-ratio: 1/2;
+                            object-fit: cover;
+                        }
+
+                        video {
+                            width: 100%;
+                            aspect-ratio: 1/2;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+        }
+
+        .tp-button {
+            width: 100%;
+            border-radius: 2px;
+            background: #000;
+            color: #FFF;
+            font-family: Inter;
+            font-size: clamp(1.4rem, 1.3257rem + 0.1905vw, 1.6rem);
+            font-weight: 400;
+            line-height: normal;
+            text-transform: uppercase;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 320px;
+            text-decoration: none;
+
+            @media screen and (min-width: 768px) {
+                height: 64px;
+            }
+        }
+    }
+}

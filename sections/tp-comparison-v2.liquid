@@ -1,0 +1,557 @@
+{{ 'tp-e-comparison-v2.css' | asset_url | stylesheet_tag }}
+
+{% render 'tp-section-padding',
+  pad_top_min: section.settings.pad_top_min,
+  pad_top_max: section.settings.pad_top_max,
+  pad_bottom_min: section.settings.pad_bottom_min,
+  pad_bottom_max: section.settings.pad_bottom_max,
+  enable_pad_top_mobile: section.settings.enable_pad_top_mobile,
+  pad_top_mobile: section.settings.pad_top_mobile,
+  enable_pad_bottom_mobile: section.settings.enable_pad_bottom_mobile,
+  pad_bottom_mobile: section.settings.pad_bottom_mobile,
+  enable_pad_top_desktop: section.settings.enable_pad_top_desktop,
+  pad_top_desktop: section.settings.pad_top_desktop,
+  enable_pad_bottom_desktop: section.settings.enable_pad_bottom_desktop,
+  pad_bottom_desktop: section.settings.pad_bottom_desktop
+%}
+
+{% liquid
+  assign background_type = section.settings.background_type
+  assign brand_title = section.settings.brand_title
+  assign competitor_count = section.settings.competitor_count
+%}
+
+{% style %}
+.{{ section.id }} {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  --tp-e-cv2-brand-logo-height: {{ section.settings.brand_logo_height }}px;
+
+  {% if section.settings.brand_color != blank %}
+    --tp-e-cv2-brand-bg: {{ section.settings.brand_color }};
+  {% endif %}
+  {% if section.settings.brand_header_color != blank %}
+    --tp-e-cv2-brand-header-color: {{ section.settings.brand_header_color }};
+  {% endif %}
+
+  {% if section.settings.title_custom %}
+    {% if section.settings.title_color != blank %}
+      --tp-e-cv2-title-color: {{ section.settings.title_color }};
+    {% endif %}
+    --tp-e-cv2-title-size: {{ section.settings.title_size_desktop }}px;
+    --tp-e-cv2-title-size-mobile: {{ section.settings.title_size_mobile }}px;
+    --tp-e-cv2-title-weight: {{ section.settings.title_weight }};
+  {% endif %}
+
+  {% if section.settings.row_custom %}
+    {% if section.settings.row_color != blank %}
+      --tp-e-cv2-row-color: {{ section.settings.row_color }};
+    {% endif %}
+    --tp-e-cv2-row-size: {{ section.settings.row_size_desktop }}px;
+    --tp-e-cv2-row-size-mobile: {{ section.settings.row_size_mobile }}px;
+    --tp-e-cv2-row-weight: {{ section.settings.row_weight }};
+  {% endif %}
+
+  {% case section.settings.table_radius %}
+    {% when 'none' %}
+      --tp-e-cv2-radius: 0;
+    {% when 'sm' %}
+      --tp-e-cv2-radius: var(--tp-radius-sm);
+    {% when 'md' %}
+      --tp-e-cv2-radius: var(--tp-radius-md);
+    {% when 'lg' %}
+      --tp-e-cv2-radius: var(--tp-radius-lg);
+    {% when 'xl' %}
+      --tp-e-cv2-radius: var(--tp-radius-xl);
+  {% endcase %}
+
+  {% if background_type == "image" and section.settings.background_image_mobile != blank %}
+    background-image: url('{{ section.settings.background_image_mobile | image_url }}');
+    {% if section.settings.background_image_desktop != blank %}
+      @media screen and (min-width: 1024px) {
+        background-image: url('{{ section.settings.background_image_desktop | image_url }}');
+      }
+    {% endif %}
+  {% elsif background_type == "color" and section.settings.background_color != blank %}
+    background: {{ section.settings.background_color }};
+  {% elsif background_type == "gradient" and section.settings.background_gradient != blank %}
+    background: {{ section.settings.background_gradient }};
+  {% endif %}
+}
+{% endstyle %}
+
+<section class="tp-e-comparison-v2 {{ section.id }} scroll-trigger animate--slide-in">
+  <div class="tp-wrapper tp-e-comparison-v2__wrapper">
+
+    {% if section.settings.title != blank %}
+      <div class="tp-e-comparison-v2__title">{{ section.settings.title }}</div>
+    {% endif %}
+
+    {% liquid
+      assign total_cols = competitor_count | plus: 2
+    %}
+
+    <div class="tp-e-comparison-v2__grid tp-e-comparison-v2__grid--cols-{{ total_cols }}" role="table">
+      {%- comment -%} Header row {%- endcomment -%}
+      <div class="tp-e-comparison-v2__row" role="row">
+        <div class="tp-e-comparison-v2__header-feature" role="columnheader">
+          <span class="visually-hidden">Recurso</span>
+        </div>
+        <div class="tp-e-comparison-v2__header-brand" role="columnheader">
+          {% if section.settings.brand_logo != blank %}
+            {{ section.settings.brand_logo | image_url: width: 200 | image_tag:
+              loading: 'lazy',
+              class: 'tp-e-comparison-v2__brand-logo',
+              alt: brand_title
+            }}
+          {% else %}
+            {{ brand_title | escape }}
+          {% endif %}
+        </div>
+        {% if competitor_count >= 1 %}
+          <div class="tp-e-comparison-v2__header-competitor" role="columnheader">
+            {{ section.settings.competitor_1_title | escape }}
+          </div>
+        {% endif %}
+        {% if competitor_count >= 2 %}
+          <div class="tp-e-comparison-v2__header-competitor" role="columnheader">
+            {{ section.settings.competitor_2_title | escape }}
+          </div>
+        {% endif %}
+        {% if competitor_count >= 3 %}
+          <div class="tp-e-comparison-v2__header-competitor tp-e-comparison-v2__col--last" role="columnheader">
+            {{ section.settings.competitor_3_title | escape }}
+          </div>
+        {% endif %}
+      </div>
+
+      {%- comment -%} Body rows {%- endcomment -%}
+      {% for block in section.blocks %}
+        <div class="tp-e-comparison-v2__row" role="row" {{ block.shopify_attributes }}>
+          <div class="tp-e-comparison-v2__cell tp-e-comparison-v2__cell--feature" role="cell">
+            {{ block.settings.feature_text | escape }}
+          </div>
+          <div class="tp-e-comparison-v2__cell tp-e-comparison-v2__cell--brand" role="cell">
+            {{ block.settings.brand_value | escape }}
+          </div>
+          {% if competitor_count >= 1 %}
+            <div class="tp-e-comparison-v2__cell tp-e-comparison-v2__cell--competitor" role="cell">
+              {{ block.settings.competitor_1_value | escape }}
+            </div>
+          {% endif %}
+          {% if competitor_count >= 2 %}
+            <div class="tp-e-comparison-v2__cell tp-e-comparison-v2__cell--competitor" role="cell">
+              {{ block.settings.competitor_2_value | escape }}
+            </div>
+          {% endif %}
+          {% if competitor_count >= 3 %}
+            <div class="tp-e-comparison-v2__cell tp-e-comparison-v2__cell--competitor tp-e-comparison-v2__col--last" role="cell">
+              {{ block.settings.competitor_3_value | escape }}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Tabela Comparativa V2",
+  "class": "E__COMPARISON__V2",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Conteúdo"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Título",
+      "default": "<h2>Lorem ipsum dolor sit amet</h2>"
+    },
+    {
+      "type": "text",
+      "id": "brand_title",
+      "label": "Nome da marca",
+      "default": "LOGO"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_logo",
+      "label": "Logo da marca (opcional)"
+    },
+    {
+      "type": "range",
+      "id": "brand_logo_height",
+      "label": "Altura da logo (px)",
+      "min": 16,
+      "max": 120,
+      "step": 2,
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "competitor_count",
+      "label": "Número de concorrentes",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "text",
+      "id": "competitor_1_title",
+      "label": "Nome concorrente 1",
+      "default": "Concorrente"
+    },
+    {
+      "type": "text",
+      "id": "competitor_2_title",
+      "label": "Nome concorrente 2",
+      "default": "Concorrente",
+      "visible_if": "{{ section.settings.competitor_count >= 2 }}"
+    },
+    {
+      "type": "text",
+      "id": "competitor_3_title",
+      "label": "Nome concorrente 3",
+      "default": "Concorrente",
+      "visible_if": "{{ section.settings.competitor_count >= 3 }}"
+    },
+    {
+      "type": "header",
+      "content": "Aparência"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Tipo de background",
+      "default": "color",
+      "options": [
+        { "label": "Cor", "value": "color" },
+        { "label": "Gradiente", "value": "gradient" },
+        { "label": "Imagem", "value": "image" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Cor",
+      "default": "#FFFFFF",
+      "visible_if": "{{ section.settings.background_type == 'color' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Gradiente",
+      "visible_if": "{{ section.settings.background_type == 'gradient' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Imagem mobile",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_desktop",
+      "label": "Imagem desktop",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "color",
+      "id": "brand_color",
+      "label": "Cor da coluna da marca",
+      "default": "#443FD2"
+    },
+    {
+      "type": "color",
+      "id": "brand_header_color",
+      "label": "Cor do texto da marca",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "select",
+      "id": "table_radius",
+      "label": "Arredondamento da coluna marca",
+      "default": "lg",
+      "options": [
+        { "label": "Nenhum", "value": "none" },
+        { "label": "Pequeno", "value": "sm" },
+        { "label": "Médio", "value": "md" },
+        { "label": "Grande", "value": "lg" },
+        { "label": "Extra grande", "value": "xl" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Tipografia"
+    },
+    {
+      "type": "checkbox",
+      "id": "title_custom",
+      "label": "Personalizar título",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Cor",
+      "default": "#101828",
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Tamanho mobile (px)",
+      "min": 16,
+      "max": 80,
+      "step": 1,
+      "default": 32,
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "label": "Tamanho desktop (px)",
+      "min": 16,
+      "max": 100,
+      "step": 1,
+      "default": 48,
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Peso",
+      "default": "700",
+      "visible_if": "{{ section.settings.title_custom }}",
+      "options": [
+        { "value": "400", "label": "Regular (400)" },
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semibold (600)" },
+        { "value": "700", "label": "Bold (700)" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "row_custom",
+      "label": "Personalizar texto das linhas",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "row_color",
+      "label": "Cor",
+      "visible_if": "{{ section.settings.row_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "row_size_mobile",
+      "label": "Tamanho mobile (px)",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "default": 14,
+      "visible_if": "{{ section.settings.row_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "row_size_desktop",
+      "label": "Tamanho desktop (px)",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "default": 18,
+      "visible_if": "{{ section.settings.row_custom }}"
+    },
+    {
+      "type": "select",
+      "id": "row_weight",
+      "label": "Peso",
+      "default": "600",
+      "visible_if": "{{ section.settings.row_custom }}",
+      "options": [
+        { "value": "400", "label": "Regular (400)" },
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semibold (600)" },
+        { "value": "700", "label": "Bold (700)" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Espaçamento"
+    },
+    {
+      "type": "range",
+      "id": "pad_top_min",
+      "label": "Padding TOP min (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "pad_top_max",
+      "label": "Padding TOP max (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_min",
+      "label": "Padding BOTTOM min (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_max",
+      "label": "Padding BOTTOM max (px)",
+      "min": 0,
+      "max": 200,
+      "step": 8,
+      "default": 96
+    },
+    {
+      "type": "header",
+      "content": "Espaçamento - Overrides (opcional)"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_top_mobile",
+      "label": "Personalizar padding TOP mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_top_mobile",
+      "label": "Padding TOP mobile (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_top_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_bottom_mobile",
+      "label": "Personalizar padding BOTTOM mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_mobile",
+      "label": "Padding BOTTOM mobile (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_bottom_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_top_desktop",
+      "label": "Personalizar padding TOP desktop",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_top_desktop",
+      "label": "Padding TOP desktop (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_top_desktop }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_bottom_desktop",
+      "label": "Personalizar padding BOTTOM desktop",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_desktop",
+      "label": "Padding BOTTOM desktop (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_bottom_desktop }}"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Linha",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_text",
+          "label": "Recurso",
+          "default": "Lorem ipsum dolor sit amet"
+        },
+        {
+          "type": "text",
+          "id": "brand_value",
+          "label": "Valor da marca",
+          "default": "0 g"
+        },
+        {
+          "type": "text",
+          "id": "competitor_1_value",
+          "label": "Valor concorrente 1",
+          "default": "0 g"
+        },
+        {
+          "type": "text",
+          "id": "competitor_2_value",
+          "label": "Valor concorrente 2",
+          "default": "0 g"
+        },
+        {
+          "type": "text",
+          "id": "competitor_3_value",
+          "label": "Valor concorrente 3",
+          "default": "0 g"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabela Comparativa V2",
+      "category": "Texto",
+      "settings": {
+        "title": "<h2>Lorem ipsum dolor sit amet</h2>",
+        "brand_title": "LOGO",
+        "competitor_count": 3,
+        "competitor_1_title": "Concorrente",
+        "competitor_2_title": "Concorrente",
+        "competitor_3_title": "Concorrente",
+        "brand_color": "#443FD2"
+      },
+      "blocks": [
+        { "type": "row", "settings": { "feature_text": "Lorem ipsum dolor sit amet", "brand_value": "0 g", "competitor_1_value": "0 g", "competitor_2_value": "0 g", "competitor_3_value": "0 g" } },
+        { "type": "row", "settings": { "feature_text": "Lorem ipsum dolor sit amet", "brand_value": "25 g", "competitor_1_value": "0 g", "competitor_2_value": "0 g", "competitor_3_value": "0 g" } },
+        { "type": "row", "settings": { "feature_text": "Lorem ipsum dolor sit amet", "brand_value": "0 g", "competitor_1_value": "0 g", "competitor_2_value": "0 g", "competitor_3_value": "0 g" } },
+        { "type": "row", "settings": { "feature_text": "Lorem ipsum dolor sit amet", "brand_value": "0 g", "competitor_1_value": "0 g", "competitor_2_value": "0 g", "competitor_3_value": "0 g" } },
+        { "type": "row", "settings": { "feature_text": "Lorem ipsum dolor sit amet", "brand_value": "0 g", "competitor_1_value": "0 g", "competitor_2_value": "0 g", "competitor_3_value": "0 g" } },
+        { "type": "row", "settings": { "feature_text": "Lorem ipsum dolor sit amet", "brand_value": "0 g", "competitor_1_value": "0 g", "competitor_2_value": "0 g", "competitor_3_value": "0 g" } },
+        { "type": "row", "settings": { "feature_text": "Lorem ipsum dolor sit amet", "brand_value": "0 g", "competitor_1_value": "0 g", "competitor_2_value": "0 g", "competitor_3_value": "0 g" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
