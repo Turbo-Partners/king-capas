@@ -42,21 +42,16 @@
           {% endif %}
         </div>
 
-        {% if tp_product.tags %}
-          <div class="wrapper-tp-badge">
-            {% for item in tp_product.tags %}
-              <div class="tp-badge">{{ item }}</div>
-            {% endfor %}
-            {% if tp_product.compare_at_price > tp_product.price %}
-              {% assign discount = tp_product.compare_at_price
-                | minus: tp_product.price
-                | times: 100
-                | divided_by: tp_product.compare_at_price
-              %}
-              <div class="tp-badge">{{ discount }}% OFF</div>
-            {% endif %}
-          </div>
-        {% endif %}
+        <div class="wrapper-tp-badge">
+          {% if tp_product.compare_at_price > tp_product.price %}
+            {% assign discount = tp_product.compare_at_price
+              | minus: tp_product.price
+              | times: 100
+              | divided_by: tp_product.compare_at_price
+            %}
+            <div class="tp-badge">{{ discount }}% OFF</div>
+          {% endif %}
+        </div>
       </div>
       <div class="tp-product-card__content">
         <h4>
