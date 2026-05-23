@@ -56,6 +56,10 @@
             align-items:center;
             justify-content:center;
             gap:8px;
+            
+            @media screen and (min-width: 768px) {
+                display: none;
+            }
 
             .swiper-pagination-bullet {
                 margin:0;
@@ -105,6 +109,11 @@
 	{% if navigation %}
 		.swiper-button-prev, .swiper-button-next {
 			width: clamp(2.4rem, 2.1029rem + 0.7619vw, 3.2rem);
+            display: none;
+
+            @media screen and (min-width: 768px) {
+                display: flex;
+            }
 
             svg {
                 fill: none;
@@ -115,12 +124,36 @@
                 color: transparent;
 			}
 		}
+
+        .swiper-button-prev {
+            left: 16px;
+
+            @media screen and (min-width: 768px) {
+                left: 32px;
+            }
+
+            @media screen and (min-width: 1024px) {
+                left: 40px;
+            }
+        }
+
+        .swiper-button-next {
+            right: 16px;
+
+            @media screen and (min-width: 768px) {
+                right: 32px;
+            }
+
+            @media screen and (min-width: 1024px) {
+                right: 40px;
+            }
+        }
 	{% endif %}
 }
 {% endstyle %}
 
 <section class="tp-featured-collection {{ section.id }}">
-    <div class="tp-wrapper" id="section-wrapper-{{ section.id }}">
+    <div class="tp-wrapper--full-width" id="section-wrapper-{{ section.id }}">
         {% if section.settings.title != blank %}
             <div class="tp-title-wrapper">
                 <h2>
@@ -183,20 +216,32 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const swiper_{{ section.id | replace: '-', '_' }} = new Swiper('.{{ section.id }} .swiper', {
-            slidesPerView: 1.2,
+            slidesPerView: 2,
             spaceBetween: 12,
+            slidesOffsetBefore: 16,
+            slidesOffsetAfter: 16,
+            grid: {
+                rows: 2,
+                fill: 'row'
+            },
             breakpoints: {
                 728: {
                     slidesPerView: 2.2,
                     spaceBetween: 16,
+                    slidesOffsetBefore: 32,
+                    grid: { rows: 1 }
                 },
                 1024: {
                     slidesPerView: 4,
-                    spaceBetween: 24
+                    spaceBetween: 16,
+                    slidesOffsetBefore: 40,
+                    grid: { rows: 1 }
                 },
                 1280: {
-                    slidesPerView: 4,
-                    spaceBetween: 32
+                    slidesPerView: 4.2,
+                    spaceBetween: 16,
+                    slidesOffsetBefore: 40,
+                    grid: { rows: 1 }
                 }
             },
             {% if autoplay %}

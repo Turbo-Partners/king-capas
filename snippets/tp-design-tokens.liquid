@@ -82,6 +82,50 @@
     font-display: swap;
   }
 
+  /* Helvetica — fonte estática do tema */
+  @font-face {
+    font-family: 'Helvetica';
+    src: url('{{ 'Helvetica.ttc' | asset_url }}') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Helvetica';
+    src: url('{{ 'Helvetica.ttc' | asset_url }}') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Helvetica';
+    src: url('{{ 'Helvetica.ttc' | asset_url }}') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Helvetica';
+    src: url('{{ 'Helvetica.ttc' | asset_url }}') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Helvetica';
+    src: url('{{ 'Helvetica.ttc' | asset_url }}') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Helvetica';
+    src: url('{{ 'Helvetica.ttc' | asset_url }}') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
   /* @font-face para fontes customizadas (CDN Shopify) */
   {% if settings.tp_font_heading_custom and settings.tp_font_heading_custom_name != blank and settings.tp_font_heading_custom_url != blank %}
     @font-face {

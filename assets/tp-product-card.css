@@ -12,8 +12,8 @@
   padding-left: var(--tp-pc-pad-left);
   padding-right: var(--tp-pc-pad-right);
   box-sizing: border-box;
+  border: 1px solid var(--Gray-200, #EAECF0);
   
-
   @media screen and (max-width:750px) {
     gap: var(--tp-space-2);
   }
@@ -90,7 +90,8 @@
   border-radius: 4px;
   font-size: 14px;
   font-weight: bold;
-
+  border-radius: 6px;
+  background: #1A9122;
 }
 
 /* Content */
@@ -99,6 +100,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--tp-space-3);
+  padding-inline: clamp(0.8000rem, calc(0.3543rem + 1.1429vw), 2.0000rem);
 
   @media (max-width:750px) {
     gap: var(--tp-space-1);
@@ -112,6 +114,12 @@
   font-size: var(--tp-pc-title-size);
   font-style: normal;
   font-weight: var(--tp-pc-title-weight);
+  color: var(--Gray-950, #0C111D);
+  font-family: Helvetica;
+  font-size: clamp(1.1000rem, calc(0.8400rem + 0.6667vw), 1.8000rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 23.4px */
 
   @media (max-width:750px) {
     min-height: 28px;
@@ -141,6 +149,13 @@
   font-size: var(--tp-pc-compare-size);
   font-weight: var(--tp-pc-compare-weight);
   text-align: var(--tp-pc-compare-align);
+  color: var(--Gray-500, #667085);
+  font-family: Helvetica;
+  font-size: clamp(1.0000rem, calc(0.7771rem + 0.5714vw), 1.6000rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 14px */
+  text-decoration-line: line-through;
 }
 
 .tp-normal-price {
@@ -148,6 +163,12 @@
   font-family: var(--tp-font-body);
   font-size: var(--tp-pc-price-size);
   font-weight: var(--tp-pc-price-weight);
+  color: var(--Gray-900, #101828);
+  font-family: Helvetica;
+  font-size: clamp(1.0000rem, calc(0.7771rem + 0.5714vw), 1.6000rem);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 14px */
 }
 
 .tp-installments {
@@ -159,6 +180,12 @@
   display: flex;
   align-items: center;
   gap: var(--tp-space-1);
+  color: var(--Gray-500, #667085);
+  font-family: Helvetica;
+  font-size: clamp(1.0000rem, calc(0.8514rem + 0.3810vw), 1.4000rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 14px */
 
   .tp-icon-installment {
     max-width: 16px;
@@ -181,6 +208,8 @@
   width: 100%;
   display: flex;
   cursor: pointer;
+  padding-bottom: clamp(1.0000rem, calc(0.4800rem + 1.3333vw), 2.4000rem);
+  padding-inline: clamp(0.8000rem, calc(0.3543rem + 1.1429vw), 2.0000rem);
 }
 
 .tp-product-card__form {
@@ -209,6 +238,12 @@
   cursor: pointer;
   transition: transform 0.25s ease, background 0.25s ease;
   box-sizing: border-box;
+  color: #FFF;
+  font-family: Helvetica;
+  font-size: clamp(1.1000rem, calc(0.9143rem + 0.4762vw), 1.6000rem);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 15.4px */
 }
 
 .tp-button::before,
