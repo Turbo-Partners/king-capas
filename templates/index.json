@@ -407,6 +407,7 @@
         "pagination_border_color": "#b1bfab",
         "pagination_border_color_active": "#000000",
         "navigation": true,
+        "navigation_prev_image": "shopify://shop_images/696.svg",
         "navigation_next_image": "shopify://shop_images/695.svg",
         "pad_top_min": 48,
         "pad_top_max": 96,
