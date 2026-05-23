@@ -254,6 +254,61 @@
             "width": 0,
             "height": 0
           }
+        },
+        "announcement_ciiGbw": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>Feito sob medida</p>",
+            "text_color": "",
+            "link": "",
+            "image_width": 24,
+            "image_position": "before",
+            "item_bg_type": "none",
+            "item_bg_color": "",
+            "item_bg_gradient": "",
+            "text_bg_type": "none",
+            "text_bg_color": "",
+            "text_bg_gradient": "",
+            "text_enable_border": false,
+            "text_border_width": 1,
+            "text_border_color": "#e0e0e0",
+            "text_border_radius": 0,
+            "text_padding": 0,
+            "enable_border": false,
+            "border_width": 1,
+            "border_color": "#e0e0e0",
+            "border_radius": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "announcement_XjLECM": {
+          "type": "announcement",
+          "settings": {
+            "text": "",
+            "text_color": "",
+            "link": "",
+            "image": "shopify://shop_images/694.svg",
+            "image_width": 12,
+            "image_position": "before",
+            "item_bg_type": "none",
+            "item_bg_color": "",
+            "item_bg_gradient": "",
+            "text_bg_type": "none",
+            "text_bg_color": "",
+            "text_bg_gradient": "",
+            "text_enable_border": false,
+            "text_border_width": 1,
+            "text_border_color": "#e0e0e0",
+            "text_border_radius": 0,
+            "text_padding": 0,
+            "enable_border": false,
+            "border_width": 1,
+            "border_color": "#e0e0e0",
+            "border_radius": 0,
+            "width": 0,
+            "height": 0
+          }
         }
       },
       "block_order": [
@@ -264,7 +319,9 @@
         "announcement_haVHCm",
         "announcement_RJV6it",
         "announcement_JGftdk",
-        "announcement_etzRg7"
+        "announcement_etzRg7",
+        "announcement_ciiGbw",
+        "announcement_XjLECM"
       ],
       "name": "TP - Barra de Avisos",
       "settings": {
