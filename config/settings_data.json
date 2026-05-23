@@ -125,6 +125,7 @@
     "show_vendor": false,
     "show_cart_note": true,
     "cart_drawer_collection": "",
+    "enable_seo_hack": true,
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
