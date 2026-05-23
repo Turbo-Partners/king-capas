@@ -126,6 +126,9 @@
     "show_cart_note": true,
     "cart_drawer_collection": "",
     "enable_seo_hack": true,
+    "tp_pc_title_align": "left",
+    "tp_pc_price_align": "flex-start",
+    "tp_pc_installments_align": "left",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
