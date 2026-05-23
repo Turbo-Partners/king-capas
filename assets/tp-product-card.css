@@ -12,6 +12,7 @@
   padding-left: var(--tp-pc-pad-left);
   padding-right: var(--tp-pc-pad-right);
   box-sizing: border-box;
+  
 
   @media screen and (max-width:750px) {
     gap: var(--tp-space-2);
