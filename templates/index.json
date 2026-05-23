@@ -97,7 +97,7 @@
       ],
       "name": "TP - Barra de Avisos",
       "settings": {
-        "marquee_speed": 20,
+        "marquee_speed": 40,
         "marquee_direction": "left",
         "font_family_type": "theme",
         "custom_font": "",
