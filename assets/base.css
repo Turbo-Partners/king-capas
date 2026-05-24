@@ -2094,6 +2094,10 @@ input[type='checkbox'] {
   height: 100%;
 }
 
+.tp-announcement-bar {
+  background: #FF0;
+}
+
 .utility-bar--bottom-border {
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
 }
@@ -2250,6 +2254,13 @@ input[type='checkbox'] {
   margin: 0;
   letter-spacing: 0.1rem;
   min-height: 3.8rem;
+  color: #000;
+  font-family: "Inter";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
 }
 
 .announcement-bar-slider--fade-in-next .announcement-bar__message,
