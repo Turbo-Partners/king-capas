@@ -187,6 +187,9 @@
         "card_8GEr9t",
         "card_8Rdb4W"
       ],
+      "custom_css": [
+        ".tp-e-categories-v2__card-text {text-align: left;}"
+      ],
       "name": "Categorias V2",
       "settings": {
         "title": "",
