@@ -720,6 +720,34 @@
     },
     "tp_e_image_with_text_v1_7XGtVk": {
       "type": "tp-e-image-with-text-v1",
+      "blocks": {
+        "benefit_hEPQmb": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/714.svg",
+            "richtext": "<p>Ajuste perfeito para cada modelo</p>"
+          }
+        },
+        "benefit_eahYRH": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/714.svg",
+            "richtext": "<p>Ajuste perfeito para cada modelo</p>"
+          }
+        },
+        "benefit_rqAyVe": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/714.svg",
+            "richtext": "<p>Ajuste perfeito para cada modelo</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_hEPQmb",
+        "benefit_eahYRH",
+        "benefit_rqAyVe"
+      ],
       "name": "Imagem Com Texto V1",
       "settings": {
         "image_position_desktop": "left",
@@ -729,8 +757,8 @@
         "loading_image": true,
         "image_desktop": "shopify://shop_images/712_1.webp",
         "image_mobile": "shopify://shop_images/713_1.webp",
-        "title": "<h2>Titulo da seção</h2>",
-        "richtext": "<p>Conteúdo da seção</p>",
+        "title": "<h2>Nascemos para elevar o padrão de proteção</h2>",
+        "richtext": "<p>Enquanto o mercado oferece capas genéricas, desenvolvemos soluções sob medida para quem valoriza acabamento, durabilidade e proteção de verdade.</p>",
         "button_url": "",
         "button_text": "Texto do botão",
         "faq_icon_type": "arrow",
