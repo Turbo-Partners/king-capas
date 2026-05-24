@@ -59,7 +59,7 @@
         "slide_HffUeN"
       ],
       "custom_css": [
-        ".tp-e-banner-slides-v1__text-wrapper{width: 100%; }"
+        ".tp-e-banner-slides-v1__text-wrapper {width: 100%; width: calc(100% - 32px);}"
       ],
       "name": "Banner Slides V1",
       "settings": {
