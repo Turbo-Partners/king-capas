@@ -58,6 +58,9 @@
       "block_order": [
         "slide_HffUeN"
       ],
+      "custom_css": [
+        ".tp-e-banner-slides-v1__text-wrapper{width: 100%; }"
+      ],
       "name": "Banner Slides V1",
       "settings": {
         "autoplay": true,
