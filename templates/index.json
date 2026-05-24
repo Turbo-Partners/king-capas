@@ -9,27 +9,116 @@
  */
 {
   "sections": {
-    "tp_hero_hJtTP9": {
-      "type": "tp-hero",
+    "tp_e_banner_slides_v1_trMAtd": {
+      "type": "tp-e-banner-slides-v1",
       "blocks": {
-        "banner_XAHGmj": {
-          "type": "banner",
+        "slide_NhKtLK": {
+          "type": "slide",
           "settings": {
-            "url": "",
-            "image_alt": "Imagem Hero"
+            "media_type": "image",
+            "link": "",
+            "title": "<h2>Título</h2>",
+            "richtext": "<p>texto</p>",
+            "button_link": "",
+            "button_text": "CTA",
+            "button_animation": "none",
+            "button_custom": false,
+            "button_bg_color": "",
+            "button_text_color": "",
+            "button_border_radius": "default",
+            "button_font_size": 16,
+            "button_font_weight": "600",
+            "title_custom": false,
+            "title_color": "#2B2B2B",
+            "title_font_size_mobile": 36,
+            "title_font_size_desktop": 48,
+            "title_font_weight": "700",
+            "description_custom": false,
+            "description_color": "#667085",
+            "description_font_size_mobile": 16,
+            "description_font_size_desktop": 18,
+            "description_font_weight": "400",
+            "text_width_mobile": 400,
+            "text_width_desktop": 640,
+            "text_alignment_mobile": "left",
+            "text_alignment_desktop": "left",
+            "text_position_horizontal_mobile": "left",
+            "text_position_horizontal_desktop": "left",
+            "text_position_vertical_mobile": "bottom",
+            "text_position_vertical_desktop": "bottom",
+            "bottom_mobile": 24,
+            "bottom_desktop": 24,
+            "top_mobile": 24,
+            "top_desktop": 24
+          }
+        },
+        "slide_an6xKz": {
+          "type": "slide",
+          "settings": {
+            "media_type": "image",
+            "link": "",
+            "title": "<h2>Título</h2>",
+            "richtext": "<p>texto</p>",
+            "button_link": "",
+            "button_text": "CTA",
+            "button_animation": "none",
+            "button_custom": false,
+            "button_bg_color": "",
+            "button_text_color": "",
+            "button_border_radius": "default",
+            "button_font_size": 16,
+            "button_font_weight": "600",
+            "title_custom": false,
+            "title_color": "#2B2B2B",
+            "title_font_size_mobile": 36,
+            "title_font_size_desktop": 48,
+            "title_font_weight": "700",
+            "description_custom": false,
+            "description_color": "#667085",
+            "description_font_size_mobile": 16,
+            "description_font_size_desktop": 18,
+            "description_font_weight": "400",
+            "text_width_mobile": 400,
+            "text_width_desktop": 640,
+            "text_alignment_mobile": "left",
+            "text_alignment_desktop": "left",
+            "text_position_horizontal_mobile": "left",
+            "text_position_horizontal_desktop": "left",
+            "text_position_vertical_mobile": "bottom",
+            "text_position_vertical_desktop": "bottom",
+            "bottom_mobile": 24,
+            "bottom_desktop": 24,
+            "top_mobile": 24,
+            "top_desktop": 24
           }
         }
       },
       "block_order": [
-        "banner_XAHGmj"
+        "slide_NhKtLK",
+        "slide_an6xKz"
       ],
-      "name": "TP - Banner Principal",
+      "name": "Banner Slides V1",
       "settings": {
         "autoplay": true,
-        "tempo_autoplay": 3,
+        "tempo_autoplay": 4,
         "pagination": true,
-        "pagination_color": "#b1bfab",
-        "pagination_color_active": "#000000"
+        "pagination_color": "#B1BFAB",
+        "pagination_color_active": "#000",
+        "background_type": "color",
+        "background_color": "#FFFFFF",
+        "background_gradient": "",
+        "pad_top_min": 48,
+        "pad_top_max": 96,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
       }
     },
     "tp_e_scroll_promo_v1_PTg7ym": {
@@ -967,12 +1056,12 @@
         "bg_color": "#ffffff",
         "title_bar": false,
         "title_custom": false,
-        "title_color": "#1A1A1A",
+        "title_color": "#1a1a1a",
         "title_size_mobile": 28,
         "title_size_desktop": 40,
         "title_weight": "700",
         "card_title_custom": false,
-        "card_title_color": "#1A1A1A",
+        "card_title_color": "#1a1a1a",
         "card_title_size_mobile": 16,
         "card_title_size_desktop": 18,
         "card_title_weight": "600",
@@ -997,7 +1086,7 @@
     }
   },
   "order": [
-    "tp_hero_hJtTP9",
+    "tp_e_banner_slides_v1_trMAtd",
     "tp_e_scroll_promo_v1_PTg7ym",
     "tp_video_slides_PKgVeY",
     "tp_featured_collection_RMqgGf",
