@@ -782,7 +782,7 @@
         "button_font_size_mobile": 16,
         "radius_btn": 100,
         "background_type": "color",
-        "background_color": "#FFFFFF",
+        "background_color": "#0d0d0d",
         "background_gradient": "",
         "pad_top_min": 48,
         "pad_top_max": 96,
