@@ -91,6 +91,9 @@
     },
     "tp_e_image_with_text_v1_a6m9Ux": {
       "type": "tp-e-image-with-text-v1",
+      "custom_css": [
+        "h2 {color: #2B2B2B;}"
+      ],
       "name": "Imagem Com Texto V1",
       "settings": {
         "image_position_desktop": "left",
@@ -105,8 +108,8 @@
         "button_url": "",
         "button_text": "Texto do botão",
         "faq_icon_type": "arrow",
-        "faq_first_open": true,
-        "data_animate": true,
+        "faq_first_open": false,
+        "data_animate": false,
         "title_custom": false,
         "text_color_title": "#2B2B2B",
         "font_weight": "700",
