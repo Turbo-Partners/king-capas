@@ -803,7 +803,9 @@
       "blocks": {
         "image_gqDGYf": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/716_1.webp"
+          }
         },
         "review_zaDALY": {
           "type": "review",
@@ -822,6 +824,12 @@
             "border_color": "#E5E7EB",
             "border_width": 1,
             "card_radius": "xl"
+          }
+        },
+        "image_f7hMzF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/717_1.webp"
           }
         },
         "review_XijzLC": {
@@ -866,6 +874,7 @@
       "block_order": [
         "image_gqDGYf",
         "review_zaDALY",
+        "image_f7hMzF",
         "review_XijzLC",
         "review_HrekkB"
       ],
