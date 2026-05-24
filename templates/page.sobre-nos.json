@@ -9,6 +9,78 @@
  */
 {
   "sections": {
+    "tp_e_banner_slides_v1_Q6VfXT": {
+      "type": "tp-e-banner-slides-v1",
+      "blocks": {
+        "slide_HffUeN": {
+          "type": "slide",
+          "settings": {
+            "media_type": "image",
+            "image_desktop": "shopify://shop_images/736_1.webp",
+            "link": "",
+            "title": "<h2>Título</h2>",
+            "richtext": "<p>texto</p>",
+            "button_link": "",
+            "button_text": "CTA",
+            "button_animation": "none",
+            "button_custom": false,
+            "button_bg_color": "",
+            "button_text_color": "",
+            "button_border_radius": "default",
+            "button_font_size": 16,
+            "button_font_weight": "600",
+            "title_custom": false,
+            "title_color": "#2B2B2B",
+            "title_font_size_mobile": 36,
+            "title_font_size_desktop": 48,
+            "title_font_weight": "700",
+            "description_custom": false,
+            "description_color": "#667085",
+            "description_font_size_mobile": 16,
+            "description_font_size_desktop": 18,
+            "description_font_weight": "400",
+            "text_width_mobile": 400,
+            "text_width_desktop": 640,
+            "text_alignment_mobile": "left",
+            "text_alignment_desktop": "left",
+            "text_position_horizontal_mobile": "left",
+            "text_position_horizontal_desktop": "left",
+            "text_position_vertical_mobile": "bottom",
+            "text_position_vertical_desktop": "bottom",
+            "bottom_mobile": 24,
+            "bottom_desktop": 24,
+            "top_mobile": 24,
+            "top_desktop": 24
+          }
+        }
+      },
+      "block_order": [
+        "slide_HffUeN"
+      ],
+      "name": "Banner Slides V1",
+      "settings": {
+        "autoplay": true,
+        "tempo_autoplay": 4,
+        "pagination": true,
+        "pagination_color": "#B1BFAB",
+        "pagination_color_active": "#000",
+        "background_type": "color",
+        "background_color": "#FFFFFF",
+        "background_gradient": "",
+        "pad_top_min": 0,
+        "pad_top_max": 0,
+        "pad_bottom_min": 0,
+        "pad_bottom_max": 0,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
     "main": {
       "type": "main-page",
       "settings": {
@@ -18,6 +90,7 @@
     }
   },
   "order": [
+    "tp_e_banner_slides_v1_Q6VfXT",
     "main"
   ]
 }
