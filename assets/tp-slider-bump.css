@@ -20,7 +20,12 @@
   }
 
   .tp-sb__head h2 {
-
+    font-family: "Helvetica Neue";
+    font-size: clamp(2.4000rem, calc(1.8057rem + 1.5238vw), 4.0000rem);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 48px */
+    text-align: center;
   }
 
   .tp-sb__title {
