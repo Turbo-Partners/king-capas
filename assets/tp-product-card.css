@@ -253,6 +253,9 @@
 
 .tp-button--disabled {
   background: var(--tp-color-text-secondary);
+  margin-bottom: clamp(1rem, calc(.48rem + 1.3333vw), 2.4rem);
+  margin-inline: clamp(.8rem, calc(.3543rem + 1.1429vw), 2rem);
+  max-width: calc(100% - calc(2 * clamp(.8rem, calc(.3543rem + 1.1429vw), 2rem)));
 }
 
 /* Hover — image zoom */
