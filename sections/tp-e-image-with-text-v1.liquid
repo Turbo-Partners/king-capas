@@ -104,7 +104,11 @@
 {%- if css_blocks.size > 0 -%}
   {%- for block in css_blocks -%}
     {%- if block.settings.custom_css != blank -%}
-      <style>{{ block.settings.custom_css }}</style>
+      <style>
+        @scope (.{{ section.id }}) {
+          {{ block.settings.custom_css }}
+        }
+      </style>
     {%- endif -%}
   {%- endfor -%}
 {%- endif -%}
@@ -821,7 +825,7 @@
           "type": "textarea",
           "id": "custom_css",
           "label": "CSS",
-          "info": "CSS injetado diretamente na página. Use o ID da seção (.{{ section.id }}) para escopar os estilos."
+          "info": "CSS injetado diretamente na página. Para escopar à seção, use o ID exibido no URL do editor como seletor."
         }
       ]
     }
