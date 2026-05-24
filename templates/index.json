@@ -16,46 +16,8 @@
           "type": "slide",
           "settings": {
             "media_type": "image",
-            "link": "",
-            "title": "<h2>Título</h2>",
-            "richtext": "<p>texto</p>",
-            "button_link": "",
-            "button_text": "CTA",
-            "button_animation": "none",
-            "button_custom": false,
-            "button_bg_color": "",
-            "button_text_color": "",
-            "button_border_radius": "default",
-            "button_font_size": 16,
-            "button_font_weight": "600",
-            "title_custom": false,
-            "title_color": "#2B2B2B",
-            "title_font_size_mobile": 36,
-            "title_font_size_desktop": 48,
-            "title_font_weight": "700",
-            "description_custom": false,
-            "description_color": "#667085",
-            "description_font_size_mobile": 16,
-            "description_font_size_desktop": 18,
-            "description_font_weight": "400",
-            "text_width_mobile": 400,
-            "text_width_desktop": 640,
-            "text_alignment_mobile": "left",
-            "text_alignment_desktop": "left",
-            "text_position_horizontal_mobile": "left",
-            "text_position_horizontal_desktop": "left",
-            "text_position_vertical_mobile": "bottom",
-            "text_position_vertical_desktop": "bottom",
-            "bottom_mobile": 24,
-            "bottom_desktop": 24,
-            "top_mobile": 24,
-            "top_desktop": 24
-          }
-        },
-        "slide_an6xKz": {
-          "type": "slide",
-          "settings": {
-            "media_type": "image",
+            "image_mobile": "shopify://shop_images/731_1.webp",
+            "image_desktop": "shopify://shop_images/730_1.webp",
             "link": "",
             "title": "<h2>Título</h2>",
             "richtext": "<p>texto</p>",
@@ -94,8 +56,7 @@
         }
       },
       "block_order": [
-        "slide_NhKtLK",
-        "slide_an6xKz"
+        "slide_NhKtLK"
       ],
       "name": "Banner Slides V1",
       "settings": {
