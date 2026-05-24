@@ -673,6 +673,13 @@
             "image": "shopify://shop_images/710_1.webp",
             "link": ""
           }
+        },
+        "midia_item_FtPUPi": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/711_1.webp",
+            "link": ""
+          }
         }
       },
       "block_order": [
@@ -681,7 +688,8 @@
         "midia_item_DqhK7t",
         "midia_item_xeb7dy",
         "midia_item_UmttGp",
-        "midia_item_f7CiQT"
+        "midia_item_f7CiQT",
+        "midia_item_FtPUPi"
       ],
       "name": "Mídia",
       "settings": {
