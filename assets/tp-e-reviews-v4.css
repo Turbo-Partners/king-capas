@@ -84,7 +84,7 @@
 .tp-e-reviews-v4__image img {
   width: 100%;
   height: auto;
-  border-radius: var(--tp-radius-xl);
+  border-radius: var(--tp-radius-sm);
   display: block;
 }
 
