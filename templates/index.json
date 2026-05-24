@@ -430,7 +430,7 @@
           "type": "category",
           "settings": {
             "image": "shopify://shop_images/697_1.webp",
-            "title": "",
+            "title": "Capa para carros",
             "link": "",
             "title_align": "center",
             "title_custom": false,
@@ -446,7 +446,7 @@
           "type": "category",
           "settings": {
             "image": "shopify://shop_images/698_1.webp",
-            "title": "Categoria 2",
+            "title": "Capas para motos",
             "link": "",
             "title_align": "center",
             "title_custom": false,
@@ -462,7 +462,7 @@
           "type": "category",
           "settings": {
             "image": "shopify://shop_images/699_1.webp",
-            "title": "Categoria 3",
+            "title": "Capas para jet ski",
             "link": "",
             "title_align": "center",
             "title_custom": false,
@@ -478,7 +478,7 @@
           "type": "category",
           "settings": {
             "image": "shopify://shop_images/700_1.webp",
-            "title": "Categoria 4",
+            "title": "Capas aeronáuticas",
             "link": "",
             "title_align": "center",
             "title_custom": false,
