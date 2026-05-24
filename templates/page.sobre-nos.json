@@ -255,7 +255,8 @@
         "benefit_yN86ir"
       ],
       "custom_css": [
-        "h4 {color: #fff; font-family: Helvetica; font-size: clamp(2.4000rem, calc(2.1029rem + 0.7619vw), 3.2000rem); font-style: normal; font-weight: 700; line-height: 120%; /* 38.4px */}"
+        "h4 {color: #fff; font-family: Helvetica; font-size: clamp(2.4rem, calc(2.1029rem + 0.7619vw), 3.2rem); font-style: normal; text-align: center; font-weight: 700; line-height: 120%; /* 38.4px */}",
+        "@media screen and (min-width: 1024px) {h4 {text-align: left; }}"
       ],
       "name": "Imagem Com Texto V1",
       "settings": {
