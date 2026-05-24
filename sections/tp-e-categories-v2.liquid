@@ -42,108 +42,76 @@
   }
 {% endstyle %}
 
-<tp-categories-v2>
-  <section class="tp-e-categories-v2 {{ section.id }} scroll-trigger animate--slide-in" id="section-wrapper-{{ section.id }}">
+<section class="tp-e-categories-v2 {{ section.id }} scroll-trigger animate--slide-in" id="section-wrapper-{{ section.id }}">
+  <div class="tp-wrapper">
 
-    {% if section.settings.title != blank %}
-      <div class="tp-wrapper tp-e-categories-v2__header">
-        <div class="tp-e-categories-v2__title-wrapper">
-          {% if section.settings.title_bar %}
-            <span class="tp-e-categories-v2__title-bar" aria-hidden="true"></span>
-          {% endif %}
-          <div class="tp-e-categories-v2__title">{{ section.settings.title }}</div>
+  {% if section.settings.title != blank %}
+    <div class="tp-e-categories-v2__header">
+      <div class="tp-e-categories-v2__title-wrapper">
+        {% if section.settings.title_bar %}
+          <span class="tp-e-categories-v2__title-bar" aria-hidden="true"></span>
+        {% endif %}
+        <div class="tp-e-categories-v2__title">{{ section.settings.title }}</div>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if section.blocks.size > 0 %}
+    <div class="tp-e-categories-v2__swiper-outer">
+      <div class="tp-e-categories-v2__swiper swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide tp-e-categories-v2__slide" {{ block.shopify_attributes }}>
+              <article class="tp-e-categories-v2__card">
+                <div class="tp-e-categories-v2__image-wrapper">
+                  {% if block.settings.image != blank %}
+                    {{ block.settings.image | image_url: width: 800 | image_tag:
+                      class: 'tp-e-categories-v2__image',
+                      loading: 'lazy',
+                      widths: '400, 600, 800',
+                      sizes: '(min-width: 1024px) 30vw, (min-width: 600px) 45vw, 80vw',
+                      alt: block.settings.image.alt | default: block.settings.title | default: ''
+                    }}
+                  {% else %}
+                    {{ 'image' | placeholder_svg_tag: 'tp-e-categories-v2__image tp-e-categories-v2__image--placeholder' }}
+                  {% endif %}
+                </div>
+                <div class="tp-e-categories-v2__content">
+                  {% if block.settings.title != blank %}
+                    <p class="tp-e-categories-v2__card-title">{{ block.settings.title | escape }}</p>
+                  {% endif %}
+                  {% if block.settings.text != blank %}
+                    <p class="tp-e-categories-v2__card-text">{{ block.settings.text | escape }}</p>
+                  {% endif %}
+                </div>
+              </article>
+            </div>
+          {% endfor %}
         </div>
       </div>
-    {% endif %}
+    </div>
+  {% endif %}
 
-    {% if section.blocks.size > 0 %}
-      <div class="tp-e-categories-v2__swiper-outer">
-        <div class="tp-e-categories-v2__swiper swiper">
-          <div class="swiper-wrapper">
-            {% for block in section.blocks %}
-              <div class="swiper-slide tp-e-categories-v2__slide" {{ block.shopify_attributes }}>
-                <article class="tp-e-categories-v2__card">
-                  <div class="tp-e-categories-v2__image-wrapper">
-                    {% if block.settings.image != blank %}
-                      {{ block.settings.image | image_url: width: 800 | image_tag:
-                        class: 'tp-e-categories-v2__image',
-                        loading: 'lazy',
-                        widths: '400, 600, 800',
-                        sizes: '(min-width: 1024px) 30vw, (min-width: 600px) 45vw, 80vw',
-                        alt: block.settings.image.alt | default: block.settings.title | default: ''
-                      }}
-                    {% else %}
-                      {{ 'image' | placeholder_svg_tag: 'tp-e-categories-v2__image tp-e-categories-v2__image--placeholder' }}
-                    {% endif %}
-                  </div>
-                  <div class="tp-e-categories-v2__content">
-                    {% if block.settings.title != blank %}
-                      <p class="tp-e-categories-v2__card-title">{{ block.settings.title | escape }}</p>
-                    {% endif %}
-                    {% if block.settings.text != blank %}
-                      <p class="tp-e-categories-v2__card-text">{{ block.settings.text | escape }}</p>
-                    {% endif %}
-                  </div>
-                </article>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    {% endif %}
-
-  </section>
-</tp-categories-v2>
+  </div>
+</section>
 
 <script>
   (function () {
-    class TpCategoriesV2 extends HTMLElement {
-      connectedCallback() {
-        this._onResize = () => this._adjustOffset();
-        window.addEventListener('resize', this._onResize);
+    var sectionEl = document.getElementById('section-wrapper-{{ section.id }}');
+    if (!sectionEl || !window.Swiper) return;
 
-        requestAnimationFrame(() => {
-          this._adjustOffset();
-          this._initSwiper();
-        });
+    new Swiper(
+      sectionEl.querySelector('.tp-e-categories-v2__swiper'),
+      {
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        grabCursor: true,
+        breakpoints: {
+          600: { slidesPerView: 2.2, spaceBetween: 20 },
+          1024: { slidesPerView: 4, spaceBetween: 24 },
+        },
       }
-
-      disconnectedCallback() {
-        window.removeEventListener('resize', this._onResize);
-        if (this._swiper) this._swiper.destroy(true, true);
-      }
-
-      _adjustOffset() {
-        const header = this.querySelector('.tp-e-categories-v2__header');
-        const swiperOuter = this.querySelector('.tp-e-categories-v2__swiper-outer');
-        if (!header || !swiperOuter) return;
-
-        const rect = header.getBoundingClientRect();
-        const paddingLeft = parseFloat(getComputedStyle(header).paddingLeft) || 0;
-        swiperOuter.style.paddingLeft = (rect.left + paddingLeft) + 'px';
-      }
-
-      _initSwiper() {
-        if (!window.Swiper) return;
-
-        this._swiper = new Swiper(
-          this.querySelector('.tp-e-categories-v2__swiper'),
-          {
-            slidesPerView: 1.2,
-            spaceBetween: 16,
-            grabCursor: true,
-            breakpoints: {
-              600: { slidesPerView: 2.2, spaceBetween: 20 },
-              1024: { slidesPerView: 3.5, spaceBetween: 24 },
-            },
-          }
-        );
-      }
-    }
-
-    if (!customElements.get('tp-categories-v2')) {
-      customElements.define('tp-categories-v2', TpCategoriesV2);
-    }
+    );
   })();
 </script>
 
