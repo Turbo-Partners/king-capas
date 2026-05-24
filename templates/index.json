@@ -801,6 +801,10 @@
     "tp_e_reviews_v4_mhidfC": {
       "type": "tp-e-reviews-v4",
       "blocks": {
+        "image_gqDGYf": {
+          "type": "image",
+          "settings": {}
+        },
         "review_zaDALY": {
           "type": "review",
           "settings": {
@@ -860,6 +864,7 @@
         }
       },
       "block_order": [
+        "image_gqDGYf",
         "review_zaDALY",
         "review_XijzLC",
         "review_HrekkB"
