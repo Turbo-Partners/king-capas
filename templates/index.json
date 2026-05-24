@@ -422,12 +422,119 @@
         "enable_pad_bottom_desktop": false,
         "pad_bottom_desktop": 0
       }
+    },
+    "tp_e_categories_v1_aCGaPF": {
+      "type": "tp-e-categories-V1",
+      "blocks": {
+        "category_tF4CPg": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/697_1.webp",
+            "title": "",
+            "link": "",
+            "title_align": "center",
+            "title_custom": false,
+            "title_size_desktop": 16,
+            "title_size_mobile": 14,
+            "title_weight": "500",
+            "title_color": "#2B2B2B",
+            "title_bar": false,
+            "title_bar_color": "#000000"
+          }
+        },
+        "category_kH3Htd": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/698_1.webp",
+            "title": "Categoria 2",
+            "link": "",
+            "title_align": "center",
+            "title_custom": false,
+            "title_size_desktop": 16,
+            "title_size_mobile": 14,
+            "title_weight": "500",
+            "title_color": "#2B2B2B",
+            "title_bar": false,
+            "title_bar_color": "#000000"
+          }
+        },
+        "category_XQf6Xi": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/699_1.webp",
+            "title": "Categoria 3",
+            "link": "",
+            "title_align": "center",
+            "title_custom": false,
+            "title_size_desktop": 16,
+            "title_size_mobile": 14,
+            "title_weight": "500",
+            "title_color": "#2B2B2B",
+            "title_bar": false,
+            "title_bar_color": "#000000"
+          }
+        },
+        "category_bUmETF": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/700_1.webp",
+            "title": "Categoria 4",
+            "link": "",
+            "title_align": "center",
+            "title_custom": false,
+            "title_size_desktop": 16,
+            "title_size_mobile": 14,
+            "title_weight": "500",
+            "title_color": "#2B2B2B",
+            "title_bar": false,
+            "title_bar_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "category_tF4CPg",
+        "category_kH3Htd",
+        "category_XQf6Xi",
+        "category_bUmETF"
+      ],
+      "name": "Categorias V1",
+      "settings": {
+        "background_type": "color",
+        "bg_color": "#FFFFFF",
+        "bg_gradient": "",
+        "title": "<h2>Categorias</h2>",
+        "title_bar": false,
+        "title_bar_color": "linear-gradient(92deg, #00FCA8 0%, #1CDAFF 100%)",
+        "title_custom": false,
+        "title_alignment": "left",
+        "title_color": "#2B2B2B",
+        "title_size_desktop": 36,
+        "title_size_mobile": 28,
+        "title_weight": "700",
+        "cols_mobile": "2",
+        "cols_desktop": "4",
+        "card_radius": "md",
+        "img_ratio": "1",
+        "pad_top_min": 48,
+        "pad_top_max": 96,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
     }
   },
   "order": [
     "tp_hero_hJtTP9",
     "tp_e_scroll_promo_v1_PTg7ym",
     "tp_video_slides_PKgVeY",
-    "tp_featured_collection_RMqgGf"
+    "tp_featured_collection_RMqgGf",
+    "tp_e_categories_v1_aCGaPF"
   ]
 }
