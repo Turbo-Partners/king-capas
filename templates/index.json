@@ -556,6 +556,34 @@
         "enable_pad_bottom_desktop": false,
         "pad_bottom_desktop": 0
       }
+    },
+    "tp_slider_bump_wmwT64": {
+      "type": "tp-slider-bump",
+      "name": "TP - Slider Bump",
+      "settings": {
+        "background_color": "#FFF",
+        "badge_text": "",
+        "title": "<h2>A experiência de quem já escolheu Kings</h2>",
+        "subtitle": "Milhares de veículos protegidos em todo o Brasil com capas feitas sob medida.",
+        "button_url": "",
+        "button_text": "",
+        "initial_slide": 3,
+        "autoplay": true,
+        "tempo_autoplay": 3,
+        "navigation": true,
+        "pad_top_min": 48,
+        "pad_top_max": 96,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
     }
   },
   "order": [
@@ -563,6 +591,7 @@
     "tp_e_scroll_promo_v1_PTg7ym",
     "tp_video_slides_PKgVeY",
     "tp_featured_collection_RMqgGf",
-    "tp_e_categories_v1_aCGaPF"
+    "tp_e_categories_v1_aCGaPF",
+    "tp_slider_bump_wmwT64"
   ]
 }
