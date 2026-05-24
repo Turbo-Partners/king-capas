@@ -822,7 +822,7 @@
             "bg_color": "",
             "bg_gradient": "",
             "show_border": false,
-            "border_color": "#E5E7EB",
+            "border_color": "#e5e7eb",
             "border_width": 1,
             "card_radius": "xl"
           }
@@ -837,17 +837,38 @@
           "type": "review",
           "settings": {
             "stars": 5,
-            "title": "Recomendo muito!",
+            "title": "Muito Feliz com a Compra!",
             "subtitle": "",
-            "text": "<p>Qualidade excelente, chegou rápido e bem embalado.</p>",
-            "name": "Maria Costa",
+            "text": "<p>\"Excelente atendimento, material de primeiríssima linha e rápida entrega. Recomendo a todos os apaixonados por carro.\"</p>",
+            "name": "Junior B.",
             "profession": "",
-            "purchase_text": "",
+            "purchase_text": "Compra verificada",
+            "purchase_icon": "shopify://shop_images/718.png",
             "bg_type": "default",
             "bg_color": "",
             "bg_gradient": "",
-            "show_border": false,
-            "border_color": "#E5E7EB",
+            "show_border": true,
+            "border_color": "#e5e7eb",
+            "border_width": 1,
+            "card_radius": "xl"
+          }
+        },
+        "review_d9Ugwf": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "title": "Muito Feliz com a Compra!",
+            "subtitle": "",
+            "text": "<p>\"Excelente atendimento, material de primeiríssima linha e rápida entrega. Recomendo a todos os apaixonados por carro.\"</p>",
+            "name": "Junior B.",
+            "profession": "",
+            "purchase_text": "Compra verificada",
+            "purchase_icon": "shopify://shop_images/718.png",
+            "bg_type": "default",
+            "bg_color": "",
+            "bg_gradient": "",
+            "show_border": true,
+            "border_color": "#e5e7eb",
             "border_width": 1,
             "card_radius": "xl"
           }
@@ -872,7 +893,7 @@
             "bg_color": "",
             "bg_gradient": "",
             "show_border": false,
-            "border_color": "#E5E7EB",
+            "border_color": "#e5e7eb",
             "border_width": 1,
             "card_radius": "xl"
           }
@@ -883,6 +904,7 @@
         "review_zaDALY",
         "image_f7hMzF",
         "review_XijzLC",
+        "review_d9Ugwf",
         "image_b7UQN4",
         "review_HrekkB"
       ],
@@ -900,7 +922,7 @@
         "background_color": "#ffffff",
         "background_gradient": "",
         "pagination": false,
-        "pagination_color": "#B1BFAB",
+        "pagination_color": "#b1bfab",
         "pagination_color_active": "#000000",
         "navigation": false,
         "pad_top_min": 48,
