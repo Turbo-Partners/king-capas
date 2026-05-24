@@ -573,11 +573,19 @@
             "card_image": "shopify://shop_images/702_1.webp",
             "product": "capa-apresentacao-showroom"
           }
+        },
+        "card_3zGKpJ": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/703_1.webp",
+            "product": "capa-para-caminhao"
+          }
         }
       },
       "block_order": [
         "card_NkWkKg",
-        "card_tWrNKX"
+        "card_tWrNKX",
+        "card_3zGKpJ"
       ],
       "name": "TP - Slider Bump",
       "settings": {
