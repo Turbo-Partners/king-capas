@@ -663,6 +663,7 @@
         "midia_item_UmttGp": {
           "type": "midia_item",
           "settings": {
+            "image": "shopify://shop_images/709_1.webp",
             "link": ""
           }
         }
