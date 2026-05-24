@@ -44,7 +44,7 @@
             "text_width_desktop": 640,
             "text_alignment_mobile": "center",
             "text_alignment_desktop": "left",
-            "text_position_horizontal_mobile": "left",
+            "text_position_horizontal_mobile": "center",
             "text_position_horizontal_desktop": "left",
             "text_position_vertical_mobile": "center",
             "text_position_vertical_desktop": "center",
