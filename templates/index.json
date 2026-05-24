@@ -530,7 +530,7 @@
         "background_type": "color",
         "bg_color": "#ffffff",
         "bg_gradient": "",
-        "title": "<h2>Categorias</h2>",
+        "title": "<h2>Explore por categoria</h2>",
         "title_bar": false,
         "title_bar_color": "linear-gradient(92deg, #00FCA8 0%, #1CDAFF 100%)",
         "title_custom": false,
