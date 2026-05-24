@@ -587,13 +587,21 @@
             "card_image": "shopify://shop_images/704_1.webp",
             "product": "capa-para-carros-sedan"
           }
+        },
+        "card_Vg9qYf": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/701_1.webp",
+            "product": "adicional-de-logomarca-personalizada"
+          }
         }
       },
       "block_order": [
         "card_NkWkKg",
         "card_tWrNKX",
         "card_3zGKpJ",
-        "card_nCVb7i"
+        "card_nCVb7i",
+        "card_Vg9qYf"
       ],
       "name": "TP - Slider Bump",
       "settings": {
