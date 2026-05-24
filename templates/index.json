@@ -866,7 +866,8 @@
       ],
       "name": "Depoimentos V4",
       "settings": {
-        "title": "<h2>O que nossos clientes dizem</h2>",
+        "star_icon": "shopify://shop_images/715.svg",
+        "title": "<h6>REVIEWS</h6><h2>Quem testa Kings aprova!</h2>",
         "title_bar": false,
         "title_bar_color": "#000000",
         "title_custom": false,
