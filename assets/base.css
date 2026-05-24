@@ -3914,3 +3914,7 @@ p {
 .section-header.menu-open .header__icon-close {
   color: #191111;
 }
+
+.search-modal__content svg {
+  color: black !important;
+}
