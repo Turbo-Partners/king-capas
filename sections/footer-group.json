@@ -53,6 +53,19 @@
             "links_color": "#2b2b2b"
           }
         },
+        "links_main": {
+          "type": "links",
+          "settings": {
+            "alignment_mobile": "left",
+            "alignment_desktop": "left",
+            "title": "Links",
+            "link_list": "",
+            "informations": "<p>Sobre nós</p><p>Trabalhe Conosco</p><p>Embaixador Kings Capas</p><p>Seja um Revendedor</p><p>Rastrear seu pedido</p>",
+            "color_custom": false,
+            "title_color": "#2b2b2b",
+            "links_color": "#2b2b2b"
+          }
+        },
         "contact_main": {
           "type": "contact",
           "settings": {
@@ -72,26 +85,13 @@
             "button_text": "",
             "button_url": ""
           }
-        },
-        "links_main": {
-          "type": "links",
-          "settings": {
-            "alignment_mobile": "left",
-            "alignment_desktop": "left",
-            "title": "Links",
-            "link_list": "",
-            "informations": "<p></p>",
-            "color_custom": false,
-            "title_color": "#2b2b2b",
-            "links_color": "#2b2b2b"
-          }
         }
       },
       "block_order": [
         "logo_main",
         "links_Exn8nV",
-        "contact_main",
-        "links_main"
+        "links_main",
+        "contact_main"
       ],
       "settings": {
         "background_type": "color",
