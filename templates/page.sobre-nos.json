@@ -256,6 +256,7 @@
       ],
       "custom_css": [
         ".tp-e-image-with-text-v1__title h4 {color: #fff; font-family: Helvetica; font-size: clamp(2.4rem, calc(2.1029rem + 0.7619vw), 3.2rem); font-style: normal; text-align: center; font-weight: 700; line-height: 120%; /* 38.4px */}",
+        ".tp-e-image-with-text-v1__block-text-wrapper h4 {color: #FFF; font-family: \"Helvetica Neue\"; font-size: 20px; font-style: normal; font-weight: 700; line-height: 120%; /* 24px */}",
         "@media screen and (min-width: 768px) {.tp-e-image-with-text-v1__title h4 {text-align: left; }}"
       ],
       "name": "Imagem Com Texto V1",
