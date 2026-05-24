@@ -649,12 +649,14 @@
         "midia_item_DqhK7t": {
           "type": "midia_item",
           "settings": {
+            "image": "shopify://shop_images/707_1.webp",
             "link": ""
           }
         },
         "midia_item_xeb7dy": {
           "type": "midia_item",
           "settings": {
+            "image": "shopify://shop_images/708_1.webp",
             "link": ""
           }
         },
