@@ -852,6 +852,12 @@
             "card_radius": "xl"
           }
         },
+        "image_b7UQN4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/716_1.webp"
+          }
+        },
         "review_HrekkB": {
           "type": "review",
           "settings": {
@@ -877,6 +883,7 @@
         "review_zaDALY",
         "image_f7hMzF",
         "review_XijzLC",
+        "image_b7UQN4",
         "review_HrekkB"
       ],
       "name": "Depoimentos V4",
