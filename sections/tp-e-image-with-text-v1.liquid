@@ -51,6 +51,17 @@
     }
   {% endif %}
 
+  {% if section.settings.title_above_image_mobile %}
+    @media screen and (max-width: 1023px) {
+      .{{ section.id }} .tp-e-image-with-text-v1__title--in-wrapper { display: none; }
+    }
+    @media screen and (min-width: 1024px) {
+      .{{ section.id }} .tp-e-image-with-text-v1__title--above-image { display: none; }
+    }
+  {% else %}
+    .{{ section.id }} .tp-e-image-with-text-v1__title--above-image { display: none; }
+  {% endif %}
+
   {% if section.settings.title_custom %}
     .{{ section.id }} .tp-e-image-with-text-v1__title * {
       color: {{ section.settings.text_color_title }};
@@ -130,6 +141,12 @@
     "
     id="section-wrapper-{{ section.id }}"
   >
+    {% if section.settings.title != blank %}
+      <div class="tp-e-image-with-text-v1__title tp-e-image-with-text-v1__title--above-image">
+        {{ section.settings.title }}
+      </div>
+    {% endif %}
+
     <div class="tp-e-image-with-text-v1__media">
       {% if section.settings.image_desktop != blank or section.settings.image_mobile != blank %}
         <picture class="tp-e-image-with-text-v1__picture">
@@ -156,7 +173,7 @@
     </div>
     <div class="tp-e-image-with-text-v1__text-wrapper">
       {% if section.settings.title != blank %}
-        <div class="tp-e-image-with-text-v1__title">
+        <div class="tp-e-image-with-text-v1__title tp-e-image-with-text-v1__title--in-wrapper">
           {{ section.settings.title }}
         </div>
       {% endif %}
@@ -351,6 +368,12 @@
         { "label": "Segundo", "value": "second" }
       ],
       "default": "first"
+    },
+    {
+      "type": "checkbox",
+      "id": "title_above_image_mobile",
+      "label": "Título acima da imagem (mobile)",
+      "default": false
     },
     {
       "type": "checkbox",
