@@ -175,8 +175,9 @@
         "card_8Rdb4W": {
           "type": "card",
           "settings": {
-            "title": "Cuidado 24h",
-            "text": "Mais tranquilidade para você e sua família, onde quer que você esteja."
+            "image": "shopify://shop_images/743_1.webp",
+            "title": "Pós-venda especializado",
+            "text": "Caso necessário, realizamos ajustes sem custo para garantir a melhor experiência possível."
           }
         }
       },
