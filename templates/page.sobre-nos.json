@@ -159,8 +159,9 @@
         "card_xe74yE": {
           "type": "card",
           "settings": {
-            "title": "Câmera para pets",
-            "text": "Veja o que seu pet está fazendo quando você não está em casa."
+            "image": "shopify://shop_images/741_1.webp",
+            "title": "Personalização exclusiva",
+            "text": "Opções de cores, logos e acabamentos para criar uma capa alinhada ao estilo do veículo."
           }
         },
         "card_8GEr9t": {
