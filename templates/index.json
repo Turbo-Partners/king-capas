@@ -580,12 +580,20 @@
             "card_image": "shopify://shop_images/703_1.webp",
             "product": "capa-para-caminhao"
           }
+        },
+        "card_nCVb7i": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/704_1.webp",
+            "product": "capa-para-carros-sedan"
+          }
         }
       },
       "block_order": [
         "card_NkWkKg",
         "card_tWrNKX",
-        "card_3zGKpJ"
+        "card_3zGKpJ",
+        "card_nCVb7i"
       ],
       "name": "TP - Slider Bump",
       "settings": {
