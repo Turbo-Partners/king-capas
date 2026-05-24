@@ -933,8 +933,9 @@
         "card_TcfRFX": {
           "type": "card",
           "settings": {
-            "title": "Câmera para pets",
-            "text": "Veja o que seu pet está fazendo quando você não está em casa."
+            "image": "shopify://shop_images/720_1.webp",
+            "title": "",
+            "text": "Mitsubish: Garantindo a elegância no lançamento da L200 Triton"
           }
         },
         "card_NUA74z": {
