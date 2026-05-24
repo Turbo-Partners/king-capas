@@ -821,10 +821,10 @@
             "bg_type": "default",
             "bg_color": "",
             "bg_gradient": "",
-            "show_border": false,
+            "show_border": true,
             "border_color": "#e5e7eb",
             "border_width": 1,
-            "card_radius": "xl"
+            "card_radius": "sm"
           }
         },
         "image_f7hMzF": {
@@ -850,7 +850,13 @@
             "show_border": true,
             "border_color": "#e5e7eb",
             "border_width": 1,
-            "card_radius": "xl"
+            "card_radius": "sm"
+          }
+        },
+        "image_b7UQN4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/716_1.webp"
           }
         },
         "review_d9Ugwf": {
@@ -870,32 +876,7 @@
             "show_border": true,
             "border_color": "#e5e7eb",
             "border_width": 1,
-            "card_radius": "xl"
-          }
-        },
-        "image_b7UQN4": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/716_1.webp"
-          }
-        },
-        "review_HrekkB": {
-          "type": "review",
-          "settings": {
-            "stars": 5,
-            "title": "Compra certa",
-            "subtitle": "",
-            "text": "<p>Atendimento ótimo e produto fiel à descrição.</p>",
-            "name": "Pedro Rocha",
-            "profession": "",
-            "purchase_text": "",
-            "bg_type": "default",
-            "bg_color": "",
-            "bg_gradient": "",
-            "show_border": false,
-            "border_color": "#e5e7eb",
-            "border_width": 1,
-            "card_radius": "xl"
+            "card_radius": "sm"
           }
         }
       },
@@ -904,9 +885,8 @@
         "review_zaDALY",
         "image_f7hMzF",
         "review_XijzLC",
-        "review_d9Ugwf",
         "image_b7UQN4",
-        "review_HrekkB"
+        "review_d9Ugwf"
       ],
       "name": "Depoimentos V4",
       "settings": {
