@@ -2520,6 +2520,11 @@ input[type='checkbox'] {
   grid-area: icons;
   justify-self: end;
   padding-right: 0.8rem;
+  display: flex;
+  grid-area: icons;
+  justify-self: end;
+  padding-right: .8rem;
+  gap: 20px;
 }
 
 .header__icons .shopify-app-block {
@@ -2566,8 +2571,8 @@ input[type='checkbox'] {
 
 .header__icon,
 .header__icon--cart .icon {
-  height: 4.4rem;
-  width: 4.4rem;
+  height: 2rem;
+  width: 2rem;
   padding: 0;
 }
 
@@ -3679,12 +3684,12 @@ p {
     .header__menu-item {
       color: var(--Gray-950, #2B1D35);
 
-      /* Body/14/Regular */
-      font-family: Poppins;
+      /* Body/18/Medium */
+      font-family: Inter;
       font-size: 14px;
       font-style: normal;
-      font-weight: 400;
-      line-height: 140%; /* 19.6px */
+      font-weight: 500;
+      line-height: 140%; /* 25.2px */
 
       .header__active-menu-item {
         color: #4D4D4D;
@@ -3723,12 +3728,12 @@ p {
     .header__menu-item {
       color: #FFF;
 
-      /* Body/14/Regular */
-      font-family: Poppins;
+      /* Body/18/Medium */
+      font-family: Inter;
       font-size: 14px;
       font-style: normal;
-      font-weight: 400;
-      line-height: 140%; /* 19.6px */
+      font-weight: 500;
+      line-height: 140%; /* 25.2px */
 
       .header__active-menu-item {
         color: #FFF;
@@ -3766,12 +3771,12 @@ p {
     .header__menu-item {
       color: #2B1D35;
 
-      /* Body/14/Regular */
-      font-family: Poppins;
+      /* Body/18/Medium */
+      font-family: Inter;
       font-size: 14px;
       font-style: normal;
-      font-weight: 400;
-      line-height: 140%; /* 19.6px */
+      font-weight: 500;
+      line-height: 140%; /* 25.2px */
 
       .header__active-menu-item {
         color: #4D4D4D;
