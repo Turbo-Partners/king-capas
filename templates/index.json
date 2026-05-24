@@ -732,14 +732,14 @@
           "type": "benefit",
           "settings": {
             "image": "shopify://shop_images/714.svg",
-            "richtext": "<p>Ajuste perfeito para cada modelo</p>"
+            "richtext": "<p>Material premium e exclusivo</p>"
           }
         },
         "benefit_rqAyVe": {
           "type": "benefit",
           "settings": {
             "image": "shopify://shop_images/714.svg",
-            "richtext": "<p>Ajuste perfeito para cada modelo</p>"
+            "richtext": "<p>Proteção contra riscos, poeira e sol</p>"
           }
         }
       },
