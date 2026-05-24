@@ -27,6 +27,28 @@
   }
 }
 
+.tp-e-reviews-v4__header h2 {
+  color: var(--Gray-900, #101828);
+
+  /* Body/Heading/32 */
+  font-family: "Helvetica Neue";
+  font-size: clamp(2.4000rem, calc(2.1029rem + 0.7619vw), 3.2000rem);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 38.4px */
+}
+
+.tp-e-reviews-v4__header h6 {
+  color: var(--Gray-600, #475467);
+  text-align: center;
+  font-family: Helvetica;
+  font-size: clamp(1.2000rem, calc(1.1257rem + 0.1905vw), 1.4000rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 19.6px */
+  letter-spacing: 2.24px;
+}
+
 .tp-e-reviews-v4__header-image {
   width: clamp(7.2rem, 6.3rem + 2.3vw, 9.6rem);
   height: auto;
@@ -40,6 +62,7 @@
 
 .tp-e-reviews-v4__swiper {
   width: 100%;
+  overflow: hidden;
 }
 
 .tp-e-reviews-v4__swiper .swiper-slide {
@@ -151,7 +174,7 @@
   display: flex;
   flex-direction: column;
   border-radius: var(--tp-radius-xl);
-  background: var(--tp-color-bg-secondary);
+  background: transparent;
   padding: var(--tp-space-6);
   text-align: center;
   height: 100%;
@@ -177,6 +200,10 @@
   height: 20px;
 }
 
+.tp-e-reviews-v4__star img{
+  width: 100%;
+}
+
 .tp-e-reviews-v4__review-title {
   font-family: var(--tp-font-heading);
   font-size: var(--tp-font-size-lg);
@@ -184,6 +211,15 @@
   line-height: var(--tp-leading-normal);
   color: var(--tp-color-text-primary);
   margin: 0 0 var(--tp-space-3);
+  color: var(--gray-900, #101828);
+  text-align: center;
+
+  /* Body/18/Semi */
+  font-family: Helvetica;
+  font-size: clamp(1.5000rem, calc(1.3886rem + 0.2857vw), 1.8000rem);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 25.2px */
 }
 
 .tp-e-reviews-v4__review-subtitle {
@@ -209,12 +245,24 @@
   }
 }
 
+.tp-e-reviews-v4__review-text p {
+  color: var(--Gray-500, #667085);
+  text-align: center;
+
+  /* Body/16/Regular */
+  font-family: Helvetica;
+  font-size: clamp(1.3000rem, calc(1.1886rem + 0.2857vw), 1.6000rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 22.4px */
+}
+
 .tp-e-reviews-v4__review-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--tp-space-4);
-  border-top: 1px solid var(--tp-color-border);
+  border-top: 0px solid var(--tp-color-border);
   padding-top: var(--tp-space-4);
   margin-top: var(--tp-space-8);
   text-align: left;
