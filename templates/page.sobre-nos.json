@@ -226,6 +226,34 @@
     },
     "tp_e_image_with_text_v1_zbhYpf": {
       "type": "tp-e-image-with-text-v1",
+      "blocks": {
+        "benefit_7LTRDH": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/714.svg",
+            "richtext": "<h4>Proteção real no dia a dia</h4><p>Protege contra poeira, riscos, sol, maresia e pequenos danos que desgastam o veículo com o tempo.</p>"
+          }
+        },
+        "benefit_9g4cpN": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/714.svg",
+            "richtext": "<h4>Ajuste feito para o seu carro</h4><p>Cada capa é produzida sob medida para garantir encaixe perfeito e visual muito mais sofisticado.</p>"
+          }
+        },
+        "benefit_yN86ir": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/714.svg",
+            "richtext": "<h4>Material premium e durável</h4><p>Produzida com tecido exclusivo de alta qualidade, pensado para oferecer resistência e longa durabilidade.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_7LTRDH",
+        "benefit_9g4cpN",
+        "benefit_yN86ir"
+      ],
       "name": "Imagem Com Texto V1",
       "settings": {
         "image_position_desktop": "left",
@@ -269,7 +297,7 @@
         "enable_pad_top_mobile": false,
         "pad_top_mobile": 0,
         "enable_pad_bottom_mobile": true,
-        "pad_bottom_mobile": 0,
+        "pad_bottom_mobile": 40,
         "enable_pad_top_desktop": false,
         "pad_top_desktop": 0,
         "enable_pad_bottom_desktop": false,
