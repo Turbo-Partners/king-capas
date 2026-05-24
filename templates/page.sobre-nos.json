@@ -231,7 +231,7 @@
         "css_rTTEH6": {
           "type": "css",
           "settings": {
-            "custom_css": ".tp-e-image-with-text-v1__title h4 {\ncolor: #FFF;\nfont-family: Helvetica;\nfont-size: clamp(2.4000rem, calc(2.1029rem + 0.7619vw), 3.2000rem);\nfont-style: normal;\nfont-weight: 700;\nline-height: 120%; /* 38.4px */\ntext-align: center;\n}\n\n@media screen and (min-width: 768px) {\n.tp-e-image-with-text-v1__title h4  {\ntext-align: left;\n}\n}\n \n.tp-e-image-with-text-v1__block-text-wrapper h4 {\ncolor: #FFF;\n\n/* Body/20/Semi Bold */\nfont-family: \"Helvetica Neue\";\nfont-size: 20px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 120%; /* 24px */\n}"
+            "custom_css": ".tp-e-image-with-text-v1__title h4 {\ncolor: #FFF;\nfont-family: Helvetica;\nfont-size: clamp(2.4000rem, calc(2.1029rem + 0.7619vw), 3.2000rem);\nfont-style: normal;\nfont-weight: 700;\nline-height: 120%; /* 38.4px */\ntext-align: center;\n}\n\n@media screen and (min-width: 768px) {\n.tp-e-image-with-text-v1__title h4  {\ntext-align: left;\n}\n}\n \n.tp-e-image-with-text-v1__block-text-wrapper h4 {\ncolor: #FFF;\n\n/* Body/20/Semi Bold */\nfont-family: \"Helvetica Neue\";\nfont-size: 20px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 120%; /* 24px */\n}\n\n.tp-e-image-with-text-v1__block-text-wrapper p {\ncolor: var(--Gray-100, #D9D9D9);\n\n/* Body/18/Regular */\nfont-family: \"Helvetica Neue\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 140%; /* 25.2px */\n}"
           }
         },
         "benefit_7LTRDH": {
