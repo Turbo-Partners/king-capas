@@ -100,6 +100,15 @@
   {% endif %}
 {% endstyle %}
 
+{%- assign css_blocks = section.blocks | where: "type", "css" -%}
+{%- if css_blocks.size > 0 -%}
+  {%- for block in css_blocks -%}
+    {%- if block.settings.custom_css != blank -%}
+      <style>{{ block.settings.custom_css }}</style>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
 <section class="tp-e-image-with-text-v1 {{ section.id }} scroll-trigger slider-in--animation">
   <div
     class="tp-wrapper
@@ -801,6 +810,18 @@
           "default": "<p>Resposta</p>",
           "id": "answer",
           "label": "Resposta"
+        }
+      ]
+    },
+    {
+      "type": "css",
+      "name": "CSS Customizado",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "custom_css",
+          "label": "CSS",
+          "info": "CSS injetado diretamente na página. Use o ID da seção (.{{ section.id }}) para escopar os estilos."
         }
       ]
     }
