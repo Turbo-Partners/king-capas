@@ -1,0 +1,134 @@
+/* ==========================================================================
+   tp-midia — Seção de logos/mídia com slider Swiper
+   ========================================================================== */
+
+.tp-midia {
+  overflow: hidden;
+}
+
+.tp-midia__wrapper {
+  padding-top: var(--tp-pad-top);
+  padding-bottom: var(--tp-pad-bottom);
+  display: flex;
+  flex-direction: column;
+  gap: var(--tp-space-6, 24px);
+}
+
+/* --------------------------------------------------------------------------
+   Título
+   -------------------------------------------------------------------------- */
+
+.tp-midia__title {
+  color: var(--tp-color-text-secondary);
+  font-family: var(--tp-font-heading);
+  font-size: var(--tp-font-size-xl);
+  font-weight: var(--tp-font-semibold);
+  line-height: var(--tp-leading-tight, 1.2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.tp-midia__title p {
+  color: var(--gray-900, #101828);
+  font-family: Helvetica;
+  font-size: clamp(1.2000rem, calc(1.0514rem + 0.3810vw), 1.6000rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 19.2px */
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   Slider
+   -------------------------------------------------------------------------- */
+
+tp-midia {
+  display: block;
+  width: 100%;
+}
+
+.tp-midia__swiper {
+  width: 100%;
+}
+
+.tp-midia__swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--tp-transition-base);
+}
+
+/* --------------------------------------------------------------------------
+   Imagem do bloco
+   -------------------------------------------------------------------------- */
+
+.tp-midia__block-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-decoration: none;
+}
+
+.tp-midia__block-image {
+  display: block;
+  width: 100%;
+  max-width: 140px;
+  height: 52px;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.5;
+  transition: filter var(--tp-transition-base), opacity var(--tp-transition-base);
+}
+
+.tp-midia__swiper-slide:hover .tp-midia__block-image {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+/* Placeholder quando não há imagem */
+.tp-midia__block-placeholder {
+  width: 100%;
+  max-width: 140px;
+  height: 52px;
+  background: var(--tp-color-border);
+  border-radius: var(--tp-radius-sm);
+  opacity: 0.4;
+}
+
+/* --------------------------------------------------------------------------
+   Tablet (≥ 768px)
+   -------------------------------------------------------------------------- */
+
+@media screen and (min-width: 768px) {
+  .tp-midia__wrapper {
+    gap: var(--tp-space-8, 32px);
+  }
+
+  .tp-midia__block-image {
+    max-width: 160px;
+    height: 64px;
+  }
+
+  .tp-midia__block-placeholder {
+    max-width: 160px;
+    height: 64px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Desktop (≥ 1024px)
+   -------------------------------------------------------------------------- */
+
+@media screen and (min-width: 1024px) {
+  .tp-midia__block-image {
+    max-width: 180px;
+    height: 72px;
+  }
+
+  .tp-midia__block-placeholder {
+    max-width: 180px;
+    height: 72px;
+  }
+}

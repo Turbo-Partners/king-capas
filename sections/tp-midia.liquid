@@ -1,0 +1,388 @@
+{{ 'tp-midia.css' | asset_url | stylesheet_tag }}
+
+{% render 'tp-section-padding',
+  pad_top_min: section.settings.pad_top_min,
+  pad_top_max: section.settings.pad_top_max,
+  pad_bottom_min: section.settings.pad_bottom_min,
+  pad_bottom_max: section.settings.pad_bottom_max,
+  enable_pad_top_mobile: section.settings.enable_pad_top_mobile,
+  pad_top_mobile: section.settings.pad_top_mobile,
+  enable_pad_bottom_mobile: section.settings.enable_pad_bottom_mobile,
+  pad_bottom_mobile: section.settings.pad_bottom_mobile,
+  enable_pad_top_desktop: section.settings.enable_pad_top_desktop,
+  pad_top_desktop: section.settings.pad_top_desktop,
+  enable_pad_bottom_desktop: section.settings.enable_pad_bottom_desktop,
+  pad_bottom_desktop: section.settings.pad_bottom_desktop
+%}
+
+{% style %}
+  .{{ section.id }} .tp-midia__title-wrapper {
+    text-align: {{ section.settings.title_alignment }};
+  }
+
+  {% if section.settings.bg_custom %}
+    .{{ section.id }} {
+      {% if section.settings.background_type == 'gradient' and section.settings.bg_gradient != blank %}
+        background: {{ section.settings.bg_gradient }};
+      {% elsif section.settings.bg_color != blank %}
+        background: {{ section.settings.bg_color }};
+      {% endif %}
+    }
+  {% endif %}
+
+  {% if section.settings.title_custom %}
+    .{{ section.id }} .tp-midia__title {
+      color: {{ section.settings.title_color }};
+      font-size: {{ section.settings.title_size_mobile }}px;
+      font-weight: {{ section.settings.title_weight }};
+    }
+
+    @media screen and (min-width: 768px) {
+      .{{ section.id }} .tp-midia__title {
+        font-size: {{ section.settings.title_size_desktop }}px;
+      }
+    }
+  {% endif %}
+{% endstyle %}
+
+<section class="tp-midia {{ section.id }}">
+    <div class="tp-wrapper tp-midia__wrapper" id="section-wrapper-{{ section.id }}">
+        <div class="tp-midia__title-wrapper">
+            {{ section.settings.title }}
+        </div>
+        <div class="tp-midia__swiper swiper">
+            <div class="tp-midia__swiper-wrapper swiper-wrapper">
+                {% for block in section.blocks %}
+                    <div class="tp-midia__swiper-slide">
+                        {% if block.settings.image != blank %}
+                            <img class="tp-midia__block-image" src="{{ block.settings.image | image_url }}">
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const swiper_{{ section.id | replace: '-', '_' }} = new Swiper('.{{ section.id }} .swiper', {
+            slidesPerView: {{ section.settings.slides_mobile }},
+            centeredSlides: true,
+            spaceBetween: {{ section.settings.space_between }},
+            breakpoints: {
+                768: {
+                    slidesPerView: {{ section.settings.slides_tablet }}
+                },
+                1024: {
+                    slidesPerView: {{ section.settings.slides_desktop }}
+                }
+            }
+        });
+    })
+</script>
+
+{% schema %}
+{
+  "name": "Mídia",
+  "class": "E__MIDIA__V1",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Conteúdo"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Na mídia"
+    },
+    {
+      "type": "select",
+      "id": "title_alignment",
+      "label": "Alinhamento do título",
+      "default": "center",
+      "options": [
+        { "label": "Esquerda", "value": "left" },
+        { "label": "Centro",   "value": "center" },
+        { "label": "Direita",  "value": "right" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Slider"
+    },
+    {
+      "type": "select",
+      "id": "slides_mobile",
+      "label": "Slides por vez (mobile)",
+      "default": "3.2",
+      "options": [
+        { "label": "2",   "value": "2" },
+        { "label": "2.5", "value": "2.5" },
+        { "label": "3",   "value": "3" },
+        { "label": "3.2", "value": "3.2" },
+        { "label": "4",   "value": "4" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "slides_tablet",
+      "label": "Slides por vez (tablet)",
+      "default": "5.2",
+      "options": [
+        { "label": "3",   "value": "3" },
+        { "label": "4",   "value": "4" },
+        { "label": "5",   "value": "5" },
+        { "label": "5.2", "value": "5.2" },
+        { "label": "6",   "value": "6" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "slides_desktop",
+      "label": "Slides por vez (desktop)",
+      "default": "7",
+      "options": [
+        { "label": "5", "value": "5" },
+        { "label": "6", "value": "6" },
+        { "label": "7", "value": "7" },
+        { "label": "8", "value": "8" },
+        { "label": "9", "value": "9" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "space_between",
+      "label": "Espaço entre slides (px)",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Aparência"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Tipo de fundo",
+      "default": "color",
+      "options": [
+        { "label": "Cor sólida", "value": "color" },
+        { "label": "Gradiente",  "value": "gradient" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "bg_custom",
+      "label": "Personalizar fundo",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Cor de fundo",
+      "visible_if": "{{ section.settings.bg_custom and section.settings.background_type == 'color' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_gradient",
+      "label": "Gradiente",
+      "visible_if": "{{ section.settings.bg_custom and section.settings.background_type == 'gradient' }}"
+    },
+    {
+      "type": "header",
+      "content": "Tipografia — Título"
+    },
+    {
+      "type": "checkbox",
+      "id": "title_custom",
+      "label": "Personalizar",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Cor",
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "label": "Tamanho desktop (px)",
+      "min": 14,
+      "max": 48,
+      "step": 2,
+      "default": 22,
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Tamanho mobile (px)",
+      "min": 12,
+      "max": 36,
+      "step": 2,
+      "default": 16,
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Peso",
+      "default": "600",
+      "options": [
+        { "label": "Regular (400)",      "value": "400" },
+        { "label": "Médio (500)",        "value": "500" },
+        { "label": "Semi-negrito (600)", "value": "600" },
+        { "label": "Negrito (700)",      "value": "700" }
+      ],
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "header",
+      "content": "Espaçamento"
+    },
+    {
+      "type": "range",
+      "id": "pad_top_min",
+      "label": "Padding superior mínimo (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "pad_top_max",
+      "label": "Padding superior máximo (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_min",
+      "label": "Padding inferior mínimo (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_max",
+      "label": "Padding inferior máximo (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Personalizar espaçamento por dispositivo"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_top_mobile",
+      "label": "Ativar padding superior no mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_top_mobile",
+      "label": "Padding superior mobile (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_top_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_bottom_mobile",
+      "label": "Ativar padding inferior no mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_mobile",
+      "label": "Padding inferior mobile (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_bottom_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_top_desktop",
+      "label": "Ativar padding superior no desktop",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_top_desktop",
+      "label": "Padding superior desktop (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_top_desktop }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_bottom_desktop",
+      "label": "Ativar padding inferior no desktop",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_desktop",
+      "label": "Padding inferior desktop (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_bottom_desktop }}"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "midia_item",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagem"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mídia",
+      "category": "Imagem",
+      "settings": {
+        "title": "Na mídia"
+      },
+      "blocks": [
+        { "type": "midia_item" },
+        { "type": "midia_item" },
+        { "type": "midia_item" },
+        { "type": "midia_item" },
+        { "type": "midia_item" }
+      ]
+    }
+  ]
+}
+{% endschema %}
