@@ -53,7 +53,7 @@
         <div class="tp-midia__swiper swiper">
             <div class="tp-midia__swiper-wrapper swiper-wrapper">
                 {% for block in section.blocks %}
-                    <div class="tp-midia__swiper-slide">
+                    <div class="swiper-slide tp-midia__swiper-slide">
                         {% if block.settings.image != blank %}
                             <img class="tp-midia__block-image" src="{{ block.settings.image | image_url }}">
                         {% endif %}
@@ -67,15 +67,22 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const swiper_{{ section.id | replace: '-', '_' }} = new Swiper('.{{ section.id }} .swiper', {
-            slidesPerView: {{ section.settings.slides_mobile }},
+            slidesPerView: 3.2,
             centeredSlides: true,
-            spaceBetween: {{ section.settings.space_between }},
+            initialSlide: Math.floor({{ section.blocks.size }} / 2),
+            spaceBetween: 16,
+            watchOverflow: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+            },
             breakpoints: {
                 768: {
-                    slidesPerView: {{ section.settings.slides_tablet }}
+                    slidesPerView: 5.2
                 },
                 1024: {
-                    slidesPerView: {{ section.settings.slides_desktop }}
+                    slidesPerView: 7
                 }
             }
         });
@@ -107,58 +114,6 @@
         { "label": "Centro",   "value": "center" },
         { "label": "Direita",  "value": "right" }
       ]
-    },
-    {
-      "type": "header",
-      "content": "Slider"
-    },
-    {
-      "type": "select",
-      "id": "slides_mobile",
-      "label": "Slides por vez (mobile)",
-      "default": "3.2",
-      "options": [
-        { "label": "2",   "value": "2" },
-        { "label": "2.5", "value": "2.5" },
-        { "label": "3",   "value": "3" },
-        { "label": "3.2", "value": "3.2" },
-        { "label": "4",   "value": "4" }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "slides_tablet",
-      "label": "Slides por vez (tablet)",
-      "default": "5.2",
-      "options": [
-        { "label": "3",   "value": "3" },
-        { "label": "4",   "value": "4" },
-        { "label": "5",   "value": "5" },
-        { "label": "5.2", "value": "5.2" },
-        { "label": "6",   "value": "6" }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "slides_desktop",
-      "label": "Slides por vez (desktop)",
-      "default": "7",
-      "options": [
-        { "label": "5", "value": "5" },
-        { "label": "6", "value": "6" },
-        { "label": "7", "value": "7" },
-        { "label": "8", "value": "8" },
-        { "label": "9", "value": "9" }
-      ]
-    },
-    {
-      "type": "range",
-      "id": "space_between",
-      "label": "Espaço entre slides (px)",
-      "min": 8,
-      "max": 48,
-      "step": 4,
-      "default": 16
     },
     {
       "type": "header",
