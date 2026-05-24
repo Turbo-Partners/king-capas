@@ -559,6 +559,18 @@
     },
     "tp_slider_bump_wmwT64": {
       "type": "tp-slider-bump",
+      "blocks": {
+        "card_NkWkKg": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/701_1.webp",
+            "product": "adicional-de-logomarca-personalizada"
+          }
+        }
+      },
+      "block_order": [
+        "card_NkWkKg"
+      ],
       "name": "TP - Slider Bump",
       "settings": {
         "background_color": "#FFF",
