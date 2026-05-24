@@ -605,7 +605,7 @@
       ],
       "name": "TP - Slider Bump",
       "settings": {
-        "background_color": "#FFF",
+        "background_color": "#fff",
         "badge_text": "",
         "title": "<h2>A experiência de quem já escolheu Kings</h2>",
         "subtitle": "Milhares de veículos protegidos em todo o Brasil com capas feitas sob medida.",
@@ -628,6 +628,80 @@
         "enable_pad_bottom_desktop": false,
         "pad_bottom_desktop": 0
       }
+    },
+    "tp_midia_igVRPA": {
+      "type": "tp-midia",
+      "blocks": {
+        "midia_item_taD4KR": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/705.webp",
+            "link": ""
+          }
+        },
+        "midia_item_yiRLLM": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/706_1.webp",
+            "link": ""
+          }
+        },
+        "midia_item_DqhK7t": {
+          "type": "midia_item",
+          "settings": {
+            "link": ""
+          }
+        },
+        "midia_item_xeb7dy": {
+          "type": "midia_item",
+          "settings": {
+            "link": ""
+          }
+        },
+        "midia_item_UmttGp": {
+          "type": "midia_item",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "midia_item_taD4KR",
+        "midia_item_yiRLLM",
+        "midia_item_DqhK7t",
+        "midia_item_xeb7dy",
+        "midia_item_UmttGp"
+      ],
+      "name": "Mídia",
+      "settings": {
+        "title": "Capas personalizadas para as melhores marcas",
+        "title_alignment": "center",
+        "slides_mobile": "3.2",
+        "slides_tablet": "5.2",
+        "slides_desktop": "7",
+        "space_between": 16,
+        "background_type": "color",
+        "bg_custom": false,
+        "bg_color": "",
+        "bg_gradient": "",
+        "title_custom": false,
+        "title_color": "",
+        "title_size_desktop": 22,
+        "title_size_mobile": 16,
+        "title_weight": "600",
+        "pad_top_min": 40,
+        "pad_top_max": 80,
+        "pad_bottom_min": 40,
+        "pad_bottom_max": 80,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
     }
   },
   "order": [
@@ -636,6 +710,7 @@
     "tp_video_slides_PKgVeY",
     "tp_featured_collection_RMqgGf",
     "tp_e_categories_v1_aCGaPF",
-    "tp_slider_bump_wmwT64"
+    "tp_slider_bump_wmwT64",
+    "tp_midia_igVRPA"
   ]
 }
