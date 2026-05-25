@@ -53,7 +53,14 @@
           "type": "color_entry",
           "settings": {
             "color_name": "Rosa",
-            "color_value": "#ff08e5"
+            "color_value": "#6808ff"
+          }
+        },
+        "color_entry_AXLqU9": {
+          "type": "color_entry",
+          "settings": {
+            "color_name": "Laranja",
+            "color_value": "#ff9808"
           }
         },
         "color_entry_aUzmRQ": {
@@ -120,6 +127,7 @@
         "color_entry_7LXJ73",
         "color_entry_Q6DWiJ",
         "color_entry_9tRVrF",
+        "color_entry_AXLqU9",
         "color_entry_aUzmRQ",
         "color_entry_RyiMnj",
         "color_entry_zkBGHB",
