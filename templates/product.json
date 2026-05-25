@@ -57,12 +57,24 @@
         },
         "price": {
           "type": "price",
+          "disabled": true,
+          "settings": {}
+        },
+        "tp_price_bmC7KB": {
+          "type": "tp_price",
           "settings": {}
         },
         "custom_buy_buttons_7VTA3y": {
           "type": "custom_buy_buttons",
           "settings": {
             "button_text": "Comprar agora"
+          }
+        },
+        "warranty_badge_TrnfYf": {
+          "type": "warranty_badge",
+          "settings": {
+            "bg_color": "#f5f0c0",
+            "text_color": "#111111"
           }
         },
         "buy_buttons": {
@@ -83,7 +95,9 @@
         "vehicle_model_7AXErM",
         "quantity_selector",
         "price",
+        "tp_price_bmC7KB",
         "custom_buy_buttons_7VTA3y",
+        "warranty_badge_TrnfYf",
         "buy_buttons"
       ],
       "settings": {
@@ -98,6 +112,12 @@
         "image_zoom": "lightbox",
         "hide_variants": true,
         "enable_video_looping": false,
+        "show_compra_segura": true,
+        "compra_segura_icon": "shopify://shop_images/carbon_security_2.svg",
+        "compra_segura_text": "COMPRA SEGURA",
+        "show_frete_gratis": true,
+        "frete_gratis_icon": "shopify://shop_images/tabler_truck_2.svg",
+        "frete_gratis_text": "FRETE GRÁTIS",
         "padding_top": 36,
         "padding_bottom": 12
       }
