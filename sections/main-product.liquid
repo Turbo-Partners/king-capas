@@ -113,7 +113,23 @@
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
-
+      <div class="large-up-hide medium-hide wrapper-title-app">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'title' -%}
+              <div class="product__title" {{ block.shopify_attributes }}>
+                <h1>{{ product.title | escape }}</h1>
+                <a href="{{ product.url }}" class="product__title">
+                  <h2 class="h1">
+                    {{ product.title | escape }}
+                  </h2>
+                </a>
+            {% when '@app' %}
+              {% render block %}
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
       <div class="grid__item product__media-wrapper">
         {% render 'product-media-gallery', variant_images: variant_images %}
       </div>
