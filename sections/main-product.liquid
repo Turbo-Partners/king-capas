@@ -127,6 +127,10 @@
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
+                     {%- when 'tp_price' -%}
+                <div {{ block.shopify_attributes }}>
+                  {%- render 'tp-price', product: product, section_id: section.id -%}
+                </div>
               {%- when 'tp_icons_with_text' -%}
                 {%- liquid
                   assign tp_icones_obj = product.metafields.custom.icones_com_texto.value
@@ -892,6 +896,11 @@
   "blocks": [
     {
       "type": "@app"
+    },
+        {
+      "type": "tp_price",
+      "name": "TP Preço",
+      "limit": 1
     },
     {
       "type": "tp_icons_with_text",
