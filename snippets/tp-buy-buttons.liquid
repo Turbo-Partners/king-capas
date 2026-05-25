@@ -105,24 +105,20 @@
 
       _getProperties() {
         const formId = this.dataset.formId;
-        const props = {};
+        const entries = [];
 
-        // Inputs dentro do <form>
         const form = document.getElementById(formId);
         if (form) {
           form.querySelectorAll('input[name^="properties["]').forEach(el => {
-            const key = el.name.slice(12, -1);
-            if (key) props[key] = el.value;
+            entries.push([el.name, el.value]);
           });
         }
 
-        // Inputs externos com form="<id>"
         document.querySelectorAll(`input[name^="properties["][form="${formId}"]`).forEach(el => {
-          const key = el.name.slice(12, -1);
-          if (key && el.value.trim()) props[key] = el.value;
+          if (el.value.trim()) entries.push([el.name, el.value]);
         });
 
-        return props;
+        return entries;
       }
 
       _addToCart() {
@@ -152,8 +148,8 @@
         formData.append('id', this._getVariantId());
         formData.append('quantity', this._qty);
 
-        Object.entries(this._getProperties()).forEach(([key, val]) => {
-          formData.append(`properties[${key}]`, val);
+        this._getProperties().forEach(([name, val]) => {
+          formData.append(name, val);
         });
 
         if (cartEl) {
