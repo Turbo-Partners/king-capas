@@ -505,6 +505,14 @@ text-transform: uppercase;
 max-width:100px;
 
 }
+.select__select {
+  color: var(--Gray-600, #475467);
+font-family: Helvetica;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 140%; /* 22.4px */
+}
 
 
     @media (max-width:999px) {
