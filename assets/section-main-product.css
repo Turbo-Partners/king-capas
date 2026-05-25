@@ -283,8 +283,8 @@ product-info {
   align-items: center;
   justify-content: center;
   gap: var(--tp-space-3, 12px);
-  padding: var(--tp-space-4, 16px) var(--tp-space-6, 24px);
-  border-radius: var(--tp-radius-md, 8px);
+  padding: 0;
+  border-radius:0;
   background: var(--tp-warranty-bg, #f5f0c0);
 }
 
@@ -296,12 +296,14 @@ product-info {
 }
 
 .tp-warranty-badge__text {
-  font-size: var(--tp-font-size-base, 16px);
-  font-weight: var(--tp-font-bold, 700);
-  color: var(--tp-warranty-color, var(--tp-color-text-primary, #111));
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  line-height: 1.2;
+    color: var(--tp-warranty-color, var(--tp-color-text-primary, #0C111D));
+font-family: "Helvetica";
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: 140%; /* 19.6px */
+letter-spacing: 1.12px;
+text-transform: uppercase;
 }
 
 
