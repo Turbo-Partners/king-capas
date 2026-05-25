@@ -58,22 +58,14 @@
       (function () {
         var sectionId = {{ section.id | json }};
 
-        function getButtons() {
-          var form = document.getElementById('product-form-' + sectionId);
-          if (!form) return [];
-          return Array.from(form.querySelectorAll('.product-form__buttons button'));
-        }
-
         function setDisabled(disabled) {
-          getButtons().forEach(function (btn) {
-            if (disabled) {
-              btn.setAttribute('disabled', '');
-              btn.setAttribute('aria-disabled', 'true');
-            } else {
-              btn.removeAttribute('disabled');
-              btn.removeAttribute('aria-disabled');
-            }
-          });
+          var btn = document.getElementById('ProductSubmitButton-' + sectionId);
+          if (!btn) return;
+          if (disabled) {
+            btn.setAttribute('disabled', '');
+          } else {
+            btn.removeAttribute('disabled');
+          }
         }
 
         document.addEventListener('DOMContentLoaded', function () {
