@@ -110,7 +110,7 @@
       {% if section.settings.title_bar %}
         <span class="tp-meta-banner-imagem-v1__bar" aria-hidden="true"></span>
       {% endif %}
-      <div class="tp-categories__title">{{ titulo.value }}</div>
+      <div class="tp-categories__title">{{ titulo | metafield_tag }}</div>
     {% endif %}
 
     {% if icones != blank and icones.value != blank %}
@@ -139,7 +139,7 @@
 
             {% if texto != blank %}
               <div class="tp-categories__card-footer">
-                <p class="tp-categories__card-title tp-info-icones__text">{{ texto | escape }}</p>
+                <p class="tp-categories__card-title tp-info-icones__text">{{ texto }}</p>
               </div>
             {% endif %}
           </div>
