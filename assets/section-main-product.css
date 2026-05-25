@@ -283,6 +283,7 @@ product-info {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  flex-direction:row;
   gap: var(--tp-space-2, 8px);
 }
 
