@@ -190,6 +190,78 @@
         "pad_bottom_desktop": 0
       }
     },
+    "tp_slider_bump_RFGtQR": {
+      "type": "tp-slider-bump",
+      "blocks": {
+        "card_Up6mHj": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/701_1.webp",
+            "product": "adicional-de-logomarca-personalizada"
+          }
+        },
+        "card_jYkjxq": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/702_1.webp",
+            "product": "capa-apresentacao-showroom"
+          }
+        },
+        "card_3gcJcc": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/703_1.webp",
+            "product": "capa-para-caminhao"
+          }
+        },
+        "card_NLAhmc": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/704_1.webp",
+            "product": "capa-para-carros-sedan"
+          }
+        },
+        "card_tmmWLC": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/701_1.webp",
+            "product": "adicional-de-logomarca-personalizada"
+          }
+        }
+      },
+      "block_order": [
+        "card_Up6mHj",
+        "card_jYkjxq",
+        "card_3gcJcc",
+        "card_NLAhmc",
+        "card_tmmWLC"
+      ],
+      "name": "TP - Slider Bump",
+      "settings": {
+        "background_color": "#fff",
+        "badge_text": "",
+        "title": "<h2>A experiência de quem já escolheu Kings</h2>",
+        "subtitle": "Milhares de veículos protegidos em todo o Brasil com capas feitas sob medida.",
+        "button_url": "",
+        "button_text": "",
+        "initial_slide": 3,
+        "autoplay": true,
+        "tempo_autoplay": 3,
+        "navigation": true,
+        "pad_top_min": 32,
+        "pad_top_max": 80,
+        "pad_bottom_min": 32,
+        "pad_bottom_max": 80,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
     "related-products": {
       "type": "related-products",
       "disabled": true,
@@ -213,6 +285,7 @@
   "order": [
     "main",
     "tp_e_informativos_icones_v1_fMFaaH",
+    "tp_slider_bump_RFGtQR",
     "related-products"
   ]
 }
