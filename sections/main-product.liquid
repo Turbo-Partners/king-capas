@@ -56,25 +56,29 @@
   {%- if has_vehicle_model_block -%}
     <script>
       (function () {
-        document.addEventListener('DOMContentLoaded', function () {
-          var sectionId = {{ section.id | json }};
-          var formId = 'product-form-' + sectionId;
-          var form = document.getElementById(formId);
+        var sectionId = {{ section.id | json }};
+        var formId = 'product-form-' + sectionId;
+
+        // Fase de captura no document: dispara ANTES do listener do product-form no <form>
+        document.addEventListener('submit', function (e) {
+          if (e.target.id !== formId) return;
           var input = document.getElementById('VehicleModel-' + sectionId);
           var errorEl = document.getElementById('VehicleModelError-' + sectionId);
-          if (!form || !input) return;
+          if (!input || input.dataset.vehicleModelRequired !== 'true') return;
 
-          form.addEventListener('submit', function (e) {
-            if (input.dataset.vehicleModelRequired !== 'true') return;
-            if (input.value.trim() === '') {
-              e.preventDefault();
-              e.stopImmediatePropagation();
-              errorEl.removeAttribute('hidden');
-              input.setAttribute('aria-invalid', 'true');
-              input.focus();
-            }
-          });
+          if (input.value.trim() === '') {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            errorEl.removeAttribute('hidden');
+            input.setAttribute('aria-invalid', 'true');
+            input.focus();
+          }
+        }, { capture: true });
 
+        document.addEventListener('DOMContentLoaded', function () {
+          var input = document.getElementById('VehicleModel-' + sectionId);
+          if (!input) return;
+          var errorEl = document.getElementById('VehicleModelError-' + sectionId);
           input.addEventListener('input', function () {
             if (input.value.trim() !== '') {
               errorEl.setAttribute('hidden', '');
