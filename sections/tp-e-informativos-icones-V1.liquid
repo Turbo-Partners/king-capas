@@ -20,7 +20,7 @@
   assign cols_mobile     = section.settings.cols_mobile
   assign cols_desktop    = section.settings.cols_desktop
 
-  assign meta   = section.settings.informativos_metaobject
+  assign meta   = product.metafields.custom.informativos_icones_com_texto.value
   assign titulo = meta.titulo
   assign icones = meta.icones
   assign textos = meta.textos
@@ -158,12 +158,7 @@
       "type": "header",
       "content": "Conteúdo"
     },
-    {
-      "type": "metaobject",
-      "id": "informativos_metaobject",
-      "label": "Metaobject de ícones",
-      "metaobject_type": "informativos_icones_com_texto"
-    },
+
     {
       "type": "header",
       "content": "Aparência"

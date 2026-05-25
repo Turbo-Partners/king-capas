@@ -152,8 +152,46 @@
         "padding_bottom": 12
       }
     },
+    "tp_e_informativos_icones_v1_fMFaaH": {
+      "type": "tp-e-informativos-icones-V1",
+      "name": "Informativos com Ícones",
+      "settings": {
+        "background_type": "color",
+        "bg_color": "#FFFFFF",
+        "bg_gradient": "",
+        "title_bar": false,
+        "title_custom": false,
+        "title_alignment": "left",
+        "title_color": "#2B2B2B",
+        "title_size_desktop": 36,
+        "title_size_mobile": 28,
+        "title_weight": "700",
+        "icon_size": 48,
+        "text_custom": false,
+        "text_color": "#2B2B2B",
+        "text_size_desktop": 14,
+        "text_size_mobile": 12,
+        "text_weight": "500",
+        "cols_mobile": "2",
+        "cols_desktop": "4",
+        "card_radius": "md",
+        "pad_top_min": 48,
+        "pad_top_max": 96,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
     "related-products": {
       "type": "related-products",
+      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
@@ -173,6 +211,7 @@
   },
   "order": [
     "main",
+    "tp_e_informativos_icones_v1_fMFaaH",
     "related-products"
   ]
 }
