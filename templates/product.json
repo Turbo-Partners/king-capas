@@ -495,7 +495,7 @@
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "<style>\n.tp-e-image-with-text-v1__block {\nalign-items:flex-start;\n}\n</style>",
+        "custom_liquid": "<style>\n.tp-e-image-with-text-v1__block {\nalign-items:flex-start;\n}\n.tp-e-image-with-text-v1__title--above-image {\ntext-align:center;\n}\n</style>",
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0
