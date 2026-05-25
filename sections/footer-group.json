@@ -14,6 +14,48 @@
     "tp_e_color_swatches_v1_TEFRAP": {
       "type": "tp-e-color-swatches-v1",
       "blocks": {
+        "color_entry_zjXHwC": {
+          "type": "color_entry",
+          "settings": {
+            "color_name": "Azul Marinho",
+            "color_value": "#006bff"
+          }
+        },
+        "color_entry_fPdpKc": {
+          "type": "color_entry",
+          "settings": {
+            "color_name": "Amarelo",
+            "color_value": "#fffb00"
+          }
+        },
+        "color_entry_GzLU6Y": {
+          "type": "color_entry",
+          "settings": {
+            "color_name": "Marrom",
+            "color_value": "#91530c"
+          }
+        },
+        "color_entry_7LXJ73": {
+          "type": "color_entry",
+          "settings": {
+            "color_name": "Marrom",
+            "color_value": "#91530c"
+          }
+        },
+        "color_entry_Q6DWiJ": {
+          "type": "color_entry",
+          "settings": {
+            "color_name": "Rosa",
+            "color_value": "#ff08e5"
+          }
+        },
+        "color_entry_9tRVrF": {
+          "type": "color_entry",
+          "settings": {
+            "color_name": "Rosa",
+            "color_value": "#ff08e5"
+          }
+        },
         "color_entry_aUzmRQ": {
           "type": "color_entry",
           "settings": {
@@ -72,6 +114,12 @@
         }
       },
       "block_order": [
+        "color_entry_zjXHwC",
+        "color_entry_fPdpKc",
+        "color_entry_GzLU6Y",
+        "color_entry_7LXJ73",
+        "color_entry_Q6DWiJ",
+        "color_entry_9tRVrF",
         "color_entry_aUzmRQ",
         "color_entry_RyiMnj",
         "color_entry_zkBGHB",
