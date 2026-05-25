@@ -314,7 +314,7 @@
         "faq_first_open": false,
         "data_animate": false,
         "title_custom": true,
-        "text_color_title": "#FFFFFF",
+        "text_color_title": "#ffffff",
         "font_weight": "700",
         "font_size_title": 32,
         "font_size_title_mobile": 24,
@@ -423,6 +423,53 @@
         "pad_bottom_desktop": 0
       }
     },
+    "apps_6PgGHJ": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_aNPgqh": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_aNPgqh"
+      ],
+      "settings": {
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "instagram": true,
+        "instagram_text": "Nos siga no Instagram",
+        "button_text": "@kings.capasautomotivas",
+        "button_link": "https://www.instagram.com/kings.capasautomotivas/",
+        "pad_top_min": 40,
+        "pad_top_max": 120,
+        "pad_bottom_min": 40,
+        "pad_bottom_max": 48,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
     "related-products": {
       "type": "related-products",
       "disabled": true,
@@ -450,6 +497,7 @@
     "tp_e_image_with_text_v1_9rAh74",
     "tp_meta_cards_category_v1_V8pCiq",
     "tp_e_related_products_v1_BzYJCp",
+    "apps_6PgGHJ",
     "related-products"
   ]
 }
