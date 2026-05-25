@@ -278,6 +278,9 @@ product-info {
     display:none !important;
   }
 
+  .js.product-form__input.product-form__input--pill {
+    border-TOP: 1px solid var(--gray-200, #EAECF0);
+  }
 
 /* Ícones com Texto */
 .tp-pdp-icons-list {
