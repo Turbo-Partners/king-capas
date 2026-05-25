@@ -254,6 +254,10 @@ product-info {
 .tp-vehicle-model__input {
   width: 100%;
   border: 1px solid var(--Gray-300, #D9D9D9);
+
+  &::placeholder {
+    opacity:1;
+  }
 }
 
 .tp-vehicle-model__input[aria-invalid="true"] {
