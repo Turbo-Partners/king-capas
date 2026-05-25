@@ -1017,12 +1017,7 @@
       var target = document.querySelector('.wrapper-title-app');
       if (!target) return;
 
-      var appBlock = Array.from(
-        document.querySelectorAll('.product__info-container shopify-app-block')
-      ).find(function (el) {
-        return el.querySelector('.areviews_main_header_container');
-      });
-
+      var appBlock = document.querySelector('shopify-app-block:has(.areviews_main_header_container)');
       if (!appBlock) return;
 
       if (mq.matches) {
@@ -1032,8 +1027,7 @@
 
     function tryMove(retries) {
       requestAnimationFrame(function () {
-        var found = document.querySelector('.areviews_main_header_container');
-        if (found) {
+        if (document.querySelector('shopify-app-block:has(.areviews_main_header_container)')) {
           moveReviewsBlock();
         } else if (retries > 0) {
           tryMove(retries - 1);
