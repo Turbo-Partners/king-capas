@@ -125,8 +125,11 @@
                   </h2>
                 </a>
               </div>
-            {% when '@app' %}
+              {% comment %}
+   {% when '@app' %}
               {% render block %}
+              {% endcomment %}
+         
 
           {% endcase %}
         {% endfor %}
