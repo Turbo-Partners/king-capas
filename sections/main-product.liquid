@@ -1009,6 +1009,45 @@
   </div>
 </product-info>
 
+<script>
+  (function () {
+    var mq = window.matchMedia('(max-width: 749px)');
+
+    function moveReviewsBlock() {
+      var target = document.querySelector('.wrapper-title-app');
+      if (!target) return;
+
+      var appBlock = Array.from(
+        document.querySelectorAll('.product__info-container shopify-app-block')
+      ).find(function (el) {
+        return el.querySelector('.areviews_main_header_container');
+      });
+
+      if (!appBlock) return;
+
+      if (mq.matches) {
+        target.appendChild(appBlock);
+      }
+    }
+
+    function tryMove(retries) {
+      requestAnimationFrame(function () {
+        var found = document.querySelector('.areviews_main_header_container');
+        if (found) {
+          moveReviewsBlock();
+        } else if (retries > 0) {
+          tryMove(retries - 1);
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () { tryMove(10); });
+    } else {
+      tryMove(10);
+    }
+  })();
+</script>
 {% schema %}
 {
   "name": "t:sections.main-product.name",
