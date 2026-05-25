@@ -57,11 +57,24 @@
         // Sincroniza com vehicle model
         this._syncVehicleModel();
 
-        // Escuta mudança de variante (Dawn publica via pubsub com payload em e.detail.data)
+        console.log('[tp-buy-buttons] connectedCallback — sectionId:', this.dataset.sectionId, '| formId:', this.dataset.formId, '| variantId inicial:', this.dataset.variantId);
+
+        // Escuta QUALQUER evento no document para ver o que o Dawn está disparando
         document.addEventListener('variant:change', (e) => {
+          console.log('[tp-buy-buttons] variant:change RAW — e.detail:', JSON.stringify(e.detail));
+
           const detail = e.detail?.data ?? e.detail;
-          if (detail?.sectionId !== this.dataset.sectionId) return;
+          console.log('[tp-buy-buttons] detail resolvido:', JSON.stringify(detail));
+          console.log('[tp-buy-buttons] detail.sectionId:', detail?.sectionId, '| this.sectionId:', this.dataset.sectionId, '| match:', detail?.sectionId === this.dataset.sectionId);
+
+          if (detail?.sectionId !== this.dataset.sectionId) {
+            console.log('[tp-buy-buttons] sectionId não bate, ignorando');
+            return;
+          }
+
           const variant = detail.variant;
+          console.log('[tp-buy-buttons] variant recebida:', variant?.id, variant?.available);
+
           if (!variant) return;
           this.dataset.variantId = variant.id;
           this._submitBtn.toggleAttribute('disabled', !variant.available);
@@ -69,6 +82,13 @@
             ? (this._submitBtn.dataset.text || this._defaultText)
             : window.variantStrings?.soldOut || 'Esgotado';
         });
+
+        // Log do que _getVariantId retorna no momento do clique
+        this._submitBtn.addEventListener('click', () => {
+          console.log('[tp-buy-buttons] clique — _getVariantId:', this._getVariantId(), '| dataset.variantId:', this.dataset.variantId);
+          const form = document.getElementById(this.dataset.formId);
+          console.log('[tp-buy-buttons] form encontrado:', !!form, '| .product-variant-id valor:', form?.querySelector('.product-variant-id')?.value);
+        }, { capture: true });
       }
 
       _changeQty(delta) {
