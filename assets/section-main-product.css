@@ -497,6 +497,7 @@ font-style: normal;
 font-weight: 700;
 line-height: 120%; /* 14.4px */
 text-transform: uppercase;
+max-width:100px;
 
 }
 
