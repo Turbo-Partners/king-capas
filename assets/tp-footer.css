@@ -275,10 +275,6 @@
     transition: color var(--tp-transition-base);
 }
 
-.tp-footer__links-wrapper a:hover {
-    color: var(--tp-color-primary);
-}
-
 .tp-footer__links-wrapper a:focus-visible {
     outline: 2px solid var(--tp-color-primary);
     outline-offset: 2px;
