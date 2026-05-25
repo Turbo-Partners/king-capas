@@ -127,7 +127,7 @@
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
-                                {%- when 'tp_icons_with_text' -%}
+              {%- when 'tp_icons_with_text' -%}
                 {%- liquid
                   assign tp_icones_obj = product.metafields.custom.icones_com_texto.value
                   assign tp_has_icons = false
@@ -165,7 +165,6 @@
                   </ul>
                 {%- endif -%}
 
-             
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
@@ -790,7 +789,7 @@
                   if product.metafields.custom.pdp_bundle_de_quantidades.value.size > 0
                     assign has_metafields = true
                   endif
-                  
+
                   assign has_default_options = false
                   if block.settings.default_option_1_quantity != blank
                     assign default_qty = block.settings.default_option_1_quantity | times: 1
@@ -798,7 +797,7 @@
                       assign has_default_options = true
                     endif
                   endif
-                  
+
                   assign should_render_bundle = false
                   if product.variants.size == 1
                     if has_metafields
@@ -894,7 +893,7 @@
     {
       "type": "@app"
     },
-        {
+    {
       "type": "tp_icons_with_text",
       "name": "Ícones com Texto",
       "limit": 1
