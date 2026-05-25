@@ -294,42 +294,59 @@ product-info {
 }
 
 .tp-price__compare {
-  font-size: var(--tp-font-size-base, 16px);
-  color: var(--tp-color-text-secondary, #888);
-  text-decoration: line-through;
-  font-weight: var(--tp-font-regular, 400);
+color: var(--Gray-600, #475467);
+
+/* Body/16/Regular */
+font-family: Helvetica;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 140%; /* 22.4px */
+text-decoration-line: line-through;
 }
 
 .tp-price__current {
-  font-size: var(--tp-font-size-2xl, 24px);
-  font-weight: var(--tp-font-bold, 700);
-  color: var(--tp-color-text-primary, #111);
-  line-height: 1;
+color: var(--gray-800, #182230);
+
+/* Body/16/Semi */
+font-family: Helvetica;
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: 140%; /* 22.4px */
 }
 
 .tp-price__badge {
-  display: inline-flex;
-  align-items: center;
-  background: var(--tp-color-success, #16a34a);
-  color: #fff;
-  font-size: var(--tp-font-size-sm, 13px);
-  font-weight: var(--tp-font-bold, 700);
-  padding: 4px 10px;
-  border-radius: var(--tp-radius-sm, 4px);
-  letter-spacing: 0.02em;
-  line-height: 1;
+color: #FFF;
+
+/* Body/14/Semi */
+font-family: Helvetica;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: 140%; /* 19.6px */
+display: flex;
+padding: 2px 8px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 4px;
+background: #1A9122;
+
 }
 
 .tp-price__installments {
-  font-size: var(--tp-font-size-sm, 14px);
-  color: var(--tp-color-text-secondary, #666);
-  white-space: nowrap;
+color: var(--Gray-600, #475467);
+
+/* Body/14/Medium */
+font-family: Helvetica;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 140%; /* 19.6px */
 }
 
-.tp-price__installments strong {
-  color: var(--tp-color-text-primary, #111);
-  font-weight: var(--tp-font-semibold, 600);
-}
+
 
 /* estado sem promoção: sem compare */
 .tp-price--no-compare .tp-price__compare {
