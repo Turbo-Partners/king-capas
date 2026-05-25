@@ -1,0 +1,73 @@
+{% comment %}
+  Renders custom TP price block: current price, compare price, discount badge, installments.
+
+  Accepts:
+  - product: {Object}
+  - section_id: {String}
+
+  Usage:
+  {% render 'tp-price', product: product, section_id: section.id %}
+{% endcomment %}
+
+{%- liquid
+  assign variant          = product.selected_or_first_available_variant
+  assign price            = variant.price | default: 0
+  assign compare          = variant.compare_at_price
+  assign on_sale          = false
+  assign discount_pct     = 0
+  assign display_installments = 0
+
+  if compare > price
+    assign on_sale      = true
+    assign discount_pct = compare | minus: price | times: 100 | divided_by: compare | round
+  endif
+
+  if settings.installment
+    assign minimum_in_cents     = settings.minimum_installment_value | times: 100
+    assign max_by_min           = price | divided_by: minimum_in_cents | floor
+    if max_by_min >= settings.installment_number
+      assign display_installments = settings.installment_number
+    elsif max_by_min >= 2
+      assign display_installments = max_by_min
+    endif
+  endif
+
+  if settings.currency_code_enabled
+    assign money_price   = price   | money_with_currency
+    assign money_compare = compare | money_with_currency
+  else
+    assign money_price   = price   | money
+    assign money_compare = compare | money
+  endif
+
+  if display_installments >= 2
+    assign installment_value_cents = price | divided_by: display_installments
+    if settings.currency_code_enabled
+      assign money_installment = installment_value_cents | money_with_currency
+    else
+      assign money_installment = installment_value_cents | money
+    endif
+  endif
+-%}
+
+{{- 'tp-price.css' | asset_url | stylesheet_tag -}}
+
+<div
+  id="price-{{ section_id }}"
+  class="tp-price{% unless on_sale %} tp-price--no-compare{% endunless %}"
+  role="status"
+>
+  <div class="tp-price__main">
+    <span class="tp-price__compare" aria-hidden="true">{{ money_compare }}</span>
+    <span class="tp-price__current">{{ money_price }}</span>
+    {%- if on_sale -%}
+      <span class="tp-price__badge">{{ discount_pct }}% OFF</span>
+    {%- endif -%}
+  </div>
+
+  {%- if display_installments >= 2 -%}
+    <span class="tp-price__installments">
+      ou <strong>{{ display_installments }}x</strong> de <strong>{{ money_installment }}</strong> sem juros
+    </span>
+  {%- endif -%}
+</div>
