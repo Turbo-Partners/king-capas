@@ -506,6 +506,9 @@ line-height: 140%; /* 19.6px */
 .wrapper-title-app {
 
   width: 100%;
+  .main_starts_box.areviews_header_rating {
+    text-align:end;
+  }
 }
 
 
