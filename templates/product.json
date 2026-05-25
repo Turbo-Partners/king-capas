@@ -167,6 +167,7 @@
         "title_size_mobile": 32,
         "title_weight": "700",
         "icon_size": 116,
+        "icon_size_mob": 72,
         "text_custom": true,
         "text_color": "#101828",
         "text_size_desktop": 16,
