@@ -185,6 +185,35 @@
                     </h2>
                   </a>
                 </div>
+                {%- when 'warranty_badge' -%}
+                {%- liquid
+                  assign warranty_text = product.metafields.custom.texto_anos_de_garantia.value
+                  assign warranty_seal = product.metafields.custom.selo_garantia.value
+                -%}
+                {%- if warranty_text != blank or warranty_seal != blank -%}
+                  {{ 'tp-warranty-badge.css' | asset_url | stylesheet_tag }}
+                  {%- style -%}
+                    .{{ section.id }}-warranty {
+                      --tp-warranty-bg: {{ block.settings.bg_color }};
+                      --tp-warranty-color: {{ block.settings.text_color }};
+                    }
+                  {%- endstyle -%}
+                  <div class="tp-warranty-badge {{ section.id }}-warranty" {{ block.shopify_attributes }}>
+                    {%- if warranty_seal != blank -%}
+                      {{ warranty_seal | image_url: width: 120 | image_tag:
+                        class: 'tp-warranty-badge__image',
+                        loading: 'lazy',
+                        widths: '56, 112',
+                        sizes: '56px',
+                        alt: warranty_text | default: 'Garantia'
+                      }}
+                    {%- endif -%}
+                    {%- if warranty_text != blank -%}
+                      <span class="tp-warranty-badge__text">{{ warranty_text | escape }}</span>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -927,6 +956,25 @@
   "blocks": [
     {
       "type": "@app"
+    },
+        {
+      "type": "warranty_badge",
+      "name": "Selo de Garantia",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Cor de fundo",
+          "default": "#F5F0C0"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Cor do texto",
+          "default": "#111111"
+        }
+      ]
     },
         {
       "type": "tp_price",
