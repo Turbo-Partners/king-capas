@@ -86,6 +86,7 @@
     -%}
     <input
       type="radio"
+      data-available="{{ option_disabled }}"
       id="{{ input_id }}"
       name="{{ input_name | escape }}"
       value="{{ escaped_value }}"
