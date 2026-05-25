@@ -110,7 +110,8 @@
 {% endif %}
 {% endstyle %}
 
-<section class="tp-categories tp-info-icones {{ section.id }}">
+{%  if meta %}
+  <section class="tp-categories tp-info-icones {{ section.id }}">
   <div class="tp-wrapper" id="section-wrapper-{{ section.id }}">
     {% if titulo.value != blank %}
       {% if section.settings.title_bar %}
@@ -154,6 +155,8 @@
     {% endif %}
   </div>
 </section>
+{% endif %}
+
 
 {% schema %}
 {
