@@ -166,6 +166,9 @@
               fetchpriority="{{ fetch_priority }}"
             >
           {% endif %}
+          {% if section.settings.image_mobile != blank %}
+            <source />
+          {% endif %}
         </picture>
       {% else %}
         {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
