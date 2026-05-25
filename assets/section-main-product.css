@@ -281,8 +281,8 @@ product-info {
 
 /* Ícones com Texto */
 .tp-pdp-icons-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
   gap: var(--tp-space-4, 16px) var(--tp-space-6, 24px);
   margin: 0;
   padding: 0;
