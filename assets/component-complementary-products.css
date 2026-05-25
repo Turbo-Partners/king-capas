@@ -77,8 +77,8 @@
   }
 
   .card-wrapper {
-    border-radius: var(--radius-8, 8px);
-    background: var(--Gray-100, #FFF);
+border-radius: var(--radius-8, 8px);
+background: var(--gray-100, #F2F4F7);
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08);
     padding: 1rem 2rem;
     border-radius: 8px;
