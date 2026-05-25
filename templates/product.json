@@ -28,6 +28,13 @@
             "swatch_shape": "circle"
           }
         },
+        "variant_picker_aPRT3c": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown",
+            "swatch_shape": "circle"
+          }
+        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
@@ -44,6 +51,7 @@
         "title",
         "price",
         "variant_picker",
+        "variant_picker_aPRT3c",
         "quantity_selector",
         "buy_buttons"
       ],
