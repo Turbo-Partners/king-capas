@@ -253,6 +253,18 @@ product-recommendations.is-accordion+.accordion {
 
 .complementary-products__container {
 
+
+
+  .full-unstyled-link {
+    color: var(--gray-950, #0C111D);
+
+/* Body/14/Medium */
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 140%; /* 19.6px */
+  }
   
 
   .badge-discount,
