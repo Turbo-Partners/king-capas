@@ -11,6 +11,12 @@
 >
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+  {%- for b in section.blocks -%}
+    {%- if b.type == 'vehicle_model' -%}
+      {{ 'tp-vehicle-model.css' | asset_url | stylesheet_tag }}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
@@ -41,6 +47,44 @@
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   {% comment %} <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+  {%- assign has_vehicle_model_block = false -%}
+  {%- for b in section.blocks -%}
+    {%- if b.type == 'vehicle_model' and b.settings.required -%}
+      {%- assign has_vehicle_model_block = true -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if has_vehicle_model_block -%}
+    <script>
+      (function () {
+        document.addEventListener('DOMContentLoaded', function () {
+          var sectionId = {{ section.id | json }};
+          var formId = 'product-form-' + sectionId;
+          var form = document.getElementById(formId);
+          var input = document.getElementById('VehicleModel-' + sectionId);
+          var errorEl = document.getElementById('VehicleModelError-' + sectionId);
+          if (!form || !input) return;
+
+          form.addEventListener('submit', function (e) {
+            if (input.dataset.vehicleModelRequired !== 'true') return;
+            if (input.value.trim() === '') {
+              e.preventDefault();
+              e.stopImmediatePropagation();
+              errorEl.removeAttribute('hidden');
+              input.setAttribute('aria-invalid', 'true');
+              input.focus();
+            }
+          });
+
+          input.addEventListener('input', function () {
+            if (input.value.trim() !== '') {
+              errorEl.setAttribute('hidden', '');
+              input.removeAttribute('aria-invalid');
+            }
+          });
+        });
+      })();
+    </script>
+  {%- endif -%}
   {%- if product.quantity_price_breaks_configured? -%}
     <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
@@ -477,6 +521,31 @@
 
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+              {%- when 'vehicle_model' -%}
+                <div class="tp-vehicle-model" {{ block.shopify_attributes }}>
+                  {%- assign vm_label = block.settings.label | default: 'Modelo do Veículo' -%}
+                  {%- assign vm_placeholder = block.settings.placeholder | default: 'Ex: Honda Civic 2022' -%}
+                  <label class="tp-vehicle-model__label form__label" for="VehicleModel-{{ section.id }}">
+                    {{ vm_label }}
+                    {%- if block.settings.required -%}
+                      <span class="tp-vehicle-model__required" aria-hidden="true"> *</span>
+                    {%- endif -%}
+                  </label>
+                  <input
+                    type="text"
+                    id="VehicleModel-{{ section.id }}"
+                    name="properties[{{ vm_label | escape }}]"
+                    class="tp-vehicle-model__input field__input"
+                    placeholder="{{ vm_placeholder | escape }}"
+                    form="{{ product_form_id }}"
+                    autocomplete="off"
+                    data-vehicle-model-required="{{ block.settings.required }}"
+                    data-vehicle-model-error="{{ block.settings.error_message | default: 'Por favor, informe o modelo do veículo.' | escape }}"
+                  >
+                  <p class="tp-vehicle-model__error" id="VehicleModelError-{{ section.id }}" role="alert" hidden>
+                    {{ block.settings.error_message | default: 'Por favor, informe o modelo do veículo.' }}
+                  </p>
+                </div>
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
                   block: block,
@@ -941,6 +1010,37 @@
             }
           ],
           "default": "circle"
+        }
+      ]
+    },
+    {
+      "type": "vehicle_model",
+      "name": "Modelo do Veículo",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label do campo",
+          "default": "Modelo do Veículo"
+        },
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Placeholder",
+          "default": "Ex: Honda Civic 2022"
+        },
+        {
+          "type": "checkbox",
+          "id": "required",
+          "label": "Campo obrigatório",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "error_message",
+          "label": "Mensagem de erro",
+          "default": "Por favor, informe o modelo do veículo."
         }
       ]
     },
