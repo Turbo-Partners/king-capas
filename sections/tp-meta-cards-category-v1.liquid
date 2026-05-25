@@ -60,7 +60,6 @@
       {% assign display_title = titulo_secao | default: section.settings.preview_title %}
       {% if display_title != blank %}
         <div class="tp-meta-cards-tecnologia-v1__title-wrapper">
-          <span class="tp-meta-cards-tecnologia-v1__title-bar" aria-hidden="true"></span>
           <div class="tp-meta-cards-tecnologia-v1__title">{{ display_title |  metafield_tag}}</div>
         </div>
       {% endif %}
