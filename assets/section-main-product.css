@@ -294,6 +294,7 @@ product-info {
 
 .tp-pdp-icons-list__item {
   display: flex;
+  flex-direction:column;
   align-items: center;
   gap: var(--tp-space-2, 8px);
  @media (min-width:1000px) and (max-width:1280px) {
@@ -331,12 +332,13 @@ product-info {
 
 
 .tp-pdp-icons-list__text {
-color: #59240F;
-font-family: "ofelia-text";
-font-size: 11px;
+color: var(--Gray-900, #101828);
+text-align: center;
+font-family: "Helvetica",sans-serif;
+font-size: 12px;
 font-style: normal;
 font-weight: 700;
-line-height: 120%; /* 13.2px */
+line-height: 120%; /* 14.4px */
 text-transform: uppercase;
   max-width: 50px
 
