@@ -631,6 +631,10 @@ line-height: 140%; /* 22.4px */
 }
 }
 
+.slider-buttons.quick-add-hidden {
+  display:none;
+}
+
 .form__label {
   color: #43434A;
 font-family: "Helvetica",sans-serif;
