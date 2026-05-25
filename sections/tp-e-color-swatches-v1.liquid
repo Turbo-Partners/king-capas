@@ -1,0 +1,78 @@
+{% comment %}
+  Seção global de mapeamento de cores para variantes de produto.
+  Adicionar em layout/theme.liquid com: {% section 'tp-e-color-swatches-v1' %}
+  Não renderiza conteúdo visível — apenas gera CSS com o mapa de cores.
+{% endcomment %}
+
+{%- if section.blocks.size > 0 -%}
+  <style>
+    {%- for block in section.blocks -%}
+      {%- assign handle = block.settings.color_name | handleize -%}
+      {%- if handle != blank and block.settings.color_value != blank -%}
+        .tp-swatch--{{ handle }} .swatch {
+          --swatch--background: {{ block.settings.color_value }};
+          background: {{ block.settings.color_value }};
+        }
+        .tp-swatch--{{ handle }} .swatch--unavailable {
+          opacity: 1;
+        }
+      {%- endif -%}
+    {%- endfor -%}
+  </style>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Mapa de Cores",
+  "class": "E__COLOR_SWATCHES__V1",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "color_entry",
+      "name": "Cor",
+      "settings": [
+        {
+          "type": "text",
+          "id": "color_name",
+          "label": "Nome da variante",
+          "info": "Exatamente como cadastrado no produto. Ex: Azul Royal"
+        },
+        {
+          "type": "color",
+          "id": "color_value",
+          "label": "Cor"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mapa de Cores",
+      "category": "Personalizado",
+      "blocks": [
+        {
+          "type": "color_entry",
+          "settings": {
+            "color_name": "Preto",
+            "color_value": "#1a1a1a"
+          }
+        },
+        {
+          "type": "color_entry",
+          "settings": {
+            "color_name": "Branco",
+            "color_value": "#ffffff"
+          }
+        },
+        {
+          "type": "color_entry",
+          "settings": {
+            "color_name": "Azul",
+            "color_value": "#1e40af"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
