@@ -199,6 +199,10 @@ product-info {
   transition: opacity var(--tp-transition-fast, 150ms);
   line-height: 1;
   user-select: none;
+
+  @media (max-width:750px) {
+    padding-inline:8px;
+  }
 }
 
 .tp-buy-buttons__qty-btn:hover {
