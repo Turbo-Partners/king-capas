@@ -50,6 +50,12 @@
   color: rgba(var(--color-foreground), 0.85);
   font-size: 1.4rem;
   margin: 0 2rem 0 0;
+  color: #4D4D4D;
+  font-family: Inter;
+  font-size: clamp(1.6000rem, calc(1.5257rem + 0.1905vw), 1.8000rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
 }
 
 .facet-filters__summary {
@@ -182,6 +188,12 @@
   color: rgba(var(--color-foreground), 0.85);
   font-size: 1.4rem;
   margin: -1.5rem 2rem 0 0;
+  color: #2B2B2B;
+  font-family: Inter;
+  font-size: clamp(1.6000rem, calc(1.0057rem + 1.5238vw), 3.2000rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 38.4px */
 }
 
 .facets__reset {
@@ -227,6 +239,24 @@
 .facets__summary:hover .facets__summary-label {
   text-decoration: underline;
   text-underline-offset: 0.3rem;
+}
+
+.facets__summary-label {
+  color: #4D4D4D;
+  font-family: Inter;
+  font-size: clamp(1.6000rem, calc(1.5257rem + 0.1905vw), 1.8000rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
+}
+
+.facets__summary  {
+  color: #4D4D4D;
+  font-family: Inter;
+  font-size: clamp(1.6000rem, calc(1.5257rem + 0.1905vw), 1.8000rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
 }
 
 .facets__and-helptext {
@@ -328,6 +358,15 @@
 .facets-layout-list .facets__label:hover .facet-checkbox__text-label,
 .facets-layout-list input:focus ~ .facet-checkbox__text-label {
   text-decoration: underline;
+
+}
+
+.facet-checkbox__text-label {
+  color: #4D4D4D;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
 }
 
 .facets-layout-grid > * {
@@ -955,6 +994,12 @@ details.menu-opening .mobile-facets__close .svg-wrapper {
 
 .mobile-facets__summary {
   padding: 1.3rem 2.5rem;
+  color: #4D4D4D;
+  font-family: Inter;
+  font-size: clamp(1.6000rem, calc(1.5257rem + 0.1905vw), 1.8000rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
 }
 
 .mobile-facets__summary .svg-wrapper {
@@ -1106,6 +1151,7 @@ input.mobile-facets__checkbox {
   font-size: 1.4rem;
   line-height: calc(1 + 0.5 / var(--font-body-scale));
   margin: 0;
+  font-family: Inter;
 }
 
 #ProductCountDesktop.loading,
@@ -1152,7 +1198,6 @@ input.mobile-facets__checkbox {
 
   .facets__heading--vertical {
     margin: 0 0 1.5rem 0;
-    font-size: 1.5rem;
   }
 
   .facets__header-vertical {

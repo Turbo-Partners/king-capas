@@ -67,6 +67,15 @@
     font-weight: var(--tp-font-regular);
     line-height: var(--tp-leading-normal);
     text-align: var(--tp-block-text-align-mobile, left);
+    color: var(--Gray-300, #D9D9D9);
+
+    /* Body/16/Regular */
+    font-family: Helvetica;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 22.4px */
+    opacity: 0.8;
 }
 @media screen and (min-width: 1024px) {
     .tp-footer__info {
@@ -175,7 +184,14 @@
     font-weight: var(--tp-h4-weight);
     line-height: var(--tp-h4-leading);
     letter-spacing: var(--tp-h4-tracking);
-    text-transform: uppercase;
+    color: #FDFE38;
+
+    /* Body/16/Medium */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 22.4px */
 }
 
 .tp-footer__socials-wrapper {
@@ -244,6 +260,15 @@
     line-height: var(--tp-body-leading);
     letter-spacing: var(--tp-body-tracking);
     text-decoration: none;
+    color: var(--Gray-300, #D9D9D9);
+    opacity: 0.8;
+
+    /* Body/16/Regular */
+    font-family: Helvetica;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 22.4px */
 }
 
 .tp-footer__links-wrapper a {
@@ -284,6 +309,14 @@
     font-weight: var(--tp-font-regular);
     line-height: var(--tp-leading-relaxed);
     text-align: center;
+    color: var(--Gray-300, #D9D9D9);
+
+    /* Body/14/Regular */
+    font-family: Helvetica;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 19.6px */
 
     @media screen and (min-width: 1024px) {
         text-align: left;

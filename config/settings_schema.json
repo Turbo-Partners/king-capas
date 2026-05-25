@@ -16,6 +16,12 @@
         "label": "t:settings_schema.logo.settings.logo_image.label"
       },
       {
+        "type": "image_picker",
+        "id": "logo_reverse",
+        "label": "Logo reverso",
+        "info": "Versão do logo para fundos escuros (header transparente)"
+      },
+      {
         "type": "range",
         "id": "logo_width",
         "min": 50,

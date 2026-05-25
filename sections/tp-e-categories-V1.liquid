@@ -86,7 +86,7 @@
 {% endstyle %}
 
 <section class="tp-categories {{ section.id }}">
-  <div class="tp-wrapper" id="section-wrapper-{{ section.id }}">
+  <div class="tp-wrapper--full-width" id="section-wrapper-{{ section.id }}">
     {% if section.settings.title != blank %}
       {% if section.settings.title_bar %}
         <span class="tp-meta-banner-imagem-v1__bar" aria-hidden="true"></span>
@@ -108,18 +108,36 @@
             endif
           %}
 
-          {% if block.settings.title_custom %}
+          {% if block.settings.title_custom or block.settings.button_custom %}
             <style>
-              .tp-cat-block-{{ block.id }} .tp-categories__card-title {
-                font-size: {{ block.settings.title_size_desktop }}px;
-                font-weight: {{ block.settings.title_weight }};
-                color: {{ block.settings.title_color }};
-              }
-              @media (max-width: 767px) {
+              {% if block.settings.title_custom %}
                 .tp-cat-block-{{ block.id }} .tp-categories__card-title {
-                  font-size: {{ block.settings.title_size_mobile }}px;
+                  font-size: {{ block.settings.title_size_desktop }}px;
+                  font-weight: {{ block.settings.title_weight }};
+                  color: {{ block.settings.title_color }};
                 }
-              }
+                @media (max-width: 767px) {
+                  .tp-cat-block-{{ block.id }} .tp-categories__card-title {
+                    font-size: {{ block.settings.title_size_mobile }}px;
+                  }
+                }
+              {% endif %}
+              {% if block.settings.button_custom %}
+                .tp-cat-block-{{ block.id }} .tp-categories__card-button {
+                  {% if block.settings.button_bg_color != blank %}background: {{ block.settings.button_bg_color }};{% endif %}
+                  {% if block.settings.button_text_color != blank %}color: {{ block.settings.button_text_color }};{% endif %}
+                  {% if block.settings.button_font_size > 0 %}font-size: {{ block.settings.button_font_size }}px;{% endif %}
+                  {% if block.settings.button_font_weight != blank %}font-weight: {{ block.settings.button_font_weight }};{% endif %}
+                  {% case block.settings.button_radius %}
+                    {% when 'sm' %}border-radius: var(--tp-radius-sm);
+                    {% when 'md' %}border-radius: var(--tp-radius-md);
+                    {% when 'lg' %}border-radius: var(--tp-radius-lg);
+                    {% when 'xl' %}border-radius: var(--tp-radius-xl);
+                    {% when 'full' %}border-radius: var(--tp-radius-full);
+                    {% else %}border-radius: 0px;
+                  {% endcase %}
+                }
+              {% endif %}
             </style>
           {% endif %}
 
@@ -142,10 +160,10 @@
             </div>
             <div class="tp-categories__card-footer" style="align-items: {{ footer_align }}; text-align: {{ title_align }}">
               {% if block.settings.title != blank %}
-                <span class="tp-categories__card-title">{{ block.settings.title }}</span>
+                <h4 class="tp-categories__card-title">{{ block.settings.title }}</h4>
               {% endif %}
-              {% if block.settings.title_bar %}
-                <span class="tp-categories__card-bar" style="background: {{ block.settings.title_bar_color }}" aria-hidden="true"></span>
+              {% if block.settings.button_text != blank %}
+                <button class="tp-categories__card-button">{{ block.settings.button_text }}</button>
               {% endif %}
             </div>
           </a>
@@ -539,6 +557,75 @@
           "label": "Cor da barra",
           "default": "#000000",
           "visible_if": "{{ block.settings.title_bar }}"
+        },
+        {
+          "type": "header",
+          "content": "Botão"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Texto",
+          "default": "Ver mais"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_custom",
+          "label": "Personalizar",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "button_bg_color",
+          "label": "Cor de fundo",
+          "default": "#FFFFFF",
+          "visible_if": "{{ block.settings.button_custom }}"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Cor do texto",
+          "default": "#000000",
+          "visible_if": "{{ block.settings.button_custom }}"
+        },
+        {
+          "type": "select",
+          "id": "button_radius",
+          "label": "Arredondamento",
+          "default": "full",
+          "visible_if": "{{ block.settings.button_custom }}",
+          "options": [
+            { "label": "Nenhum", "value": "none" },
+            { "label": "Pequeno", "value": "sm" },
+            { "label": "Médio", "value": "md" },
+            { "label": "Grande", "value": "lg" },
+            { "label": "Extra Grande", "value": "xl" },
+            { "label": "Completo", "value": "full" }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "button_font_size",
+          "label": "Tamanho do texto",
+          "min": 10,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 14,
+          "visible_if": "{{ block.settings.button_custom }}"
+        },
+        {
+          "type": "select",
+          "id": "button_font_weight",
+          "label": "Peso do texto",
+          "default": "600",
+          "visible_if": "{{ block.settings.button_custom }}",
+          "options": [
+            { "label": "Normal (400)", "value": "400" },
+            { "label": "Médio (500)", "value": "500" },
+            { "label": "Semibold (600)", "value": "600" },
+            { "label": "Bold (700)", "value": "700" }
+          ]
         }
       ]
     }

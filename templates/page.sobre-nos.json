@@ -1,0 +1,495 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "tp_e_banner_slides_v1_Q6VfXT": {
+      "type": "tp-e-banner-slides-v1",
+      "blocks": {
+        "slide_HffUeN": {
+          "type": "slide",
+          "settings": {
+            "media_type": "image",
+            "image_mobile": "shopify://shop_images/737_1.webp",
+            "image_desktop": "shopify://shop_images/736_1.webp",
+            "link": "",
+            "title": "<h2>feito para quem leva <strong>conservação a sério</strong></h2>",
+            "richtext": "<p>Da produção personalizada ao atendimento pós-venda, a Kings entrega soluções premium para proteger veículos com acabamento, precisão e confiança acima do padrão.</p>",
+            "button_link": "#",
+            "button_text": "Falar com especialista",
+            "button_animation": "none",
+            "button_custom": false,
+            "button_bg_color": "",
+            "button_text_color": "",
+            "button_border_radius": "default",
+            "button_font_size": 16,
+            "button_font_weight": "600",
+            "title_custom": false,
+            "title_color": "#2b2b2b",
+            "title_font_size_mobile": 36,
+            "title_font_size_desktop": 48,
+            "title_font_weight": "700",
+            "description_custom": false,
+            "description_color": "#667085",
+            "description_font_size_mobile": 16,
+            "description_font_size_desktop": 18,
+            "description_font_weight": "400",
+            "text_width_mobile": 400,
+            "text_width_desktop": 640,
+            "text_alignment_mobile": "center",
+            "text_alignment_desktop": "left",
+            "text_position_horizontal_mobile": "center",
+            "text_position_horizontal_desktop": "left",
+            "text_position_vertical_mobile": "center",
+            "text_position_vertical_desktop": "center",
+            "bottom_mobile": 24,
+            "bottom_desktop": 24,
+            "top_mobile": 24,
+            "top_desktop": 24
+          }
+        }
+      },
+      "block_order": [
+        "slide_HffUeN"
+      ],
+      "custom_css": [
+        ".tp-e-banner-slides-v1__text-wrapper {width: 100%; width: calc(100% - 32px);}"
+      ],
+      "name": "Banner Slides V1",
+      "settings": {
+        "autoplay": true,
+        "tempo_autoplay": 4,
+        "pagination": true,
+        "pagination_color": "#b1bfab",
+        "pagination_color_active": "#000",
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "pad_top_min": 0,
+        "pad_top_max": 0,
+        "pad_bottom_min": 0,
+        "pad_bottom_max": 0,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "tp_e_image_with_text_v1_a6m9Ux": {
+      "type": "tp-e-image-with-text-v1",
+      "custom_css": [
+        "h2 {color: #2b2b2b;}",
+        "p {color: var(--Gray-600, #475467);}"
+      ],
+      "name": "Imagem Com Texto V1",
+      "settings": {
+        "image_position_desktop": "left",
+        "image_position_mobile": "first",
+        "title_above_image_mobile": false,
+        "image_padding_inline_mobile": true,
+        "image_padding_inline_desktop": true,
+        "loading_image": true,
+        "image_desktop": "shopify://shop_images/738_1.webp",
+        "image_mobile": "shopify://shop_images/739_1.webp",
+        "title": "<h2>Muito além de uma capa automotiva</h2>",
+        "richtext": "<p>Na Kings, cada projeto é desenvolvido para unir proteção real, ajuste perfeito e acabamento premium. Trabalhamos com produção sob medida, materiais exclusivos e uma equipe preparada para atender desde clientes individuais até grandes operações e eventos automotivos.</p>",
+        "button_url": "",
+        "button_text": "Texto do botão",
+        "faq_icon_type": "arrow",
+        "faq_first_open": false,
+        "data_animate": false,
+        "title_custom": false,
+        "text_color_title": "#2b2b2b",
+        "font_weight": "700",
+        "font_size_title": 36,
+        "font_size_title_mobile": 28,
+        "content_custom": false,
+        "text_color_content": "#2b2b2b",
+        "content_font_weight": "400",
+        "font_size_content": 16,
+        "font_size_content_mobile": 16,
+        "button_custom": false,
+        "text_color_btn": "#ffffff",
+        "bg_color_btn": "#443fd2",
+        "button_font_weight": "600",
+        "button_font_size_desktop": 16,
+        "button_font_size_mobile": 16,
+        "radius_btn": 100,
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "pad_top_min": 32,
+        "pad_top_max": 64,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_e_categories_v2_9kyKGA": {
+      "type": "tp-e-categories-v2",
+      "blocks": {
+        "card_WbFXd6": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/740_1.webp",
+            "title": "Capas sob medida",
+            "text": "Produção personalizada conforme modelo e ano do veículo para encaixe perfeito e visual sofisticado."
+          }
+        },
+        "card_xe74yE": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/741_1.webp",
+            "title": "Personalização exclusiva",
+            "text": "Opções de cores, logos e acabamentos para criar uma capa alinhada ao estilo do veículo."
+          }
+        },
+        "card_8GEr9t": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/742_1.webp",
+            "title": "Produção em larga escala",
+            "text": "Estrutura preparada para atender concessionárias, eventos, frotas e grandes demandas com eficiência."
+          }
+        },
+        "card_8Rdb4W": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/743_1.webp",
+            "title": "Pós-venda especializado",
+            "text": "Caso necessário, realizamos ajustes sem custo para garantir a melhor experiência possível."
+          }
+        }
+      },
+      "block_order": [
+        "card_WbFXd6",
+        "card_xe74yE",
+        "card_8GEr9t",
+        "card_8Rdb4W"
+      ],
+      "custom_css": [
+        ".tp-e-categories-v2__card-text {text-align: left;}"
+      ],
+      "name": "Categorias V2",
+      "settings": {
+        "title": "",
+        "bg_color": "#ffffff",
+        "title_bar": false,
+        "title_custom": false,
+        "title_color": "#1a1a1a",
+        "title_size_mobile": 28,
+        "title_size_desktop": 40,
+        "title_weight": "700",
+        "card_title_custom": false,
+        "card_title_color": "#1a1a1a",
+        "card_title_size_mobile": 16,
+        "card_title_size_desktop": 18,
+        "card_title_weight": "600",
+        "card_text_custom": false,
+        "card_text_color": "#555555",
+        "card_text_size_mobile": 14,
+        "card_text_size_desktop": 14,
+        "card_text_weight": "400",
+        "pad_top_min": 40,
+        "pad_top_max": 80,
+        "pad_bottom_min": 40,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_e_image_with_text_v1_zbhYpf": {
+      "type": "tp-e-image-with-text-v1",
+      "blocks": {
+        "css_rTTEH6": {
+          "type": "css",
+          "settings": {
+            "custom_css": ".tp-e-image-with-text-v1__title h4 {\ncolor: #FFF;\nfont-family: Helvetica;\nfont-size: clamp(2.4000rem, calc(2.1029rem + 0.7619vw), 3.2000rem);\nfont-style: normal;\nfont-weight: 700;\nline-height: 120%; /* 38.4px */\ntext-align: center;\n}\n\n@media screen and (min-width: 768px) {\n.tp-e-image-with-text-v1__title h4  {\ntext-align: left;\n}\n}\n \n.tp-e-image-with-text-v1__block-text-wrapper h4 {\ncolor: #FFF;\n\n/* Body/20/Semi Bold */\nfont-family: \"Helvetica Neue\";\nfont-size: 20px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 120%; /* 24px */\n}\n\n.tp-e-image-with-text-v1__block-text-wrapper p {\ncolor: var(--Gray-100, #D9D9D9);\n\n/* Body/18/Regular */\nfont-family: \"Helvetica Neue\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 140%; /* 25.2px */\n}"
+          }
+        },
+        "benefit_7LTRDH": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/714.svg",
+            "richtext": "<h4>Proteção real no dia a dia</h4><p>Protege contra poeira, riscos, sol, maresia e pequenos danos que desgastam o veículo com o tempo.</p>"
+          }
+        },
+        "benefit_9g4cpN": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/714.svg",
+            "richtext": "<h4>Ajuste feito para o seu carro</h4><p>Cada capa é produzida sob medida para garantir encaixe perfeito e visual muito mais sofisticado.</p>"
+          }
+        },
+        "benefit_yN86ir": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/714.svg",
+            "richtext": "<h4>Material premium e durável</h4><p>Produzida com tecido exclusivo de alta qualidade, pensado para oferecer resistência e longa durabilidade.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "css_rTTEH6",
+        "benefit_7LTRDH",
+        "benefit_9g4cpN",
+        "benefit_yN86ir"
+      ],
+      "custom_css": [],
+      "name": "Imagem Com Texto V1",
+      "settings": {
+        "image_position_desktop": "left",
+        "image_position_mobile": "first",
+        "title_above_image_mobile": true,
+        "image_padding_inline_mobile": false,
+        "image_padding_inline_desktop": false,
+        "loading_image": true,
+        "image_desktop": "shopify://shop_images/744_1.webp",
+        "image_mobile": "shopify://shop_images/745_1.webp",
+        "title": "<h4>Seu carro não é comum. A proteção também não deveria ser</h4>",
+        "richtext": "",
+        "button_url": "shopify://collections/all",
+        "button_text": "Saiba mais",
+        "faq_icon_type": "arrow",
+        "faq_first_open": true,
+        "data_animate": true,
+        "title_custom": false,
+        "text_color_title": "#2b2b2b",
+        "font_weight": "700",
+        "font_size_title": 36,
+        "font_size_title_mobile": 28,
+        "content_custom": false,
+        "text_color_content": "#2b2b2b",
+        "content_font_weight": "400",
+        "font_size_content": 16,
+        "font_size_content_mobile": 16,
+        "button_custom": false,
+        "text_color_btn": "#ffffff",
+        "bg_color_btn": "#443fd2",
+        "button_font_weight": "600",
+        "button_font_size_desktop": 16,
+        "button_font_size_mobile": 16,
+        "radius_btn": 100,
+        "background_type": "color",
+        "background_color": "#0e0e0e",
+        "background_gradient": "",
+        "pad_top_min": 0,
+        "pad_top_max": 0,
+        "pad_bottom_min": 0,
+        "pad_bottom_max": 0,
+        "enable_pad_top_mobile": true,
+        "pad_top_mobile": 48,
+        "enable_pad_bottom_mobile": true,
+        "pad_bottom_mobile": 48,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_e_image_with_text_v1_xm8wCW": {
+      "type": "tp-e-image-with-text-v1",
+      "custom_css": [
+        "h2 {color: #2b2b2b;}",
+        "p {color: var(--Gray-600, #475467);}",
+        ".tp-e-image-with-text-v1__button {border-radius: 2px; color: white; background: #000;}"
+      ],
+      "name": "Imagem Com Texto V1",
+      "settings": {
+        "image_position_desktop": "left",
+        "image_position_mobile": "first",
+        "title_above_image_mobile": false,
+        "image_padding_inline_mobile": true,
+        "image_padding_inline_desktop": true,
+        "loading_image": true,
+        "image_desktop": "shopify://shop_images/746_1.webp",
+        "image_mobile": "shopify://shop_images/747_1.webp",
+        "title": "<h2>Soluções para empresas, eventos e concessionárias</h2>",
+        "richtext": "<p>Atendemos marcas, eventos automotivos, concessionárias e empresas que buscam proteção premium com produção em escala, padronização e alto nível de acabamento.</p>",
+        "button_url": "shopify://collections/all",
+        "button_text": "Solicitar atendimento",
+        "faq_icon_type": "arrow",
+        "faq_first_open": false,
+        "data_animate": false,
+        "title_custom": false,
+        "text_color_title": "#2b2b2b",
+        "font_weight": "700",
+        "font_size_title": 36,
+        "font_size_title_mobile": 28,
+        "content_custom": false,
+        "text_color_content": "#2b2b2b",
+        "content_font_weight": "400",
+        "font_size_content": 16,
+        "font_size_content_mobile": 16,
+        "button_custom": false,
+        "text_color_btn": "#ffffff",
+        "bg_color_btn": "#443fd2",
+        "button_font_weight": "600",
+        "button_font_size_desktop": 16,
+        "button_font_size_mobile": 16,
+        "radius_btn": 100,
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "pad_top_min": 24,
+        "pad_top_max": 64,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_e_image_with_text_v1_PEErex": {
+      "type": "tp-e-image-with-text-v1",
+      "custom_css": [
+        "h2 {color: #2b2b2b;}",
+        "p {color: var(--Gray-600, #475467);}",
+        ".tp-e-image-with-text-v1__button {border-radius: 2px; color: white; background: #000;}"
+      ],
+      "name": "Imagem Com Texto V1",
+      "settings": {
+        "image_position_desktop": "left",
+        "image_position_mobile": "first",
+        "title_above_image_mobile": false,
+        "image_padding_inline_mobile": true,
+        "image_padding_inline_desktop": true,
+        "loading_image": true,
+        "image_desktop": "shopify://shop_images/748_1.webp",
+        "image_mobile": "shopify://shop_images/749_1.webp",
+        "title": "<h2>Seu veículo merece mais que uma proteção comum</h2>",
+        "richtext": "<p>A Kings foi criada para elevar o padrão da proteção automotiva no Brasil, unindo tecnologia, acabamento premium e produção sob medida para quem valoriza o próprio carro.</p>",
+        "button_url": "shopify://collections/all",
+        "button_text": "Conhecer os produtos",
+        "faq_icon_type": "arrow",
+        "faq_first_open": false,
+        "data_animate": false,
+        "title_custom": false,
+        "text_color_title": "#2b2b2b",
+        "font_weight": "700",
+        "font_size_title": 36,
+        "font_size_title_mobile": 28,
+        "content_custom": false,
+        "text_color_content": "#2b2b2b",
+        "content_font_weight": "400",
+        "font_size_content": 16,
+        "font_size_content_mobile": 16,
+        "button_custom": false,
+        "text_color_btn": "#ffffff",
+        "bg_color_btn": "#443fd2",
+        "button_font_weight": "600",
+        "button_font_size_desktop": 16,
+        "button_font_size_mobile": 16,
+        "radius_btn": 100,
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "pad_top_min": 0,
+        "pad_top_max": 0,
+        "pad_bottom_min": 0,
+        "pad_bottom_max": 0,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "apps_RCDE3Y": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_bLhwhy": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_bLhwhy"
+      ],
+      "settings": {
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "instagram": true,
+        "instagram_text": "Nos siga no Instagram",
+        "button_text": "@kings.capasautomotivas",
+        "button_link": "https://www.instagram.com/kings.capasautomotivas/",
+        "pad_top_min": 40,
+        "pad_top_max": 120,
+        "pad_bottom_min": 40,
+        "pad_bottom_max": 48,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    }
+  },
+  "order": [
+    "tp_e_banner_slides_v1_Q6VfXT",
+    "main",
+    "tp_e_image_with_text_v1_a6m9Ux",
+    "tp_e_categories_v2_9kyKGA",
+    "tp_e_image_with_text_v1_zbhYpf",
+    "tp_e_image_with_text_v1_xm8wCW",
+    "tp_e_image_with_text_v1_PEErex",
+    "apps_RCDE3Y"
+  ]
+}

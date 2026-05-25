@@ -1,0 +1,387 @@
+.tp-slider-bump {
+  width: 100%;
+
+  .tp-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    padding: var(--tp-pad-top) 0 var(--tp-pad-bottom);
+    max-width: 100%;
+  }
+
+  /* Head */
+  .tp-sb__head {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    padding: 0 16px;
+  }
+
+  .tp-sb__head h2 {
+    font-family: "Helvetica Neue";
+    font-size: clamp(2.4000rem, calc(1.8057rem + 1.5238vw), 4.0000rem);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 48px */
+    text-align: center;
+  }
+
+  .tp-sb__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--Gray-900, #101828);
+
+    /* Body/Heading/40 */
+    font-family: "Helvetica Neue";
+    font-size: clamp(2.4000rem, calc(1.8057rem + 1.5238vw), 4.0000rem);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 48px */
+    text-align: center;
+    margin: 0;
+    color: var(--Gray-950, #2B1D35);
+    font-family: Oswald;
+    font-size: clamp(3.2000rem, calc(2.3086rem + 2.2857vw), 5.6000rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; /* 56px */
+    color: #FFF;
+
+    /* Body/Heading/48 */
+    font-family: Poppins;
+    font-size: clamp(3.2000rem, calc(2.6057rem + 1.5238vw), 4.8000rem);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 57.6px */
+
+    b {
+        font-weight: 400;
+    }
+
+    @media screen and (min-width: 768px) {
+      max-width: 100%;
+    }
+  }
+
+  .tp-sb__title-logo {
+    display: block;
+    height: clamp(36px, 3vw + 16px, 56px);
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 7px;
+  }
+
+  .tp-sb__subtitle {
+    font-family: "Instrument Sans", sans-serif;
+    font-weight: 400;
+    font-size: clamp(1.4rem, 1.2rem + 0.5vw, 1.8rem);
+    color: #4d4d4d;
+    text-align: center;
+    line-height: 1.5;
+    margin: 0;
+    color: var(--gray-500, #667085);
+    text-align: center;
+
+    /* Body/16/Regular */
+    font-family: Helvetica;
+    font-size: clamp(1.6000rem, calc(1.5257rem + 0.1905vw), 1.8000rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 22.4px */
+  }
+
+  /* Swiper */
+  .tp-sb__swiper {
+    width: 100%;
+    margin-left: calc(50% - 50vw);
+    overflow: hidden;
+    padding: 0;
+    margin-top: 16px;
+    margin-bottom: 0;
+
+    @media screen and (min-width: 750px) {
+      padding: 60px 0;
+      margin-bottom: -60px;
+    }
+
+    .swiper-slide {
+      height: auto;
+      display: flex;
+      align-items: flex-end;
+      overflow: visible;
+      transition: transform 0.35s ease;
+      cursor: pointer;
+
+      @media screen and (min-width: 750px) {
+        width: 296px;
+      }
+    }
+
+    .swiper-slide-active {
+      z-index: 1;
+
+      @media screen and (min-width: 750px) {
+        transform: scale(1.15);
+      }
+    }
+
+  }
+
+  /* Card */
+  .tp-sb__card {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    width: 100%;
+    transform-origin: center bottom;
+    transition: transform 0.35s ease;
+
+    @media screen and (min-width: 750px) {
+      transform: scale(0.9);
+    }
+  }
+
+  .tp-sb__swiper .swiper-slide-active .tp-sb__card {
+    @media screen and (min-width: 750px) {
+      transform: scale(1);
+    }
+  }
+
+  .tp-sb__card-media {
+    position: relative;
+    background: #fefefe;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 462px;
+    transition: transform 0.35s ease;
+
+    img,
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media screen and (min-width: 750px) {
+      height: 462px;
+    }
+  }
+
+  .tp-sb__mute-btn {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.45);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    padding: 0;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.65);
+    }
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  /* Product bar */
+  .tp-sb__card-product {
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--Gray-200, #E3E3E3);
+    border-radius: 4px;
+    padding: 7px 10px;
+    box-shadow: 0px 3px 7px 0px rgba(91, 91, 91, 0.04);
+    border: 1px solid #D8D8D8;
+
+    @media screen and (min-width: 750px) {
+      gap: 12px;
+      padding: 8px 12px;
+      box-shadow: 0px 4px 8px 0px rgba(91, 91, 91, 0.04);
+    }
+  }
+
+  .tp-sb__card-product-img {
+    width: 48px;
+    height: 48px;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media screen and (min-width: 750px) {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  .tp-sb__card-product-info {
+    display: flex;
+    flex-direction: column;
+    
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .tp-sb__card-product-name {
+    color: var(--Primary-pure, #2E2626);
+
+    /* Body/16/Medium */
+    font-family: Inter;
+    font-size: clamp(1.4000rem, calc(1.3257rem + 0.1905vw), 1.6000rem);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 22.4px */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--Gray-950, #2B1D35);
+    font-family: Poppins;
+    font-size: clamp(1.2000rem, calc(1.1629rem + 0.0952vw), 1.3000rem);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 18.489px */
+    color: var(--Gray-950, #0C111D);
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 15.6px */
+    color: var(--Gray-900, #101828);
+    font-family: Helvetica;
+    font-size: clamp(1.1500rem, calc(1.1129rem + 0.0952vw), 1.2500rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 13.867px */
+
+    @media screen and (min-width: 750px) {
+      font-size: 13px;
+    }
+  }
+
+  .tp-sb__card-product-price {
+    color: var(--Primary-light, #595050);
+    font-family: Inter;
+    font-size: clamp(1.0000rem, calc(0.9629rem + 0.0952vw), 1.1000rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 14.933px */
+    color: var(--Gray-500, #717171);
+    font-family: Inter;
+    font-size: 9.905px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 13.867px */
+    color: var(--Gray-500, #667085);
+
+    /* Body/12/Regular */
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 16.8px */
+  }
+
+  .tp-sb__card-product-btn {
+    border-radius: var(--radius-8, 8px);
+    background: var(--Primary-pure, #2E2626);
+    padding: 6px 10px;
+    color: #FFF;
+
+    /* Body/12/Semi */
+    font-family: Inter;
+    font-size: clamp(1.0000rem, calc(0.9257rem + 0.1905vw), 1.2000rem);
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 16.8px */
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+    border-radius: 282.993px;
+    background: #2B1D35;
+    color: #FFF;
+    font-family: Oswald;
+    font-size: 9.905px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 11.886px */
+    text-transform: uppercase;
+    font-family: Poppins;
+    border-radius: 1.778px;
+    background: #000;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 10.667px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 14.933px */
+
+    &:hover {
+      opacity: 0.85;
+    }
+
+    @media screen and (min-width: 750px) {
+      padding: 8px 12px;
+      font-size: 10px;
+    }
+  }
+
+  /* CTA Button */
+  .tp-sb__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #0fb86d;
+    border-radius: 999px;
+    padding: 12px 64px;
+    width: 100%;
+    max-width: 296px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    span {
+      font-family: "Instrument Sans", sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: white;
+      line-height: 1.4;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+  }
+}

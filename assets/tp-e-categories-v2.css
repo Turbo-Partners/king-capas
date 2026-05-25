@@ -32,7 +32,7 @@
 .tp-e-categories-v2__title-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--tp-space-3);
 }
 
@@ -54,10 +54,14 @@
   line-height: var(--tp-leading-tight);
 }
 
-@media screen and (min-width: 1024px) {
-  .tp-e-categories-v2__title * {
-    font-size: var(--tp-cat-title-size-desktop);
-  }
+.tp-e-categories-v2__title p {
+  color: var(--gray-900, #101828);
+  font-family: Helvetica;
+  font-size: clamp(1.2000rem, calc(1.0514rem + 0.3810vw), 1.6000rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 19.2px */
+  text-transform: uppercase;
 }
 
 /* Swiper outer — offset controlado via JS */
@@ -75,26 +79,26 @@
 .tp-e-categories-v2__card {
   border-radius: var(--tp-radius-lg);
   overflow: hidden;
-  background: var(--tp-color-bg-secondary);
+  background: transparent;
   height: 100%;
+  padding: 20px;
+  border: 1px solid var(--Gray-200, #EAECF0);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 /* Imagem */
 .tp-e-categories-v2__image-wrapper {
-  aspect-ratio: 4 / 3;
   overflow: hidden;
 }
 
 .tp-e-categories-v2__image {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   display: block;
   transition: transform var(--tp-transition-base);
-}
-
-.tp-e-categories-v2__card:hover .tp-e-categories-v2__image {
-  transform: scale(1.03);
 }
 
 .tp-e-categories-v2__image--placeholder {
@@ -105,10 +109,7 @@
 
 /* Conteúdo textual */
 .tp-e-categories-v2__content {
-  padding: var(--tp-space-4) var(--tp-space-4) var(--tp-space-5);
-  background-color: #fff;
-  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08);
-  height: 100%;
+  height: auto;
 }
 
 .tp-e-categories-v2__card-title {
@@ -133,6 +134,15 @@
   font-size: var(--tp-cat-card-text-size-mobile);
   font-weight: var(--tp-cat-card-text-weight);
   line-height: var(--tp-leading-relaxed);
+  color: var(--Gray-700, #344054);
+  text-align: center;
+
+  /* Body/16/Regular */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 22.4px */
 }
 
 @media screen and (min-width: 1024px) {

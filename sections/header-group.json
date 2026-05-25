@@ -13,50 +13,31 @@
   "sections": {
     "tp_custom_fonts": {
       "type": "tp-custom-fonts",
-      "blocks": {},
-      "block_order": [],
       "settings": {
         "enable": true
       }
     },
-    "tp_barra_de_avisos_zCAYX9": {
-      "type": "tp-e-scroll-promo-v1",
+    "announcement_bar_46Jw7L": {
+      "type": "announcement-bar",
       "blocks": {
-        "announcement_h4N6Mf": {
+        "announcement_MTFjjY": {
           "type": "announcement",
           "settings": {
-            "text": "<p>Bem-vindo à nossa loja</p>",
-            "link": "",
-            "text_size_px": 14,
-            "image_width": 24,
-            "image_position": "before",
-            "background_color": "",
-            "enable_border": false,
-            "border_width": 1,
-            "border_color": "#e0e0e0",
-            "border_radius": 0,
-            "padding": 12,
-            "width": 0,
-            "height": 40
+            "text": "Entrega para todo o Brasil",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "announcement_h4N6Mf"
+        "announcement_MTFjjY"
       ],
-      "name": "TP - Barra de Avisos",
+      "name": "t:sections.announcement-bar.presets.name",
       "settings": {
-        "marquee_speed": 20,
-        "gap_between_items": 12,
-        "background_color": "#ffffff",
-        "text_color": "#1f2021",
+        "auto_rotate": false,
+        "enable_arrows": false,
+        "change_slides_speed": 5,
+        "color_scheme": "",
         "show_line_separator": true,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "letter_spacing": 0,
-        "enable_borders": false,
-        "border_width": 1,
-        "border_color": "#e0e0e0",
         "show_social": false,
         "enable_country_selector": false,
         "enable_language_selector": false
@@ -96,6 +77,8 @@
         "menu": "main-menu",
         "menu_position_desktop": "center",
         "menu_type_desktop": "dropdown",
+        "desktop_header_style": "v1",
+        "menu_mobile_style": "v1",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
         "color_scheme": "background-1",
@@ -111,7 +94,7 @@
   },
   "order": [
     "tp_custom_fonts",
-    "tp_barra_de_avisos_zCAYX9",
+    "announcement_bar_46Jw7L",
     "announcement-bar",
     "header"
   ]

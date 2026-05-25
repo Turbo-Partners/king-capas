@@ -6,12 +6,12 @@
 
   --bg-color: #f6f6e5;
   --dot-color: #c4c4c4;
-  --dot-active-color: #748f29;
+  --dot-active-color: #000;
 
   --title-color: #727376;
 
-  --btn-gradient-start: #748f29;
-  --btn-gradient-end: #497717;
+  --btn-gradient-start: #000;
+  --btn-gradient-end: #000;
   --btn-text-color: #fff;
 
   --font-main: "Plus Jakarta Sans";

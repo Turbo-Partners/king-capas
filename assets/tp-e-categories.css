@@ -2,10 +2,15 @@
   width: 100%;
 }
 
-.tp-categories .tp-wrapper {
+.tp-categories .tp-wrapper--full-width {
   display: flex;
   flex-direction: column;
   gap: clamp(2.4rem, 1.5086rem + 2.2857vw, 4.8rem);
+  padding-inline: 16px;
+
+  @media screen and (min-width: 768px) {
+    padding-inline: 0px;
+  }
 }
 
 /* Title */
@@ -26,6 +31,26 @@
 
 .tp-categories__title {
   text-align: left;
+  padding-inline: 16px;
+
+  @media screen and (min-width: 768px) {
+    padding-inline: 32px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding-inline: 40px;
+  }
+}
+
+.tp-categories__title h2{
+  color: var(--Gray-900, #101828);
+
+  /* Body/Heading/32 */
+  font-family: "Helvetica Neue";
+  font-size: clamp(2.4000rem, calc(2.1029rem + 0.7619vw), 3.2000rem);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 38.4px */
 }
 
 /* Grid */
@@ -52,6 +77,7 @@
   gap: var(--tp-space-3);
   text-decoration: none;
   color: var(--tp-color-text-primary);
+  position: relative;
 }
 
 .tp-categories__card-media {
@@ -66,14 +92,18 @@
   transition: transform var(--tp-transition-base);
 }
 
-.tp-categories__card:hover .tp-categories__card-media img {
+/* .tp-categories__card:hover .tp-categories__card-media img {
   transform: scale(1.05);
-}
+} */
 
 .tp-categories__card-footer {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: clamp(0.6000rem, calc(0.3771rem + 0.5714vw), 1.2000rem);
+  position: absolute;
+  bottom: clamp(1.2000rem, calc(0.4571rem + 1.9048vw), 3.2000rem);
+  width: 100%;
+  padding-inline: clamp(0.8000rem, calc(0.3543rem + 1.1429vw), 2.0000rem);
 }
 
 .tp-categories__card-title {
@@ -81,10 +111,51 @@
   font-size: var(--tp-font-size-base);
   font-weight: var(--tp-font-medium);
   color: var(--tp-color-text-primary);
+  color: #FFF;
+
+  /* Body/20/Semi Bold */
+  font-family: "Helvetica Neue";
+  font-size: clamp(1.2000rem, calc(0.9029rem + 0.7619vw), 2.0000rem);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 24px */
+  text-align: left;
 }
 
 .tp-categories__card-bar {
   display: block;
   width: 64px;
   height: 2px;
+}
+
+.tp-categories__card-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  background: var(--tp-btn-primary-bg, var(--tp-color-primary));
+  color: var(--tp-btn-primary-color, var(--tp-color-text-light));
+  border: none;
+  border-radius: var(--tp-radius-full);
+  font-family: var(--tp-font-body);
+  font-size: 14px;
+  font-weight: var(--tp-font-semibold);
+  line-height: 1.4;
+  cursor: pointer;
+  transition: opacity var(--tp-transition-base);
+  text-decoration: none;
+  white-space: nowrap;
+  align-self: flex-start;
+  color: #000;
+  font-family: Helvetica;
+  font-size: clamp(1.1000rem, calc(0.9886rem + 0.2857vw), 1.4000rem);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 15.077px */
+  border-radius: 1.538px;
+  background: #FFF;
+}
+
+.tp-categories__card-button:hover {
+  opacity: 0.85;
 }

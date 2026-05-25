@@ -1,0 +1,473 @@
+{{ 'tp-slider-bump.css' | asset_url | stylesheet_tag }}
+
+{% render 'tp-section-padding',
+  pad_top_min: section.settings.pad_top_min,
+  pad_top_max: section.settings.pad_top_max,
+  pad_bottom_min: section.settings.pad_bottom_min,
+  pad_bottom_max: section.settings.pad_bottom_max,
+  enable_pad_top_mobile: section.settings.enable_pad_top_mobile,
+  pad_top_mobile: section.settings.pad_top_mobile,
+  enable_pad_bottom_mobile: section.settings.enable_pad_bottom_mobile,
+  pad_bottom_mobile: section.settings.pad_bottom_mobile,
+  enable_pad_top_desktop: section.settings.enable_pad_top_desktop,
+  pad_top_desktop: section.settings.pad_top_desktop,
+  enable_pad_bottom_desktop: section.settings.enable_pad_bottom_desktop,
+  pad_bottom_desktop: section.settings.pad_bottom_desktop
+%}
+
+{% liquid
+  assign navigation = section.settings.navigation
+  assign autoplay = section.settings.autoplay
+  assign autoplay_time = section.settings.tempo_autoplay | times: 1000
+  assign initial_slide = section.settings.initial_slide | minus: 1
+%}
+
+{% style %}
+.{{ section.id }} {
+    {% if section.settings.background_color != blank %}
+        background: {{ section.settings.background_color }};
+    {% endif %}
+}
+{% endstyle %}
+
+<section class="tp-slider-bump {{ section.id }}">
+    <div class="tp-wrapper" id="section-wrapper-{{ section.id }}">
+
+        <div class="tp-sb__head">
+            {% if section.settings.badge_text != blank %}
+                <div class="tp-sb__badge">
+                    {% if section.settings.badge_icon != blank %}
+                        <img src="{{ section.settings.badge_icon | image_url: width: 40 }}" alt="" width="20" height="20">
+                    {% endif %}
+                    <span>{{ section.settings.badge_text }}</span>
+                </div>
+            {% endif %}
+
+            {% if section.settings.title != blank %}
+                <h2 class="tp-sb__title">{{ section.settings.title }}</h2>
+            {% endif %}
+
+            {% if section.settings.subtitle != blank %}
+                <p class="tp-sb__subtitle">{{ section.settings.subtitle }}</p>
+            {% endif %}
+        </div>
+
+        <div class="swiper tp-sb__swiper">
+            <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                    <div class="swiper-slide" {{ block.shopify_attributes }}>
+                        <div class="tp-sb__card">
+                            <div class="tp-sb__card-media">
+                                {% if block.settings.card_video != blank %}
+                                    {{ block.settings.card_video | video_tag: autoplay: true, loop: true, playsinline: true, muted: true }}
+                                    <button class="tp-sb__mute-btn" type="button" aria-label="Mutar/Desmutar">
+                                        <svg class="tp-sb__icon-muted" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 6.00018L7 10.0002H3V14.0002H7L12 18.0002V6.00018Z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <line x1="22" y1="9" x2="16" y2="15" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+                                            <line x1="16" y1="9" x2="22" y2="15" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+                                        </svg>
+                                        <svg class="tp-sb__icon-unmuted" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                                            <path d="M12 6.00018L7 10.0002H3V14.0002H7L12 18.0002V6.00018Z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M15.54 8.46C16.4774 9.39764 17.0039 10.6692 17.0039 11.995C17.0039 13.3208 16.4774 14.5924 15.54 15.53" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M18.07 5.93C19.9447 7.80528 20.9979 10.3481 20.9979 13C20.9979 15.6519 19.9447 18.1947 18.07 20.07" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                {% elsif block.settings.card_image != blank %}
+                                    <img src="{{ block.settings.card_image | image_url: width: 600 }}" alt="{{ block.settings.card_image.alt | escape }}" loading="lazy" width="296" height="500">
+                                {% endif %}
+                            </div>
+
+                            {% assign product = block.settings.product %}
+                            {% if product != blank %}
+                                <div class="tp-sb__card-product">
+                                    {% if product.featured_image != blank %}
+                                        <div class="tp-sb__card-product-img">
+                                            <img src="{{ product.featured_image | image_url: width: 130 }}" alt="{{ product.title | escape }}" loading="lazy" width="65" height="65">
+                                        </div>
+                                    {% endif %}
+                                    <div class="tp-sb__card-product-info">
+                                        <p class="tp-sb__card-product-name">{{ product.title }}</p>
+                                        <p class="tp-sb__card-product-price">{{ product.price | money_with_currency | remove: 'BRL' }}</p>
+                                    </div>
+                                    <a href="{{ product.url }}" class="tp-sb__card-product-btn">Comprar</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if navigation %}
+            {% comment %} <div class="tp-sb__nav">
+                <div class="tp-sb__nav-prev">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="#064127" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="tp-sb__nav-next">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18L15 12L9 6" stroke="#064127" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div> {% endcomment %}
+        {% endif %}
+
+        {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+            <a class="tp-sb__button" href="{{ section.settings.button_url }}">
+                <span>{{ section.settings.button_text }}</span>
+                <img src="https://cdn.shopify.com/s/files/1/0690/9352/3530/files/cart_icon_bdc1c4b6-8e84-4275-a7ec-9dd60f819dc1.svg?v=1770786886" alt="" width="20" height="20">
+            </a>
+        {% endif %}
+
+    </div>
+
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const swiperEl = document.querySelector('.{{ section.id }} .tp-sb__swiper');
+        if (!swiperEl) return;
+
+        const section = document.querySelector('.{{ section.id }}');
+
+        const swiperInstance = new Swiper(swiperEl, {
+            slidesPerView: 1.35,
+            spaceBetween: 14,
+            centeredSlides: true,
+            speed: 500,
+            initialSlide: {{ initial_slide }},
+            breakpoints: {
+                750: {
+                    slidesPerView: 'auto',
+                    spaceBetween: 48,
+                }
+            },
+            {% if autoplay %}
+            autoplay: {
+                delay: {{ autoplay_time }},
+                disableOnInteraction: true,
+            },
+            {% endif %}
+            {% if navigation %}
+            navigation: {
+                prevEl: '.{{ section.id }} .tp-sb__nav-prev',
+                nextEl: '.{{ section.id }} .tp-sb__nav-next'
+            },
+            {% endif %}
+        });
+
+        function playActiveOnly() {
+            var activeSlide = section.querySelector('.swiper-slide-active');
+            section.querySelectorAll('.swiper-slide').forEach(function(slide) {
+                var video = slide.querySelector('video');
+                if (!video) return;
+                if (slide === activeSlide) {
+                    video.muted = true;
+                    video.play().catch(function() {});
+                } else {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+            });
+        }
+
+        setTimeout(playActiveOnly, 300);
+
+        let isInView = false;
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                isInView = entry.isIntersecting;
+
+                if (entry.isIntersecting) {
+                    playActiveOnly();
+                } else {
+                    section.querySelectorAll('video').forEach(function(v) {
+                        v.pause();
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        observer.observe(section);
+
+        function stopAutoplay() {
+            if (swiperInstance.autoplay && swiperInstance.autoplay.running) {
+                swiperInstance.autoplay.stop();
+            }
+        }
+
+        section.querySelectorAll('.tp-sb__mute-btn').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                stopAutoplay();
+                const media = btn.closest('.tp-sb__card-media');
+                const video = media.querySelector('video');
+                if (!video) return;
+
+                video.muted = !video.muted;
+                const iconUnmuted = btn.querySelector('.tp-sb__icon-unmuted');
+                const iconMuted = btn.querySelector('.tp-sb__icon-muted');
+                iconUnmuted.style.display = video.muted ? 'none' : 'block';
+                iconMuted.style.display = video.muted ? 'block' : 'none';
+            });
+        });
+
+        swiperInstance.on('slideChangeTransitionEnd', function() {
+            if (isInView) {
+                playActiveOnly();
+            }
+
+            section.querySelectorAll('.tp-sb__mute-btn').forEach(function(btn) {
+                const iconUnmuted = btn.querySelector('.tp-sb__icon-unmuted');
+                const iconMuted = btn.querySelector('.tp-sb__icon-muted');
+                iconMuted.style.display = 'block';
+                iconUnmuted.style.display = 'none';
+            });
+        });
+
+        /* Click to slide – desktop */
+        section.querySelectorAll('.swiper-slide').forEach(function(slide, index) {
+            slide.addEventListener('click', function(e) {
+                if (e.target.closest('.tp-sb__mute-btn') || e.target.closest('.tp-sb__card-product-btn')) return;
+                stopAutoplay();
+                swiperInstance.slideTo(index);
+            });
+        });
+    });
+</script>
+
+{% schema %}
+{
+    "name": "TP - Slider Bump",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Background"
+        },
+        {
+            "type": "color",
+            "default": "#FFF",
+            "id": "background_color",
+            "label": "Cor do Background"
+        },
+        {
+            "type": "header",
+            "content": "Cabeçalho"
+        },
+        {
+            "type": "image_picker",
+            "id": "badge_icon",
+            "label": "Ícone do badge"
+        },
+        {
+            "type": "text",
+            "id": "badge_text",
+            "label": "Texto do badge",
+            "default": "@nowaydrink"
+        },
+        {
+            "type": "richtext",
+            "id": "title",
+            "label": "Título",
+            "default": "<p><em>Mais que um suco.</em> Um movimento.</p>"
+        },
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtítulo",
+            "default": "Gente real, rotina real, sede real."
+        },
+        {
+            "type": "header",
+            "content": "Botão"
+        },
+        {
+            "type": "url",
+            "id": "button_url",
+            "label": "URL do Botão"
+        },
+        {
+            "type": "text",
+            "id": "button_text",
+            "label": "Texto do Botão",
+            "default": "Comprar"
+        },
+        {
+            "type": "header",
+            "content": "Carrossel"
+        },
+        {
+            "type": "range",
+            "id": "initial_slide",
+            "label": "Slide inicial (centralizado)",
+            "default": 3,
+            "min": 1,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "checkbox",
+            "id": "autoplay",
+            "label": "Autoplay",
+            "default": true
+        },
+        {
+            "type": "range",
+            "id": "tempo_autoplay",
+            "label": "Tempo de autoplay",
+            "default": 3,
+            "min": 2,
+            "max": 10,
+            "step": 1,
+            "unit": "s",
+            "visible_if": "{{ section.settings.autoplay }}"
+        },
+        {
+            "type": "checkbox",
+            "id": "navigation",
+            "label": "Navegação",
+            "default": true
+        },
+        {
+            "type": "header",
+            "content": "Spacing"
+        },
+        {
+            "type": "range",
+            "id": "pad_top_min",
+            "label": "Padding TOP min (px)",
+            "min": 0,
+            "max": 120,
+            "step": 4,
+            "default": 48
+        },
+        {
+            "type": "range",
+            "id": "pad_top_max",
+            "label": "Padding TOP max (px)",
+            "min": 0,
+            "max": 120,
+            "step": 4,
+            "default": 96
+        },
+        {
+            "type": "range",
+            "id": "pad_bottom_min",
+            "label": "Padding BOTTOM min (px)",
+            "min": 0,
+            "max": 120,
+            "step": 4,
+            "default": 48
+        },
+        {
+            "type": "range",
+            "id": "pad_bottom_max",
+            "label": "Padding BOTTOM max (px)",
+            "min": 0,
+            "max": 120,
+            "step": 8,
+            "default": 96
+        },
+        {
+            "type": "header",
+            "content": "Spacing Overrides (opcional)"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_pad_top_mobile",
+            "label": "Ativar padding TOP no mobile",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "pad_top_mobile",
+            "label": "Padding TOP mobile (px)",
+            "min": 0,
+            "max": 120,
+            "step": 4,
+            "default": 0,
+            "visible_if": "{{ section.settings.enable_pad_top_mobile }}"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_pad_bottom_mobile",
+            "label": "Ativar padding BOTTOM no mobile",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "pad_bottom_mobile",
+            "label": "Padding BOTTOM mobile (px)",
+            "min": 0,
+            "max": 120,
+            "step": 4,
+            "default": 0,
+            "visible_if": "{{ section.settings.enable_pad_bottom_mobile }}"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_pad_top_desktop",
+            "label": "Ativar padding TOP no desktop",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "pad_top_desktop",
+            "label": "Padding TOP desktop (px)",
+            "min": 0,
+            "max": 120,
+            "step": 4,
+            "default": 0,
+            "visible_if": "{{ section.settings.enable_pad_top_desktop }}"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_pad_bottom_desktop",
+            "label": "Ativar padding BOTTOM no desktop",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "pad_bottom_desktop",
+            "label": "Padding BOTTOM desktop (px)",
+            "min": 0,
+            "max": 120,
+            "step": 4,
+            "default": 0,
+            "visible_if": "{{ section.settings.enable_pad_bottom_desktop }}"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "card",
+            "name": "Card",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "card_image",
+                    "label": "Imagem de capa"
+                },
+                {
+                    "type": "video",
+                    "id": "card_video",
+                    "label": "Vídeo"
+                },
+                {
+                    "type": "product",
+                    "id": "product",
+                    "label": "Produto"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "TP - Slider Bump",
+            "category": "TP - Seções"
+        }
+    ]
+}
+{% endschema %}

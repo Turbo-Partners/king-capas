@@ -9,6 +9,8 @@
  */
 {
   "current": {
+    "logo": "shopify://shop_images/733.svg",
+    "logo_reverse": "shopify://shop_images/732.svg",
     "logo_width": 90,
     "type_header_font": "inter_n4",
     "heading_scale": 100,
@@ -128,6 +130,12 @@
     "enable_seo_hack": true,
     "installment": true,
     "installment_number": 2,
+    "minimum_installment_value": 50,
+    "tp_pc_title_align": "left",
+    "tp_pc_price_align": "flex-start",
+    "tp_pc_installments_align": "left",
+    "tp_pc_btn_text": "Comprar agora",
+    "tp_pc_badge_position": "top-left",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",

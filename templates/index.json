@@ -9,51 +9,69 @@
  */
 {
   "sections": {
-    "tp_hero_hJtTP9": {
-      "type": "tp-hero",
+    "tp_e_banner_slides_v1_trMAtd": {
+      "type": "tp-e-banner-slides-v1",
       "blocks": {
-        "banner_XAHGmj": {
-          "type": "banner",
+        "slide_NhKtLK": {
+          "type": "slide",
           "settings": {
-            "url": "",
-            "image_alt": "Imagem Hero"
+            "media_type": "image",
+            "image_mobile": "shopify://shop_images/731_1.webp",
+            "image_desktop": "shopify://shop_images/730_1.webp",
+            "link": "",
+            "title": "<h2>Capas sob medida com <strong>padrão acima do comum</strong></h2>",
+            "richtext": "<p>Produzidas com tecido exclusivo, ajuste perfeito e acabamento premium para proteger seu veículo.</p>",
+            "button_link": "shopify://collections/all",
+            "button_text": "Escolher minha capa",
+            "button_animation": "none",
+            "button_custom": false,
+            "button_bg_color": "",
+            "button_text_color": "",
+            "button_border_radius": "default",
+            "button_font_size": 16,
+            "button_font_weight": "600",
+            "title_custom": false,
+            "title_color": "#2b2b2b",
+            "title_font_size_mobile": 36,
+            "title_font_size_desktop": 48,
+            "title_font_weight": "700",
+            "description_custom": false,
+            "description_color": "#667085",
+            "description_font_size_mobile": 16,
+            "description_font_size_desktop": 18,
+            "description_font_weight": "400",
+            "text_width_mobile": 400,
+            "text_width_desktop": 624,
+            "text_alignment_mobile": "center",
+            "text_alignment_desktop": "left",
+            "text_position_horizontal_mobile": "center",
+            "text_position_horizontal_desktop": "left",
+            "text_position_vertical_mobile": "space_between",
+            "text_position_vertical_desktop": "center",
+            "bottom_mobile": 40,
+            "bottom_desktop": 24,
+            "top_mobile": 120,
+            "top_desktop": 24
           }
         }
       },
       "block_order": [
-        "banner_XAHGmj"
+        "slide_NhKtLK"
       ],
-      "name": "TP - Banner Principal",
+      "name": "Banner Slides V1",
       "settings": {
         "autoplay": true,
-        "tempo_autoplay": 3,
+        "tempo_autoplay": 4,
         "pagination": true,
         "pagination_color": "#b1bfab",
-        "pagination_color_active": "#000000"
-      }
-    },
-    "tp_video_slides_PKgVeY": {
-      "type": "tp-video-slides",
-      "disabled": true,
-      "name": "TP - video slides",
-      "settings": {
-        "background_type": "gradient",
-        "background_color": "#d2d2d2",
-        "background_gradient": "linear-gradient(180deg, rgba(216, 137, 145, 1), rgba(136, 50, 50, 1) 50%, rgba(136, 55, 55, 1) 50%, rgba(136, 59, 59, 1) 50%, rgba(136, 63, 63, 1) 50%, rgba(136, 66, 66, 1) 50%, rgba(136, 70, 70, 1) 50%, rgba(136, 73, 73, 1) 50%, rgba(123, 90, 90, 1) 50%, rgba(98, 66, 69, 1) 78%)",
-        "title": "Título",
-        "text": "subtitulo",
-        "button_url": "",
-        "button_text": "Texto do Botão",
-        "autoplay": true,
-        "tempo_autoplay": 3,
-        "pagination": true,
-        "pagination_color": "#b1bfab",
-        "pagination_color_active": "#000000",
-        "navigation": false,
-        "pad_top_min": 48,
-        "pad_top_max": 96,
-        "pad_bottom_min": 48,
-        "pad_bottom_max": 96,
+        "pagination_color_active": "#000",
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "pad_top_min": 0,
+        "pad_top_max": 0,
+        "pad_bottom_min": 0,
+        "pad_bottom_max": 0,
         "enable_pad_top_mobile": false,
         "pad_top_mobile": 0,
         "enable_pad_bottom_mobile": false,
@@ -64,72 +82,320 @@
         "pad_bottom_desktop": 0
       }
     },
-    "image_banner": {
-      "type": "image-banner",
+    "tp_e_scroll_promo_v1_PTg7ym": {
+      "type": "tp-e-scroll-promo-v1",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "announcement_dg4BWJ": {
+          "type": "announcement",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "text": "<p>Tecido exclusivo</p>",
+            "text_color": "",
+            "link": "",
+            "image_width": 24,
+            "image_position": "before",
+            "item_bg_type": "none",
+            "item_bg_color": "",
+            "item_bg_gradient": "",
+            "text_bg_type": "none",
+            "text_bg_color": "",
+            "text_bg_gradient": "",
+            "text_enable_border": false,
+            "text_border_width": 1,
+            "text_border_color": "#e0e0e0",
+            "text_border_radius": 0,
+            "text_padding": 0,
+            "enable_border": false,
+            "border_width": 1,
+            "border_color": "#e0e0e0",
+            "border_radius": 0,
+            "width": 0,
+            "height": 0
           }
         },
-        "button": {
-          "type": "buttons",
+        "announcement_mjLjfM": {
+          "type": "announcement",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "text": "",
+            "text_color": "",
+            "link": "",
+            "image": "shopify://shop_images/694.svg",
+            "image_width": 8,
+            "image_position": "before",
+            "item_bg_type": "none",
+            "item_bg_color": "",
+            "item_bg_gradient": "",
+            "text_bg_type": "none",
+            "text_bg_color": "",
+            "text_bg_gradient": "",
+            "text_enable_border": false,
+            "text_border_width": 1,
+            "text_border_color": "#e0e0e0",
+            "text_border_radius": 0,
+            "text_padding": 0,
+            "enable_border": false,
+            "border_width": 1,
+            "border_color": "#e0e0e0",
+            "border_radius": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "announcement_Yri6Dj": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>Proteção real</p>",
+            "text_color": "",
+            "link": "",
+            "image_width": 24,
+            "image_position": "before",
+            "item_bg_type": "none",
+            "item_bg_color": "",
+            "item_bg_gradient": "",
+            "text_bg_type": "none",
+            "text_bg_color": "",
+            "text_bg_gradient": "",
+            "text_enable_border": false,
+            "text_border_width": 1,
+            "text_border_color": "#e0e0e0",
+            "text_border_radius": 0,
+            "text_padding": 0,
+            "enable_border": false,
+            "border_width": 1,
+            "border_color": "#e0e0e0",
+            "border_radius": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "announcement_eDQT8x": {
+          "type": "announcement",
+          "settings": {
+            "text": "",
+            "text_color": "",
+            "link": "",
+            "image": "shopify://shop_images/694.svg",
+            "image_width": 8,
+            "image_position": "before",
+            "item_bg_type": "none",
+            "item_bg_color": "",
+            "item_bg_gradient": "",
+            "text_bg_type": "none",
+            "text_bg_color": "",
+            "text_bg_gradient": "",
+            "text_enable_border": false,
+            "text_border_width": 1,
+            "text_border_color": "#e0e0e0",
+            "text_border_radius": 0,
+            "text_padding": 0,
+            "enable_border": false,
+            "border_width": 1,
+            "border_color": "#e0e0e0",
+            "border_radius": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "announcement_haVHCm": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>Ajuste perfeito</p>",
+            "text_color": "",
+            "link": "",
+            "image_width": 24,
+            "image_position": "before",
+            "item_bg_type": "none",
+            "item_bg_color": "",
+            "item_bg_gradient": "",
+            "text_bg_type": "none",
+            "text_bg_color": "",
+            "text_bg_gradient": "",
+            "text_enable_border": false,
+            "text_border_width": 1,
+            "text_border_color": "#e0e0e0",
+            "text_border_radius": 0,
+            "text_padding": 0,
+            "enable_border": false,
+            "border_width": 1,
+            "border_color": "#e0e0e0",
+            "border_radius": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "announcement_RJV6it": {
+          "type": "announcement",
+          "settings": {
+            "text": "",
+            "text_color": "",
+            "link": "",
+            "image": "shopify://shop_images/694.svg",
+            "image_width": 8,
+            "image_position": "before",
+            "item_bg_type": "none",
+            "item_bg_color": "",
+            "item_bg_gradient": "",
+            "text_bg_type": "none",
+            "text_bg_color": "",
+            "text_bg_gradient": "",
+            "text_enable_border": false,
+            "text_border_width": 1,
+            "text_border_color": "#e0e0e0",
+            "text_border_radius": 0,
+            "text_padding": 0,
+            "enable_border": false,
+            "border_width": 1,
+            "border_color": "#e0e0e0",
+            "border_radius": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "announcement_JGftdk": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>Produção personalizada</p>",
+            "text_color": "",
+            "link": "",
+            "image_width": 24,
+            "image_position": "before",
+            "item_bg_type": "none",
+            "item_bg_color": "",
+            "item_bg_gradient": "",
+            "text_bg_type": "none",
+            "text_bg_color": "",
+            "text_bg_gradient": "",
+            "text_enable_border": false,
+            "text_border_width": 1,
+            "text_border_color": "#e0e0e0",
+            "text_border_radius": 0,
+            "text_padding": 0,
+            "enable_border": false,
+            "border_width": 1,
+            "border_color": "#e0e0e0",
+            "border_radius": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "announcement_etzRg7": {
+          "type": "announcement",
+          "settings": {
+            "text": "",
+            "text_color": "",
+            "link": "",
+            "image": "shopify://shop_images/694.svg",
+            "image_width": 8,
+            "image_position": "before",
+            "item_bg_type": "none",
+            "item_bg_color": "",
+            "item_bg_gradient": "",
+            "text_bg_type": "none",
+            "text_bg_color": "",
+            "text_bg_gradient": "",
+            "text_enable_border": false,
+            "text_border_width": 1,
+            "text_border_color": "#e0e0e0",
+            "text_border_radius": 0,
+            "text_padding": 0,
+            "enable_border": false,
+            "border_width": 1,
+            "border_color": "#e0e0e0",
+            "border_radius": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "announcement_ciiGbw": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>Feito sob medida</p>",
+            "text_color": "",
+            "link": "",
+            "image_width": 24,
+            "image_position": "before",
+            "item_bg_type": "none",
+            "item_bg_color": "",
+            "item_bg_gradient": "",
+            "text_bg_type": "none",
+            "text_bg_color": "",
+            "text_bg_gradient": "",
+            "text_enable_border": false,
+            "text_border_width": 1,
+            "text_border_color": "#e0e0e0",
+            "text_border_radius": 0,
+            "text_padding": 0,
+            "enable_border": false,
+            "border_width": 1,
+            "border_color": "#e0e0e0",
+            "border_radius": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "announcement_XjLECM": {
+          "type": "announcement",
+          "settings": {
+            "text": "",
+            "text_color": "",
+            "link": "",
+            "image": "shopify://shop_images/694.svg",
+            "image_width": 8,
+            "image_position": "before",
+            "item_bg_type": "none",
+            "item_bg_color": "",
+            "item_bg_gradient": "",
+            "text_bg_type": "none",
+            "text_bg_color": "",
+            "text_bg_gradient": "",
+            "text_enable_border": false,
+            "text_border_width": 1,
+            "text_border_color": "#e0e0e0",
+            "text_border_radius": 0,
+            "text_padding": 0,
+            "enable_border": false,
+            "border_width": 1,
+            "border_color": "#e0e0e0",
+            "border_radius": 0,
+            "width": 0,
+            "height": 0
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "announcement_dg4BWJ",
+        "announcement_mjLjfM",
+        "announcement_Yri6Dj",
+        "announcement_eDQT8x",
+        "announcement_haVHCm",
+        "announcement_RJV6it",
+        "announcement_JGftdk",
+        "announcement_etzRg7",
+        "announcement_ciiGbw",
+        "announcement_XjLECM"
       ],
-      "disabled": true,
+      "name": "TP - Barra de Avisos",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "inverse",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "background-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
+        "marquee_speed": 40,
+        "marquee_direction": "left",
+        "font_family_type": "theme",
+        "custom_font": "",
+        "font_size_desktop": 14,
+        "font_size_mobile": 14,
+        "letter_spacing": 0,
+        "gap_between_items": 24,
+        "gap_image_text_desktop": 10,
+        "gap_image_text_mobile": 10,
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "background_color": "#0d0d0d",
+        "text_color": "#ffffff",
+        "show_line_separator": true,
+        "enable_borders": false,
+        "border_width": 1,
+        "border_color": "#e0e0e0",
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false
       }
     },
     "tp_featured_collection_RMqgGf": {
@@ -139,22 +405,655 @@
         "background_type": "color",
         "background_color": "#ffffff",
         "background_gradient": "",
-        "title": "Coleção",
-        "button_text": "Ver tudo",
+        "title": "Mais vendidos",
+        "button_text": "",
         "button_url": "shopify://collections/frontpage",
-        "button_below_mobile": true,
+        "button_below_mobile": false,
         "collection": "frontpage",
         "product_list": [],
         "autoplay": false,
         "autoplay_time": 3,
         "pagination": true,
+        "pagination_hide_mobile": false,
         "pagination_color": "#b1bfab",
         "pagination_color_active": "#000000",
+        "pagination_custom": false,
+        "pagination_size": 8,
+        "pagination_size_active": 10,
+        "pagination_border": false,
+        "pagination_border_width": 1,
+        "pagination_border_color": "#b1bfab",
+        "pagination_border_color_active": "#000000",
         "navigation": true,
+        "navigation_prev_image": "shopify://shop_images/696.svg",
+        "navigation_next_image": "shopify://shop_images/695.svg",
+        "pad_top_min": 24,
+        "pad_top_max": 64,
+        "pad_bottom_min": 32,
+        "pad_bottom_max": 56,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_e_categories_v1_aCGaPF": {
+      "type": "tp-e-categories-V1",
+      "blocks": {
+        "category_tF4CPg": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/697_1.webp",
+            "title": "Capa para carros",
+            "link": "",
+            "title_align": "left",
+            "title_custom": false,
+            "title_size_desktop": 16,
+            "title_size_mobile": 14,
+            "title_weight": "500",
+            "title_color": "#2b2b2b",
+            "title_bar": false,
+            "title_bar_color": "#000000",
+            "button_text": "Explorar",
+            "button_custom": false,
+            "button_bg_color": "#ffffff",
+            "button_text_color": "#000000",
+            "button_radius": "full",
+            "button_font_size": 14,
+            "button_font_weight": "600"
+          }
+        },
+        "category_kH3Htd": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/698_1.webp",
+            "title": "Capas para motos",
+            "link": "",
+            "title_align": "left",
+            "title_custom": false,
+            "title_size_desktop": 16,
+            "title_size_mobile": 14,
+            "title_weight": "500",
+            "title_color": "#2b2b2b",
+            "title_bar": false,
+            "title_bar_color": "#000000",
+            "button_text": "Explorar",
+            "button_custom": false,
+            "button_bg_color": "#ffffff",
+            "button_text_color": "#000000",
+            "button_radius": "full",
+            "button_font_size": 14,
+            "button_font_weight": "600"
+          }
+        },
+        "category_XQf6Xi": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/699_1.webp",
+            "title": "Capas para jet ski",
+            "link": "",
+            "title_align": "left",
+            "title_custom": false,
+            "title_size_desktop": 16,
+            "title_size_mobile": 14,
+            "title_weight": "500",
+            "title_color": "#2b2b2b",
+            "title_bar": false,
+            "title_bar_color": "#000000",
+            "button_text": "Explorar",
+            "button_custom": false,
+            "button_bg_color": "#ffffff",
+            "button_text_color": "#000000",
+            "button_radius": "full",
+            "button_font_size": 14,
+            "button_font_weight": "600"
+          }
+        },
+        "category_bUmETF": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/700_1.webp",
+            "title": "Capas aeronáuticas",
+            "link": "",
+            "title_align": "left",
+            "title_custom": false,
+            "title_size_desktop": 16,
+            "title_size_mobile": 14,
+            "title_weight": "500",
+            "title_color": "#2b2b2b",
+            "title_bar": false,
+            "title_bar_color": "#000000",
+            "button_text": "Explorar",
+            "button_custom": false,
+            "button_bg_color": "#ffffff",
+            "button_text_color": "#000000",
+            "button_radius": "full",
+            "button_font_size": 14,
+            "button_font_weight": "600"
+          }
+        }
+      },
+      "block_order": [
+        "category_tF4CPg",
+        "category_kH3Htd",
+        "category_XQf6Xi",
+        "category_bUmETF"
+      ],
+      "name": "Categorias V1",
+      "settings": {
+        "background_type": "color",
+        "bg_color": "#ffffff",
+        "bg_gradient": "",
+        "title": "<h2>Explore por categoria</h2>",
+        "title_bar": false,
+        "title_bar_color": "linear-gradient(92deg, #00FCA8 0%, #1CDAFF 100%)",
+        "title_custom": false,
+        "title_alignment": "left",
+        "title_color": "#2b2b2b",
+        "title_size_desktop": 36,
+        "title_size_mobile": 28,
+        "title_weight": "700",
+        "cols_mobile": "2",
+        "cols_desktop": "4",
+        "card_radius": "md",
+        "img_ratio": "1",
+        "pad_top_min": 32,
+        "pad_top_max": 56,
+        "pad_bottom_min": 32,
+        "pad_bottom_max": 80,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_slider_bump_wmwT64": {
+      "type": "tp-slider-bump",
+      "blocks": {
+        "card_NkWkKg": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/701_1.webp",
+            "product": "adicional-de-logomarca-personalizada"
+          }
+        },
+        "card_tWrNKX": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/702_1.webp",
+            "product": "capa-apresentacao-showroom"
+          }
+        },
+        "card_3zGKpJ": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/703_1.webp",
+            "product": "capa-para-caminhao"
+          }
+        },
+        "card_nCVb7i": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/704_1.webp",
+            "product": "capa-para-carros-sedan"
+          }
+        },
+        "card_Vg9qYf": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/701_1.webp",
+            "product": "adicional-de-logomarca-personalizada"
+          }
+        }
+      },
+      "block_order": [
+        "card_NkWkKg",
+        "card_tWrNKX",
+        "card_3zGKpJ",
+        "card_nCVb7i",
+        "card_Vg9qYf"
+      ],
+      "name": "TP - Slider Bump",
+      "settings": {
+        "background_color": "#fff",
+        "badge_text": "",
+        "title": "<h2>A experiência de quem já escolheu Kings</h2>",
+        "subtitle": "Milhares de veículos protegidos em todo o Brasil com capas feitas sob medida.",
+        "button_url": "",
+        "button_text": "",
+        "initial_slide": 3,
+        "autoplay": true,
+        "tempo_autoplay": 3,
+        "navigation": true,
+        "pad_top_min": 32,
+        "pad_top_max": 80,
+        "pad_bottom_min": 32,
+        "pad_bottom_max": 80,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_midia_igVRPA": {
+      "type": "tp-midia",
+      "blocks": {
+        "midia_item_taD4KR": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/705.webp",
+            "link": ""
+          }
+        },
+        "midia_item_yiRLLM": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/706_1.webp",
+            "link": ""
+          }
+        },
+        "midia_item_DqhK7t": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/707_1.webp",
+            "link": ""
+          }
+        },
+        "midia_item_xeb7dy": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/708_1.webp",
+            "link": ""
+          }
+        },
+        "midia_item_UmttGp": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/709_1.webp",
+            "link": ""
+          }
+        },
+        "midia_item_f7CiQT": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/710_1.webp",
+            "link": ""
+          }
+        },
+        "midia_item_FtPUPi": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/711_1.webp",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "midia_item_taD4KR",
+        "midia_item_yiRLLM",
+        "midia_item_DqhK7t",
+        "midia_item_xeb7dy",
+        "midia_item_UmttGp",
+        "midia_item_f7CiQT",
+        "midia_item_FtPUPi"
+      ],
+      "custom_css": [
+        ".tp-midia__title-wrapper {color: var(--gray-900, #101828); font-family: Helvetica; font-size: clamp(1.2000rem, calc(1.0514rem + 0.3810vw), 1.6000rem); font-style: normal; font-weight: 400; line-height: 120%; /* 19.2px */ text-transform: uppercase;}"
+      ],
+      "name": "Mídia",
+      "settings": {
+        "title": "Capas personalizadas para as melhores marcas",
+        "title_alignment": "center",
+        "background_type": "color",
+        "bg_custom": false,
+        "bg_color": "",
+        "bg_gradient": "",
+        "title_custom": false,
+        "title_color": "",
+        "title_size_desktop": 22,
+        "title_size_mobile": 16,
+        "title_weight": "600",
+        "pad_top_min": 0,
+        "pad_top_max": 0,
+        "pad_bottom_min": 32,
+        "pad_bottom_max": 64,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_e_image_with_text_v1_7XGtVk": {
+      "type": "tp-e-image-with-text-v1",
+      "blocks": {
+        "benefit_hEPQmb": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/714.svg",
+            "richtext": "<p>Ajuste perfeito para cada modelo</p>"
+          }
+        },
+        "benefit_eahYRH": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/714.svg",
+            "richtext": "<p>Material premium e exclusivo</p>"
+          }
+        },
+        "benefit_rqAyVe": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/714.svg",
+            "richtext": "<p>Proteção contra riscos, poeira e sol</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_hEPQmb",
+        "benefit_eahYRH",
+        "benefit_rqAyVe"
+      ],
+      "name": "Imagem Com Texto V1",
+      "settings": {
+        "image_position_desktop": "left",
+        "image_position_mobile": "first",
+        "title_above_image_mobile": false,
+        "image_padding_inline_mobile": false,
+        "image_padding_inline_desktop": false,
+        "loading_image": true,
+        "image_desktop": "shopify://shop_images/712_1.webp",
+        "image_mobile": "shopify://shop_images/713_1.webp",
+        "title": "<h2>Nascemos para elevar o padrão de proteção</h2>",
+        "richtext": "<p>Enquanto o mercado oferece capas genéricas, desenvolvemos soluções sob medida para quem valoriza acabamento, durabilidade e proteção de verdade.</p>",
+        "button_url": "shopify://collections/all",
+        "button_text": "Saiba mais",
+        "faq_icon_type": "arrow",
+        "faq_first_open": false,
+        "data_animate": false,
+        "title_custom": false,
+        "text_color_title": "#2b2b2b",
+        "font_weight": "700",
+        "font_size_title": 36,
+        "font_size_title_mobile": 28,
+        "content_custom": false,
+        "text_color_content": "#2b2b2b",
+        "content_font_weight": "400",
+        "font_size_content": 16,
+        "font_size_content_mobile": 16,
+        "button_custom": false,
+        "text_color_btn": "#ffffff",
+        "bg_color_btn": "#443fd2",
+        "button_font_weight": "600",
+        "button_font_size_desktop": 16,
+        "button_font_size_mobile": 16,
+        "radius_btn": 100,
+        "background_type": "color",
+        "background_color": "#0d0d0d",
+        "background_gradient": "",
+        "pad_top_min": 0,
+        "pad_top_max": 0,
+        "pad_bottom_min": 0,
+        "pad_bottom_max": 0,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": true,
+        "pad_bottom_mobile": 48,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_e_reviews_v4_mhidfC": {
+      "type": "tp-e-reviews-v4",
+      "blocks": {
+        "image_gqDGYf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/716_1.webp"
+          }
+        },
+        "review_zaDALY": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "title": "Capa incrível!!",
+            "subtitle": "",
+            "text": "<p>“Superou minhas expectativas. Entrega foi rápida, material e acabamento da capa são impecáveis. Recomendo Kings capas”</p>",
+            "name": "Pedro Vianna",
+            "profession": "",
+            "purchase_text": "Compra verificada",
+            "purchase_icon": "shopify://shop_images/718.png",
+            "bg_type": "default",
+            "bg_color": "",
+            "bg_gradient": "",
+            "show_border": true,
+            "border_color": "#e5e7eb",
+            "border_width": 1,
+            "card_radius": "sm"
+          }
+        },
+        "image_f7hMzF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/717_1.webp"
+          }
+        },
+        "review_XijzLC": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "title": "Muito Feliz com a Compra!",
+            "subtitle": "",
+            "text": "<p>\"Excelente atendimento, material de primeiríssima linha e rápida entrega. Recomendo a todos os apaixonados por carro.\"</p>",
+            "name": "Junior B.",
+            "profession": "",
+            "purchase_text": "Compra verificada",
+            "purchase_icon": "shopify://shop_images/718.png",
+            "bg_type": "default",
+            "bg_color": "",
+            "bg_gradient": "",
+            "show_border": true,
+            "border_color": "#e5e7eb",
+            "border_width": 1,
+            "card_radius": "sm"
+          }
+        },
+        "image_b7UQN4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/716_1.webp"
+          }
+        },
+        "review_d9Ugwf": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "title": "Muito Feliz com a Compra!",
+            "subtitle": "",
+            "text": "<p>\"Excelente atendimento, material de primeiríssima linha e rápida entrega. Recomendo a todos os apaixonados por carro.\"</p>",
+            "name": "Junior B.",
+            "profession": "",
+            "purchase_text": "Compra verificada",
+            "purchase_icon": "shopify://shop_images/718.png",
+            "bg_type": "default",
+            "bg_color": "",
+            "bg_gradient": "",
+            "show_border": true,
+            "border_color": "#e5e7eb",
+            "border_width": 1,
+            "card_radius": "sm"
+          }
+        }
+      },
+      "block_order": [
+        "image_gqDGYf",
+        "review_zaDALY",
+        "image_f7hMzF",
+        "review_XijzLC",
+        "image_b7UQN4",
+        "review_d9Ugwf"
+      ],
+      "name": "Depoimentos V4",
+      "settings": {
+        "star_icon": "shopify://shop_images/715.svg",
+        "title": "<h6>REVIEWS</h6><h2>Quem testa Kings aprova!</h2>",
+        "title_bar": false,
+        "title_bar_color": "#000000",
+        "title_custom": false,
+        "title_color": "#000000",
+        "title_font_size_desktop": 36,
+        "title_font_size_mobile": 28,
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "pagination": false,
+        "pagination_color": "#b1bfab",
+        "pagination_color_active": "#000000",
+        "navigation": false,
         "pad_top_min": 48,
-        "pad_top_max": 96,
-        "pad_bottom_min": 48,
-        "pad_bottom_max": 96,
+        "pad_top_max": 80,
+        "pad_bottom_min": 40,
+        "pad_bottom_max": 64,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_e_categories_v2_cHccJ3": {
+      "type": "tp-e-categories-v2",
+      "blocks": {
+        "card_PBczzA": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/719_1.webp",
+            "title": "",
+            "text": "Hyundai: Protegendo os veículos no lançamento do Novo Creta"
+          }
+        },
+        "card_TcfRFX": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/720_1.webp",
+            "title": "",
+            "text": "Mitsubish: Garantindo a elegância no lançamento da L200 Triton"
+          }
+        },
+        "card_NUA74z": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/721_1.webp",
+            "title": "",
+            "text": "Stock Series: Equipando a equipe RTR Sport Team do piloto Vinicius Papareli"
+          }
+        },
+        "card_UJUxnL": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/722_1.webp",
+            "title": "",
+            "text": "Copa Truck: Atendendo a equipe R9 Competições do piloto Paulo Salustiano"
+          }
+        }
+      },
+      "block_order": [
+        "card_PBczzA",
+        "card_TcfRFX",
+        "card_NUA74z",
+        "card_UJUxnL"
+      ],
+      "name": "Categorias V2",
+      "settings": {
+        "title": "<p>a confiança das grande marcas</p>",
+        "bg_color": "#ffffff",
+        "title_bar": false,
+        "title_custom": false,
+        "title_color": "#1a1a1a",
+        "title_size_mobile": 28,
+        "title_size_desktop": 40,
+        "title_weight": "700",
+        "card_title_custom": false,
+        "card_title_color": "#1a1a1a",
+        "card_title_size_mobile": 16,
+        "card_title_size_desktop": 18,
+        "card_title_weight": "600",
+        "card_text_custom": false,
+        "card_text_color": "#555555",
+        "card_text_size_mobile": 14,
+        "card_text_size_desktop": 14,
+        "card_text_weight": "400",
+        "pad_top_min": 0,
+        "pad_top_max": 0,
+        "pad_bottom_min": 0,
+        "pad_bottom_max": 0,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "1779654955cda54bec": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_MFMRXh": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_MFMRXh"
+      ],
+      "settings": {
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "instagram": true,
+        "instagram_text": "Nos siga no Instagram",
+        "button_text": "@kings.capasautomotivas",
+        "button_link": "https://www.instagram.com/kings.capasautomotivas/",
+        "pad_top_min": 40,
+        "pad_top_max": 120,
+        "pad_bottom_min": 40,
+        "pad_bottom_max": 48,
         "enable_pad_top_mobile": false,
         "pad_top_mobile": 0,
         "enable_pad_bottom_mobile": false,
@@ -167,10 +1066,15 @@
     }
   },
   "order": [
-    "tp_hero_hJtTP9",
-    "tp_video_slides_PKgVeY",
-    "image_banner",
-    "featured_collection",
-    "tp_featured_collection_RMqgGf"
+    "tp_e_banner_slides_v1_trMAtd",
+    "tp_e_scroll_promo_v1_PTg7ym",
+    "tp_featured_collection_RMqgGf",
+    "tp_e_categories_v1_aCGaPF",
+    "tp_slider_bump_wmwT64",
+    "tp_midia_igVRPA",
+    "tp_e_image_with_text_v1_7XGtVk",
+    "tp_e_reviews_v4_mhidfC",
+    "tp_e_categories_v2_cHccJ3",
+    "1779654955cda54bec"
   ]
 }
