@@ -191,7 +191,7 @@
                   assign warranty_seal = product.metafields.custom.selo_garantia.value
                 -%}
                 {%- if warranty_text != blank or warranty_seal != blank -%}
-                  {{ 'tp-warranty-badge.css' | asset_url | stylesheet_tag }}
+
                   {%- style -%}
                     .{{ section.id }}-warranty {
                       --tp-warranty-bg: {{ block.settings.bg_color }};
