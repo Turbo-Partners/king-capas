@@ -348,6 +348,18 @@ line-height: 140%; /* 16.8px */
   }
 }
 
+.product__accordion {
+  .accordion__title {
+    color: var(--gray-950, #0C111D);
+
+/* Body/16/Medium */
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 140%; /* 22.4px */
+  }
+}
 .tp-price__main {
   display: flex;
   align-items: center;
