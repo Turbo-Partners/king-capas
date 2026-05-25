@@ -23,9 +23,8 @@
             "text_style": "body"
           }
         },
-        "price": {
-          "type": "price",
-          "disabled": true,
+        "tp_icons_with_text_pf4W9f": {
+          "type": "tp_icons_with_text",
           "settings": {}
         },
         "variant_picker": {
@@ -56,6 +55,10 @@
           "disabled": true,
           "settings": {}
         },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
         "custom_buy_buttons_7VTA3y": {
           "type": "custom_buy_buttons",
           "settings": {
@@ -74,11 +77,12 @@
       "block_order": [
         "title",
         "text_4E7ye9",
-        "price",
+        "tp_icons_with_text_pf4W9f",
         "variant_picker",
         "variant_picker_aPRT3c",
         "vehicle_model_7AXErM",
         "quantity_selector",
+        "price",
         "custom_buy_buttons_7VTA3y",
         "buy_buttons"
       ],
