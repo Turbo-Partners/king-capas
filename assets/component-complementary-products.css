@@ -253,7 +253,10 @@ product-recommendations.is-accordion+.accordion {
 
 .complementary-products__container {
 
-  .badge-discount {
+  
+
+  .badge-discount,
+  .htusb-ui-prod-boost-generic-pricing {
     display: none;
   }
 
