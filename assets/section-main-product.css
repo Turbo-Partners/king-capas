@@ -212,9 +212,12 @@ product-info {
 .tp-buy-buttons__qty-value {
   min-width: 28px;
   text-align: center;
-  font-size: var(--tp-font-size-base, 16px);
-  font-weight: var(--tp-font-semibold, 600);
-  color: var(--tp-color-primary, #1a73e8);
+color: var(--gray-500, #667085);
+font-family: "Helvetica Neue";
+font-size: 18.667px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }
 
 .tp-buy-buttons__submit {
@@ -313,6 +316,10 @@ font-weight: 700;
 line-height: 140%; /* 19.6px */
 letter-spacing: 1.12px;
 text-transform: uppercase;
+
+@media (max-width:750px) {
+  font-size:12px;
+}
 }
 
 .product-form__input.product-form__input--dropdown {
