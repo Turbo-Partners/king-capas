@@ -1,0 +1,502 @@
+{{ 'tp-e-categories.css' | asset_url | stylesheet_tag }}
+
+{% render 'tp-section-padding',
+  pad_top_min: section.settings.pad_top_min,
+  pad_top_max: section.settings.pad_top_max,
+  pad_bottom_min: section.settings.pad_bottom_min,
+  pad_bottom_max: section.settings.pad_bottom_max,
+  enable_pad_top_mobile: section.settings.enable_pad_top_mobile,
+  pad_top_mobile: section.settings.pad_top_mobile,
+  enable_pad_bottom_mobile: section.settings.enable_pad_bottom_mobile,
+  pad_bottom_mobile: section.settings.pad_bottom_mobile,
+  enable_pad_top_desktop: section.settings.enable_pad_top_desktop,
+  pad_top_desktop: section.settings.pad_top_desktop,
+  enable_pad_bottom_desktop: section.settings.enable_pad_bottom_desktop,
+  pad_bottom_desktop: section.settings.pad_bottom_desktop
+%}
+
+{% liquid
+  assign background_type = section.settings.background_type
+  assign cols_mobile     = section.settings.cols_mobile
+  assign cols_desktop    = section.settings.cols_desktop
+
+  assign meta   = section.settings.informativos_metaobject
+  assign titulo = meta.titulo
+  assign icones = meta.icones
+  assign textos = meta.textos
+%}
+
+{% style %}
+.{{ section.id }} {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  {% if background_type == 'image' and section.settings.bg_image_mobile != blank %}
+    background-image: url('{{ section.settings.bg_image_mobile | image_url }}');
+
+    {% if section.settings.bg_image_desktop != blank %}
+      @media screen and (min-width: 1024px) {
+        background-image: url('{{ section.settings.bg_image_desktop | image_url }}');
+      }
+    {% endif %}
+  {% elsif background_type == 'color' and section.settings.bg_color != blank %}
+    background: {{ section.settings.bg_color }};
+  {% elsif background_type == 'gradient' and section.settings.bg_gradient != blank %}
+    background: {{ section.settings.bg_gradient }};
+  {% endif %}
+
+  --tp-cat-cols-mobile: {{ cols_mobile }};
+  --tp-cat-cols-desktop: {{ cols_desktop }};
+
+  {% case section.settings.card_radius %}
+    {% when 'sm' %}--tp-cat-card-radius: var(--tp-radius-sm);
+    {% when 'md' %}--tp-cat-card-radius: var(--tp-radius-md);
+    {% when 'lg' %}--tp-cat-card-radius: var(--tp-radius-lg);
+    {% when 'xl' %}--tp-cat-card-radius: var(--tp-radius-xl);
+    {% when 'full' %}--tp-cat-card-radius: var(--tp-radius-full);
+    {% else %}--tp-cat-card-radius: 0px;
+  {% endcase %}
+}
+
+{% if section.settings.title_custom %}
+  .{{ section.id }} .tp-categories__title,
+  .{{ section.id }} .tp-categories__title h1,
+  .{{ section.id }} .tp-categories__title h2,
+  .{{ section.id }} .tp-categories__title h3,
+  .{{ section.id }} .tp-categories__title p {
+    color: {{ section.settings.title_color }};
+    font-size: {{ section.settings.title_size_desktop }}px;
+    font-weight: {{ section.settings.title_weight }};
+    text-align: {{ section.settings.title_alignment }};
+  }
+
+  @media (max-width: 767px) {
+    .{{ section.id }} .tp-categories__title,
+    .{{ section.id }} .tp-categories__title h1,
+    .{{ section.id }} .tp-categories__title h2,
+    .{{ section.id }} .tp-categories__title h3,
+    .{{ section.id }} .tp-categories__title p {
+      font-size: {{ section.settings.title_size_mobile }}px;
+    }
+  }
+{% endif %}
+
+{% if section.settings.icon_size > 0 %}
+  .{{ section.id }} .tp-info-icones__icon {
+    width: {{ section.settings.icon_size }}px;
+    height: {{ section.settings.icon_size }}px;
+  }
+{% endif %}
+
+{% if section.settings.text_custom %}
+  .{{ section.id }} .tp-info-icones__text {
+    color: {{ section.settings.text_color }};
+    font-size: {{ section.settings.text_size_desktop }}px;
+    font-weight: {{ section.settings.text_weight }};
+  }
+
+  @media (max-width: 767px) {
+    .{{ section.id }} .tp-info-icones__text {
+      font-size: {{ section.settings.text_size_mobile }}px;
+    }
+  }
+{% endif %}
+{% endstyle %}
+
+<section class="tp-categories tp-info-icones {{ section.id }}">
+  <div class="tp-wrapper--full-width" id="section-wrapper-{{ section.id }}">
+    {% if titulo.value != blank %}
+      {% if section.settings.title_bar %}
+        <span class="tp-meta-banner-imagem-v1__bar" aria-hidden="true"></span>
+      {% endif %}
+      <div class="tp-categories__title">{{ titulo.value }}</div>
+    {% endif %}
+
+    {% if icones != blank and icones.value != blank %}
+      <div class="tp-categories__grid">
+        {% for item in icones.value %}
+          {% assign texto = textos.value[forloop.index0] %}
+
+          <div class="tp-categories__card tp-info-icones__item">
+            <div class="tp-categories__card-media tp-info-icones__icon-wrap">
+              {% if item.image %}
+                {{ item.image | image_url: width: 200 | image_tag:
+                  loading: 'lazy',
+                  class: 'tp-info-icones__icon'
+                }}
+              {% elsif item.url != blank %}
+                <img
+                  src="{{ item.url }}"
+                  alt="{{ texto | default: '' | escape }}"
+                  class="tp-info-icones__icon"
+                  loading="lazy"
+                  width="{{ section.settings.icon_size }}"
+                  height="{{ section.settings.icon_size }}"
+                >
+              {% endif %}
+            </div>
+
+            {% if texto != blank %}
+              <div class="tp-categories__card-footer">
+                <p class="tp-categories__card-title tp-info-icones__text">{{ texto | escape }}</p>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Informativos com Ícones",
+  "class": "E__INFORMATIVOS_ICONES__V1",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Conteúdo"
+    },
+    {
+      "type": "metaobject",
+      "id": "informativos_metaobject",
+      "label": "Metaobject de ícones",
+      "metaobject_type": "informativos_icones_com_texto"
+    },
+    {
+      "type": "header",
+      "content": "Aparência"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Tipo de fundo",
+      "default": "color",
+      "options": [
+        { "label": "Cor", "value": "color" },
+        { "label": "Gradiente", "value": "gradient" },
+        { "label": "Imagem", "value": "image" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Cor",
+      "default": "#FFFFFF",
+      "visible_if": "{{ section.settings.background_type == 'color' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_gradient",
+      "label": "Gradiente",
+      "visible_if": "{{ section.settings.background_type == 'gradient' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "Imagem (mobile)",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_desktop",
+      "label": "Imagem (desktop)",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "header",
+      "content": "Barra decorativa"
+    },
+    {
+      "type": "checkbox",
+      "id": "title_bar",
+      "label": "Exibir barra acima do título",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Tipografia — Título"
+    },
+    {
+      "type": "checkbox",
+      "id": "title_custom",
+      "label": "Personalizar título",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "title_alignment",
+      "label": "Alinhamento",
+      "default": "left",
+      "visible_if": "{{ section.settings.title_custom }}",
+      "options": [
+        { "label": "Esquerda", "value": "left" },
+        { "label": "Centro", "value": "center" },
+        { "label": "Direita", "value": "right" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Cor",
+      "default": "#2B2B2B",
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "label": "Tamanho (desktop)",
+      "min": 14,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 36,
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Tamanho (mobile)",
+      "min": 14,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "default": 28,
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Peso",
+      "default": "700",
+      "visible_if": "{{ section.settings.title_custom }}",
+      "options": [
+        { "label": "Normal (400)", "value": "400" },
+        { "label": "Médio (500)", "value": "500" },
+        { "label": "Semibold (600)", "value": "600" },
+        { "label": "Bold (700)", "value": "700" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Ícones"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Tamanho do ícone (px)",
+      "min": 24,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "header",
+      "content": "Tipografia — Texto"
+    },
+    {
+      "type": "checkbox",
+      "id": "text_custom",
+      "label": "Personalizar texto",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Cor",
+      "default": "#2B2B2B",
+      "visible_if": "{{ section.settings.text_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "text_size_desktop",
+      "label": "Tamanho (desktop)",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 14,
+      "visible_if": "{{ section.settings.text_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "text_size_mobile",
+      "label": "Tamanho (mobile)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 12,
+      "visible_if": "{{ section.settings.text_custom }}"
+    },
+    {
+      "type": "select",
+      "id": "text_weight",
+      "label": "Peso",
+      "default": "500",
+      "visible_if": "{{ section.settings.text_custom }}",
+      "options": [
+        { "label": "Normal (400)", "value": "400" },
+        { "label": "Médio (500)", "value": "500" },
+        { "label": "Semibold (600)", "value": "600" },
+        { "label": "Bold (700)", "value": "700" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Grid"
+    },
+    {
+      "type": "select",
+      "id": "cols_mobile",
+      "label": "Colunas no mobile",
+      "default": "2",
+      "options": [
+        { "label": "1 coluna", "value": "1" },
+        { "label": "2 colunas", "value": "2" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "cols_desktop",
+      "label": "Colunas no desktop",
+      "default": "4",
+      "options": [
+        { "label": "3 colunas", "value": "3" },
+        { "label": "4 colunas", "value": "4" },
+        { "label": "5 colunas", "value": "5" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "card_radius",
+      "label": "Arredondamento do card",
+      "default": "md",
+      "options": [
+        { "label": "Nenhum", "value": "none" },
+        { "label": "Pequeno", "value": "sm" },
+        { "label": "Médio", "value": "md" },
+        { "label": "Grande", "value": "lg" },
+        { "label": "Extra Grande", "value": "xl" },
+        { "label": "Completo", "value": "full" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Espaçamento"
+    },
+    {
+      "type": "range",
+      "id": "pad_top_min",
+      "label": "Padding TOP min (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "pad_top_max",
+      "label": "Padding TOP max (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_min",
+      "label": "Padding BOTTOM min (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_max",
+      "label": "Padding BOTTOM max (px)",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "default": 96
+    },
+    {
+      "type": "header",
+      "content": "Espaçamento Overrides (opcional)"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_top_mobile",
+      "label": "Ativar padding TOP no mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_top_mobile",
+      "label": "Padding TOP mobile (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_top_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_bottom_mobile",
+      "label": "Ativar padding BOTTOM no mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_mobile",
+      "label": "Padding BOTTOM mobile (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_bottom_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_top_desktop",
+      "label": "Ativar padding TOP no desktop",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_top_desktop",
+      "label": "Padding TOP desktop (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_top_desktop }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_bottom_desktop",
+      "label": "Ativar padding BOTTOM no desktop",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_desktop",
+      "label": "Padding BOTTOM desktop (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_bottom_desktop }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Informativos com Ícones",
+      "category": "Personalizado"
+    }
+  ]
+}
+{% endschema %}
