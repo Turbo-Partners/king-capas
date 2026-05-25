@@ -127,6 +127,45 @@
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
+                                {%- when 'tp_icons_with_text' -%}
+                {%- liquid
+                  assign tp_icones_obj = product.metafields.custom.icones_com_texto.value
+                  assign tp_has_icons = false
+                  if tp_icones_obj != blank
+                    assign tp_icones = tp_icones_obj.icones.value
+                    if tp_icones.size > 0
+                      assign tp_has_icons = true
+                      assign tp_textos = tp_icones_obj.textos.value
+                    endif
+                  endif
+                -%}
+                {%- if tp_has_icons -%}
+                  <ul class="tp-pdp-icons-list list-unstyled" {{ block.shopify_attributes }}>
+                    {%- for tp_icone in tp_icones -%}
+                      {%- assign tp_texto = tp_textos[forloop.index0] -%}
+                      <li class="tp-pdp-icons-list__item">
+                        {%- if tp_icone != blank -%}
+                          {{
+                            tp_icone
+                            | image_url: width: 48
+                            | image_tag:
+                              class: 'tp-pdp-icons-list__icon',
+                              widths: '48, 96',
+                              sizes: '48px',
+                              loading: 'lazy',
+                              alt: tp_texto
+                            | default: ''
+                          }}
+                        {%- endif -%}
+                        {%- if tp_texto != blank -%}
+                          <span class="tp-pdp-icons-list__text">{{ tp_texto }}</span>
+                        {%- endif -%}
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+
+             
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
@@ -854,6 +893,11 @@
   "blocks": [
     {
       "type": "@app"
+    },
+        {
+      "type": "tp_icons_with_text",
+      "name": "Ícones com Texto",
+      "limit": 1
     },
     {
       "type": "text",
