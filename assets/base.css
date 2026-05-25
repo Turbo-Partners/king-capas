@@ -76,7 +76,8 @@
 
 /* base */
 
-body {
+body,
+html {
   overflow-x:hidden;
 }
 
