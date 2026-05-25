@@ -610,6 +610,12 @@ a.product__text {
   text-transform: uppercase;
 }
 
+.wrapper-title-app {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
 .product__title {
   word-break: break-word;
   margin-bottom: 1.5rem;
