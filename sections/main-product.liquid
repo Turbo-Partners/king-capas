@@ -333,7 +333,7 @@
                         {{- 'icon-caret.svg' | inline_asset_content -}}
                       </summary>
                       <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
-                        {{ protection_content }}
+                        {{ protection_content | metafield_tag}}
                       </div>
                     </details>
                   </div>
@@ -353,7 +353,7 @@
                         {{- 'icon-caret.svg' | inline_asset_content -}}
                       </summary>
                       <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
-                        {{ details_content }}
+                        {{ details_content | metafield_tag }}
                       </div>
                     </details>
                   </div>
