@@ -97,6 +97,20 @@
             "image_ratio": "square",
             "enable_quick_add": true
           }
+        },
+        "product_details_meta_citgki": {
+          "type": "product_details_meta",
+          "settings": {
+            "heading": "Detalhes do Produto",
+            "icon": "none"
+          }
+        },
+        "protection_types_UggDPk": {
+          "type": "protection_types",
+          "settings": {
+            "heading": "Tipos de Proteção",
+            "icon": "none"
+          }
         }
       },
       "block_order": [
@@ -112,7 +126,9 @@
         "custom_buy_buttons_7VTA3y",
         "warranty_badge_TrnfYf",
         "buy_buttons",
-        "complementary_3L7t4e"
+        "complementary_3L7t4e",
+        "product_details_meta_citgki",
+        "protection_types_UggDPk"
       ],
       "settings": {
         "enable_sticky_info": true,
