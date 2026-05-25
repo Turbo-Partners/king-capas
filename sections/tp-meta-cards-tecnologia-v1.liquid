@@ -16,7 +16,7 @@
 %}
 
 {% liquid
-  assign cards_meta = product.metafields.custom.cards_tecnologia_cuida_de_voce.value
+  assign cards_meta = product.metafields.custom.detalhes_que_elevam_o_padrao.value
   if cards_meta != blank
     assign imagens = cards_meta.imagem_card.value
     assign titulos = cards_meta.titulo.value
