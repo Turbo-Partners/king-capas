@@ -435,6 +435,9 @@
     },
     "tp_e_related_products_v1_BzYJCp": {
       "type": "tp-e-related-products-v1",
+      "custom_css": [
+        ".tp-wrapper--full-width {border-top: 1px solid var(--Gray-200, #eaecf0); border-bottom: 1px solid var(--Gray-200, #eaecf0);}"
+      ],
       "name": "Produtos Relacionados",
       "settings": {
         "background_type": "color",
