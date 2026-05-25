@@ -84,6 +84,19 @@
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": false
           }
+        },
+        "complementary_3L7t4e": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "",
+            "make_collapsible_row": false,
+            "icon": "price_tag",
+            "product_list_limit": 1,
+            "products_per_page": 1,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": true
+          }
         }
       },
       "block_order": [
@@ -98,7 +111,8 @@
         "tp_price_bmC7KB",
         "custom_buy_buttons_7VTA3y",
         "warranty_badge_TrnfYf",
-        "buy_buttons"
+        "buy_buttons",
+        "complementary_3L7t4e"
       ],
       "settings": {
         "enable_sticky_info": true,
