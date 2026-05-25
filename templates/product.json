@@ -160,7 +160,7 @@
     "tp_e_informativos_icones_v1_fMFaaH": {
       "type": "tp-e-informativos-icones-V1",
       "custom_css": [
-        ".tp-wrapper {border-top: 1px solid var(--Gray-200, #EAECF0);border-bottom: 1px solid var(--Gray-200, #EAECF0);}"
+        ".tp-wrapper {border-top: 1px solid var(--Gray-200, #eaecf0); border-bottom: 1px solid var(--Gray-200, #eaecf0);}"
       ],
       "name": "Informativos com Ícones",
       "settings": {
@@ -266,8 +266,8 @@
         "pad_bottom_mobile": 0,
         "enable_pad_top_desktop": false,
         "pad_top_desktop": 0,
-        "enable_pad_bottom_desktop": false,
-        "pad_bottom_desktop": 0
+        "enable_pad_bottom_desktop": true,
+        "pad_bottom_desktop": 60
       }
     },
     "tp_e_image_with_text_v1_9rAh74": {
@@ -359,6 +359,9 @@
     },
     "tp_meta_cards_category_v1_V8pCiq": {
       "type": "tp-meta-cards-category-v1",
+      "custom_css": [
+        ".tp-meta-cards-tecnologia-v1__swiper-outer {border-bottom: 1px solid var(--Gray-200, #eaecf0);}"
+      ],
       "name": "Cards category - meta ",
       "settings": {
         "preview_title": "",
