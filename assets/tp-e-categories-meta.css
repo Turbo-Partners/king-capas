@@ -113,11 +113,9 @@ padding-bottom: 4rem;
 
   /* Body/20/Semi Bold */
   font-family: "Helvetica Neue";
-  font-size: clamp(1.2000rem, calc(0.9029rem + 0.7619vw), 2.0000rem);
   font-style: normal;
-  font-weight: 700;
   line-height: 120%; /* 24px */
-  text-align: left;
+  text-align: center;
 }
 
 .tp-categories__card-bar {
