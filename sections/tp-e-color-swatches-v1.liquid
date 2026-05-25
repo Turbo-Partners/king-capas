@@ -7,14 +7,45 @@
 {%- if section.blocks.size > 0 -%}
   <style>
     {%- for block in section.blocks -%}
-      {%- assign handle = block.settings.color_name | handleize -%}
-      {%- if handle != blank and block.settings.color_value != blank -%}
-        .tp-swatch--{{ handle }} .swatch {
-          --swatch--background: {{ block.settings.color_value }};
-          background: {{ block.settings.color_value }};
+      {%- liquid
+        assign slug = block.settings.color_name | downcase | replace: 'á', 'a' | replace: 'à', 'a' | replace: 'ã', 'a' | replace: 'â', 'a' | replace: 'é', 'e' | replace: 'ê', 'e' | replace: 'í', 'i' | replace: 'ó', 'o' | replace: 'ô', 'o' | replace: 'õ', 'o' | replace: 'ú', 'u' | replace: 'ü', 'u' | replace: 'ç', 'c' | replace: ' ', '-' | replace: '_', '-' | replace: '/', '-'
+      -%}
+      {%- if slug != blank -%}
+        {%- if block.settings.color_image != blank -%}
+          .tp-swatch--{{ slug }} {
+            background-image: url('{{ block.settings.color_image | image_url: width: 48 }}');
+            background-size: cover;
+            background-position: center;
+          }
+          .tp-swatch--{{ slug }}.swatch,
+          label.tp-swatch--{{ slug }} {
+            background-image: url('{{ block.settings.color_image | image_url: width: 48 }}');
+            background-size: cover;
+            background-position: center;
+          }
+        {%- else -%}
+          .tp-swatch--{{ slug }},
+          .tp-swatch--{{ slug }}.swatch,
+          label.tp-swatch--{{ slug }} {
+            background-color: {{ block.settings.color_value }};
+          }
+        {%- endif -%}
+        label.tp-swatch--{{ slug }} {
+          width: 2rem;
+          height: 2rem;
+          border-radius: 50%;
+          padding: 0;
+          font-size: 0;
+          border: 2px solid transparent;
+          outline-offset: 2px;
+          cursor: pointer;
         }
-        .tp-swatch--{{ handle }} .swatch--unavailable {
-          opacity: 1;
+        label.tp-swatch--{{ slug }}:hover {
+          border-color: rgba(0,0,0,0.3);
+        }
+        input:checked + label.tp-swatch--{{ slug }} {
+          border-color: rgba(0,0,0,0.7);
+          outline: 1px solid rgba(0,0,0,0.7);
         }
       {%- endif -%}
     {%- endfor -%}

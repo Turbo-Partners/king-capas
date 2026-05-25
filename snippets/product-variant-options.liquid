@@ -81,6 +81,9 @@
       additional_props: input_dataset
     %}
   {%- elsif picker_type == 'button' -%}
+    {%- liquid
+      assign tp_btn_slug = value | downcase | replace: 'á', 'a' | replace: 'à', 'a' | replace: 'ã', 'a' | replace: 'â', 'a' | replace: 'é', 'e' | replace: 'ê', 'e' | replace: 'í', 'i' | replace: 'ó', 'o' | replace: 'ô', 'o' | replace: 'õ', 'o' | replace: 'ú', 'u' | replace: 'ü', 'u' | replace: 'ç', 'c' | replace: ' ', '-' | replace: '_', '-' | replace: '/', '-'
+    -%}
     <input
       type="radio"
       id="{{ input_id }}"
@@ -95,7 +98,7 @@
       {% endif %}
       {{ input_dataset }}
     >
-    <label for="{{ input_id }}">
+    <label for="{{ input_id }}" class="tp-swatch--{{ tp_btn_slug }}">
       {{ value -}}
       {{ label_unavailable }}
     </label>
