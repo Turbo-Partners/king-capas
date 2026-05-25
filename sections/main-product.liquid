@@ -583,13 +583,44 @@
                   </p>
                 </div>
               {%- when 'custom_buy_buttons' -%}
-                {{ 'tp-buy-buttons.css' | asset_url | stylesheet_tag }}
                 {%- render 'tp-buy-buttons',
                   product: product,
                   block: block,
                   product_form_id: product_form_id,
                   section_id: section.id
                 -%}
+                     {%- if section.settings.show_compra_segura or section.settings.show_frete_gratis -%}
+                  <div class="tp-trust-badges">
+                    {%- if section.settings.show_compra_segura -%}
+                      <div class="tp-trust-badge">
+                        {%- if section.settings.compra_segura_icon != blank -%}
+                          {{
+                            section.settings.compra_segura_icon
+                            | image_url: width: 24
+                            | image_tag: loading: 'lazy', widths: '24, 48', alt: '', class: 'tp-trust-badge__icon'
+                          }}
+                        {%- endif -%}
+                        <span class="tp-trust-badge__text">
+                          {{- section.settings.compra_segura_text | default: 'COMPRA SEGURA' -}}
+                        </span>
+                      </div>
+                    {%- endif -%}
+                    {%- if section.settings.show_frete_gratis -%}
+                      <div class="tp-trust-badge">
+                        {%- if section.settings.frete_gratis_icon != blank -%}
+                          {{
+                            section.settings.frete_gratis_icon
+                            | image_url: width: 24
+                            | image_tag: loading: 'lazy', widths: '24, 48', alt: '', class: 'tp-trust-badge__icon'
+                          }}
+                        {%- endif -%}
+                        <span class="tp-trust-badge__text">
+                          {{- section.settings.frete_gratis_text | default: 'FRETE GRÁTIS' -}}
+                        </span>
+                      </div>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
                   block: block,
