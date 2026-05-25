@@ -63,8 +63,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: 8px;
+
+        @media screen and (min-width: 768px) {
+          display: none;
+        }
 
         .swiper-pagination-bullet {
+          margin: 0;
           background: {{ section.settings.pagination_color }};
           opacity: 1;
         }
@@ -85,9 +91,10 @@
     {% if navigation %}
       .swiper-button-prev, .swiper-button-next {
         width: clamp(2.4rem, 2.1029rem + 0.7619vw, 3.2rem);
+        display: none;
 
-        @media (max-width: 750px) {
-          display: none;
+        @media screen and (min-width: 768px) {
+          display: flex;
         }
 
         &.with-image svg {
@@ -101,6 +108,30 @@
         &::after {
           content: '';
           color: transparent;
+        }
+      }
+
+      .swiper-button-prev {
+        left: 16px;
+
+        @media screen and (min-width: 768px) {
+          left: 32px;
+        }
+
+        @media screen and (min-width: 1024px) {
+          left: 40px;
+        }
+      }
+
+      .swiper-button-next {
+        right: 16px;
+
+        @media screen and (min-width: 768px) {
+          right: 32px;
+        }
+
+        @media screen and (min-width: 1024px) {
+          right: 40px;
         }
       }
     {% endif %}
@@ -122,7 +153,7 @@
 {% endstyle %}
 
 <section class="tp-featured-collection {{ section.id }}">
-  <div class="wrapper-section" id="section-wrapper-{{ section.id }}">
+  <div class="tp-wrapper--full-width" id="section-wrapper-{{ section.id }}">
     {% if section.settings.title != blank %}
       <div class="tp-title-wrapper tp-wrapper" style="padding-block: 0;">
         <div class="tp-featured-collection__heading">
@@ -240,11 +271,13 @@
         const config = {
           slidesPerView: mobileColumns === '2' ? 2 : 1.2,
           spaceBetween: 12,
+          slidesOffsetBefore: 16,
+          slidesOffsetAfter: 16,
           ...(gridRows2 ? { grid: gridRows2 } : {}),
           breakpoints: {
-            728: { slidesPerView: 2.2, spaceBetween: 16, ...(gridRows1 ? { grid: gridRows1 } : {}) },
-            1024: { slidesPerView: 4, spaceBetween: 24, ...(gridRows1 ? { grid: gridRows1 } : {}) },
-            1280: { slidesPerView: 4, spaceBetween: 32, ...(gridRows1 ? { grid: gridRows1 } : {}) },
+            728: { slidesPerView: 2.2, spaceBetween: 16, slidesOffsetBefore: 32, ...(gridRows1 ? { grid: gridRows1 } : {}) },
+            1024: { slidesPerView: 4, spaceBetween: 16, slidesOffsetBefore: 40, ...(gridRows1 ? { grid: gridRows1 } : {}) },
+            1280: { slidesPerView: 4.2, spaceBetween: 16, slidesOffsetBefore: 40, ...(gridRows1 ? { grid: gridRows1 } : {}) },
           },
         };
 
