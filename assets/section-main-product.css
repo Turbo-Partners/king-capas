@@ -278,17 +278,14 @@ product-info {
     display:none !important;
   }
 
-  .js.product-form__input.product-form__input--pill {
-    border-TOP: 1px solid var(--gray-200, #EAECF0);
-  }
-
 /* Ícones com Texto */
 .tp-pdp-icons-list {
   display: grid;
   grid-template-columns: repeat(4,1fr);
   gap: var(--tp-space-4, 16px) var(--tp-space-6, 24px);
   margin: 0;
-  padding: 0;
+  padding: 0 0 2rem 0;
+      border-bottom: 1px solid var(--gray-200, #EAECF0);
   list-style: none;
     @media (min-width:1000px) and (max-width:1280px) {
       gap:2px !important;
