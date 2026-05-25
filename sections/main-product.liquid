@@ -57,33 +57,33 @@
     <script>
       (function () {
         var sectionId = {{ section.id | json }};
-        var formId = 'product-form-' + sectionId;
 
-        // Fase de captura no document: dispara ANTES do listener do product-form no <form>
-        document.addEventListener('submit', function (e) {
-          if (e.target.id !== formId) return;
-          var input = document.getElementById('VehicleModel-' + sectionId);
-          var errorEl = document.getElementById('VehicleModelError-' + sectionId);
-          if (!input || input.dataset.vehicleModelRequired !== 'true') return;
+        function getButtons() {
+          var form = document.getElementById('product-form-' + sectionId);
+          if (!form) return [];
+          return Array.from(form.querySelectorAll('.product-form__buttons button'));
+        }
 
-          if (input.value.trim() === '') {
-            e.preventDefault();
-            e.stopImmediatePropagation();
-            errorEl.removeAttribute('hidden');
-            input.setAttribute('aria-invalid', 'true');
-            input.focus();
-          }
-        }, { capture: true });
+        function setDisabled(disabled) {
+          getButtons().forEach(function (btn) {
+            if (disabled) {
+              btn.setAttribute('disabled', '');
+              btn.setAttribute('aria-disabled', 'true');
+            } else {
+              btn.removeAttribute('disabled');
+              btn.removeAttribute('aria-disabled');
+            }
+          });
+        }
 
         document.addEventListener('DOMContentLoaded', function () {
           var input = document.getElementById('VehicleModel-' + sectionId);
-          if (!input) return;
-          var errorEl = document.getElementById('VehicleModelError-' + sectionId);
+          if (!input || input.dataset.vehicleModelRequired !== 'true') return;
+
+          setDisabled(input.value.trim() === '');
+
           input.addEventListener('input', function () {
-            if (input.value.trim() !== '') {
-              errorEl.setAttribute('hidden', '');
-              input.removeAttribute('aria-invalid');
-            }
+            setDisabled(input.value.trim() === '');
           });
         });
       })();
