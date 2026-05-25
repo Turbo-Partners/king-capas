@@ -17,14 +17,6 @@
     display: none;
   }
 
-  .card__heading {
-    margin-bottom: 0;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.3;
-    letter-spacing: 0;
-    color: #1F242A;
-  }
 
   .price__sale {
     display: flex;
@@ -39,6 +31,13 @@
   span.price-item.price-item--sale.price-item--last {
     order: -1;
     font-size: 14px;
+    color: var(--gray-950, #0C111D);
+
+/* Body/14/Semi */
+font-family: "Inter";
+font-style: normal;
+font-weight: 600;
+line-height: 140%; /* 19.6px */
   }
 
   span.price-item.price-item--sale.price-item--last span {
@@ -253,7 +252,9 @@ product-recommendations.is-accordion+.accordion {
 
 .complementary-products__container {
 
-
+.price__container {
+  margin:0;
+}
 
   .full-unstyled-link {
     color: var(--gray-950, #0C111D);
@@ -301,7 +302,7 @@ line-height: 140%; /* 19.6px */
     button {
      color: #FFFEF3;
 text-align: center;
-font-family: "Helvetica Neue";
+font-family: "Helvetica Neue",sans-serif;
 font-size: 10px;
 font-style: normal;
 font-weight: 700;
