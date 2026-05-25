@@ -62,6 +62,13 @@
             "color_name": "Bordo",
             "color_value": "#ea4848"
           }
+        },
+        "color_entry_9mjDaq": {
+          "type": "color_entry",
+          "settings": {
+            "color_name": "Verde",
+            "color_value": "#1eff00"
+          }
         }
       },
       "block_order": [
@@ -71,7 +78,8 @@
         "color_entry_7HXNWc",
         "color_entry_GiWDa3",
         "color_entry_WXpTkz",
-        "color_entry_EhenjJ"
+        "color_entry_EhenjJ",
+        "color_entry_9mjDaq"
       ],
       "name": "Mapa de Cores",
       "settings": {}
