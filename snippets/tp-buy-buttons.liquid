@@ -111,7 +111,7 @@
         return props;
       }
 
-      async _addToCart() {
+      _addToCart() {
         if (this._submitBtn.hasAttribute('disabled')) return;
 
         // Valida vehicle model
@@ -128,43 +128,51 @@
         this._setLoading(true);
 
         const cartEl = document.querySelector('cart-drawer') || document.querySelector('cart-notification');
-        const sections = cartEl?.getSectionsToRender?.()?.map(s => s.id) ?? [];
 
-        const payload = {
-          id: Number(this._getVariantId()),
-          quantity: this._qty,
-          properties: this._getProperties(),
-          sections,
-          sections_url: window.location.pathname,
-        };
+        // Mesmo padrão do product-form.js: FormData + fetchConfig
+        const config = fetchConfig('javascript');
+        config.headers['X-Requested-With'] = 'XMLHttpRequest';
+        delete config.headers['Content-Type'];
 
-        try {
-          const res = await fetch('/cart/add.js', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'X-Requested-With': 'XMLHttpRequest',
-            },
-            body: JSON.stringify(payload),
-          });
+        const formData = new FormData();
+        formData.append('id', this._getVariantId());
+        formData.append('quantity', this._qty);
 
-          if (!res.ok) {
-            const err = await res.json();
-            throw new Error(err.description || 'Erro ao adicionar ao carrinho');
-          }
+        Object.entries(this._getProperties()).forEach(([key, val]) => {
+          formData.append(`properties[${key}]`, val);
+        });
 
-          const data = await res.json();
-
-          if (cartEl) {
-            cartEl.renderContents(data);
-          } else {
-            window.location = '/cart';
-          }
-        } catch (err) {
-          console.error('[tp-buy-buttons]', err);
-        } finally {
-          this._setLoading(false);
+        if (cartEl) {
+          formData.append('sections', cartEl.getSectionsToRender().map(s => s.id));
+          formData.append('sections_url', window.location.pathname);
+          cartEl.setActiveElement(document.activeElement);
         }
+
+        config.body = formData;
+
+        fetch(routes.cart_add_url, config)
+          .then(res => res.json())
+          .then(response => {
+            if (response.status) {
+              console.error('[tp-buy-buttons]', response.description);
+              return;
+            }
+            if (!cartEl) {
+              window.location = window.routes.cart_url;
+              return;
+            }
+            publish(PUB_SUB_EVENTS.cartUpdate, {
+              source: 'product-form',
+              productVariantId: this._getVariantId(),
+              cartData: response,
+            });
+            cartEl.renderContents(response);
+          })
+          .catch(e => console.error('[tp-buy-buttons]', e))
+          .finally(() => {
+            this._setLoading(false);
+            if (cartEl?.classList.contains('is-empty')) cartEl.classList.remove('is-empty');
+          });
       }
 
       _setLoading(on) {
