@@ -316,6 +316,38 @@ text-transform: uppercase;
   gap: var(--tp-space-2, 8px);
 }
 
+.tp-trust-badges {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  justify-content: center;
+  padding-top: 0;
+
+  .tp-trust-badge {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+
+    img {
+      height: auto;
+      width: 16px;
+    }
+
+    .tp-trust-badge__text {
+color: var(--Gray-800, #431009);
+
+/* Body/12/Medium */
+font-family: "Inter";
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: 140%; /* 16.8px */
+      line-height: 120%;
+      /* 14.4px */
+    }
+  }
+}
+
 .tp-price__main {
   display: flex;
   align-items: center;
