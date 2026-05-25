@@ -620,7 +620,7 @@ a.product__text {
   color: var(--Gray-700, #344054);
 
 /* Body/16/Regular */
-font-family: "Helvetica";
+font-family: "Helvetica",sans-serif;
 font-size: 16px;
 font-style: normal;
 font-weight: 400;
@@ -629,6 +629,16 @@ line-height: 140%; /* 22.4px */
 @media (max-width:750px) {
   font-size:12px;
 }
+}
+
+.form__label {
+  color: #43434A;
+font-family: "Helvetica",sans-serif;
+font-size: 11px;
+font-style: normal;
+font-weight: 700;
+line-height: 140%; /* 15.4px */
+text-transform: uppercase;
 }
 
 .product__title {
