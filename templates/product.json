@@ -35,6 +35,15 @@
             "swatch_shape": "circle"
           }
         },
+        "vehicle_model_7AXErM": {
+          "type": "vehicle_model",
+          "settings": {
+            "label": "Modelo do Veículo",
+            "placeholder": "Ex: Honda Civic 2022",
+            "required": true,
+            "error_message": "Por favor, informe o modelo do veículo."
+          }
+        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
@@ -42,8 +51,8 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
           }
         }
       },
@@ -52,6 +61,7 @@
         "price",
         "variant_picker",
         "variant_picker_aPRT3c",
+        "vehicle_model_7AXErM",
         "quantity_selector",
         "buy_buttons"
       ],
