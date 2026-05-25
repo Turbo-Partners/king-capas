@@ -160,11 +160,9 @@ product-info {
 }
 
 
-variant-selects:has(.product-form__input--pill) {
-  .js.product-form__input.product-form__input--pill:has(input[name="Veiculo possui antena?-2"]) {
-    display:none;
+  .js.product-form__input.product-form__input--pill:has(input[value="Não"]) {
+    display:none !important;
   }
-}
 
 .product-form__error-message-wrapper .svg-wrapper {
   flex-shrink: 0;
