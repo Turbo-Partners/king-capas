@@ -306,6 +306,10 @@ letter-spacing: 1.12px;
 text-transform: uppercase;
 }
 
+.product-form__input.product-form__input--dropdown {
+  max-width:100% !important;
+}
+
 
   .tp-price {
   display: flex;
