@@ -159,6 +159,13 @@ product-info {
   margin-bottom: 1.5rem;
 }
 
+
+variant-selects:has(.product-form__input--pill) {
+  .js.product-form__input.product-form__input--pill:has(input[name="Veiculo possui antena?-2"]) {
+    display:none;
+  }
+}
+
 .product-form__error-message-wrapper .svg-wrapper {
   flex-shrink: 0;
   width: 1.5rem;
