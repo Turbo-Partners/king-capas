@@ -9,6 +9,17 @@
 {%- assign btn_text = block.settings.button_text | default: 'Comprar agora' -%}
 {%- assign variant = product.selected_or_first_available_variant -%}
 
+{% comment %} Form oculto com input[name="id"] — product-info.js::updateVariantInputs atualiza este input ao trocar variante {% endcomment %}
+<form id="{{ product_form_id }}" style="display:none" aria-hidden="true">
+  <input
+    type="hidden"
+    name="id"
+    value="{{ variant.id }}"
+    class="product-variant-id"
+    {% unless variant.available %}disabled{% endunless %}
+  >
+</form>
+
 <tp-buy-buttons
   class="tp-buy-buttons"
   data-section-id="{{ section_id }}"
@@ -22,145 +33,21 @@
     <button class="tp-buy-buttons__qty-btn" type="button" data-action="plus" aria-label="Aumentar">+</button>
   </div>
 
-<div {{ block.shopify_attributes }}>
-  {%- if product != blank -%}
-    {%- liquid
-      assign gift_card_recipient_feature_active = false
-      if block.settings.show_gift_card_recipient and product.gift_card?
-        assign gift_card_recipient_feature_active = true
-      endif
-
-      assign show_dynamic_checkout = false
-      if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
-        assign show_dynamic_checkout = true
-      endif
-    -%}
-
-    <product-form
-      class="product-form"
-      data-hide-errors="{{ gift_card_recipient_feature_active }}"
-      data-section-id="{{ section.id }}"
-    >
-      <div class="product-form__error-message-wrapper" role="alert" hidden>
-        <span class="svg-wrapper">
-          {{- 'icon-error.svg' | inline_asset_content -}}
-        </span>
-        <span class="product-form__error-message"></span>
-      </div>
-
-      {%- form 'product',
-        product,
-        id: product_form_id,
-        class: 'form',
-        novalidate: 'novalidate',
-        data-type: 'add-to-cart-form'
-      -%}
-        <input
-          type="hidden"
-          name="id"
-          value="{{ product.selected_or_first_available_variant.id }}"
-          {% if product.selected_or_first_available_variant.available == false
-            or quantity_rule_soldout
-            or product.selected_or_first_available_variant == null
-          %}
-            disabled
-          {% endif %}
-          class="product-variant-id"
-        >
-
-        {%- if gift_card_recipient_feature_active -%}
-          {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
-        {%- endif -%}
-
-        <div class="product-form__buttons">
-          {%- liquid
-            assign check_against_inventory = true
-            if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
-              assign check_against_inventory = false
-            endif
-            if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
-              assign quantity_rule_soldout = true
-            endif
-          -%}
-          <button
-            id="ProductSubmitButton-{{ section_id }}"
-            type="submit"
-            name="add"
-            class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
-            {% if product.selected_or_first_available_variant.available == false
-              or quantity_rule_soldout
-              or product.selected_or_first_available_variant == null
-            %}
-              disabled
-            {% endif %}
-          >
-            <span>
-              {%- if product.selected_or_first_available_variant == null -%}
-                {{ 'products.product.unavailable' | t }}
-              {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
-                {{ 'products.product.sold_out' | t }}
-              {%- else -%}
-                {{ 'products.product.add_to_cart' | t }}
-              {%- endif -%}
-            </span>
-            {%- render 'loading-spinner' -%}
-          </button>
-          {%- if show_dynamic_checkout -%}
-            {{ form | payment_button }}
-          {%- endif -%}
-        </div>
-      {%- endform -%}
-    </product-form>
-  {%- else -%}
-    <div class="product-form">
-      <div class="product-form__buttons form">
-        <button
-          type="submit"
-          name="add"
-          class="product-form__submit button button--full-width button--primary"
-          disabled
-        >
-          {{ 'products.product.sold_out' | t }}
-        </button>
-      </div>
-    </div>
-  {%- endif -%}
-
-  {%- if show_pickup_availability -%}
-    {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
-
-    {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities
-      | where: 'pick_up_enabled', true
-    -%}
-
-    <pickup-availability
-      class="product__pickup-availabilities quick-add-hidden"
-      {% if product.selected_or_first_available_variant.available and pick_up_availabilities.size > 0 %}
-        available
-      {% endif %}
-      data-root-url="{{ routes.root_url }}"
-      data-variant-id="{{ product.selected_or_first_available_variant.id }}"
-      data-has-only-default-variant="{{ product.has_only_default_variant }}"
-      data-product-page-color-scheme="gradient color-{{ section.settings.color_scheme }}"
-    >
-      <template>
-        <pickup-availability-preview class="pickup-availability-preview">
-          <span class="svg-wrapper">
-            {{- 'icon-unavailable.svg' | inline_asset_content -}}
-          </span>
-          <div class="pickup-availability-info">
-            <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
-            <button class="pickup-availability-button link link--text underlined-link">
-              {{ 'products.product.pickup_availability.refresh' | t }}
-            </button>
-          </div>
-        </pickup-availability-preview>
-      </template>
-    </pickup-availability>
-
-    <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
-  {%- endif -%}
-</div>
+  <button
+    class="tp-buy-buttons__submit"
+    type="button"
+    id="TpSubmitButton-{{ section_id }}"
+    {% unless variant.available %}disabled{% endunless %}
+  >
+    <span>
+      {%- if variant.available -%}
+        {{ btn_text }}
+      {%- else -%}
+        {{ 'products.product.sold_out' | t }}
+      {%- endif -%}
+    </span>
+    {%- render 'loading-spinner' -%}
+  </button>
 </tp-buy-buttons>
 
 <script>
@@ -181,18 +68,14 @@
         // Sincroniza com vehicle model
         this._syncVehicleModel();
 
-        console.log('[tp-buy-buttons] init — sectionId:', this.dataset.sectionId, '| formId:', this.dataset.formId, '| variantId:', this.dataset.variantId);
-
-        // 'variant-change' é o nome correto em PUB_SUB_EVENTS.variantChange (constants.js)
+        // Escuta variant-change (PUB_SUB_EVENTS.variantChange = 'variant-change') só para estado do botão.
+        // O variant ID real é sempre lido de input.product-variant-id no form oculto,
+        // que product-info.js::updateVariantInputs atualiza diretamente.
         document.addEventListener('variant-change', (e) => {
           const detail = e.detail?.data ?? e.detail;
-          console.log('[tp-buy-buttons] variant-change — detail.sectionId:', detail?.sectionId, '| meu sectionId:', this.dataset.sectionId, '| variant.id:', detail?.variant?.id);
-
           if (detail?.sectionId !== this.dataset.sectionId) return;
           const variant = detail.variant;
           if (!variant) return;
-          this.dataset.variantId = variant.id;
-          console.log('[tp-buy-buttons] variantId atualizado para:', variant.id);
           this._submitBtn.toggleAttribute('disabled', !variant.available);
           this._submitText.textContent = variant.available
             ? (this._submitBtn.dataset.text || this._defaultText)
