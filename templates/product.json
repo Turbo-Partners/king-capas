@@ -16,6 +16,13 @@
           "type": "title",
           "settings": {}
         },
+        "text_4E7ye9": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.custom.pequena_descricao.value }}",
+            "text_style": "body"
+          }
+        },
         "price": {
           "type": "price",
           "disabled": true,
@@ -66,6 +73,7 @@
       },
       "block_order": [
         "title",
+        "text_4E7ye9",
         "price",
         "variant_picker",
         "variant_picker_aPRT3c",
