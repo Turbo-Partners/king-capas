@@ -119,6 +119,10 @@ padding-bottom: 4rem;
   text-transform:uppercase;
   max-width: 133px;
   margin-inline: auto;
+
+  @media (max-width:750px) {
+    max-width: 86px;
+  }
 }
 
 .tp-categories__card-bar {
