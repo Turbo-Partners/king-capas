@@ -19,17 +19,19 @@
         assign swatch_count = option.values | map: 'swatch' | compact | size
         assign picker_type = block.settings.picker_type
 
-        assign tp_color_names = settings.tp_color_option_names | downcase | split: ','
-        assign tp_option_handle = option.name | handleize
-        assign tp_is_color_option = false
-        for tp_name in tp_color_names
-          assign tp_name_handle = tp_name | strip | handleize
-          if tp_name_handle == tp_option_handle
-            assign tp_is_color_option = true
-          endif
+        assign tp_color_section = sections['tp-e-color-swatches-v1']
+        assign tp_has_custom_colors = false
+        for tp_value in option.values
+          assign tp_value_handle = tp_value | handleize
+          for tp_block in tp_color_section.blocks
+            assign tp_block_handle = tp_block.settings.color_name | handleize
+            if tp_block_handle == tp_value_handle
+              assign tp_has_custom_colors = true
+            endif
+          endfor
         endfor
 
-        if swatch_count > 0 or tp_is_color_option
+        if swatch_count > 0 or tp_has_custom_colors
           if block.settings.swatch_shape != 'none'
             if block.settings.picker_type == 'dropdown'
               assign picker_type = 'swatch_dropdown'
