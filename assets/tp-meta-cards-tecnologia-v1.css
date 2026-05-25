@@ -52,6 +52,10 @@
   font-size: var(--tp-mct-title-size-mobile);
   font-weight: var(--tp-mct-title-weight);
   line-height: var(--tp-leading-tight);
+
+  @media (max-width:750px) {
+    text-align:center;
+  }
 }
 
 @media screen and (min-width: 1024px) {
