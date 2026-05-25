@@ -150,12 +150,6 @@
     <div class="tp-e-image-with-text-v1__media">
       {% if section.settings.image_desktop != blank or section.settings.image_mobile != blank %}
         <picture class="tp-e-image-with-text-v1__picture">
-          {% if section.settings.image_mobile != blank %}
-            <source
-              media="(max-width: 767px)"
-              srcset="{{ section.settings.image_mobile | image_url }}"
-            >
-          {% endif %}
 
           {% if section_image != blank %}
             <img
@@ -166,9 +160,7 @@
               fetchpriority="{{ fetch_priority }}"
             >
           {% endif %}
-          {% if section.settings.image_mobile != blank %}
-            <source />
-          {% endif %}
+
         </picture>
       {% else %}
         {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
