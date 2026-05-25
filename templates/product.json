@@ -21,36 +21,6 @@
           "disabled": true,
           "settings": {}
         },
-        "bundle_Y7E9MY": {
-          "type": "bundle",
-          "settings": {
-            "product": "",
-            "pix_discount": 1,
-            "bundle_label": "Escolha sua quantidade",
-            "buy_button_text": "Comprar agora",
-            "security_text": "Pagamento 100% Seguro",
-            "shipping_text": "Frete grátis acima de R$200",
-            "pix_text": "no pix",
-            "default_option_1_quantity": "3",
-            "default_option_1_discount": 10,
-            "default_option_1_title": "3 unidades",
-            "default_option_1_badge": "MAIS VENDIDO",
-            "default_option_2_quantity": "2",
-            "default_option_2_discount": 5,
-            "default_option_2_title": "2 unidades",
-            "default_option_2_badge": "",
-            "default_option_3_quantity": "",
-            "default_option_3_discount": 0,
-            "default_option_3_title": "",
-            "default_option_3_badge": "",
-            "badge_bg": "#000000",
-            "badge_color": "#ffffff",
-            "border_color": "#e0e0e0",
-            "border_color_active": "#000000",
-            "tag_color": "#ffffff",
-            "tag_bg": "#000000"
-          }
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -68,27 +38,14 @@
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true
           }
-        },
-        "description": {
-          "type": "description",
-          "settings": {}
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
         }
       },
       "block_order": [
         "title",
         "price",
-        "bundle_Y7E9MY",
         "variant_picker",
         "quantity_selector",
-        "buy_buttons",
-        "description",
-        "share"
+        "buy_buttons"
       ],
       "settings": {
         "enable_sticky_info": true,
