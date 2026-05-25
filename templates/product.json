@@ -269,21 +269,21 @@
           "type": "benefit",
           "settings": {
             "image": "shopify://shop_images/714.svg",
-            "richtext": "<p>Ajuste perfeito para cada modelo</p>"
+            "richtext": "<p><strong>Proteção real no dia a dia</strong><br/>Protege contra poeira, riscos, sol, maresia e pequenos danos que desgastam o veículo com o tempo.</p>"
           }
         },
         "benefit_tbJ4LP": {
           "type": "benefit",
           "settings": {
             "image": "shopify://shop_images/714.svg",
-            "richtext": "<p>Material premium e exclusivo</p>"
+            "richtext": "<p><strong>Ajuste feito para o seu carro</strong><br/><br/>Cada capa é produzida sob medida para garantir encaixe perfeito e visual muito mais sofisticado.</p>"
           }
         },
         "benefit_EGtP6y": {
           "type": "benefit",
           "settings": {
             "image": "shopify://shop_images/714.svg",
-            "richtext": "<p>Proteção contra riscos, poeira e sol</p>"
+            "richtext": "<p><strong>Material premium e durável</strong><br/>Produzida com tecido exclusivo de alta qualidade, pensado para oferecer resistência e longa durabilidade.</p>"
           }
         }
       },
@@ -302,8 +302,8 @@
         "loading_image": true,
         "image_desktop": "shopify://shop_images/712_1.webp",
         "image_mobile": "shopify://shop_images/713_1.webp",
-        "title": "<h2>Nascemos para elevar o padrão de proteção</h2>",
-        "richtext": "<p>Enquanto o mercado oferece capas genéricas, desenvolvemos soluções sob medida para quem valoriza acabamento, durabilidade e proteção de verdade.</p>",
+        "title": "<h2>Seu carro não é comum.</h2><h2>A proteção também não deveria ser</h2>",
+        "richtext": "",
         "button_url": "shopify://collections/all",
         "button_text": "Saiba mais",
         "faq_icon_type": "arrow",
