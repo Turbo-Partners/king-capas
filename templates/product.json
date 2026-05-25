@@ -64,6 +64,13 @@
           "type": "tp_price",
           "settings": {}
         },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
         "custom_buy_buttons_7VTA3y": {
           "type": "custom_buy_buttons",
           "settings": {
@@ -75,14 +82,6 @@
           "settings": {
             "bg_color": "#f5f0c0",
             "text_color": "#111111"
-          }
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "disabled": true,
-          "settings": {
-            "show_dynamic_checkout": false,
-            "show_gift_card_recipient": false
           }
         },
         "complementary_3L7t4e": {
@@ -123,9 +122,9 @@
         "quantity_selector",
         "price",
         "tp_price_bmC7KB",
+        "buy_buttons",
         "custom_buy_buttons_7VTA3y",
         "warranty_badge_TrnfYf",
-        "buy_buttons",
         "complementary_3L7t4e",
         "product_details_meta_citgki",
         "protection_types_UggDPk"
