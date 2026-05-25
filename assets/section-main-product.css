@@ -180,7 +180,7 @@ product-info {
   display: flex;
   align-items: center;
   border: 1.5px solid var(--tp-color-border, #e0e0e0);
-  border-radius: var(--tp-radius-md, 8px);
+  border-radius: 2px;
   flex-shrink: 0;
 }
 
