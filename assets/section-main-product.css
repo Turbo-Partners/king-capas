@@ -278,6 +278,68 @@ product-info {
     display:none !important;
   }
 
+  .tp-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--tp-space-2, 8px);
+}
+
+.tp-price__main {
+  display: flex;
+  align-items: center;
+  gap: var(--tp-space-3, 12px);
+  flex-wrap: wrap;
+}
+
+.tp-price__compare {
+  font-size: var(--tp-font-size-base, 16px);
+  color: var(--tp-color-text-secondary, #888);
+  text-decoration: line-through;
+  font-weight: var(--tp-font-regular, 400);
+}
+
+.tp-price__current {
+  font-size: var(--tp-font-size-2xl, 24px);
+  font-weight: var(--tp-font-bold, 700);
+  color: var(--tp-color-text-primary, #111);
+  line-height: 1;
+}
+
+.tp-price__badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--tp-color-success, #16a34a);
+  color: #fff;
+  font-size: var(--tp-font-size-sm, 13px);
+  font-weight: var(--tp-font-bold, 700);
+  padding: 4px 10px;
+  border-radius: var(--tp-radius-sm, 4px);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.tp-price__installments {
+  font-size: var(--tp-font-size-sm, 14px);
+  color: var(--tp-color-text-secondary, #666);
+  white-space: nowrap;
+}
+
+.tp-price__installments strong {
+  color: var(--tp-color-text-primary, #111);
+  font-weight: var(--tp-font-semibold, 600);
+}
+
+/* estado sem promoção: sem compare */
+.tp-price--no-compare .tp-price__compare {
+  display: none;
+}
+
+.tp-price--no-compare .tp-price__badge {
+  display: none;
+}
+
 /* Ícones com Texto */
 .tp-pdp-icons-list {
   display: grid;
