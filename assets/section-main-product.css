@@ -161,7 +161,7 @@ product-info {
 
 
   .js.product-form__input.product-form__input--pill:has(input[value="Não"]),
-  .product-form__input--dropdown:has(.product-form__input.product-form__input--dropdown select[name="options[Escolha a Cor da Capa]"]) {
+.product-form__input.product-form__input--dropdown:has(select[name="options[Escolha a Cor da Capa]"]) {
     display:none !important;
   }
 
