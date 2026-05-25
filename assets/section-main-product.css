@@ -616,6 +616,21 @@ a.product__text {
   justify-content:space-between;
 }
 
+.product__text.inline-richtext {
+  color: var(--Gray-700, #344054);
+
+/* Body/16/Regular */
+font-family: "Helvetica";
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 140%; /* 22.4px */
+
+@media (max-width:750px) {
+  font-size:12px;
+}
+}
+
 .product__title {
   word-break: break-word;
   margin-bottom: 1.5rem;
