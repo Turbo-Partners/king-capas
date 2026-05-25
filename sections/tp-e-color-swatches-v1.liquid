@@ -27,7 +27,7 @@
           .tp-swatch--{{ slug }},
           .tp-swatch--{{ slug }}.swatch,
           label.tp-swatch--{{ slug }} {
-            background-color: {{ block.settings.color_value }};
+            background-color: {{ block.settings.color_value }} !important;
           }
         {%- endif -%}
         label.tp-swatch--{{ slug }} {
