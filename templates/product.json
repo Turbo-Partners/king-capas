@@ -262,6 +262,87 @@
         "pad_bottom_desktop": 0
       }
     },
+    "tp_e_image_with_text_v1_9rAh74": {
+      "type": "tp-e-image-with-text-v1",
+      "blocks": {
+        "benefit_V94QRN": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/714.svg",
+            "richtext": "<p>Ajuste perfeito para cada modelo</p>"
+          }
+        },
+        "benefit_tbJ4LP": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/714.svg",
+            "richtext": "<p>Material premium e exclusivo</p>"
+          }
+        },
+        "benefit_EGtP6y": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/714.svg",
+            "richtext": "<p>Proteção contra riscos, poeira e sol</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_V94QRN",
+        "benefit_tbJ4LP",
+        "benefit_EGtP6y"
+      ],
+      "name": "Imagem Com Texto V1",
+      "settings": {
+        "image_position_desktop": "left",
+        "image_position_mobile": "first",
+        "title_above_image_mobile": false,
+        "image_padding_inline_mobile": false,
+        "image_padding_inline_desktop": false,
+        "loading_image": true,
+        "image_desktop": "shopify://shop_images/712_1.webp",
+        "image_mobile": "shopify://shop_images/713_1.webp",
+        "title": "<h2>Nascemos para elevar o padrão de proteção</h2>",
+        "richtext": "<p>Enquanto o mercado oferece capas genéricas, desenvolvemos soluções sob medida para quem valoriza acabamento, durabilidade e proteção de verdade.</p>",
+        "button_url": "shopify://collections/all",
+        "button_text": "Saiba mais",
+        "faq_icon_type": "arrow",
+        "faq_first_open": false,
+        "data_animate": false,
+        "title_custom": false,
+        "text_color_title": "#2b2b2b",
+        "font_weight": "700",
+        "font_size_title": 36,
+        "font_size_title_mobile": 28,
+        "content_custom": false,
+        "text_color_content": "#2b2b2b",
+        "content_font_weight": "400",
+        "font_size_content": 16,
+        "font_size_content_mobile": 16,
+        "button_custom": false,
+        "text_color_btn": "#ffffff",
+        "bg_color_btn": "#443fd2",
+        "button_font_weight": "600",
+        "button_font_size_desktop": 16,
+        "button_font_size_mobile": 16,
+        "radius_btn": 100,
+        "background_type": "color",
+        "background_color": "#0d0d0d",
+        "background_gradient": "",
+        "pad_top_min": 0,
+        "pad_top_max": 0,
+        "pad_bottom_min": 0,
+        "pad_bottom_max": 0,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": true,
+        "pad_bottom_mobile": 48,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
     "related-products": {
       "type": "related-products",
       "disabled": true,
@@ -286,6 +367,7 @@
     "main",
     "tp_e_informativos_icones_v1_fMFaaH",
     "tp_slider_bump_RFGtQR",
+    "tp_e_image_with_text_v1_9rAh74",
     "related-products"
   ]
 }
