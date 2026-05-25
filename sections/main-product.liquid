@@ -1010,37 +1010,24 @@
 </product-info>
 
 <script>
-  (function () {
-    var mq = window.matchMedia('(max-width: 749px)');
+   const moveReviewBlock = () => {
+    if (window.innerWidth > 750) return;
 
-    function moveReviewsBlock() {
-      var target = document.querySelector('.wrapper-title-app');
-      if (!target) return;
+    const reviewBlock = document.querySelector(
+      '.shopify-app-block:has(.areviews_main_header_container)'
+    );
 
-      var appBlock = document.querySelector('shopify-app-block:has(.areviews_main_header_container)');
-      if (!appBlock) return;
+    const target = document.querySelector('.wrapper-title-app');
 
-      if (mq.matches) {
-        target.appendChild(appBlock);
-      }
+    if (!reviewBlock || !target) {
+      requestAnimationFrame(moveReviewBlock);
+      return;
     }
 
-    function tryMove(retries) {
-      requestAnimationFrame(function () {
-        if (document.querySelector('shopify-app-block:has(.areviews_main_header_container)')) {
-          moveReviewsBlock();
-        } else if (retries > 0) {
-          tryMove(retries - 1);
-        }
-      });
-    }
+    target.appendChild(reviewBlock);
+  };
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', function () { tryMove(10); });
-    } else {
-      tryMove(10);
-    }
-  })();
+  requestAnimationFrame(moveReviewBlock);
 </script>
 {% schema %}
 {
