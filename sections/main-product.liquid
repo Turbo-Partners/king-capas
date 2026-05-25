@@ -59,13 +59,11 @@
         var sectionId = {{ section.id | json }};
 
         function setDisabled(disabled) {
-          var btn = document.getElementById('ProductSubmitButton-' + sectionId);
-          if (!btn) return;
-          if (disabled) {
-            btn.setAttribute('disabled', '');
-          } else {
-            btn.removeAttribute('disabled');
-          }
+          ['ProductSubmitButton-', 'TpSubmitButton-'].forEach(function (prefix) {
+            var btn = document.getElementById(prefix + sectionId);
+            if (!btn) return;
+            btn.toggleAttribute('disabled', disabled);
+          });
         }
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -542,6 +540,14 @@
                     {{ block.settings.error_message | default: 'Por favor, informe o modelo do veículo.' }}
                   </p>
                 </div>
+              {%- when 'custom_buy_buttons' -%}
+                {{ 'tp-buy-buttons.css' | asset_url | stylesheet_tag }}
+                {%- render 'tp-buy-buttons',
+                  product: product,
+                  block: block,
+                  product_form_id: product_form_id,
+                  section_id: section.id
+                -%}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
                   block: block,
@@ -1037,6 +1043,19 @@
           "id": "error_message",
           "label": "Mensagem de erro",
           "default": "Por favor, informe o modelo do veículo."
+        }
+      ]
+    },
+    {
+      "type": "custom_buy_buttons",
+      "name": "Botão de Compra Custom",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Texto do botão",
+          "default": "Comprar agora"
         }
       ]
     },

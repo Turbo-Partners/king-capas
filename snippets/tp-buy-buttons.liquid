@@ -1,0 +1,185 @@
+{% comment %}
+  Accepts:
+  - product: {Object}
+  - block: {Object}
+  - product_form_id: {String}
+  - section_id: {String}
+{% endcomment %}
+
+{%- assign btn_text = block.settings.button_text | default: 'Comprar agora' -%}
+{%- assign variant = product.selected_or_first_available_variant -%}
+
+<tp-buy-buttons
+  class="tp-buy-buttons"
+  data-section-id="{{ section_id }}"
+  data-form-id="{{ product_form_id }}"
+  data-variant-id="{{ variant.id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="tp-buy-buttons__qty" aria-label="Quantidade">
+    <button class="tp-buy-buttons__qty-btn" type="button" data-action="minus" aria-label="Diminuir">−</button>
+    <span class="tp-buy-buttons__qty-value" aria-live="polite" aria-label="Quantidade: ">1</span>
+    <button class="tp-buy-buttons__qty-btn" type="button" data-action="plus" aria-label="Aumentar">+</button>
+  </div>
+
+  <button
+    class="tp-buy-buttons__submit"
+    type="button"
+    id="TpSubmitButton-{{ section_id }}"
+    {% unless variant.available %}disabled{% endunless %}
+  >
+    <span>
+      {%- if variant.available -%}
+        {{ btn_text }}
+      {%- else -%}
+        {{ 'products.product.sold_out' | t }}
+      {%- endif -%}
+    </span>
+    {%- render 'loading-spinner' -%}
+  </button>
+</tp-buy-buttons>
+
+<script>
+  if (!customElements.get('tp-buy-buttons')) {
+    customElements.define('tp-buy-buttons', class TpBuyButtons extends HTMLElement {
+      connectedCallback() {
+        this._qty = 1;
+        this._qtyEl = this.querySelector('.tp-buy-buttons__qty-value');
+        this._submitBtn = this.querySelector('.tp-buy-buttons__submit');
+        this._submitText = this._submitBtn.querySelector('span');
+        this._spinner = this._submitBtn.querySelector('.loading__spinner');
+
+        this.querySelector('[data-action="minus"]').addEventListener('click', () => this._changeQty(-1));
+        this.querySelector('[data-action="plus"]').addEventListener('click', () => this._changeQty(1));
+        this._submitBtn.addEventListener('click', () => this._addToCart());
+
+        // Sincroniza com vehicle model
+        this._syncVehicleModel();
+
+        // Escuta mudança de variante (Dawn dispara 'variant:change' no document)
+        document.addEventListener('variant:change', (e) => {
+          if (e.detail?.sectionId !== this.dataset.sectionId) return;
+          const variant = e.detail.variant;
+          if (!variant) return;
+          this.dataset.variantId = variant.id;
+          this._submitBtn.toggleAttribute('disabled', !variant.available);
+          this._submitText.textContent = variant.available
+            ? (this._submitBtn.dataset.text || this._submitText.textContent)
+            : window.variantStrings?.soldOut || 'Esgotado';
+        });
+      }
+
+      _changeQty(delta) {
+        this._qty = Math.max(1, this._qty + delta);
+        this._qtyEl.textContent = this._qty;
+      }
+
+      _syncVehicleModel() {
+        const sectionId = this.dataset.sectionId;
+        const input = document.getElementById('VehicleModel-' + sectionId);
+        if (!input || input.dataset.vehicleModelRequired !== 'true') return;
+
+        const update = () => this._submitBtn.toggleAttribute('disabled', input.value.trim() === '');
+        update();
+        input.addEventListener('input', update);
+      }
+
+      _getVariantId() {
+        const form = document.getElementById(this.dataset.formId);
+        return form?.querySelector('.product-variant-id')?.value || this.dataset.variantId;
+      }
+
+      _getProperties() {
+        const formId = this.dataset.formId;
+        const props = {};
+
+        // Inputs dentro do <form>
+        const form = document.getElementById(formId);
+        if (form) {
+          form.querySelectorAll('input[name^="properties["]').forEach(el => {
+            const key = el.name.slice(12, -1);
+            if (key) props[key] = el.value;
+          });
+        }
+
+        // Inputs externos com form="<id>"
+        document.querySelectorAll(`input[name^="properties["][form="${formId}"]`).forEach(el => {
+          const key = el.name.slice(12, -1);
+          if (key && el.value.trim()) props[key] = el.value;
+        });
+
+        return props;
+      }
+
+      async _addToCart() {
+        if (this._submitBtn.hasAttribute('disabled')) return;
+
+        // Valida vehicle model
+        const sectionId = this.dataset.sectionId;
+        const vehicleInput = document.getElementById('VehicleModel-' + sectionId);
+        if (vehicleInput?.dataset.vehicleModelRequired === 'true' && !vehicleInput.value.trim()) {
+          const errorEl = document.getElementById('VehicleModelError-' + sectionId);
+          errorEl?.removeAttribute('hidden');
+          vehicleInput.setAttribute('aria-invalid', 'true');
+          vehicleInput.focus();
+          return;
+        }
+
+        this._setLoading(true);
+
+        const cartEl = document.querySelector('cart-drawer') || document.querySelector('cart-notification');
+        const sections = cartEl?.getSectionsToRender?.()?.map(s => s.id) ?? [];
+
+        const payload = {
+          id: Number(this._getVariantId()),
+          quantity: this._qty,
+          properties: this._getProperties(),
+          sections,
+          sections_url: window.location.pathname,
+        };
+
+        try {
+          const res = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Requested-With': 'XMLHttpRequest',
+            },
+            body: JSON.stringify(payload),
+          });
+
+          if (!res.ok) {
+            const err = await res.json();
+            throw new Error(err.description || 'Erro ao adicionar ao carrinho');
+          }
+
+          const data = await res.json();
+
+          if (cartEl) {
+            cartEl.renderContents(data);
+          } else {
+            window.location = '/cart';
+          }
+        } catch (err) {
+          console.error('[tp-buy-buttons]', err);
+        } finally {
+          this._setLoading(false);
+        }
+      }
+
+      _setLoading(on) {
+        if (on) {
+          this._submitBtn.setAttribute('disabled', '');
+          this._submitText.classList.add('hidden');
+          this._spinner?.classList.remove('hidden');
+        } else {
+          this._submitBtn.removeAttribute('disabled');
+          this._submitText.classList.remove('hidden');
+          this._spinner?.classList.add('hidden');
+          // Re-sync vehicle model após loading
+          this._syncVehicleModel();
+        }
+      }
+    });
+  }
+</script>
