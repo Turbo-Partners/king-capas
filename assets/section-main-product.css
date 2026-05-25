@@ -613,6 +613,20 @@ a.product__text {
 .product__title {
   word-break: break-word;
   margin-bottom: 1.5rem;
+  h1 {
+    color: var(--Gray-900, #101828);
+
+/* Body/Heading/32 */
+font-family: "Helvetica Neue";
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: 120%; /* 38.4px */
+
+@media (max-width:750px) {
+  font-size:20px;
+}
+  }
 }
 
 .product__title > * {
