@@ -159,6 +159,36 @@ product-info {
   margin-bottom: 1.5rem;
 }
 
+.tp-vehicle-model {
+  margin-bottom: var(--tp-space-4, 16px);
+}
+
+.tp-vehicle-model__label {
+  display: block;
+  margin-bottom: var(--tp-space-2, 8px);
+  font-weight: var(--tp-font-medium, 500);
+  color: var(--tp-color-text-primary, inherit);
+  font-size: var(--tp-font-size-sm, 14px);
+}
+
+.tp-vehicle-model__required {
+  color: var(--tp-color-error, #dc2626);
+}
+
+.tp-vehicle-model__input {
+  width: 100%;
+}
+
+.tp-vehicle-model__input[aria-invalid="true"] {
+  border-color: var(--tp-color-error, #dc2626);
+  outline-color: var(--tp-color-error, #dc2626);
+}
+
+.tp-vehicle-model__error {
+  margin-top: var(--tp-space-1, 4px);
+  color: var(--tp-color-error, #dc2626);
+  font-size: var(--tp-font-size-sm, 14px);
+}
 
   .js.product-form__input.product-form__input--pill:has(input[value="Não"]),
 .product-form__input.product-form__input--dropdown:has(select[name="options[Escolha a Cor da Capa]"]) {
