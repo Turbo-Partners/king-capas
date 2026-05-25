@@ -100,7 +100,6 @@
     font-size: var(--tp-btn-primary-font-size);
     font-weight: var(--tp-btn-primary-font-weight);
     line-height: var(--tp-leading-normal);
-    text-transform: uppercase;
     height: var(--tp-space-12);
     display: flex;
     align-items: center;
