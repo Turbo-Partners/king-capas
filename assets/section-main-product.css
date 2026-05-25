@@ -487,6 +487,11 @@ line-height: 140%; /* 19.6px */
   }
 }
 
+.wrapper-title-app {
+
+  width: 100%;
+}
+
 
 .tp-pdp-icons-list__text {
 color: var(--Gray-900, #101828);
