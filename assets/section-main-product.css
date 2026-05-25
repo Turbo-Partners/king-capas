@@ -518,8 +518,8 @@ max-width:100px;
         justify-content:space-between;
       }
       .tp-pdp-icons-list__text {
-font-size: 8px;
-     max-width: 40px;
+font-size: 10px;
+    max-width: 72px;
       }
      
   }
@@ -630,7 +630,7 @@ line-height: 140%; /* 22.4px */
   font-size:12px;
 }
 }
-
+ 
 .slider-buttons.quick-add-hidden {
   display:none;
 }
