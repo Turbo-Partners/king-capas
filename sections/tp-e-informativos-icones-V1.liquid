@@ -86,6 +86,12 @@
   .{{ section.id }} .tp-info-icones__icon {
     width: {{ section.settings.icon_size }}px;
     height: {{ section.settings.icon_size }}px;
+
+    @media (max-width:750px) {
+            width: {{ section.settings.icon_size_mob }}px;
+    height: {{ section.settings.icon_size_mob }}px;
+        
+    }
   }
 {% endif %}
 
@@ -281,6 +287,16 @@
       "type": "range",
       "id": "icon_size",
       "label": "Tamanho do ícone (px)",
+      "min": 24,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "icon_size_mob",
+      "label": "Tamanho do ícone mobile (px)",
       "min": 24,
       "max": 120,
       "step": 4,
