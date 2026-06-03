@@ -255,13 +255,14 @@
     font-family: "Helvetica Neue";
     font-size: clamp(2.4000rem, calc(1.6571rem + 1.9048vw), 4.4000rem);
     font-style: normal;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 120%; /* 51.6px */
     text-transform: uppercase;
 }
 
 .tp-e-banner-slides-v1__title h2 strong {
-    color: #FF0;
+    color: #5B5B5B;
+    font-weight: 400;
 }
 
 .tp-e-banner-slides-v1__text p {
