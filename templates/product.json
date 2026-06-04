@@ -167,6 +167,29 @@
         "padding_bottom": 12
       }
     },
+    "tp_richtext_QwrJEj": {
+      "type": "tp-richtext",
+      "name": "Texto Rico",
+      "settings": {
+        "image": "shopify://shop_images/752.svg",
+        "richtext": "<h2>Não é só sobre cobrir um carro</h2><p>A Kings nasceu para elevar o padrão da proteção automotiva no Brasil, desenvolvendo capas sob medidacom materiais premium, ajuste impecável e acabamento muito acima das capas comuns do mercado.</p>",
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "pad_top_min": 40,
+        "pad_top_max": 64,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 80,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
     "tp_slider_bump_RFGtQR": {
       "type": "tp-slider-bump",
       "blocks": {
@@ -525,6 +548,7 @@
   },
   "order": [
     "main",
+    "tp_richtext_QwrJEj",
     "tp_slider_bump_RFGtQR",
     "tp_e_image_with_text_v1_9rAh74",
     "tp_meta_cards_category_v1_V8pCiq",
