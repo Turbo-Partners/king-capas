@@ -74,7 +74,9 @@
                 {% for block in section.blocks limit: 2 %}
                     <div class="tp-e-img-benefits-v2__block" {{ block.shopify_attributes }}>
                         {% if block.settings.image != blank %}
-                            <img src="{{ block.settings.image | image_url }}" class="tp-e-img-benefits-v2__block-image" loading="lazy">
+                            <div class="tp-e-img-benefits-v2__block-image-wrapper">
+                                <img src="{{ block.settings.image | image_url }}" class="tp-e-img-benefits-v2__block-image" loading="lazy" alt="">
+                            </div>
                         {% endif %}
                         <div class="tp-e-img-benefits-v2__block-text-wrapper">
                             {{ block.settings.richtext }}
@@ -86,7 +88,9 @@
                 {% for block in section.blocks offset: 2 limit: 2 %}
                     <div class="tp-e-img-benefits-v2__block" {{ block.shopify_attributes }}>
                         {% if block.settings.image != blank %}
-                            <img src="{{ block.settings.image | image_url }}" class="tp-e-img-benefits-v2__block-image" loading="lazy">
+                            <div class="tp-e-img-benefits-v2__block-image-wrapper">
+                                <img src="{{ block.settings.image | image_url }}" class="tp-e-img-benefits-v2__block-image" loading="lazy" alt="">
+                            </div>
                         {% endif %}
                         <div class="tp-e-img-benefits-v2__block-text-wrapper">
                             {{ block.settings.richtext }}
@@ -113,11 +117,6 @@
       "id": "title",
       "label": "Título",
       "default": "<h2>Imagem com benefícios</h2>"
-    },
-    {
-      "type": "image_picker",
-      "id": "barra",
-      "label": "Barra decorativa"
     },
     {
       "type": "image_picker",
