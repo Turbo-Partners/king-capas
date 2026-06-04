@@ -619,7 +619,7 @@
             "card_align": "center",
             "card_bg": "#FFFFFF",
             "card_border_color": "#E5E5E5",
-            "card_border_width": 1,
+            "card_border_width": 0,
             "card_radius": "var(--tp-radius-lg)",
             "impact_custom": false,
             "impact_color": "#1a1a1a",
@@ -639,17 +639,17 @@
             "extra_weight": "400"
           }
         },
-        "review_YmJ3Ey": {
+        "review_9P8A4P": {
           "type": "review",
           "settings": {
-            "impact": "Frase de impacto",
-            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>",
-            "name": "Nome e sobrenome",
+            "impact": "",
+            "content": "<p>“Superou minhas expectativas. Entrega foi rápida, material e acabamento da capa são impecáveis. Recomendo Kings capas”</p>",
+            "name": "Pedro Vianna",
             "extra_info": "",
-            "card_align": "left",
+            "card_align": "center",
             "card_bg": "#FFFFFF",
             "card_border_color": "#E5E5E5",
-            "card_border_width": 1,
+            "card_border_width": 0,
             "card_radius": "var(--tp-radius-lg)",
             "impact_custom": false,
             "impact_color": "#1a1a1a",
@@ -669,17 +669,47 @@
             "extra_weight": "400"
           }
         },
-        "review_zWQTU3": {
+        "review_edq8ag": {
           "type": "review",
           "settings": {
-            "impact": "Frase de impacto",
-            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>",
-            "name": "Nome e sobrenome",
+            "impact": "",
+            "content": "<p>“Superou minhas expectativas. Entrega foi rápida, material e acabamento da capa são impecáveis. Recomendo Kings capas”</p>",
+            "name": "Pedro Vianna",
             "extra_info": "",
-            "card_align": "left",
+            "card_align": "center",
             "card_bg": "#FFFFFF",
             "card_border_color": "#E5E5E5",
-            "card_border_width": 1,
+            "card_border_width": 0,
+            "card_radius": "var(--tp-radius-lg)",
+            "impact_custom": false,
+            "impact_color": "#1a1a1a",
+            "impact_size": 20,
+            "impact_weight": "700",
+            "content_custom": false,
+            "content_color": "#4a4a4a",
+            "content_size": 16,
+            "content_weight": "400",
+            "name_custom": false,
+            "name_color": "#1a1a1a",
+            "name_size": 16,
+            "name_weight": "700",
+            "extra_custom": false,
+            "extra_color": "#888888",
+            "extra_size": 14,
+            "extra_weight": "400"
+          }
+        },
+        "review_PXyCPf": {
+          "type": "review",
+          "settings": {
+            "impact": "",
+            "content": "<p>“Superou minhas expectativas. Entrega foi rápida, material e acabamento da capa são impecáveis. Recomendo Kings capas”</p>",
+            "name": "Pedro Vianna",
+            "extra_info": "",
+            "card_align": "center",
+            "card_bg": "#FFFFFF",
+            "card_border_color": "#E5E5E5",
+            "card_border_width": 0,
             "card_radius": "var(--tp-radius-lg)",
             "impact_custom": false,
             "impact_color": "#1a1a1a",
@@ -702,8 +732,9 @@
       },
       "block_order": [
         "review_CJdYYz",
-        "review_YmJ3Ey",
-        "review_zWQTU3"
+        "review_9P8A4P",
+        "review_edq8ag",
+        "review_PXyCPf"
       ],
       "name": "Depoimentos v2",
       "settings": {
