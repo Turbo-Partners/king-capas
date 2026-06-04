@@ -287,30 +287,31 @@
         "pad_bottom_desktop": 0
       }
     },
-    "tp_e_image_with_text_v1_Rr4gVb": {
+    "tp_e_image_with_text_v1_WHyGz8": {
       "type": "tp-e-image-with-text-v1",
       "custom_css": [
         "h2 {color: #2b2b2b;}",
-        "p {color: var(--Gray-600, #475467);}"
+        "p {color: var(--Gray-600, #475467);}",
+        ".tp-e-image-with-text-v1__button {border-radius: 2px; color: white; background: #000;}"
       ],
       "name": "Imagem Com Texto V1",
       "settings": {
         "media_type": "image",
-        "image_position_desktop": "left",
+        "image_position_desktop": "right",
         "image_position_mobile": "first",
         "title_above_image_mobile": false,
         "image_padding_inline_mobile": true,
         "image_padding_inline_desktop": true,
         "loading_image": true,
-        "image_desktop": "shopify://shop_images/738_1.webp",
-        "image_mobile": "shopify://shop_images/739_1.webp",
+        "image_desktop": "shopify://shop_images/746_1.webp",
+        "image_mobile": "shopify://shop_images/747_1.webp",
         "video_source": "hosted",
         "video_url": "",
         "video_autoplay": true,
-        "title": "<h2>Muito além de uma capa automotiva</h2>",
-        "richtext": "<p>Na Kings, cada projeto é desenvolvido para unir proteção real, ajuste perfeito e acabamento premium. Trabalhamos com produção sob medida, materiais exclusivos e uma equipe preparada para atender desde clientes individuais até grandes operações e eventos automotivos.</p>",
-        "button_url": "",
-        "button_text": "Texto do botão",
+        "title": "<h2>Soluções para empresas, eventos e concessionárias</h2>",
+        "richtext": "<p>Atendemos marcas, eventos automotivos, concessionárias e empresas que buscam proteção premium com produção em escala, padronização e alto nível de acabamento.</p>",
+        "button_url": "shopify://collections/all",
+        "button_text": "Solicitar atendimento",
         "faq_icon_type": "arrow",
         "faq_first_open": false,
         "data_animate": false,
@@ -334,7 +335,7 @@
         "background_type": "color",
         "background_color": "#ffffff",
         "background_gradient": "",
-        "pad_top_min": 32,
+        "pad_top_min": 24,
         "pad_top_max": 64,
         "pad_bottom_min": 48,
         "pad_bottom_max": 96,
@@ -536,7 +537,7 @@
     "main",
     "tp_richtext_QwrJEj",
     "tp_e_image_with_text_v1_9rAh74",
-    "tp_e_image_with_text_v1_Rr4gVb",
+    "tp_e_image_with_text_v1_WHyGz8",
     "tp_slider_bump_RFGtQR",
     "1779720329753c98c3",
     "tp_e_related_products_v1_BzYJCp",
