@@ -359,44 +359,6 @@
         "pad_bottom_desktop": 60
       }
     },
-    "tp_meta_cards_category_v1_V8pCiq": {
-      "type": "tp-meta-cards-category-v1",
-      "custom_css": [
-        ".tp-meta-cards-tecnologia-v1__swiper-outer {border-bottom: 1px solid var(--Gray-200, #eaecf0);}"
-      ],
-      "name": "Cards category - meta ",
-      "settings": {
-        "preview_title": "",
-        "bg_color": "#ffffff",
-        "title_custom": true,
-        "title_color": "#101828",
-        "title_size_mobile": 32,
-        "title_size_desktop": 32,
-        "title_weight": "700",
-        "card_title_custom": true,
-        "card_title_color": "#101828",
-        "card_title_size_mobile": 18,
-        "card_title_size_desktop": 20,
-        "card_title_weight": "600",
-        "card_text_custom": true,
-        "card_text_color": "#475467",
-        "card_text_size_mobile": 14,
-        "card_text_size_desktop": 16,
-        "card_text_weight": "400",
-        "pad_top_min": 48,
-        "pad_top_max": 80,
-        "pad_bottom_min": 48,
-        "pad_bottom_max": 80,
-        "enable_pad_top_mobile": false,
-        "pad_top_mobile": 0,
-        "enable_pad_bottom_mobile": false,
-        "pad_bottom_mobile": 0,
-        "enable_pad_top_desktop": false,
-        "pad_top_desktop": 0,
-        "enable_pad_bottom_desktop": false,
-        "pad_bottom_desktop": 0
-      }
-    },
     "1779720329753c98c3": {
       "type": "apps",
       "blocks": {
@@ -514,7 +476,6 @@
     "tp_richtext_QwrJEj",
     "tp_e_image_with_text_v1_9rAh74",
     "tp_slider_bump_RFGtQR",
-    "tp_meta_cards_category_v1_V8pCiq",
     "1779720329753c98c3",
     "tp_e_related_products_v1_BzYJCp",
     "related-products",
