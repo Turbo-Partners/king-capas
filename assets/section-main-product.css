@@ -177,7 +177,7 @@ product-info {
 }
 
 .tp-buy-buttons__qty {
-  display: flex;
+  display: none;
   align-items: center;
   border: 1.5px solid var(--tp-color-border, #e0e0e0);
   border-radius: 2px;
@@ -371,13 +371,12 @@ line-height: 140%; /* 16.8px */
 .product__accordion {
   .accordion__title {
     color: var(--gray-950, #0C111D);
-
-/* Body/16/Medium */
-font-family: Inter;
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: 140%; /* 22.4px */
+    font-family: "Helvetica Neue";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 16.8px */
+    text-transform: uppercase;
   }
 }
 .tp-price__main {
@@ -455,7 +454,7 @@ line-height: 140%; /* 19.6px */
 .tp-pdp-icons-list {
   display: grid;
   grid-template-columns: repeat(4,1fr);
-  gap: var(--tp-space-4, 16px) var(--tp-space-6, 24px);
+  gap: 8px;
   margin: 0;
   padding: 0 0 2rem 0;
       border-bottom: 1px solid var(--gray-200, #EAECF0);
@@ -467,7 +466,7 @@ line-height: 140%; /* 19.6px */
 
 .tp-pdp-icons-list__item {
   display: flex;
-  flex-direction:column;
+  flex-direction:row;
   align-items: center;
   gap: var(--tp-space-2, 8px);
  @media (min-width:1000px) and (max-width:1280px) {
@@ -478,8 +477,8 @@ line-height: 140%; /* 19.6px */
 
 .tp-pdp-icons-list__icon {
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
   flex-shrink: 0;
 
@@ -521,7 +520,7 @@ font-style: normal;
 font-weight: 700;
 line-height: 120%; /* 14.4px */
 text-transform: uppercase;
-max-width:100px;
+text-align: left;
 
 }
 .select__select {
@@ -660,6 +659,38 @@ line-height: 140%; /* 22.4px */
  
 .slider-buttons.quick-add-hidden {
   display:none;
+}
+
+.tp-pdp-beneficios-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+}
+
+.tp-pdp-beneficio {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.tp-pdp-beneficio-image {
+  width: 64px;
+  height: auto;
+}
+
+.tp-pdp-beneficio-text {
+  color: var(--Gray-900, #101828);
+  text-align: center;
+  font-family: "Helvetica Neue";
+  font-size: clamp(1.2000rem, calc(1.1257rem + 0.1905vw), 1.4000rem);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%; /* 16.8px */
+  letter-spacing: 0.28px;
+  text-transform: uppercase;
 }
 
 .form__label {

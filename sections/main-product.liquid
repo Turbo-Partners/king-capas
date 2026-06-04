@@ -906,6 +906,18 @@
                     <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
                   {%- endif -%}
                 </product-recommendations>
+              {% when 'tp-beneficios' %}
+                <div class="tp-pdp-beneficios-wrapper">
+                  <div class="tp-pdp-beneficio">
+                    {% if block.settings.beneficio1_image != blank %}
+                      <img class="tp-pdp-beneficio-image" src="{{ block.settings.image1 | image_url }}">
+                    {% endif %}
+                    <span class="tp-pdp-beneficio-text">
+                      {{ block.settings.beneficio1_text }}
+                    </span>
+
+                  </div>
+                </div>
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
               {%- when 'bundle' -%}

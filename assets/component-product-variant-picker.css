@@ -58,7 +58,7 @@ variant-selects {
 
 /* Custom styles for Pill display type */
 .product-form__input--pill input[type='radio'] + label {
-  border-radius: 50%;
+  border-radius: 2px;
   color: transparent;
   display: inline-block;
   transition: border var(--duration-short) ease;
