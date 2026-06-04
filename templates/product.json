@@ -237,7 +237,7 @@
         "image_position_desktop": "left",
         "image_position_mobile": "first",
         "title_above_image_mobile": false,
-        "image_padding_inline_mobile": false,
+        "image_padding_inline_mobile": true,
         "image_padding_inline_desktop": true,
         "loading_image": true,
         "image_desktop": "shopify://shop_images/712_1.webp",
