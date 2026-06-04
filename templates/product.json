@@ -82,13 +82,6 @@
             "button_text": "Comprar agora"
           }
         },
-        "warranty_badge_TrnfYf": {
-          "type": "warranty_badge",
-          "settings": {
-            "bg_color": "#f5f0c0",
-            "text_color": "#111111"
-          }
-        },
         "complementary_3L7t4e": {
           "type": "complementary",
           "settings": {
@@ -130,7 +123,6 @@
         "tp_price_bmC7KB",
         "buy_buttons",
         "custom_buy_buttons_7VTA3y",
-        "warranty_badge_TrnfYf",
         "complementary_3L7t4e",
         "product_details_meta_citgki",
         "protection_types_UggDPk"
