@@ -17,6 +17,7 @@
 
 {% liquid
   assign background_type = section.settings.background_type
+  assign media_type = section.settings.media_type
   assign image_position_desktop = section.settings.image_position_desktop
   assign image_position_mobile = section.settings.image_position_mobile
   assign image_padding_inline_mobile = section.settings.image_padding_inline_mobile
@@ -148,22 +149,61 @@
     {% endif %}
 
     <div class="tp-e-image-with-text-v1__media">
-      {% if section.settings.image_desktop != blank or section.settings.image_mobile != blank %}
-        <picture class="tp-e-image-with-text-v1__picture">
-
-          {% if section_image != blank %}
-            <img
-              src="{{ section_image | image_url }}"
-              alt="{{ section_image_alt }}"
-              class="tp-e-image-with-text-v1__img"
-              loading="{{ loading }}"
-              fetchpriority="{{ fetch_priority }}"
-            >
+      {% if media_type == 'video' %}
+        {% if section.settings.video_source == 'hosted' and section.settings.video_file != blank %}
+          {{ section.settings.video_file | video_tag:
+            autoplay: section.settings.video_autoplay,
+            loop: true,
+            muted: true,
+            controls: false,
+            class: 'tp-e-image-with-text-v1__video',
+            playsinline: true
+          }}
+        {% elsif section.settings.video_source == 'external' and section.settings.video_url != blank %}
+          {% liquid
+            assign video_id = section.settings.video_url.id
+            assign video_type = section.settings.video_url.type
+            assign params = 'loop=1&'
+            if section.settings.video_autoplay
+              assign params = params | append: 'autoplay=1&'
+            endif
+            if video_type == 'youtube'
+              assign params = params | append: 'mute=1&controls=0&playlist=' | append: video_id | append: '&'
+              assign video_embed_src = 'https://www.youtube.com/embed/' | append: video_id | append: '?' | append: params
+            elsif video_type == 'vimeo'
+              assign params = params | append: 'muted=1&'
+              assign video_embed_src = 'https://player.vimeo.com/video/' | append: video_id | append: '?' | append: params
+            endif
+          %}
+          {% if video_embed_src != blank %}
+            <iframe
+              src="{{ video_embed_src }}"
+              class="tp-e-image-with-text-v1__video tp-e-image-with-text-v1__video--iframe"
+              frameborder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen
+              title="{{ section.settings.title | strip_html | escape }}"
+            ></iframe>
           {% endif %}
-
-        </picture>
+        {% else %}
+          {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
       {% else %}
-        {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% if section.settings.image_desktop != blank or section.settings.image_mobile != blank %}
+          <picture class="tp-e-image-with-text-v1__picture">
+            {% if section_image != blank %}
+              <img
+                src="{{ section_image | image_url }}"
+                alt="{{ section_image_alt }}"
+                class="tp-e-image-with-text-v1__img"
+                loading="{{ loading }}"
+                fetchpriority="{{ fetch_priority }}"
+              >
+            {% endif %}
+          </picture>
+        {% else %}
+          {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
       {% endif %}
     </div>
     <div class="tp-e-image-with-text-v1__text-wrapper">
@@ -346,6 +386,16 @@
     },
     {
       "type": "select",
+      "id": "media_type",
+      "label": "Tipo de mídia",
+      "default": "image",
+      "options": [
+        { "label": "Imagem", "value": "image" },
+        { "label": "Vídeo", "value": "video" }
+      ]
+    },
+    {
+      "type": "select",
       "id": "image_position_desktop",
       "label": "Posição da imagem no desktop",
       "default": "left",
@@ -386,17 +436,56 @@
       "type": "checkbox",
       "id": "loading_image",
       "label": "Carregar imagem com lazy loading",
-      "default": true
+      "default": true,
+      "visible_if": "{{ section.settings.media_type == 'image' }}"
     },
     {
       "type": "image_picker",
       "id": "image_desktop",
-      "label": "Imagem para desktop"
+      "label": "Imagem para desktop",
+      "visible_if": "{{ section.settings.media_type == 'image' }}"
     },
     {
       "type": "image_picker",
       "id": "image_mobile",
-      "label": "Imagem para mobile"
+      "label": "Imagem para mobile",
+      "visible_if": "{{ section.settings.media_type == 'image' }}"
+    },
+    {
+      "type": "header",
+      "content": "Configuração do vídeo",
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
+    },
+    {
+      "type": "select",
+      "id": "video_source",
+      "label": "Fonte",
+      "default": "hosted",
+      "options": [
+        { "label": "Vídeo hospedado (Shopify)", "value": "hosted" },
+        { "label": "YouTube / Vimeo", "value": "external" }
+      ],
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
+    },
+    {
+      "type": "video",
+      "id": "video_file",
+      "label": "Vídeo",
+      "visible_if": "{{ section.settings.media_type == 'video' and section.settings.video_source == 'hosted' }}"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "URL do vídeo (YouTube / Vimeo)",
+      "accept": ["youtube", "vimeo"],
+      "visible_if": "{{ section.settings.media_type == 'video' and section.settings.video_source == 'external' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "video_autoplay",
+      "label": "Reprodução automática",
+      "default": true,
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
     },
     {
       "type": "header",
