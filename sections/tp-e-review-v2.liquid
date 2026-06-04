@@ -116,7 +116,9 @@
     id="section-wrapper-{{ section.id }}"
   >
     {% if section.settings.title != blank %}
-      <h2 class="tp-e-review-v2__title tp-h2">{{ section.settings.title | escape }}</h2>
+      <div class="tp-e-review-v2__title">
+        {{ section.settings.title | escape }}
+      </div>
     {% endif %}
 
     <div class="tp-e-review-v2__swiper-container">
@@ -278,10 +280,10 @@
       "content": "Conteúdo"
     },
     {
-      "type": "text",
+      "type": "richtext",
       "id": "title",
       "label": "Título",
-      "default": "O que dizem nossos clientes"
+      "default": "<h2>O que dizem nossos clientes</h2>"
     },
     {
       "type": "select",
@@ -965,7 +967,7 @@
       "name": "Depoimentos v2",
       "category": "Personalizado",
       "settings": {
-        "title": "O que dizem nossos clientes",
+        "title": "<h2>O que dizem nossos clientes</h2>",
         "columns_desktop": 3,
         "background_color": "#FFFFFF"
       },

@@ -19,6 +19,33 @@
 /* Title */
 .tp-e-review-v2__title {
   color: var(--tp-color-text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Title */
+.tp-e-review-v2__title h2 {
+  color: var(--Gray-900, #101828);
+  text-align: center;
+  font-family: "Helvetica Neue";
+  font-size: clamp(2.0000rem, calc(1.8514rem + 0.3810vw), 2.4000rem);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%; /* 28.8px */
+  text-transform: uppercase;
+}
+
+.tp-e-review-v2__title h6 {
+  color: var(--Gray-600, #475467);
+  text-align: center;
+  font-family: Helvetica;
+  font-size: clamp(1.2000rem, calc(1.1257rem + 0.1905vw), 1.4000rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 19.6px */
+  letter-spacing: 2.24px;
 }
 
 /* Swiper container */
@@ -62,6 +89,15 @@
   font-weight: var(--content-weight, var(--tp-font-regular));
   line-height: var(--tp-leading-relaxed);
   flex: 1;
+  color: var(--Gray-600, #475467);
+  text-align: center;
+
+  /* Body/16/Regular */
+  font-family: Helvetica;
+  font-size: clamp(1.5000rem, calc(1.4629rem + 0.0952vw), 1.6000rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 22.4px */
 }
 
 .tp-e-review-v2__content p {
@@ -74,6 +110,7 @@
   flex-direction: column;
   gap: var(--tp-space-1);
   margin-top: auto;
+  align-items: center;
 }
 
 .tp-e-review-v2__name {
