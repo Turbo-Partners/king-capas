@@ -112,8 +112,10 @@
         "tp_beneficios_W7FDUc": {
           "type": "tp-beneficios",
           "settings": {
-            "beneficio1_text": "",
-            "beneficio2_text": "",
+            "beneficio1_image": "shopify://shop_images/760.svg",
+            "beneficio1_text": "Lavável na máquina",
+            "beneficio2_image": "shopify://shop_images/761.svg",
+            "beneficio2_text": "100% à prova de riscos",
             "beneficio3_text": "",
             "beneficio4_text": "",
             "beneficio5_text": "",
