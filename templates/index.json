@@ -779,7 +779,7 @@
       ],
       "name": "Depoimentos v2",
       "settings": {
-        "title": "O que dizem nossos clientes",
+        "title": "<h6>REVIEWS</h6><h2>O que dizem nossos clientes</h2>",
         "section_align": "center",
         "title_gap_desktop": 32,
         "title_gap_mobile": 24,
