@@ -143,7 +143,7 @@
             "text_position_horizontal_mobile": "center",
             "text_position_horizontal_desktop": "left",
             "text_position_vertical_mobile": "space_between",
-            "text_position_vertical_desktop": "space_between",
+            "text_position_vertical_desktop": "bottom",
             "bottom_mobile": 40,
             "bottom_desktop": 40,
             "top_mobile": 40,
