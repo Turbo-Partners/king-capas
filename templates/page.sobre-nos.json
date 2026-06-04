@@ -101,6 +101,7 @@
       ],
       "name": "Imagem Com Texto V1",
       "settings": {
+        "media_type": "image",
         "image_position_desktop": "left",
         "image_position_mobile": "first",
         "title_above_image_mobile": false,
@@ -109,6 +110,9 @@
         "loading_image": true,
         "image_desktop": "shopify://shop_images/738_1.webp",
         "image_mobile": "shopify://shop_images/739_1.webp",
+        "video_source": "hosted",
+        "video_url": "",
+        "video_autoplay": true,
         "title": "<h2>Muito além de uma capa automotiva</h2>",
         "richtext": "<p>Na Kings, cada projeto é desenvolvido para unir proteção real, ajuste perfeito e acabamento premium. Trabalhamos com produção sob medida, materiais exclusivos e uma equipe preparada para atender desde clientes individuais até grandes operações e eventos automotivos.</p>",
         "button_url": "",
@@ -229,95 +233,6 @@
         "pad_bottom_desktop": 0
       }
     },
-    "tp_e_image_with_text_v1_zbhYpf": {
-      "type": "tp-e-image-with-text-v1",
-      "blocks": {
-        "css_rTTEH6": {
-          "type": "css",
-          "settings": {
-            "custom_css": ".tp-e-image-with-text-v1__title h4 {\ncolor: #FFF;\nfont-family: Helvetica;\nfont-size: clamp(2.4000rem, calc(2.1029rem + 0.7619vw), 3.2000rem);\nfont-style: normal;\nfont-weight: 700;\nline-height: 120%; /* 38.4px */\ntext-align: center;\n}\n\n@media screen and (min-width: 768px) {\n.tp-e-image-with-text-v1__title h4  {\ntext-align: left;\n}\n}\n \n.tp-e-image-with-text-v1__block-text-wrapper h4 {\ncolor: #FFF;\n\n/* Body/20/Semi Bold */\nfont-family: \"Helvetica Neue\";\nfont-size: 20px;\nfont-style: normal;\nfont-weight: 700;\nline-height: 120%; /* 24px */\n}\n\n.tp-e-image-with-text-v1__block-text-wrapper p {\ncolor: var(--Gray-100, #D9D9D9);\n\n/* Body/18/Regular */\nfont-family: \"Helvetica Neue\";\nfont-size: 18px;\nfont-style: normal;\nfont-weight: 400;\nline-height: 140%; /* 25.2px */\n}"
-          }
-        },
-        "benefit_7LTRDH": {
-          "type": "benefit",
-          "settings": {
-            "image": "shopify://shop_images/714.svg",
-            "richtext": "<h4>Proteção real no dia a dia</h4><p>Protege contra poeira, riscos, sol, maresia e pequenos danos que desgastam o veículo com o tempo.</p>"
-          }
-        },
-        "benefit_9g4cpN": {
-          "type": "benefit",
-          "settings": {
-            "image": "shopify://shop_images/714.svg",
-            "richtext": "<h4>Ajuste feito para o seu carro</h4><p>Cada capa é produzida sob medida para garantir encaixe perfeito e visual muito mais sofisticado.</p>"
-          }
-        },
-        "benefit_yN86ir": {
-          "type": "benefit",
-          "settings": {
-            "image": "shopify://shop_images/714.svg",
-            "richtext": "<h4>Material premium e durável</h4><p>Produzida com tecido exclusivo de alta qualidade, pensado para oferecer resistência e longa durabilidade.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "css_rTTEH6",
-        "benefit_7LTRDH",
-        "benefit_9g4cpN",
-        "benefit_yN86ir"
-      ],
-      "custom_css": [],
-      "name": "Imagem Com Texto V1",
-      "settings": {
-        "image_position_desktop": "left",
-        "image_position_mobile": "first",
-        "title_above_image_mobile": true,
-        "image_padding_inline_mobile": false,
-        "image_padding_inline_desktop": false,
-        "loading_image": true,
-        "image_desktop": "shopify://shop_images/744_1.webp",
-        "image_mobile": "shopify://shop_images/745_1.webp",
-        "title": "<h4>Seu carro não é comum. A proteção também não deveria ser</h4>",
-        "richtext": "",
-        "button_url": "shopify://collections/all",
-        "button_text": "Saiba mais",
-        "faq_icon_type": "arrow",
-        "faq_first_open": true,
-        "data_animate": true,
-        "title_custom": false,
-        "text_color_title": "#2b2b2b",
-        "font_weight": "700",
-        "font_size_title": 36,
-        "font_size_title_mobile": 28,
-        "content_custom": false,
-        "text_color_content": "#2b2b2b",
-        "content_font_weight": "400",
-        "font_size_content": 16,
-        "font_size_content_mobile": 16,
-        "button_custom": false,
-        "text_color_btn": "#ffffff",
-        "bg_color_btn": "#443fd2",
-        "button_font_weight": "600",
-        "button_font_size_desktop": 16,
-        "button_font_size_mobile": 16,
-        "radius_btn": 100,
-        "background_type": "color",
-        "background_color": "#0e0e0e",
-        "background_gradient": "",
-        "pad_top_min": 0,
-        "pad_top_max": 0,
-        "pad_bottom_min": 0,
-        "pad_bottom_max": 0,
-        "enable_pad_top_mobile": true,
-        "pad_top_mobile": 48,
-        "enable_pad_bottom_mobile": true,
-        "pad_bottom_mobile": 48,
-        "enable_pad_top_desktop": false,
-        "pad_top_desktop": 0,
-        "enable_pad_bottom_desktop": false,
-        "pad_bottom_desktop": 0
-      }
-    },
     "tp_e_image_with_text_v1_xm8wCW": {
       "type": "tp-e-image-with-text-v1",
       "custom_css": [
@@ -327,7 +242,8 @@
       ],
       "name": "Imagem Com Texto V1",
       "settings": {
-        "image_position_desktop": "left",
+        "media_type": "image",
+        "image_position_desktop": "right",
         "image_position_mobile": "first",
         "title_above_image_mobile": false,
         "image_padding_inline_mobile": true,
@@ -335,6 +251,9 @@
         "loading_image": true,
         "image_desktop": "shopify://shop_images/746_1.webp",
         "image_mobile": "shopify://shop_images/747_1.webp",
+        "video_source": "hosted",
+        "video_url": "",
+        "video_autoplay": true,
         "title": "<h2>Soluções para empresas, eventos e concessionárias</h2>",
         "richtext": "<p>Atendemos marcas, eventos automotivos, concessionárias e empresas que buscam proteção premium com produção em escala, padronização e alto nível de acabamento.</p>",
         "button_url": "shopify://collections/all",
@@ -385,6 +304,7 @@
       ],
       "name": "Imagem Com Texto V1",
       "settings": {
+        "media_type": "image",
         "image_position_desktop": "left",
         "image_position_mobile": "first",
         "title_above_image_mobile": false,
@@ -393,6 +313,9 @@
         "loading_image": true,
         "image_desktop": "shopify://shop_images/748_1.webp",
         "image_mobile": "shopify://shop_images/749_1.webp",
+        "video_source": "hosted",
+        "video_url": "",
+        "video_autoplay": true,
         "title": "<h2>Seu veículo merece mais que uma proteção comum</h2>",
         "richtext": "<p>A Kings foi criada para elevar o padrão da proteção automotiva no Brasil, unindo tecnologia, acabamento premium e produção sob medida para quem valoriza o próprio carro.</p>",
         "button_url": "shopify://collections/all",
@@ -487,7 +410,6 @@
     "main",
     "tp_e_image_with_text_v1_a6m9Ux",
     "tp_e_categories_v2_9kyKGA",
-    "tp_e_image_with_text_v1_zbhYpf",
     "tp_e_image_with_text_v1_xm8wCW",
     "tp_e_image_with_text_v1_PEErex",
     "apps_RCDE3Y"
