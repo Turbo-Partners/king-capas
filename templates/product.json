@@ -448,6 +448,8 @@
       "name": "Imagem com Benefícios V2",
       "settings": {
         "title": "<h2>Detalhes que elevam o padrão da proteção</h2>",
+        "image_desktop": "shopify://shop_images/772_1.webp",
+        "image_mobile": "shopify://shop_images/772_1.webp",
         "background_type": "color",
         "background_color": "#ffffff",
         "background_gradient": "",
