@@ -671,6 +671,85 @@
         "enable_pad_bottom_desktop": false,
         "pad_bottom_desktop": 0
       }
+    },
+    "tp_e_banner_slides_v1_GRx6mm": {
+      "type": "tp-e-banner-slides-v1",
+      "blocks": {
+        "slide_3tcJmn": {
+          "type": "slide",
+          "settings": {
+            "media_type": "image",
+            "image_mobile": "shopify://shop_images/754_1.webp",
+            "image_desktop": "shopify://shop_images/753_1.webp",
+            "link": "",
+            "title": "<h2>Produzida nos detalhes</h2>",
+            "richtext": "<p>Cada capa Kings é desenvolvida sob medida para acompanhar perfeitamente as linhas do veículo. Da escolha do tecido ao acabamento final, todo o processo é pensado para entregar proteção, ajuste impecável e um visual muito acima das capas comuns do mercado.</p>",
+            "button_link": "shopify://collections/all",
+            "button_text": "",
+            "button_animation": "none",
+            "button_custom": false,
+            "button_bg_color": "",
+            "button_text_color": "",
+            "button_border_radius": "default",
+            "button_font_size": 16,
+            "button_font_weight": "600",
+            "title_custom": false,
+            "title_color": "#2b2b2b",
+            "title_font_size_mobile": 36,
+            "title_font_size_desktop": 48,
+            "title_font_weight": "700",
+            "description_custom": false,
+            "description_color": "#667085",
+            "description_font_size_mobile": 16,
+            "description_font_size_desktop": 18,
+            "description_font_weight": "400",
+            "text_width_mobile": 400,
+            "text_width_desktop": 536,
+            "text_alignment_mobile": "left",
+            "text_alignment_desktop": "left",
+            "text_position_horizontal_mobile": "center",
+            "text_position_horizontal_desktop": "left",
+            "text_position_vertical_mobile": "space_between",
+            "text_position_vertical_desktop": "bottom",
+            "bottom_mobile": 40,
+            "bottom_desktop": 80,
+            "top_mobile": 40,
+            "top_desktop": 200
+          }
+        }
+      },
+      "block_order": [
+        "slide_3tcJmn"
+      ],
+      "custom_css": [
+        "h2 strong {color: #fff;}",
+        "h2 {color: #0c111d; font-size: clamp(2rem, calc(1.5543rem + 1.1429vw), 3.2rem);}",
+        "p {color: #475467; font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem);}",
+        "a {background: #000;}"
+      ],
+      "name": "Banner Slides V1",
+      "settings": {
+        "autoplay": true,
+        "tempo_autoplay": 4,
+        "pagination": true,
+        "pagination_color": "#b1bfab",
+        "pagination_color_active": "#000",
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "pad_top_min": 0,
+        "pad_top_max": 0,
+        "pad_bottom_min": 0,
+        "pad_bottom_max": 0,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
     }
   },
   "order": [
@@ -680,6 +759,7 @@
     "tp_e_categories_v1_aCGaPF",
     "tp_e_review_v2_QCxGqk",
     "tp_featured_collection_RMqgGf",
-    "tp_midia_igVRPA"
+    "tp_midia_igVRPA",
+    "tp_e_banner_slides_v1_GRx6mm"
   ]
 }
