@@ -134,7 +134,7 @@
     "tp_pc_title_align": "left",
     "tp_pc_price_align": "flex-start",
     "tp_pc_installments_align": "left",
-    "tp_pc_btn_text": "Comprar agora",
+    "tp_pc_btn_text": "",
     "tp_pc_badge_position": "top-left",
     "sections": {
       "main-password-header": {
