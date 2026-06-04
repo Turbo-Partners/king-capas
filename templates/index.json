@@ -154,6 +154,10 @@
       "block_order": [
         "slide_hUzBqA"
       ],
+      "custom_css": [
+        "h2 strong {color: #0C111D;}",
+        "h2 {color: #0C111D;}"
+      ],
       "name": "Banner Slides V1",
       "settings": {
         "autoplay": true,
