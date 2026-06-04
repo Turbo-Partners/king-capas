@@ -88,10 +88,12 @@
 <section class="tp-categories {{ section.id }}">
   <div class="tp-wrapper--full-width" id="section-wrapper-{{ section.id }}">
     {% if section.settings.title != blank %}
-      {% if section.settings.title_bar %}
-        <span class="tp-meta-banner-imagem-v1__bar" aria-hidden="true"></span>
-      {% endif %}
-      <div class="tp-categories__title">{{ section.settings.title }}</div>
+      <div class="tp-categories__title">
+        {% if section.settings.title_bar %}
+          <span class="tp-meta-banner-imagem-v1__bar" aria-hidden="true"></span>
+        {% endif %}
+        {{ section.settings.title }}
+      </div>
     {% endif %}
 
     {% if section.blocks.size > 0 %}

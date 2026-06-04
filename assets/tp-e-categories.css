@@ -20,18 +20,16 @@
   width: 64px;
   height: 2px;
   border-radius: 2px;
-  background: var(--tp-color-primary);
-  margin-inline: auto;
-  margin-bottom: -4rem;
-  @media (max-width:750px) {
-     margin-bottom: -2rem;
-  }
+  background: #000;
 }
 
 
 .tp-categories__title {
   text-align: left;
   padding-inline: 16px;
+  display: flex;
+  gap: clamp(2.4000rem, calc(2.1029rem + 0.7619vw), 3.2000rem);
+  flex-direction: column;
 
   @media screen and (min-width: 768px) {
     padding-inline: 32px;
@@ -44,13 +42,12 @@
 
 .tp-categories__title h2{
   color: var(--Gray-900, #101828);
-
-  /* Body/Heading/32 */
   font-family: "Helvetica Neue";
-  font-size: clamp(2.4000rem, calc(2.1029rem + 0.7619vw), 3.2000rem);
+  font-size: clamp(2.0000rem, calc(1.8514rem + 0.3810vw), 2.4000rem);
   font-style: normal;
-  font-weight: 700;
-  line-height: 120%; /* 38.4px */
+  font-weight: 400;
+  line-height: 120%; /* 28.8px */
+  text-transform: uppercase;
 }
 
 /* Grid */
@@ -113,13 +110,12 @@
   color: var(--tp-color-text-primary);
   color: #FFF;
 
-  /* Body/20/Semi Bold */
   font-family: "Helvetica Neue";
-  font-size: clamp(1.2000rem, calc(0.9029rem + 0.7619vw), 2.0000rem);
+  font-size: clamp(1.2000rem, calc(1.0514rem + 0.3810vw), 1.6000rem);
   font-style: normal;
-  font-weight: 700;
-  line-height: 120%; /* 24px */
-  text-align: left;
+  font-weight: 400;
+  line-height: 120%; /* 19.2px */
+  text-transform: uppercase;
 }
 
 .tp-categories__card-bar {
@@ -132,7 +128,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 16px;
   background: var(--tp-btn-primary-bg, var(--tp-color-primary));
   color: var(--tp-btn-primary-color, var(--tp-color-text-light));
   border: none;
@@ -153,7 +148,20 @@
   font-weight: 700;
   line-height: 140%; /* 15.077px */
   border-radius: 1.538px;
-  background: #FFF;
+  background: transparent;
+  color: #FFF;
+  font-family: Helvetica;
+  font-size: 11.073px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 15.503px */
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+  padding: 0;
 }
 
 .tp-categories__card-button:hover {
