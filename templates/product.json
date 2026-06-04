@@ -417,25 +417,25 @@
         "benefit_BVpymr": {
           "type": "benefit",
           "settings": {
-            "richtext": "<p><strong>Benefício 1</strong></p><p>Descreva o benefício aqui</p>"
+            "richtext": "<p><strong>Tecido premium</strong></p><p>Lycra com elastano de alta densidade, respirável, macia e segura para a pintura.</p>"
           }
         },
         "benefit_bn44zU": {
           "type": "benefit",
           "settings": {
-            "richtext": "<p><strong>Benefício 2</strong></p><p>Descreva o benefício aqui</p>"
+            "richtext": "<p><strong>Bolsa exclusiva</strong></p><p>Acompanha bolsa para transporte e armazenamento com mais praticidade no dia a dia.</p>"
           }
         },
         "benefit_Hg4XFh": {
           "type": "benefit",
           "settings": {
-            "richtext": "<p><strong>Benefício 3</strong></p><p>Descreva o benefício aqui</p>"
+            "richtext": "<p><strong>Barra elástica reforçada</strong></p><p>Elástico frontal e traseiro de alta densidade para melhor fixação no veículo.</p>"
           }
         },
         "benefit_KYc7jx": {
           "type": "benefit",
           "settings": {
-            "richtext": "<p><strong>Benefício 4</strong></p><p>Descreva o benefício aqui</p>"
+            "richtext": "<p><strong>Encaixe para retrovisor</strong></p><p>Modelagem com encaixe dedicado para retrovisores, garantindo ajuste mais preciso.</p>"
           }
         }
       },
