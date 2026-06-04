@@ -115,7 +115,7 @@
             "image_mobile": "shopify://shop_images/754_1.webp",
             "image_desktop": "shopify://shop_images/753_1.webp",
             "link": "",
-            "title": "<h2>Capas sob medida com <strong>padrão acima do comum</strong></h2>",
+            "title": "<h2>Tecnologia, conforto e proteção no mesmo tecido</h2>",
             "richtext": "<p>Produzidas com tecido exclusivo, ajuste perfeito e acabamento premium para proteger seu veículo.</p>",
             "button_link": "shopify://collections/all",
             "button_text": "Escolher minha capa",
@@ -155,8 +155,8 @@
         "slide_hUzBqA"
       ],
       "custom_css": [
-        "h2 strong {color: #0C111D;}",
-        "h2 {color: #0C111D;}"
+        "h2 strong {color: #0c111d;}",
+        "h2 {color: #0c111d;}"
       ],
       "name": "Banner Slides V1",
       "settings": {
