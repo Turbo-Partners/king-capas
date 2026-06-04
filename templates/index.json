@@ -145,7 +145,7 @@
             "text_position_vertical_mobile": "space_between",
             "text_position_vertical_desktop": "bottom",
             "bottom_mobile": 40,
-            "bottom_desktop": 40,
+            "bottom_desktop": 80,
             "top_mobile": 40,
             "top_desktop": 200
           }
