@@ -543,6 +543,72 @@
         "pad_bottom_desktop": 60
       }
     },
+    "tp_e_faq_v1_HkcVUV": {
+      "type": "tp-e-faq-v1",
+      "blocks": {
+        "question_GXmki4": {
+          "type": "question",
+          "settings": {
+            "question": "Qual e a sua pergunta?",
+            "answer": "<p>Escreva a resposta aqui.</p>"
+          }
+        },
+        "question_fDxbCw": {
+          "type": "question",
+          "settings": {
+            "question": "Qual e a sua pergunta?",
+            "answer": "<p>Escreva a resposta aqui.</p>"
+          }
+        },
+        "question_HTdciz": {
+          "type": "question",
+          "settings": {
+            "question": "Qual e a sua pergunta?",
+            "answer": "<p>Escreva a resposta aqui.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_GXmki4",
+        "question_fDxbCw",
+        "question_HTdciz"
+      ],
+      "name": "Perguntas Frequentes",
+      "settings": {
+        "background_type": "color",
+        "background_color": "#FFFFFF",
+        "background_gradient": "",
+        "faq_layout": "stack",
+        "title": "<h2>Dúvidas frequentes</h2>",
+        "title_custom": false,
+        "title_color": "#111111",
+        "title_size_mobile": 36,
+        "title_size_desktop": 48,
+        "title_weight": "600",
+        "question_custom": false,
+        "question_color": "#111111",
+        "question_size_mobile": 20,
+        "question_size_desktop": 24,
+        "question_weight": "400",
+        "answer_custom": false,
+        "answer_color": "#111111",
+        "answer_size_mobile": 16,
+        "answer_size_desktop": 18,
+        "answer_weight": "400",
+        "pad_top_min": 48,
+        "pad_top_max": 96,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
     "1779720329753c98c3": {
       "type": "apps",
       "blocks": {
@@ -583,6 +649,7 @@
     },
     "tp_e_related_products_v1_BzYJCp": {
       "type": "tp-e-related-products-v1",
+      "disabled": true,
       "custom_css": [
         ".tp-wrapper--full-width {border-top: 1px solid var(--Gray-200, #eaecf0); border-bottom: 1px solid var(--Gray-200, #eaecf0);}"
       ],
@@ -742,6 +809,7 @@
     "tp_e_image_with_text_v1_gmBHLg",
     "tp_e_img_benefits_v2_KKfGxA",
     "tp_slider_bump_RFGtQR",
+    "tp_e_faq_v1_HkcVUV",
     "1779720329753c98c3",
     "tp_e_related_products_v1_BzYJCp",
     "related-products",
