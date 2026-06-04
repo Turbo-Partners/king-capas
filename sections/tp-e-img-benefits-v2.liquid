@@ -45,6 +45,9 @@
     <div class="tp-wrapper tp-e-img-benefits-v2__wrapper" id="section-wrapper-{{ section.id }}">
         <div class="tp-e-img-benefits-v2__text-wrapper">
             {{ section.settings.title }}
+            {% if section.settings.barra != blank %}
+              <img class="tp-e-img-benefits-v2__text-wrapper-barra" src="{{ section.settings.barra | image_url }}">
+            {% endif %}
         </div>
         <div class="tp-e-img-benefits-v2__grid">
             <div class="tp-e-img-benefits-v2__media">
@@ -110,6 +113,11 @@
       "id": "title",
       "label": "Título",
       "default": "<h2>Imagem com benefícios</h2>"
+    },
+    {
+      "type": "image_picker",
+      "id": "barra",
+      "label": "Barra decorativa"
     },
     {
       "type": "image_picker",

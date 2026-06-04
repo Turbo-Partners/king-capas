@@ -79,7 +79,7 @@
 }
 
 .tp-e-image-with-text-v1__block-image {
-    width: clamp(2.4000rem, calc(2.1029rem + 0.7619vw), 3.2000rem);
+    width: 32px;
 }
 
 .tp-e-image-with-text-v1__block {
