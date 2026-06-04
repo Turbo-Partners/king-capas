@@ -105,6 +105,79 @@
         "pad_bottom_desktop": 0
       }
     },
+    "tp_e_banner_slides_v1_TjLpQN": {
+      "type": "tp-e-banner-slides-v1",
+      "blocks": {
+        "slide_hUzBqA": {
+          "type": "slide",
+          "settings": {
+            "media_type": "image",
+            "image_mobile": "shopify://shop_images/754_1.webp",
+            "image_desktop": "shopify://shop_images/753_1.webp",
+            "link": "",
+            "title": "<h2>Capas sob medida com <strong>padrão acima do comum</strong></h2>",
+            "richtext": "<p>Produzidas com tecido exclusivo, ajuste perfeito e acabamento premium para proteger seu veículo.</p>",
+            "button_link": "shopify://collections/all",
+            "button_text": "Escolher minha capa",
+            "button_animation": "none",
+            "button_custom": false,
+            "button_bg_color": "",
+            "button_text_color": "",
+            "button_border_radius": "default",
+            "button_font_size": 16,
+            "button_font_weight": "600",
+            "title_custom": false,
+            "title_color": "#2b2b2b",
+            "title_font_size_mobile": 36,
+            "title_font_size_desktop": 48,
+            "title_font_weight": "700",
+            "description_custom": false,
+            "description_color": "#667085",
+            "description_font_size_mobile": 16,
+            "description_font_size_desktop": 18,
+            "description_font_weight": "400",
+            "text_width_mobile": 400,
+            "text_width_desktop": 624,
+            "text_alignment_mobile": "left",
+            "text_alignment_desktop": "left",
+            "text_position_horizontal_mobile": "center",
+            "text_position_horizontal_desktop": "left",
+            "text_position_vertical_mobile": "space_between",
+            "text_position_vertical_desktop": "space_between",
+            "bottom_mobile": 40,
+            "bottom_desktop": 40,
+            "top_mobile": 40,
+            "top_desktop": 200
+          }
+        }
+      },
+      "block_order": [
+        "slide_hUzBqA"
+      ],
+      "name": "Banner Slides V1",
+      "settings": {
+        "autoplay": true,
+        "tempo_autoplay": 4,
+        "pagination": true,
+        "pagination_color": "#b1bfab",
+        "pagination_color_active": "#000",
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "pad_top_min": 0,
+        "pad_top_max": 0,
+        "pad_bottom_min": 0,
+        "pad_bottom_max": 0,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
     "tp_featured_collection_RMqgGf": {
       "type": "tp-e-feat-col-V1",
       "name": "TP - Featured Collection",
@@ -775,6 +848,7 @@
   "order": [
     "tp_e_banner_slides_v1_trMAtd",
     "tp_richtext_Pijy6Q",
+    "tp_e_banner_slides_v1_TjLpQN",
     "tp_featured_collection_RMqgGf",
     "tp_e_categories_v1_aCGaPF",
     "tp_slider_bump_wmwT64",
