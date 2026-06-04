@@ -290,7 +290,7 @@
     "tp_e_image_with_text_v1_WHyGz8": {
       "type": "tp-e-image-with-text-v1",
       "custom_css": [
-        "h2 {color: #2b2b2b; text-transform: uppercase; font-size: clamp(2.4000rem, calc(2.1029rem + 0.7619vw), 3.2000rem);}",
+        "h2 {color: #2b2b2b; text-transform: uppercase; font-size: clamp(2.4rem, calc(2.1029rem + 0.7619vw), 3.2rem);}",
         "p {color: var(--Gray-600, #475467);}",
         ".tp-e-image-with-text-v1__button {border-radius: 2px; color: white; background: #000;}"
       ],
@@ -401,6 +401,60 @@
         "pad_top_max": 0,
         "pad_bottom_min": 0,
         "pad_bottom_max": 0,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_e_img_benefits_v2_KKfGxA": {
+      "type": "tp-e-img-benefits-v2",
+      "blocks": {
+        "benefit_BVpymr": {
+          "type": "benefit",
+          "settings": {
+            "richtext": "<p><strong>Benefício 1</strong></p><p>Descreva o benefício aqui</p>"
+          }
+        },
+        "benefit_bn44zU": {
+          "type": "benefit",
+          "settings": {
+            "richtext": "<p><strong>Benefício 2</strong></p><p>Descreva o benefício aqui</p>"
+          }
+        },
+        "benefit_Hg4XFh": {
+          "type": "benefit",
+          "settings": {
+            "richtext": "<p><strong>Benefício 3</strong></p><p>Descreva o benefício aqui</p>"
+          }
+        },
+        "benefit_KYc7jx": {
+          "type": "benefit",
+          "settings": {
+            "richtext": "<p><strong>Benefício 4</strong></p><p>Descreva o benefício aqui</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_BVpymr",
+        "benefit_bn44zU",
+        "benefit_Hg4XFh",
+        "benefit_KYc7jx"
+      ],
+      "name": "Imagem com Benefícios V2",
+      "settings": {
+        "title": "<h2>Imagem com benefícios</h2>",
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "pad_top_min": 48,
+        "pad_top_max": 96,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 96,
         "enable_pad_top_mobile": false,
         "pad_top_mobile": 0,
         "enable_pad_bottom_mobile": false,
@@ -601,6 +655,7 @@
     "tp_e_image_with_text_v1_9rAh74",
     "tp_e_image_with_text_v1_WHyGz8",
     "tp_e_image_with_text_v1_gmBHLg",
+    "tp_e_img_benefits_v2_KKfGxA",
     "tp_slider_bump_RFGtQR",
     "1779720329753c98c3",
     "tp_e_related_products_v1_BzYJCp",
