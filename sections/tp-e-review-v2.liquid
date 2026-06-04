@@ -181,6 +181,14 @@
                   {% if block.settings.extra_info != blank %}
                     <span class="tp-e-review-v2__extra">{{ block.settings.extra_info | escape }}</span>
                   {% endif %}
+                  {% if block.settings.star_image != blank %}
+                    <div class="tp-e-review-v2__card-stars-wrapper">
+                      {% for star in (1..{{ block.settings.star_quantity }}) %}
+                        <img class="tp-e-review-v2__card-star" src="{{ block.settings.star_image | image_url }}">
+                      {% endfor %}
+                    </div>
+                    
+                  {% endif %}
                 </div>
               </div>
             </div>
@@ -719,6 +727,25 @@
           "type": "text",
           "id": "extra_info",
           "label": "Informação extra"
+        },
+        {
+          "type": "header",
+          "content": "Estrelas"
+        },
+        {
+          "type": "image_picker",
+          "id": "star_image",
+          "label": "Ícone da estrela"
+        },
+        {
+          "type": "range",
+          "id": "star_quantity",
+          "label": "Quantidade",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5,
+          "visible_if": "{{ block.settings.star_image != blank }}"
         },
         {
           "type": "header",

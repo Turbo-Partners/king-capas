@@ -131,3 +131,15 @@
     overflow: visible;
   }
 }
+
+.tp-e-review-v2__card-stars-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  align-items: center;
+}
+
+.tp-e-review-v2__card-star {
+  width: 16px;
+  height: auto;
+}
