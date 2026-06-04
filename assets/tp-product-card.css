@@ -12,7 +12,7 @@
   padding-left: var(--tp-pc-pad-left);
   padding-right: var(--tp-pc-pad-right);
   box-sizing: border-box;
-  border: 1px solid var(--Gray-200, #EAECF0);
+  border: 0px solid var(--Gray-200, #EAECF0);
   
   @media screen and (max-width:750px) {
     gap: var(--tp-space-2);
@@ -36,7 +36,8 @@
 .tp-product-card__media .tp-images {
   width: 100%;
   position: relative;
-  aspect-ratio: 1;
+  object-position: center;
+  aspect-ratio: 360/260;
   overflow: hidden;
   border-radius: var(--tp-pc-img-radius);
 }
@@ -46,7 +47,7 @@
   position: absolute;
   inset: 0;
   object-fit: contain;
-  aspect-ratio: 1;
+  aspect-ratio: 360/260;
   transition: opacity 0.4s ease-in-out, transform 0.25s ease;
 }
 
@@ -100,7 +101,6 @@
   display: flex;
   flex-direction: column;
   gap: var(--tp-space-3);
-  padding-inline: clamp(0.8000rem, calc(0.3543rem + 1.1429vw), 2.0000rem);
 
   @media (max-width:750px) {
     gap: var(--tp-space-1);
