@@ -25,6 +25,15 @@
     line-height: var(--tp-h2-leading);
     letter-spacing: var(--tp-h2-tracking);
     color: var(--tp-e-faq-v1-title-color, var(--tp-color-text-primary));
+    color: var(--Gray-950, #0C111D);
+    text-align: center;
+    font-family: "Helvetica Neue";
+    font-size: clamp(2.4000rem, calc(2.1029rem + 0.7619vw), 3.2000rem);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 38.4px */
+    text-transform: uppercase;
+    width: 240px;
 }
 
 .tp-e-faq-v1 .tp-e-faq-v1__title-wrapper p {
@@ -39,6 +48,7 @@
 .tp-e-faq-v1 .tp-e-faq-v1__faq-wrapper {
     display: flex;
     flex-direction: column;
+    max-width: 816px;
 }
 
 .tp-e-faq-v1 .tp-e-faq-v1__details {
@@ -79,6 +89,14 @@
     font-size: var(--tp-e-faq-v1-question-size-mobile, var(--tp-font-size-xl));
     line-height: var(--tp-leading-normal);
     color: var(--tp-e-faq-v1-question-color, var(--tp-color-text-primary));
+    color: var(--Gray-950, #0C111D);
+
+    /* Body/20/Medium */
+    font-family: "Helvetica Neue";
+    font-size: clamp(1.8000rem, calc(1.7257rem + 0.1905vw), 2.0000rem);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 24px */
 }
 
 .tp-e-faq-v1 .tp-e-faq-v1__icon {
