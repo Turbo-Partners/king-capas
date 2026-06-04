@@ -227,7 +227,7 @@
       ],
       "custom_css": [
         ".tp-e-image-with-text-v1__block-text-wrapper strong {color: #fff; font-size: 20px; font-weight: bold;}",
-        ".tp-e-image-with-text-v1__block-text-wrapper * {color: var(--Gray-100, #d9d9d9); font-family: \"Helvetica Neue\"; font-size: 18px; font-weight: 400; line-height: 140%;}",
+        ".tp-e-image-with-text-v1__block-text-wrapper * {color: #101828; font-family: \"Helvetica Neue\"; font-size: 18px; font-weight: 400; line-height: 140%;}",
         "@media (min-width: 750px) {.tp-e-image-with-text-v1__text-wrapper {padding-block: 2rem; }}",
         "@media (max-width: 750px) {.tp-e-image-with-text-v1__title--above-image {display: block; padding: 16px; } .tp-e-image-with-text-v1__title--in-wrapper {display: none; }}"
       ],
