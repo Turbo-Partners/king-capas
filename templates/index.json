@@ -580,78 +580,6 @@
         "pad_bottom_desktop": 0
       }
     },
-    "tp_slider_bump_wmwT64": {
-      "type": "tp-slider-bump",
-      "blocks": {
-        "card_NkWkKg": {
-          "type": "card",
-          "settings": {
-            "card_image": "shopify://shop_images/701_1.webp",
-            "product": "adicional-de-logomarca-personalizada"
-          }
-        },
-        "card_tWrNKX": {
-          "type": "card",
-          "settings": {
-            "card_image": "shopify://shop_images/702_1.webp",
-            "product": "capa-apresentacao-showroom"
-          }
-        },
-        "card_3zGKpJ": {
-          "type": "card",
-          "settings": {
-            "card_image": "shopify://shop_images/703_1.webp",
-            "product": "capa-para-caminhao"
-          }
-        },
-        "card_nCVb7i": {
-          "type": "card",
-          "settings": {
-            "card_image": "shopify://shop_images/704_1.webp",
-            "product": "capa-para-carros-sedan"
-          }
-        },
-        "card_Vg9qYf": {
-          "type": "card",
-          "settings": {
-            "card_image": "shopify://shop_images/701_1.webp",
-            "product": "adicional-de-logomarca-personalizada"
-          }
-        }
-      },
-      "block_order": [
-        "card_NkWkKg",
-        "card_tWrNKX",
-        "card_3zGKpJ",
-        "card_nCVb7i",
-        "card_Vg9qYf"
-      ],
-      "name": "TP - Slider Bump",
-      "settings": {
-        "background_color": "#fff",
-        "badge_text": "",
-        "title": "<h2>A experiência de quem já escolheu Kings</h2>",
-        "subtitle": "Milhares de veículos protegidos em todo o Brasil com capas feitas sob medida.",
-        "button_url": "",
-        "button_text": "",
-        "initial_slide": 3,
-        "autoplay": true,
-        "tempo_autoplay": 3,
-        "navigation": true,
-        "pad_top_min": 32,
-        "pad_top_max": 80,
-        "pad_bottom_min": 32,
-        "pad_bottom_max": 80,
-        "enable_pad_top_mobile": false,
-        "pad_top_mobile": 0,
-        "enable_pad_bottom_mobile": false,
-        "pad_bottom_mobile": 0,
-        "enable_pad_top_desktop": false,
-        "pad_top_desktop": 0,
-        "enable_pad_bottom_desktop": false,
-        "pad_bottom_desktop": 0
-      }
-    },
     "tp_midia_igVRPA": {
       "type": "tp-midia",
       "blocks": {
@@ -730,8 +658,8 @@
         "title_size_desktop": 22,
         "title_size_mobile": 16,
         "title_weight": "600",
-        "pad_top_min": 0,
-        "pad_top_max": 0,
+        "pad_top_min": 32,
+        "pad_top_max": 48,
         "pad_bottom_min": 32,
         "pad_bottom_max": 64,
         "enable_pad_top_mobile": false,
@@ -956,7 +884,6 @@
     "tp_e_categories_v1_aCGaPF",
     "tp_e_review_v2_QCxGqk",
     "tp_featured_collection_RMqgGf",
-    "tp_slider_bump_wmwT64",
     "tp_midia_igVRPA",
     "tp_e_image_with_text_v1_7XGtVk",
     "tp_e_categories_v2_cHccJ3",
