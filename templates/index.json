@@ -612,11 +612,11 @@
         "review_CJdYYz": {
           "type": "review",
           "settings": {
-            "impact": "Frase de impacto",
-            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>",
-            "name": "Nome e sobrenome",
+            "impact": "",
+            "content": "<p>“Superou minhas expectativas. Entrega foi rápida, material e acabamento da capa são impecáveis. Recomendo Kings capas”</p>",
+            "name": "Pedro Vianna",
             "extra_info": "",
-            "card_align": "left",
+            "card_align": "center",
             "card_bg": "#FFFFFF",
             "card_border_color": "#E5E5E5",
             "card_border_width": 1,
