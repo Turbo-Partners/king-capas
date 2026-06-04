@@ -908,15 +908,43 @@
                 </product-recommendations>
               {% when 'tp-beneficios' %}
                 <div class="tp-pdp-beneficios-wrapper">
-                  <div class="tp-pdp-beneficio">
-                    {% if block.settings.beneficio1_image != blank %}
-                      <img class="tp-pdp-beneficio-image" src="{{ block.settings.image1 | image_url }}">
+                  {% for i in (1..6) %}
+                    {% liquid
+                      case i
+                        when 1
+                          assign b_image = block.settings.beneficio1_image
+                          assign b_text = block.settings.beneficio1_text
+                        when 2
+                          assign b_image = block.settings.beneficio2_image
+                          assign b_text = block.settings.beneficio2_text
+                        when 3
+                          assign b_image = block.settings.beneficio3_image
+                          assign b_text = block.settings.beneficio3_text
+                        when 4
+                          assign b_image = block.settings.beneficio4_image
+                          assign b_text = block.settings.beneficio4_text
+                        when 5
+                          assign b_image = block.settings.beneficio5_image
+                          assign b_text = block.settings.beneficio5_text
+                        when 6
+                          assign b_image = block.settings.beneficio6_image
+                          assign b_text = block.settings.beneficio6_text
+                      endcase
+                    %}
+                    {% if b_text != blank %}
+                      <div class="tp-pdp-beneficio">
+                        {% if b_image != blank %}
+                          {{ b_image | image_url: width: 64 | image_tag:
+                            loading: 'lazy',
+                            class: 'tp-pdp-beneficio-image',
+                            widths: '32, 64',
+                            sizes: '32px'
+                          }}
+                        {% endif %}
+                        <span class="tp-pdp-beneficio-text">{{ b_text | escape }}</span>
+                      </div>
                     {% endif %}
-                    <span class="tp-pdp-beneficio-text">
-                      {{ block.settings.beneficio1_text }}
-                    </span>
-
-                  </div>
+                  {% endfor %}
                 </div>
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
@@ -2700,6 +2728,97 @@
           "id": "tag_bg",
           "label": "Cor do fundo da tag de desconto",
           "default": "#000"
+        }
+      ]
+    },
+    {
+      "type": "tp-beneficios",
+      "name": "Benefícios",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Benefício 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "beneficio1_image",
+          "label": "Ícone"
+        },
+        {
+          "type": "text",
+          "id": "beneficio1_text",
+          "label": "Texto"
+        },
+        {
+          "type": "header",
+          "content": "Benefício 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "beneficio2_image",
+          "label": "Ícone"
+        },
+        {
+          "type": "text",
+          "id": "beneficio2_text",
+          "label": "Texto"
+        },
+        {
+          "type": "header",
+          "content": "Benefício 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "beneficio3_image",
+          "label": "Ícone"
+        },
+        {
+          "type": "text",
+          "id": "beneficio3_text",
+          "label": "Texto"
+        },
+        {
+          "type": "header",
+          "content": "Benefício 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "beneficio4_image",
+          "label": "Ícone"
+        },
+        {
+          "type": "text",
+          "id": "beneficio4_text",
+          "label": "Texto"
+        },
+        {
+          "type": "header",
+          "content": "Benefício 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "beneficio5_image",
+          "label": "Ícone"
+        },
+        {
+          "type": "text",
+          "id": "beneficio5_text",
+          "label": "Texto"
+        },
+        {
+          "type": "header",
+          "content": "Benefício 6"
+        },
+        {
+          "type": "image_picker",
+          "id": "beneficio6_image",
+          "label": "Ícone"
+        },
+        {
+          "type": "text",
+          "id": "beneficio6_text",
+          "label": "Texto"
         }
       ]
     }
