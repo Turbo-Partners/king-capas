@@ -183,7 +183,7 @@
                   {% endif %}
                   {% if block.settings.star_image != blank %}
                     <div class="tp-e-review-v2__card-stars-wrapper">
-                      {% for star in (1..{{ block.settings.star_quantity }}) %}
+                      {% for star in (1..block.settings.star_quantity) %}
                         <img class="tp-e-review-v2__card-star" src="{{ block.settings.star_image | image_url }}">
                       {% endfor %}
                     </div>
