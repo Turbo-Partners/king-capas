@@ -274,7 +274,7 @@
         "pad_bottom_max": 0,
         "enable_pad_top_mobile": false,
         "pad_top_mobile": 0,
-        "enable_pad_bottom_mobile": true,
+        "enable_pad_bottom_mobile": false,
         "pad_bottom_mobile": 48,
         "enable_pad_top_desktop": false,
         "pad_top_desktop": 0,
