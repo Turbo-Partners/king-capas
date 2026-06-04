@@ -108,6 +108,17 @@
             "heading": "Tipos de Proteção",
             "icon": "none"
           }
+        },
+        "tp_beneficios_W7FDUc": {
+          "type": "tp-beneficios",
+          "settings": {
+            "beneficio1_text": "",
+            "beneficio2_text": "",
+            "beneficio3_text": "",
+            "beneficio4_text": "",
+            "beneficio5_text": "",
+            "beneficio6_text": ""
+          }
         }
       },
       "block_order": [
@@ -125,7 +136,8 @@
         "custom_buy_buttons_7VTA3y",
         "complementary_3L7t4e",
         "product_details_meta_citgki",
-        "protection_types_UggDPk"
+        "protection_types_UggDPk",
+        "tp_beneficios_W7FDUc"
       ],
       "settings": {
         "enable_sticky_info": true,
