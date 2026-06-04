@@ -751,7 +751,7 @@
         "background_type": "color",
         "background_color": "#ffffff",
         "background_gradient": "",
-        "columns_desktop": 3,
+        "columns_desktop": 4,
         "gap": 24,
         "centered_slides": true,
         "initial_slide_mobile": 1,
