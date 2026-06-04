@@ -156,7 +156,8 @@
       ],
       "custom_css": [
         "h2 strong {color: #0c111d;}",
-        "h2 {color: #0c111d;}"
+        "h2 {color: #0c111d;}",
+        "p {color: #475467;}"
       ],
       "name": "Banner Slides V1",
       "settings": {
