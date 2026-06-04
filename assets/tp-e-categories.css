@@ -151,7 +151,7 @@
   background: transparent;
   color: #FFF;
   font-family: Helvetica;
-  font-size: 11.073px;
+  font-size: clamp(1.1000rem, calc(0.9886rem + 0.2857vw), 1.4000rem);
   font-style: normal;
   font-weight: 400;
   line-height: 140%; /* 15.503px */
