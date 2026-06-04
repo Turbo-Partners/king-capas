@@ -192,7 +192,7 @@
         "background_color": "#ffffff",
         "background_gradient": "",
         "title": "Mais vendidos",
-        "button_text": "",
+        "button_text": "Ver todos",
         "button_url": "shopify://collections/frontpage",
         "button_below_mobile": false,
         "collection": "frontpage",
