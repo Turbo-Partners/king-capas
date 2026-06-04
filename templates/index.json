@@ -157,7 +157,7 @@
       "custom_css": [
         "h2 strong {color: #0c111d;}",
         "h2 {color: #0c111d; font-size: clamp(2rem, calc(1.5543rem + 1.1429vw), 3.2rem);}",
-        "p {color: #475467; font-size: clamp(1.4000rem, calc(1.3257rem + 0.1905vw), 1.6000rem);}",
+        "p {color: #475467; font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem);}",
         "a {background: #000;}"
       ],
       "name": "Banner Slides V1",
@@ -335,8 +335,8 @@
         "bg_color": "#ffffff",
         "bg_gradient": "",
         "title": "<h2>Explore por categoria</h2>",
-        "title_bar": false,
-        "title_bar_color": "linear-gradient(92deg, #00FCA8 0%, #1CDAFF 100%)",
+        "title_bar": true,
+        "title_bar_color": "linear-gradient(92deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 100%)",
         "title_custom": false,
         "title_alignment": "left",
         "title_color": "#2b2b2b",
