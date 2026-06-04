@@ -172,7 +172,7 @@
       "name": "Texto Rico",
       "settings": {
         "image": "shopify://shop_images/752.svg",
-        "richtext": "<h2>Não é só sobre cobrir um carro</h2><p>A Kings nasceu para elevar o padrão da proteção automotiva no Brasil, desenvolvendo capas sob medidacom materiais premium, ajuste impecável e acabamento muito acima das capas comuns do mercado.</p>",
+        "richtext": "<h2>Seu carro não é comum. </h2><h2><strong>A proteção também não deveria ser</strong></h2>",
         "background_type": "color",
         "background_color": "#ffffff",
         "background_gradient": "",
