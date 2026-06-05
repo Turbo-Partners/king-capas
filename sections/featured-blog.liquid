@@ -27,8 +27,9 @@
       {%- unless section.settings.heading == blank -%}
         <h2 class="tp-featured-blog__title">{{ section.settings.heading }}</h2>
       {%- endunless -%}
-      {%- if section.settings.blog != blank and section.settings.show_view_all -%}
-        <a href="{{ section.settings.blog.url }}" class="tp-featured-blog__view-all tp-featured-blog__view-all--desktop">
+      {%- if section.settings.show_view_all -%}
+        {%- assign view_all_url = section.settings.view_all_url | default: section.settings.blog.url -%}
+        <a href="{{ view_all_url }}" class="tp-featured-blog__view-all tp-featured-blog__view-all--desktop">
           {{ 'sections.featured_blog.view_all' | t }}
         </a>
       {%- endif -%}
@@ -79,9 +80,10 @@
       {%- endif -%}
     </div>
 
-    {%- if section.settings.blog != blank and section.settings.show_view_all -%}
+    {%- if section.settings.show_view_all -%}
+      {%- assign view_all_url = section.settings.view_all_url | default: section.settings.blog.url -%}
       <div class="tp-featured-blog__footer">
-        <a href="{{ section.settings.blog.url }}" class="tp-featured-blog__view-all tp-featured-blog__view-all--mobile">
+        <a href="{{ view_all_url }}" class="tp-featured-blog__view-all tp-featured-blog__view-all--mobile">
           {{ 'sections.featured_blog.view_all' | t }}
         </a>
       </div>
@@ -128,6 +130,11 @@
       "default": true,
       "label": "t:sections.featured-blog.settings.show_view_all.label",
       "info": "t:sections.featured-blog.settings.show_view_all.info"
+    },
+    {
+      "type": "url",
+      "id": "view_all_url",
+      "label": "Link do botão \"Conhecer blog\""
     },
     {
       "type": "checkbox",
