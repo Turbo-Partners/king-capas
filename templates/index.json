@@ -586,13 +586,10 @@
       "settings": {
         "blog": "",
         "post_limit": 3,
-        "heading": "Posts do blog",
-        "heading_size": "h1",
-        "columns_desktop": 3,
+        "heading": "BLOG KINGS",
         "show_view_all": true,
+        "view_all_url": "",
         "show_image": true,
-        "show_date": true,
-        "show_author": false,
         "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
