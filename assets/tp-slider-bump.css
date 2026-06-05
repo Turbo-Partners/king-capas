@@ -6,7 +6,6 @@
     flex-direction: column;
     gap: 32px;
     padding: var(--tp-pad-top) 0 var(--tp-pad-bottom);
-    max-width: 100%;
     align-items: flex-start;
 
     @media screen and (min-width: 1024px) {

@@ -134,12 +134,13 @@
         const swiperInstance = new Swiper(swiperEl, {
             slidesPerView: 1.35,
             spaceBetween: 14,
-            centeredSlides: false,
+            centeredSlides: true,
             speed: 500,
             breakpoints: {
                 750: {
                     slidesPerView: 'auto',
                     spaceBetween: 16,
+                    centeredSlides: false,
                 }
             },
             {% if autoplay %}
