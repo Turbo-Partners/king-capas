@@ -750,6 +750,24 @@
         "enable_pad_bottom_desktop": false,
         "pad_bottom_desktop": 0
       }
+    },
+    "featured_blog_CJ3dd4": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "blog": "",
+        "post_limit": 3,
+        "heading": "Posts do blog",
+        "heading_size": "h1",
+        "columns_desktop": 3,
+        "show_view_all": true,
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -760,6 +778,7 @@
     "tp_e_review_v2_QCxGqk",
     "tp_featured_collection_RMqgGf",
     "tp_midia_igVRPA",
-    "tp_e_banner_slides_v1_GRx6mm"
+    "tp_e_banner_slides_v1_GRx6mm",
+    "featured_blog_CJ3dd4"
   ]
 }
