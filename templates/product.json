@@ -371,6 +371,7 @@
         "video_source": "hosted",
         "video_url": "",
         "video_autoplay": true,
+        "title_image": "shopify://shop_images/752.svg",
         "title": "<h2>Proteção, estética e durabilidade no mesmo produto</h2>",
         "richtext": "<p>O diferencial da Kings está no equilíbrio entre proteção real e visual sofisticado. O tecido acompanha as linhas do veículo, evitando aparência folgada e entregando um acabamento muito acima do padrão tradicional.</p>",
         "button_url": "#tp-main-product",
@@ -522,6 +523,7 @@
       "settings": {
         "background_color": "#000000",
         "badge_text": "",
+        "title_image": "shopify://shop_images/752.svg",
         "title": "<h2>A experiência de quem já escolheu Kings</h2>",
         "subtitle": "Milhares de veículos protegidos em todo o Brasil com capas feitas sob medida.",
         "button_url": "",
