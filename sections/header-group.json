@@ -74,7 +74,7 @@
       "settings": {
         "logo_position": "middle-center",
         "mobile_logo_position": "center",
-        "menu": "main-menu",
+        "menu": "header-menu",
         "menu_position_desktop": "center",
         "menu_type_desktop": "dropdown",
         "menu_mobile_style": "v1",
