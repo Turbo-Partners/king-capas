@@ -5,9 +5,13 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
-    align-items: center;
     padding: var(--tp-pad-top) 0 var(--tp-pad-bottom);
     max-width: 100%;
+    align-items: flex-start;
+
+    @media screen and (min-width: 1024px) {
+      flex-direction: row;
+    }
   }
 
   /* Head */
@@ -20,12 +24,26 @@
   }
 
   .tp-sb__head h2 {
+    color: #FFF;
     font-family: "Helvetica Neue";
-    font-size: clamp(2.4000rem, calc(1.8057rem + 1.5238vw), 4.0000rem);
+    font-size: clamp(2.4000rem, calc(2.1029rem + 0.7619vw), 3.2000rem);
     font-style: normal;
-    font-weight: 700;
-    line-height: 120%; /* 48px */
-    text-align: center;
+    font-weight: 500;
+    line-height: 120%; /* 38.4px */
+    text-transform: uppercase;
+    text-align: left;
+  }
+
+  .tp-sb__head p {
+    color: var(--Gray-400, #98A2B3);
+
+    /* Body/18/Regular */
+    font-family: "Helvetica Neue";
+    font-size: clamp(1.6000rem, calc(1.5257rem + 0.1905vw), 1.8000rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 25.2px */
+    text-align: left;
   }
 
   .tp-sb__title {
@@ -56,6 +74,13 @@
     font-style: normal;
     font-weight: 700;
     line-height: 120%; /* 57.6px */
+    color: #FFF;
+    font-family: "Helvetica Neue";
+    font-size: clamp(2.4000rem, calc(2.1029rem + 0.7619vw), 3.2000rem);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 38.4px */
+    text-transform: uppercase;
 
     b {
         font-weight: 400;
@@ -64,6 +89,27 @@
     @media screen and (min-width: 768px) {
       max-width: 100%;
     }
+  }
+
+  .tp-sb__title h2 {
+    color: #FFF;
+    font-family: "Helvetica Neue";
+    font-size: clamp(2.4000rem, calc(2.1029rem + 0.7619vw), 3.2000rem);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 38.4px */
+    text-transform: uppercase;
+  }
+
+  .tp-sb__title p {
+    color: var(--Gray-400, #98A2B3);
+
+    /* Body/18/Regular */
+    font-family: "Helvetica Neue";
+    font-size: clamp(1.6000rem, calc(1.5257rem + 0.1905vw), 1.8000rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 25.2px */
   }
 
   .tp-sb__title-logo {
@@ -96,16 +142,10 @@
   /* Swiper */
   .tp-sb__swiper {
     width: 100%;
-    margin-left: calc(50% - 50vw);
     overflow: hidden;
     padding: 0;
     margin-top: 16px;
     margin-bottom: 0;
-
-    @media screen and (min-width: 750px) {
-      padding: 60px 0;
-      margin-bottom: -60px;
-    }
 
     .swiper-slide {
       height: auto;
@@ -122,10 +162,6 @@
 
     .swiper-slide-active {
       z-index: 1;
-
-      @media screen and (min-width: 750px) {
-        transform: scale(1.15);
-      }
     }
 
   }
@@ -139,15 +175,9 @@
     transform-origin: center bottom;
     transition: transform 0.35s ease;
 
-    @media screen and (min-width: 750px) {
-      transform: scale(0.9);
-    }
   }
 
   .tp-sb__swiper .swiper-slide-active .tp-sb__card {
-    @media screen and (min-width: 750px) {
-      transform: scale(1);
-    }
   }
 
   .tp-sb__card-media {
