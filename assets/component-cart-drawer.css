@@ -648,7 +648,7 @@ cart-drawer {
   gap: 4px;
   padding: 20px 16px 16px;
   border-radius: 8px;
-  background-color: #FFFF7D;
+  background: var(--Gray-200, #EAECF0);
 }
 
 .cdv2-shipping__bar {
