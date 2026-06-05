@@ -308,6 +308,7 @@
         "video_source": "hosted",
         "video_url": "",
         "video_autoplay": true,
+        "title_image": "shopify://shop_images/752.svg",
         "title": "<h2>Proteção desenvolvida nos detalhes</h2>",
         "richtext": "<p>Muito além de uma capa comum, a Kings foi criada para entregar uma experiência premium em cada detalhe: tecido exclusivo, acabamento refinado e ajuste sob medida para valorizar o veículo mesmo quando protegido.</p>",
         "button_url": "#tp-main-product",
