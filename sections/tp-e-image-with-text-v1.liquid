@@ -142,11 +142,6 @@
     "
     id="section-wrapper-{{ section.id }}"
   >
-    {% if section.settings.title_image != blank %}
-      <div class="tp-e-image-with-text-v1__title-bar">
-        <img src="{{ section.settings.title_image | image_url }}" alt="" aria-hidden="true">
-      </div>
-    {% endif %}
     {% if section.settings.title != blank %}
       <div class="tp-e-image-with-text-v1__title tp-e-image-with-text-v1__title--above-image">
         {{ section.settings.title }}
