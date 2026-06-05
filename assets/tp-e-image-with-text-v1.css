@@ -11,6 +11,11 @@
     gap: var(--tp-space-6);
 }
 
+.tp-e-image-with-text-v1 .tp-e-image-with-text-v1__title-bar img {
+    width: 64px;
+    height: 1px;
+}
+
 .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__media {
     width: 100%;
     display: flex;

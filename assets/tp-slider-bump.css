@@ -14,6 +14,11 @@
   }
 
   /* Head */
+  .tp-sb__title-bar img {
+    width: 64px;
+    height: 1px;
+  }
+
   .tp-sb__head {
     display: flex;
     flex-direction: column;

@@ -249,6 +249,11 @@
                                       "
                                     >
                                         <div class="tp-e-banner-slides-v1__richtext">
+                                            {% if block.settings.title_image != blank %}
+                                              <div class="tp-e-banner-slides-v1__title-bar">
+                                                <img src="{{ block.settings.title_image | image_url }}" alt="" aria-hidden="true">
+                                              </div>
+                                            {% endif %}
                                             <div class="tp-e-banner-slides-v1__title">
                                               {{ block.settings.title }}
                                             </div>
@@ -547,6 +552,11 @@
           "id": "link",
           "label": "Link do slide",
           "visible_if": "{{ block.settings.button_link == blank }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "title_image",
+          "label": "Imagem / barrinha acima do título"
         },
         {
           "type": "richtext",

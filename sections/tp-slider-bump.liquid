@@ -43,6 +43,11 @@
                 </div>
             {% endif %}
 
+            {% if section.settings.title_image != blank %}
+                <div class="tp-sb__title-bar">
+                    <img src="{{ section.settings.title_image | image_url }}" alt="" aria-hidden="true">
+                </div>
+            {% endif %}
             {% if section.settings.title != blank %}
                 <h2 class="tp-sb__title">{{ section.settings.title }}</h2>
             {% endif %}
@@ -267,6 +272,11 @@
             "id": "badge_text",
             "label": "Texto do badge",
             "default": "@nowaydrink"
+        },
+        {
+            "type": "image_picker",
+            "id": "title_image",
+            "label": "Imagem / barrinha acima do título"
         },
         {
             "type": "richtext",

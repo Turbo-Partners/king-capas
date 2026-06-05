@@ -236,6 +236,11 @@
     }
 }
 
+.tp-e-banner-slides-v1__title-bar img {
+    width: 64px;
+    height: 1px;
+}
+
 .tp-e-banner-slides-v1__title {
     display: flex;
     flex-direction: column;
