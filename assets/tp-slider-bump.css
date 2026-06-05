@@ -18,7 +18,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    align-items: center;
+    align-items: flex-start;
     padding: 0 16px;
   }
 
@@ -27,10 +27,15 @@
     font-family: "Helvetica Neue";
     font-size: clamp(2.4000rem, calc(2.1029rem + 0.7619vw), 3.2000rem);
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 120%; /* 38.4px */
     text-transform: uppercase;
     text-align: left;
+
+    @media screen and (min-width: 1024px) {
+      max-width: 334px;
+    }
+    
   }
 
   .tp-sb__head p {
