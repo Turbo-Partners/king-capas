@@ -519,7 +519,7 @@
       ],
       "name": "TP - Slider Bump",
       "settings": {
-        "background_color": "#fff",
+        "background_color": "#000000",
         "badge_text": "",
         "title": "<h2>A experiência de quem já escolheu Kings</h2>",
         "subtitle": "Milhares de veículos protegidos em todo o Brasil com capas feitas sob medida.",
@@ -576,7 +576,7 @@
       "name": "Perguntas Frequentes",
       "settings": {
         "background_type": "color",
-        "background_color": "#FFFFFF",
+        "background_color": "#ffffff",
         "background_gradient": "",
         "faq_layout": "stack",
         "title": "<h2>Dúvidas frequentes</h2>",
