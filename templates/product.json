@@ -243,7 +243,7 @@
         "image_desktop": "shopify://shop_images/712_1.webp",
         "image_mobile": "shopify://shop_images/713_1.webp",
         "video_source": "hosted",
-        "video_file": "shopify://files/videos/767.mp4",
+        "video_file": "shopify://files/videos/767.mov",
         "video_url": "",
         "video_autoplay": true,
         "title": "",
@@ -549,29 +549,85 @@
     "tp_e_faq_v1_HkcVUV": {
       "type": "tp-e-faq-v1",
       "blocks": {
+        "question_WPPrXR": {
+          "type": "question",
+          "settings": {
+            "question": "O que fazer se eu tiver informado algum dado incorreto do veículo?",
+            "answer": "<p>Entre em contato com nossa equipe o mais rápido possível para verificarmos a possibilidade de correção antes do início da fabricação.</p>"
+          }
+        },
+        "question_ga7dma": {
+          "type": "question",
+          "settings": {
+            "question": "Posso parcelar minha compra?",
+            "answer": "<p>Sim. Oferecemos opções de parcelamento em até 12x no cartão de crédito.</p>"
+          }
+        },
+        "question_9P3FpH": {
+          "type": "question",
+          "settings": {
+            "question": "Qual é a garantia do produto?",
+            "answer": "<p>Todos os nossos produtos possuem garantia de 12 meses contra defeitos de fabricação, contados a partir da data de entrega.</p>"
+          }
+        },
+        "question_n4F4jc": {
+          "type": "question",
+          "settings": {
+            "question": "Como acompanho o envio do meu pedido?",
+            "answer": "<p>Assim que o pedido for enviado, você receberá um código de rastreamento por e-mail para acompanhar a entrega.</p>"
+          }
+        },
+        "question_4FmbHc": {
+          "type": "question",
+          "settings": {
+            "question": "Quanto tempo leva para fabricar minha capa?",
+            "answer": "<p>Como cada capa é produzida sob medida, o prazo de fabricação é de 3 a 7 dias úteis após a confirmação do pedido.</p>"
+          }
+        },
+        "question_ECmVyD": {
+          "type": "question",
+          "settings": {
+            "question": "A capa acompanha algum acessório?",
+            "answer": "<p>Sim. Todas as capas acompanham uma bolsa para armazenamento quando não estiverem em uso.</p>"
+          }
+        },
+        "question_bFfXpM": {
+          "type": "question",
+          "settings": {
+            "question": "A capa é fácil de colocar e remover?",
+            "answer": "<p>Sim. As capas foram desenvolvidas para proporcionar praticidade no uso diário, facilitando tanto a colocação quanto a remoção.</p>"
+          }
+        },
         "question_GXmki4": {
           "type": "question",
           "settings": {
-            "question": "Qual e a sua pergunta?",
-            "answer": "<p>Escreva a resposta aqui.</p>"
+            "question": "A capa é feita sob medida para o meu veículo?",
+            "answer": "<p>Sim. Todas as nossas capas são confeccionadas sob medida para o modelo do veículo informado no momento da compra, garantindo melhor ajuste e acabamento.</p>"
           }
         },
         "question_fDxbCw": {
           "type": "question",
           "settings": {
-            "question": "Qual e a sua pergunta?",
-            "answer": "<p>Escreva a resposta aqui.</p>"
+            "question": "Como informo os dados do meu veículo?",
+            "answer": "<p>Após selecionar o produto, basta informar os dados solicitados para que a capa seja produzida de acordo com as especificações do seu veículo.</p>"
           }
         },
         "question_HTdciz": {
           "type": "question",
           "settings": {
-            "question": "Qual e a sua pergunta?",
-            "answer": "<p>Escreva a resposta aqui.</p>"
+            "question": "A capa risca a pintura?",
+            "answer": "<p>Não. Nossas capas são produzidas com materiais desenvolvidos para proteger o veículo e preservar a pintura quando utilizadas corretamente.</p>"
           }
         }
       },
       "block_order": [
+        "question_WPPrXR",
+        "question_ga7dma",
+        "question_9P3FpH",
+        "question_n4F4jc",
+        "question_4FmbHc",
+        "question_ECmVyD",
+        "question_bFfXpM",
         "question_GXmki4",
         "question_fDxbCw",
         "question_HTdciz"
