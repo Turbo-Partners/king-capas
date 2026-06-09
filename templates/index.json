@@ -594,7 +594,7 @@
       "type": "featured-blog",
       "name": "t:sections.featured-blog.presets.name",
       "settings": {
-        "blog": "",
+        "blog": "novidades",
         "post_limit": 3,
         "heading": "BLOG KINGS",
         "show_view_all": true,
