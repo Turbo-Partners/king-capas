@@ -96,7 +96,7 @@
           "settings": {
             "heading": "Tempo de fabricação",
             "icon": "none",
-            "content": "",
+            "content": "{{ product.metafields.custom.pdp_tempo_de_fabricacao | metafield_tag }}",
             "page": ""
           }
         },
