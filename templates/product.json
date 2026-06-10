@@ -82,6 +82,24 @@
             "button_text": "Comprar agora"
           }
         },
+        "collapsible_tab_3WRmRF": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Tecido e Detalhes do Produto",
+            "icon": "none",
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_V4UJpL": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Tempo de fabricação",
+            "icon": "none",
+            "content": "",
+            "page": ""
+          }
+        },
         "complementary_3L7t4e": {
           "type": "complementary",
           "settings": {
@@ -140,6 +158,8 @@
         "tp_price_bmC7KB",
         "buy_buttons",
         "custom_buy_buttons_7VTA3y",
+        "collapsible_tab_3WRmRF",
+        "collapsible_tab_V4UJpL",
         "complementary_3L7t4e",
         "product_details_meta_citgki",
         "protection_types_UggDPk",
