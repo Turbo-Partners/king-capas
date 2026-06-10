@@ -542,7 +542,7 @@
       "name": "TP - Featured Collection",
       "settings": {
         "background_type": "color",
-        "background_color": "#FFFFFF",
+        "background_color": "#ffffff",
         "background_gradient": "",
         "title": "Escolha a sua capa ideal",
         "button_text": "Ver todos",
@@ -608,6 +608,13 @@
     "tp_midia_igVRPA": {
       "type": "tp-midia",
       "blocks": {
+        "midia_item_VWwzgd": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/751.svg",
+            "link": ""
+          }
+        },
         "midia_item_taD4KR": {
           "type": "midia_item",
           "settings": {
@@ -659,6 +666,7 @@
         }
       },
       "block_order": [
+        "midia_item_VWwzgd",
         "midia_item_taD4KR",
         "midia_item_yiRLLM",
         "midia_item_DqhK7t",
