@@ -87,7 +87,7 @@
           "settings": {
             "heading": "Tecido e Detalhes do Produto",
             "icon": "none",
-            "content": "",
+            "content": "{{ product.metafields.custom.detalhes_do_produto | metafield_tag }}",
             "page": ""
           }
         },
