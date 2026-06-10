@@ -53,9 +53,38 @@
         <div class="tp-midia__swiper swiper">
             <div class="tp-midia__swiper-wrapper swiper-wrapper">
                 {% for block in section.blocks %}
-                    <div class="swiper-slide tp-midia__swiper-slide">
+                    <div class="swiper-slide tp-midia__swiper-slide" {{ block.shopify_attributes }}>
                         {% if block.settings.image != blank %}
-                            <img class="tp-midia__block-image" src="{{ block.settings.image | image_url }}">
+                            {{ block.settings.image | image_url: width: 400 | image_tag:
+                                class: 'tp-midia__block-image',
+                                loading: 'lazy',
+                                widths: '200, 400',
+                                sizes: '200px'
+                            }}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                {% for block in section.blocks %}
+                    <div class="swiper-slide tp-midia__swiper-slide" aria-hidden="true">
+                        {% if block.settings.image != blank %}
+                            {{ block.settings.image | image_url: width: 400 | image_tag:
+                                class: 'tp-midia__block-image',
+                                loading: 'lazy',
+                                widths: '200, 400',
+                                sizes: '200px'
+                            }}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                {% for block in section.blocks %}
+                    <div class="swiper-slide tp-midia__swiper-slide" aria-hidden="true">
+                        {% if block.settings.image != blank %}
+                            {{ block.settings.image | image_url: width: 400 | image_tag:
+                                class: 'tp-midia__block-image',
+                                loading: 'lazy',
+                                widths: '200, 400',
+                                sizes: '200px'
+                            }}
                         {% endif %}
                     </div>
                 {% endfor %}
@@ -69,9 +98,7 @@
         const swiper_{{ section.id | replace: '-', '_' }} = new Swiper('.{{ section.id }} .swiper', {
             slidesPerView: 3.2,
             centeredSlides: true,
-            initialSlide: Math.floor({{ section.blocks.size }} / 2),
             spaceBetween: 16,
-            watchOverflow: true,
             loop: true,
             autoplay: {
                 delay: 2500,
@@ -81,11 +108,9 @@
             breakpoints: {
                 768: {
                     slidesPerView: 5.2,
-                    loop: true,
                 },
                 1024: {
                     slidesPerView: 7,
-                    loop: true,
                 }
             }
         });
