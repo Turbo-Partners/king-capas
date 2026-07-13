@@ -4,6 +4,8 @@
 
 .tp-midia {
   overflow: hidden;
+  border-top: 1px solid var(--Gray-300, #D9D9D9);
+  border-bottom: 1px solid var(--Gray-300, #D9D9D9);
 }
 
 .tp-midia__wrapper {
@@ -53,10 +55,22 @@ tp-midia {
 }
 
 .tp-midia__swiper-slide {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: opacity var(--tp-transition-base);
+}
+
+.tp-midia__swiper-slide:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 32px;
+  background: var(--gray-200, #EAECF0);
 }
 
 /* --------------------------------------------------------------------------
@@ -77,7 +91,12 @@ tp-midia {
   max-width: 140px;
   height: 52px;
   object-fit: contain;
+  filter: grayscale(100%);
   transition: filter var(--tp-transition-base), opacity var(--tp-transition-base);
+}
+
+.tp-midia__swiper-slide:hover .tp-midia__block-image {
+  filter: grayscale(0%);
 }
 
 /* Placeholder quando não há imagem */
