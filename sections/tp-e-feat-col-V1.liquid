@@ -21,12 +21,13 @@
   assign autoplay_time = section.settings.autoplay_time | times: 1000
   assign pagination = section.settings.pagination
   assign navigation = section.settings.navigation
+  assign button_animation = section.settings.button_animation
+
   if section.settings.product_list.size > 0
     assign tp_featured_collection_products = section.settings.product_list
   else
     assign tp_featured_collection_products = section.settings.collection.products
   endif
-  assign button_below_mobile = section.settings.button_below_mobile
 %}
 
 {% style %}
@@ -49,6 +50,23 @@
 		background: {{ section.settings.background_gradient }};
 	{% endif %}
 
+  .tp-feat-col__accent {
+    background: linear-gradient(90deg, {{ section.settings.accent_color_from }} 0%, {{ section.settings.accent_color_via }} 50%, {{ section.settings.accent_color_from }} 100%);
+  }
+
+  {% if section.settings.title_custom %}
+    .tp-feat-col__title * {
+      color: {{ section.settings.title_color }};
+      font-size: {{ section.settings.title_size_mobile }}px;
+      font-weight: {{ section.settings.title_weight }};
+    }
+    @media screen and (min-width: 768px) {
+      .tp-feat-col__title * {
+        font-size: {{ section.settings.title_size_desktop }}px;
+      }
+    }
+  {% endif %}
+
     {% if pagination %}
         .swiper-pagination {
             position: relative;
@@ -56,7 +74,7 @@
             align-items:center;
             justify-content:center;
             gap:8px;
-            
+
             @media screen and (min-width: 768px) {
                 display: none;
             }
@@ -150,22 +168,39 @@
         }
 	{% endif %}
 }
+
+{% if section.settings.button_custom %}
+  .{{ section.id }} .tp-feat-col__cta {
+    {% if section.settings.button_bg_color != blank %}
+      background: {{ section.settings.button_bg_color }};
+    {% endif %}
+    {% if section.settings.button_text_color != blank %}
+      color: {{ section.settings.button_text_color }};
+    {% endif %}
+    {% if section.settings.button_border_radius != "default" %}
+      {% if section.settings.button_border_radius == "none" %}
+        border-radius: 0;
+      {% else %}
+        border-radius: var(--tp-radius-{{ section.settings.button_border_radius }});
+      {% endif %}
+    {% endif %}
+    font-size: {{ section.settings.button_font_size }}px;
+    font-weight: {{ section.settings.button_font_weight }};
+  }
+{% endif %}
 {% endstyle %}
 
-<section class="tp-featured-collection {{ section.id }}">
-    <div class="tp-wrapper--full-width" id="section-wrapper-{{ section.id }}">
+<section class="tp-featured-collection {{ section.id }} scroll-trigger animate--fade-in">
+    <div class="tp-wrapper--full-width tp-featured-collection__wrapper" id="section-wrapper-{{ section.id }}">
         {% if section.settings.title != blank %}
-            <div class="tp-title-wrapper">
-                <h2>
+            <div class="tp-feat-col__header">
+                <div class="tp-feat-col__title">
                     {{ section.settings.title }}
-                </h2>
-                {% if section.settings.button_text != blank and section.settings.button_url != blank %}
-                    <a class="tp-button {% if button_below_mobile %}tp-button--desktop{% endif %}" href="{{ section.settings.button_url }}" data-testid="teste">
-                        {{ section.settings.button_text }}
-                    </a>
-                {% endif %}
+                </div>
+                <div class="tp-feat-col__accent" aria-hidden="true"></div>
             </div>
         {% endif %}
+
         {% if tp_featured_collection_products != blank %}
             <div class="swiper">
                 <div class="swiper-wrapper">
@@ -180,9 +215,9 @@
                                 change_image_hover: true,
                                 show_installments: true
                             %}
-                        </div> 
+                        </div>
                     {% endfor %}
-                </div> 
+                </div>
                 {% if navigation == true %}
                     <div class="swiper-button-prev">
                         {% if section.settings.navigation_prev_image != blank %}
@@ -205,8 +240,12 @@
                 <div class="swiper-pagination"></div>
             {% endif %}
         {% endif %}
-        {% if button_below_mobile == true %}
-            <a class="tp-button tp-button--mobile" href="{{ section.settings.button_url }}">
+
+        {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+            <a
+              class="tp-feat-col__cta{% if button_animation != 'none' %} tp-feat-col__cta--{{ button_animation }}{% endif %}"
+              href="{{ section.settings.button_url }}"
+            >
                 {{ section.settings.button_text }}
             </a>
         {% endif %}
@@ -216,32 +255,25 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const swiper_{{ section.id | replace: '-', '_' }} = new Swiper('.{{ section.id }} .swiper', {
-            slidesPerView: 2,
-            spaceBetween: 12,
+            slidesPerView: 1.15,
+            spaceBetween: 8,
             slidesOffsetBefore: 16,
             slidesOffsetAfter: 16,
-            grid: {
-                rows: 2,
-                fill: 'row'
-            },
             breakpoints: {
                 728: {
                     slidesPerView: 2.2,
                     spaceBetween: 16,
-                    slidesOffsetBefore: 32,
-                    grid: { rows: 1 }
+                    slidesOffsetBefore: 32
                 },
                 1024: {
                     slidesPerView: 4,
                     spaceBetween: 16,
-                    slidesOffsetBefore: 40,
-                    grid: { rows: 1 }
+                    slidesOffsetBefore: 40
                 },
                 1280: {
                     slidesPerView: 4.2,
                     spaceBetween: 16,
-                    slidesOffsetBefore: 40,
-                    grid: { rows: 1 }
+                    slidesOffsetBefore: 40
                 }
             },
             {% if autoplay %}
@@ -264,7 +296,6 @@
         });
     });
 </script>
-{% comment %} <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script> {% endcomment %}
 
 {% schema %}
 {
@@ -311,32 +342,15 @@
             "content": "Conteúdo"
         },
         {
-            "type": "text",
+            "type": "richtext",
             "id": "title",
-            "label": "Titulo",
-            "default": "Coleção"
-        },
-        {
-            "type": "text",
-            "id": "button_text",
-            "label": "Texto do botao",
-            "default": "Ver tudo"
-        },
-        {
-            "type": "url",
-            "id": "button_url",
-            "label": "Link do botao"
-        },
-        {
-            "type": "checkbox",
-            "label": "Botão embaixo no Mobile",
-            "id": "button_below_mobile",
-            "default": true
+            "label": "Título",
+            "default": "<p>Escolha a sua capa ideal</p>"
         },
         {
             "type": "collection",
             "id": "collection",
-            "label": "Colecao"
+            "label": "Coleção"
         },
         {
             "type": "product_list",
@@ -345,7 +359,152 @@
         },
         {
             "type": "header",
-            "content": "Spacing"
+            "content": "Traço decorativo"
+        },
+        {
+            "type": "color",
+            "id": "accent_color_from",
+            "label": "Cor",
+            "default": "#FEC300"
+        },
+        {
+            "type": "color",
+            "id": "accent_color_via",
+            "label": "Cor (meio do gradiente)",
+            "default": "#FFD548"
+        },
+        {
+            "type": "header",
+            "content": "Tipografia — Título"
+        },
+        {
+            "type": "checkbox",
+            "id": "title_custom",
+            "label": "Personalizar",
+            "default": false
+        },
+        {
+            "type": "color",
+            "id": "title_color",
+            "label": "Cor",
+            "visible_if": "{{ section.settings.title_custom }}"
+        },
+        {
+            "type": "range",
+            "id": "title_size_desktop",
+            "label": "Tamanho desktop (px)",
+            "min": 16,
+            "max": 56,
+            "step": 2,
+            "default": 32,
+            "visible_if": "{{ section.settings.title_custom }}"
+        },
+        {
+            "type": "range",
+            "id": "title_size_mobile",
+            "label": "Tamanho mobile (px)",
+            "min": 14,
+            "max": 40,
+            "step": 2,
+            "default": 24,
+            "visible_if": "{{ section.settings.title_custom }}"
+        },
+        {
+            "type": "select",
+            "id": "title_weight",
+            "label": "Peso",
+            "default": "700",
+            "options": [
+                { "label": "Regular (400)", "value": "400" },
+                { "label": "Semi-negrito (600)", "value": "600" },
+                { "label": "Negrito (700)", "value": "700" }
+            ],
+            "visible_if": "{{ section.settings.title_custom }}"
+        },
+        {
+            "type": "header",
+            "content": "Botão"
+        },
+        {
+            "type": "text",
+            "id": "button_text",
+            "label": "Texto",
+            "default": "Escolher minha capa"
+        },
+        {
+            "type": "url",
+            "id": "button_url",
+            "label": "Link"
+        },
+        {
+            "type": "select",
+            "id": "button_animation",
+            "label": "Animação",
+            "default": "none",
+            "options": [
+                { "label": "Nenhuma", "value": "none" },
+                { "label": "Zoom", "value": "zoom" },
+                { "label": "Troca de background", "value": "swap-bg" },
+                { "label": "Translate Y", "value": "translate-y" }
+            ]
+        },
+        {
+            "type": "checkbox",
+            "id": "button_custom",
+            "label": "Personalizar",
+            "default": false
+        },
+        {
+            "type": "color",
+            "id": "button_bg_color",
+            "label": "Cor de fundo",
+            "visible_if": "{{ section.settings.button_custom }}"
+        },
+        {
+            "type": "color",
+            "id": "button_text_color",
+            "label": "Cor do texto",
+            "visible_if": "{{ section.settings.button_custom }}"
+        },
+        {
+            "type": "select",
+            "id": "button_border_radius",
+            "label": "Arredondamento",
+            "default": "default",
+            "visible_if": "{{ section.settings.button_custom }}",
+            "options": [
+                { "label": "Padrão (Design System)", "value": "default" },
+                { "label": "Nenhum", "value": "none" },
+                { "label": "Pequeno", "value": "sm" },
+                { "label": "Médio", "value": "md" },
+                { "label": "Grande", "value": "lg" },
+                { "label": "Extra Grande", "value": "xl" },
+                { "label": "Completo", "value": "full" }
+            ]
+        },
+        {
+            "type": "range",
+            "id": "button_font_size",
+            "label": "Tamanho do texto",
+            "min": 12,
+            "max": 24,
+            "step": 1,
+            "default": 14,
+            "unit": "px",
+            "visible_if": "{{ section.settings.button_custom }}"
+        },
+        {
+            "type": "select",
+            "id": "button_font_weight",
+            "label": "Peso do texto",
+            "default": "700",
+            "visible_if": "{{ section.settings.button_custom }}",
+            "options": [
+                { "label": "Regular", "value": "400" },
+                { "label": "Medium", "value": "500" },
+                { "label": "Semi Bold", "value": "600" },
+                { "label": "Bold", "value": "700" }
+            ]
         },
         {
             "type": "header",
@@ -470,6 +629,10 @@
             "id": "navigation_next_image",
             "label": "Imagem botao proximo",
             "visible_if": "{{ section.settings.navigation }}"
+        },
+        {
+            "type": "header",
+            "content": "Espaçamento"
         },
         {
             "type": "range",

@@ -6,51 +6,6 @@
         flex-direction: column;
         gap: clamp(2.4rem, 1.5086rem + 2.2857vw, 4.8rem);
 
-        .tp-title-wrapper {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: center;
-            justify-content: center;
-            padding-inline: 16px;
-
-            @media screen and (min-width: 768px) {
-                padding-inline: 32px;
-            }
-
-            h2 {
-                color: var(--Gray-900, #101828);
-                text-align: center;
-                font-family: "Helvetica Neue";
-                font-size: clamp(1.6000rem, calc(1.4514rem + 0.3810vw), 2.0000rem);
-                font-style: normal;
-                font-weight: 400;
-                line-height: 120%; /* 24px */
-                text-transform: uppercase;
-            }
-
-            .tp-button {
-                color: var(--Gray-600, #475467);
-                text-align: center;
-                font-family: "Helvetica Neue";
-                font-size: 14px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: 140%; /* 19.6px */
-                letter-spacing: 2.24px;
-                text-decoration-line: underline;
-                text-decoration-style: solid;
-                text-decoration-skip-ink: auto;
-                text-decoration-thickness: auto;
-                text-underline-offset: auto;
-                text-underline-position: from-font;
-                padding: 0;
-                background: none;
-            }
-
-        }
-
         .swiper {
             width: 100%;
 
@@ -60,10 +15,6 @@
                 }
             }
         }
-
-        .tp-button {
-            margin-inline: auto;
-        }
     }
 }
 
@@ -71,4 +22,117 @@
     @media screen and (min-width: 1024px) {
         padding-inline: 40px;
     }
+}
+
+/* --------------------------------------------------------------------------
+   Cabeçalho — título + traço decorativo
+   -------------------------------------------------------------------------- */
+
+.tp-feat-col__header {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: var(--tp-space-4, 16px);
+    width: 100%;
+    padding-inline: 16px;
+}
+
+.tp-feat-col__title {
+    color: var(--tp-color-text-primary);
+    font-family: var(--tp-font-heading);
+    font-size: var(--tp-font-size-2xl);
+    font-weight: var(--tp-font-bold);
+    line-height: var(--tp-leading-tight, 1.2);
+    text-align: center;
+    margin: 0;
+}
+
+.tp-feat-col__title p {
+    margin: 0;
+}
+
+.tp-feat-col__accent {
+    width: 60px;
+    height: 3px;
+    flex-shrink: 0;
+    align-self: flex-end;
+}
+
+@media screen and (min-width: 768px) {
+    .tp-feat-col__header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-inline: 32px;
+    }
+
+    .tp-feat-col__title {
+        font-size: var(--tp-font-size-4xl);
+        text-align: left;
+    }
+
+    .tp-feat-col__accent {
+        width: 100%;
+        max-width: 368px;
+        height: 8px;
+        align-self: center;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .tp-feat-col__header {
+        padding-inline: 40px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Cartão de produto — ajustes específicos desta vitrine
+   -------------------------------------------------------------------------- */
+
+.tp-featured-collection .tp-product-card {
+    border: 1px solid var(--tp-color-border);
+}
+
+.tp-featured-collection .tp-product-card__media .tp-images,
+.tp-featured-collection .tp-product-card__media .tp-image {
+    aspect-ratio: 1 / 1;
+}
+
+/* --------------------------------------------------------------------------
+   Botão — CTA principal
+   -------------------------------------------------------------------------- */
+
+.tp-feat-col__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: auto;
+    padding: var(--tp-space-3, 12px) var(--tp-space-8, 32px);
+    background: linear-gradient(90deg, #FFEE00 0%, #FECC27 100%);
+    color: #000000;
+    font-family: var(--tp-font-body);
+    font-size: 14px;
+    font-weight: var(--tp-font-bold);
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: var(--tp-radius-sm);
+    cursor: pointer;
+    transition: opacity var(--tp-transition-base), transform var(--tp-transition-base);
+}
+
+.tp-feat-col__cta:hover {
+    opacity: 0.9;
+}
+
+.tp-feat-col__cta--zoom:hover {
+    transform: scale(1.05);
+}
+
+.tp-feat-col__cta--translate-y:hover {
+    transform: translateY(-4px);
+}
+
+.tp-feat-col__cta--swap-bg:hover {
+    opacity: 1;
+    filter: brightness(1.15);
 }
