@@ -102,7 +102,6 @@
   flex-direction: column;
   gap: var(--tp-space-3);
   padding-inline: clamp(1.6000rem, calc(1.3029rem + 0.7619vw), 2.4000rem);
-  padding-bottom: clamp(1.6000rem, calc(1.3029rem + 0.7619vw), 2.4000rem);
 
   @media (max-width:750px) {
     gap: var(--tp-space-1);
