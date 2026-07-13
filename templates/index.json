@@ -423,7 +423,7 @@
       "custom_css": [
         "h2 {color: var(--Gray-950, #0c111d); font-family: Montserrat; font-size: clamp(2.2rem, calc(1.8286rem + 0.9524vw), 3.2rem); font-style: normal; font-weight: 700; line-height: 140%; /* 44.8px */}",
         "p {color: var(--Gray-600, #475467); font-family: Montserrat; font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem); font-style: normal; font-weight: 400; line-height: 140%; /* 22.4px */}",
-        ".tp-e-image-with-text-v1 {border-bottom: 8px solid #FEC300;}"
+        ".tp-e-image-with-text-v1 {border-bottom: 8px solid #fec300;}"
       ],
       "name": "Imagem Com Texto V1",
       "settings": {
@@ -465,10 +465,10 @@
         "background_type": "color",
         "background_color": "#FFFFFF",
         "background_gradient": "",
-        "pad_top_min": 48,
-        "pad_top_max": 96,
-        "pad_bottom_min": 48,
-        "pad_bottom_max": 96,
+        "pad_top_min": 40,
+        "pad_top_max": 80,
+        "pad_bottom_min": 40,
+        "pad_bottom_max": 64,
         "enable_pad_top_mobile": false,
         "pad_top_mobile": 0,
         "enable_pad_bottom_mobile": false,
