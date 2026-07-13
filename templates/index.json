@@ -61,8 +61,9 @@
         "slide_NhKtLK"
       ],
       "custom_css": [
-        ".tp-e-banner-slides-v1{aspect-ratio: 390/500;}",
-        "@media screen and (min-width: 1024px) {.tp-e-banner-slides-v1 {aspect-ratio: unset; } }"
+        ".tp-e-banner-slides-v1 {aspect-ratio: 390/500;}",
+        ".tp-e-banner-slides-v1__media {height: 100%;}",
+        "@media screen and (min-width: 1024px) {.tp-e-banner-slides-v1 {aspect-ratio: unset; }}"
       ],
       "name": "Banner Slides V1",
       "settings": {
