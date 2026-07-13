@@ -140,7 +140,6 @@
 
   .tp-e-categories-v5__slide {
     aspect-ratio: var(--tp-cats-ratio-desktop, 400 / 460);
-    margin-right: var(--tp-cats-margin-desktop, -56px);
   }
 
   .tp-e-categories-v5__label {
