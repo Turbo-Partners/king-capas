@@ -32,10 +32,8 @@
 {% style %}
   .{{ section.id }} {
     --tp-cats-slant: {{ slant }}%;
-    --tp-cats-card-w-mobile: {{ section.settings.card_width_mobile }}px;
-    --tp-cats-card-h-mobile: {{ section.settings.card_height_mobile }}px;
-    --tp-cats-card-w-desktop: {{ section.settings.card_width_desktop }}px;
-    --tp-cats-card-h-desktop: {{ section.settings.card_height_desktop }}px;
+    --tp-cats-ratio-mobile: {{ section.settings.card_width_mobile }} / {{ section.settings.card_height_mobile }};
+    --tp-cats-ratio-desktop: {{ section.settings.card_width_desktop }} / {{ section.settings.card_height_desktop }};
     --tp-cats-margin-mobile: {{ margin_mobile }}px;
     --tp-cats-margin-desktop: {{ margin_desktop }}px;
     --tp-e-categories-v5-accent-color: {{ section.settings.accent_color }};

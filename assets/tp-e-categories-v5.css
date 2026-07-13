@@ -62,8 +62,8 @@
 
 .tp-e-categories-v5__slide {
   position: relative;
-  width: var(--tp-cats-card-w-mobile, 313px);
-  height: var(--tp-cats-card-h-mobile, 360px);
+  width: 100%;
+  aspect-ratio: var(--tp-cats-ratio-mobile, 313 / 360);
   flex-shrink: 0;
   overflow: hidden;
   clip-path: polygon(
@@ -139,8 +139,7 @@
   }
 
   .tp-e-categories-v5__slide {
-    width: var(--tp-cats-card-w-desktop, 400px);
-    height: var(--tp-cats-card-h-desktop, 460px);
+    aspect-ratio: var(--tp-cats-ratio-desktop, 400 / 460);
     margin-right: var(--tp-cats-margin-desktop, -56px);
   }
 
