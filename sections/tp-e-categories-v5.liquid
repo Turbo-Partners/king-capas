@@ -77,7 +77,6 @@
 {% endstyle %}
 
 <tp-categories-v5
-  data-navigation="{{ section.settings.navigation }}"
   data-autoplay="{{ section.settings.autoplay }}"
   data-autoplay-delay="{{ section.settings.autoplay_delay }}"
 >
@@ -138,15 +137,6 @@
               </div>
             {% endfor %}
           </div>
-
-          {% if section.settings.navigation %}
-            <div class="swiper-button-prev tp-e-categories-v5__nav-btn tp-e-categories-v5__nav-btn--prev">
-              {{ 'tp-button-prev.svg' | inline_asset_content }}
-            </div>
-            <div class="swiper-button-next tp-e-categories-v5__nav-btn tp-e-categories-v5__nav-btn--next">
-              {{ 'tp-button-next.svg' | inline_asset_content }}
-            </div>
-          {% endif %}
         </div>
       {% endif %}
     </div>
@@ -159,7 +149,6 @@
       connectedCallback() {
         if (!window.Swiper) return;
 
-        const hasNavigation = this.dataset.navigation === 'true';
         const hasAutoplay = this.dataset.autoplay === 'true';
         const autoplayDelay = parseInt(this.dataset.autoplayDelay, 10) || 3000;
 
@@ -168,14 +157,12 @@
           spaceBetween: 0,
           loop: false,
           watchOverflow: true,
+          breakpoints: {
+            768: {
+              slidesPerView: 4,
+            },
+          },
         };
-
-        if (hasNavigation) {
-          config.navigation = {
-            prevEl: this.querySelector('.tp-e-categories-v5__nav-btn--prev'),
-            nextEl: this.querySelector('.tp-e-categories-v5__nav-btn--next'),
-          };
-        }
 
         if (hasAutoplay) {
           config.autoplay = {
@@ -278,13 +265,7 @@
     },
     {
       "type": "header",
-      "content": "Navegação e Autoplay"
-    },
-    {
-      "type": "checkbox",
-      "id": "navigation",
-      "label": "Exibir setas de navegação",
-      "default": true
+      "content": "Autoplay"
     },
     {
       "type": "checkbox",
@@ -581,8 +562,7 @@
       "name": "Categorias Diagonal",
       "category": "Coleção",
       "settings": {
-        "title": "<p>Explore por categoria</p>",
-        "navigation": true
+        "title": "<p>Explore por categoria</p>"
       },
       "blocks": [
         { "type": "category", "settings": { "title": "Capas para Carros" } },
