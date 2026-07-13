@@ -190,6 +190,90 @@
         "pad_bottom_desktop": 0
       }
     },
+    "tp_e_categories_v5_rrnzRC": {
+      "type": "tp-e-categories-v5",
+      "blocks": {
+        "category_ByhCJ9": {
+          "type": "category",
+          "settings": {
+            "image_desktop": "shopify://shop_images/1087_1.webp",
+            "title": "Capas para Carros",
+            "link": ""
+          }
+        },
+        "category_adfjq6": {
+          "type": "category",
+          "settings": {
+            "image_desktop": "shopify://shop_images/1088_1.webp",
+            "title": "Capas para Motos",
+            "link": ""
+          }
+        },
+        "category_FHb8qd": {
+          "type": "category",
+          "settings": {
+            "image_desktop": "shopify://shop_images/1089_1.webp",
+            "title": "Capas Aeronáuticas",
+            "link": ""
+          }
+        },
+        "category_LWQVVC": {
+          "type": "category",
+          "settings": {
+            "image_desktop": "shopify://shop_images/1090_1.webp",
+            "title": "Capas para Barcos",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_ByhCJ9",
+        "category_adfjq6",
+        "category_FHb8qd",
+        "category_LWQVVC"
+      ],
+      "name": "Categorias Diagonal",
+      "settings": {
+        "title": "<p>Explore por categoria</p>",
+        "accent_color": "#FFEE00",
+        "slant_percent": 14,
+        "card_width_desktop": 400,
+        "card_height_desktop": 460,
+        "card_width_mobile": 312,
+        "card_height_mobile": 360,
+        "lazy_loading": true,
+        "navigation": true,
+        "autoplay": false,
+        "autoplay_delay": 3000,
+        "background_type": "color",
+        "background_color": "#FFFFFF",
+        "background_gradient": "",
+        "overlay_custom": false,
+        "overlay_color_from": "#02030200",
+        "overlay_color_to": "#020302",
+        "title_custom": false,
+        "title_color": "",
+        "title_size_desktop": 32,
+        "title_size_mobile": 24,
+        "title_weight": "700",
+        "label_custom": false,
+        "label_color": "#FFFFFF",
+        "label_size_desktop": 18,
+        "label_size_mobile": 14,
+        "pad_top_min": 24,
+        "pad_top_max": 80,
+        "pad_bottom_min": 40,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
     "tp_richtext_Pijy6Q": {
       "type": "tp-richtext",
       "name": "Texto Rico",
@@ -796,6 +880,7 @@
   "order": [
     "tp_e_banner_slides_v1_trMAtd",
     "tp_midia_igVRPA",
+    "tp_e_categories_v5_rrnzRC",
     "tp_richtext_Pijy6Q",
     "tp_e_banner_slides_v1_TjLpQN",
     "tp_e_categories_v1_aCGaPF",
