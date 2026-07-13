@@ -49,7 +49,7 @@
             "text_position_horizontal_mobile": "center",
             "text_position_horizontal_desktop": "left",
             "text_position_vertical_mobile": "space_between",
-            "text_position_vertical_desktop": "space_between",
+            "text_position_vertical_desktop": "center",
             "bottom_mobile": 40,
             "bottom_desktop": 40,
             "top_mobile": 40,
@@ -64,7 +64,7 @@
         ".tp-e-banner-slides-v1 {aspect-ratio: 390/500;}",
         ".tp-e-banner-slides-v1__media {height: 100%; width: auto;}",
         ".tp-e-banner-slides-v1__video {height: 100%; width: auto;}",
-        "@media screen and (min-width: 1024px) {.tp-e-banner-slides-v1 {aspect-ratio: unset; } .tp-e-banner-slides-v1__video {height: auto; width: 100%;}}"
+        "@media screen and (min-width: 1024px) {.tp-e-banner-slides-v1 {aspect-ratio: unset; } .tp-e-banner-slides-v1__video {height: auto; width: 100%; }}"
       ],
       "name": "Banner Slides V1",
       "settings": {
