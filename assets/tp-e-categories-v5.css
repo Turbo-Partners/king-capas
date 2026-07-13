@@ -1,0 +1,176 @@
+/* ==========================================================================
+   tp-e-categories-v5 — Explore por categoria (cards diagonais com Swiper)
+   ========================================================================== */
+
+.tp-e-categories-v5 {
+  overflow: hidden;
+}
+
+.tp-e-categories-v5__wrapper {
+  padding-top: var(--tp-pad-top);
+  padding-bottom: var(--tp-pad-bottom);
+  display: flex;
+  flex-direction: column;
+  gap: var(--tp-space-6, 24px);
+}
+
+/* --------------------------------------------------------------------------
+   Cabeçalho — título + traço decorativo
+   -------------------------------------------------------------------------- */
+
+.tp-e-categories-v5__header {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: var(--tp-space-4, 16px);
+  width: 100%;
+}
+
+.tp-e-categories-v5__title {
+  color: var(--tp-color-text-primary);
+  font-family: var(--tp-font-heading);
+  font-size: var(--tp-font-size-2xl);
+  font-weight: var(--tp-font-bold);
+  line-height: var(--tp-leading-tight, 1.2);
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+}
+
+.tp-e-categories-v5__title p {
+  margin: 0;
+}
+
+.tp-e-categories-v5__accent {
+  width: 60px;
+  height: 2px;
+  background: var(--tp-e-categories-v5-accent-color, #FFEE00);
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Slider
+   -------------------------------------------------------------------------- */
+
+.tp-e-categories-v5__swiper {
+  width: 100%;
+}
+
+.tp-e-categories-v5__swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.tp-e-categories-v5__slide {
+  position: relative;
+  width: var(--tp-cats-card-w-mobile, 313px);
+  height: var(--tp-cats-card-h-mobile, 360px);
+  flex-shrink: 0;
+  overflow: hidden;
+  clip-path: polygon(
+    var(--tp-cats-slant, 14%) 0,
+    100% 0,
+    calc(100% - var(--tp-cats-slant, 14%)) 100%,
+    0 100%
+  );
+  margin-right: var(--tp-cats-margin-mobile, -44px);
+  text-decoration: none;
+}
+
+.tp-e-categories-v5__slide-link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.tp-e-categories-v5__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tp-e-categories-v5__placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--tp-color-border);
+}
+
+.tp-e-categories-v5__overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--tp-e-categories-v5-overlay, linear-gradient(180deg, rgba(2, 3, 2, 0) 55%, rgba(2, 3, 2, 0.85) 100%));
+  pointer-events: none;
+}
+
+.tp-e-categories-v5__label {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: var(--tp-space-3, 12px) var(--tp-space-6, 24px);
+  color: var(--tp-e-categories-v5-label-color, var(--tp-color-text-light));
+  font-family: var(--tp-font-heading);
+  font-size: var(--tp-e-categories-v5-label-size-mobile, 14px);
+  font-weight: var(--tp-font-semibold);
+  line-height: var(--tp-leading-tight, 1.2);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Tablet / Desktop (≥ 768px)
+   -------------------------------------------------------------------------- */
+
+@media screen and (min-width: 768px) {
+  .tp-e-categories-v5__header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .tp-e-categories-v5__title {
+    font-size: var(--tp-font-size-4xl);
+    text-align: left;
+  }
+
+  .tp-e-categories-v5__accent {
+    width: 100%;
+    max-width: 368px;
+  }
+
+  .tp-e-categories-v5__slide {
+    width: var(--tp-cats-card-w-desktop, 400px);
+    height: var(--tp-cats-card-h-desktop, 460px);
+    margin-right: var(--tp-cats-margin-desktop, -56px);
+  }
+
+  .tp-e-categories-v5__label {
+    padding: var(--tp-space-4, 16px) var(--tp-space-8, 32px);
+    font-size: var(--tp-e-categories-v5-label-size-desktop, 18px);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Navegação
+   -------------------------------------------------------------------------- */
+
+.tp-e-categories-v5__nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.tp-e-categories-v5__nav-btn.swiper-button-disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.tp-e-categories-v5__nav-btn svg,
+.tp-e-categories-v5__nav-btn img {
+  width: 100%;
+  height: 100%;
+}
