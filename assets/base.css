@@ -3755,7 +3755,7 @@ p {
 }
 
 .scrolled-past-header .header-wrapper {
-  background: #FFFFFF;
+  background: #090909;
 
   .header__heading-logo-wrapper {
     .header__heading-logo--reverse {
@@ -3779,20 +3779,20 @@ p {
       line-height: 140%; /* 25.2px */
 
       .header__active-menu-item {
-        color: #4D4D4D;
+        color: #FFF;
       }
     }
   }
 
   .header__icons {
     svg {
-      color: #191111;
+      color: #FFF;
     }
   }
 
   header-drawer {
     .icon-hamburger {
-      color: #191111;
+      color: #FFF;
     }
   }
 }
