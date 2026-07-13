@@ -42,10 +42,12 @@
 }
 
 .tp-e-categories-v5__accent {
-  width: 60px;
-  height: 2px;
+  width: 160px;
+  height: clamp(0.4000rem, calc(0.2514rem + 0.3810vw), 0.8000rem);
   background: var(--tp-e-categories-v5-accent-color, #FFEE00);
   flex-shrink: 0;
+  display: block !important;
+  align-self: flex-end;
 }
 
 /* --------------------------------------------------------------------------
@@ -136,6 +138,7 @@
   .tp-e-categories-v5__accent {
     width: 100%;
     max-width: 368px;
+    align-self: center;
   }
 
   .tp-e-categories-v5__slide {
