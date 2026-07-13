@@ -15,9 +15,11 @@
         "slide_NhKtLK": {
           "type": "slide",
           "settings": {
-            "media_type": "image",
+            "media_type": "video",
             "image_mobile": "shopify://shop_images/751_1.webp",
             "image_desktop": "shopify://shop_images/750_1.webp",
+            "video_mobile": "shopify://files/videos/1086.mp4",
+            "video_desktop": "shopify://files/videos/1085.mp4",
             "link": "",
             "title": "<h2>Capas sob medida com <strong>padrão acima do comum</strong></h2>",
             "richtext": "<p>Produzidas com tecido exclusivo, ajuste perfeito e acabamento premium para proteger seu veículo.</p>",
@@ -57,6 +59,10 @@
       },
       "block_order": [
         "slide_NhKtLK"
+      ],
+      "custom_css": [
+        ".tp-e-banner-slides-v1{aspect-ratio: 390/500;}",
+        "@media screen and (min-width: 1024px) {.tp-e-banner-slides-v1 {aspect-ratio: unset; } }"
       ],
       "name": "Banner Slides V1",
       "settings": {
