@@ -165,7 +165,7 @@
       ],
       "name": "Mídia",
       "settings": {
-        "title": "A confiança de grandes marcas",
+        "title": "",
         "title_alignment": "center",
         "background_type": "color",
         "bg_custom": false,
