@@ -170,7 +170,7 @@
             "social1_image": "shopify://shop_images/1109.svg",
             "rede_social2": true,
             "social2_url": "/",
-            "social2_image": "shopify://shop_images/725.svg",
+            "social2_image": "shopify://shop_images/1110.svg",
             "rede_social3": false,
             "social3_url": "",
             "rede_social4": false,
@@ -222,13 +222,36 @@
             "button_text": "",
             "button_url": ""
           }
+        },
+        "contact_Vefgat": {
+          "type": "contact",
+          "settings": {
+            "alignment_mobile": "left",
+            "alignment_desktop": "left",
+            "title": "",
+            "informations": "",
+            "rede_social1": true,
+            "social1_url": "https://www.instagram.com/kings.capasautomotivas/",
+            "social1_image": "shopify://shop_images/1109.svg",
+            "rede_social2": true,
+            "social2_url": "/",
+            "social2_image": "shopify://shop_images/1110.svg",
+            "rede_social3": false,
+            "social3_url": "",
+            "rede_social4": false,
+            "social4_url": "",
+            "button": false,
+            "button_text": "",
+            "button_url": ""
+          }
         }
       },
       "block_order": [
         "logo_main",
         "links_Exn8nV",
         "links_main",
-        "contact_main"
+        "contact_main",
+        "contact_Vefgat"
       ],
       "settings": {
         "background_type": "color",
