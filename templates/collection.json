@@ -90,7 +90,7 @@
         "background_color": "#ffffff",
         "background_gradient": "",
         "products_per_page": 16,
-        "columns_desktop": 4,
+        "columns_desktop": 3,
         "columns_tablet": 2,
         "columns_mobile": "2",
         "column_gap_mobile": 16,
