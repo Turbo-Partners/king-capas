@@ -831,10 +831,10 @@
         "padding_bottom": 0
       }
     },
-    "tp_e_banner_slides_v1_EYNyCk": {
+    "tp_e_banner_slides_v1_bcytL9": {
       "type": "tp-e-banner-slides-v1",
       "blocks": {
-        "slide_3mGWn9": {
+        "slide_PEiEGY": {
           "type": "slide",
           "settings": {
             "media_type": "image",
@@ -862,11 +862,11 @@
             "description_font_size_mobile": 16,
             "description_font_size_desktop": 18,
             "description_font_weight": "400",
-            "text_width_mobile": 400,
+            "text_width_mobile": 520,
             "text_width_desktop": 520,
             "text_alignment_mobile": "left",
             "text_alignment_desktop": "left",
-            "text_position_horizontal_mobile": "center",
+            "text_position_horizontal_mobile": "left",
             "text_position_horizontal_desktop": "right",
             "text_position_vertical_mobile": "bottom",
             "text_position_vertical_desktop": "center",
@@ -878,11 +878,11 @@
         }
       },
       "block_order": [
-        "slide_3mGWn9"
+        "slide_PEiEGY"
       ],
       "custom_css": [
         "h2 strong {color: #fff;}",
-        "h2 {color: #fff; font-size: clamp(2rem, calc(1.5543rem + 1.1429vw), 3.2rem);}",
+        "h2 {color: #fe0; font-size: clamp(2rem, calc(1.5543rem + 1.1429vw), 3.2rem); text-transform: capitalize;}",
         "p {color: #fff; font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem);}",
         "a {background: #000;}"
       ],
@@ -925,6 +925,6 @@
     "tp_e_related_products_v1_BzYJCp",
     "related-products",
     "custom_liquid_expUC9",
-    "tp_e_banner_slides_v1_EYNyCk"
+    "tp_e_banner_slides_v1_bcytL9"
   ]
 }
