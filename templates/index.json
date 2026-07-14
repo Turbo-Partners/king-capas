@@ -558,9 +558,9 @@
           "type": "review",
           "settings": {
             "stars": 5,
-            "title": "Produto incrível!",
+            "title": "",
             "subtitle": "",
-            "text": "<p>Adorei o produto, superou minhas expectativas.</p>",
+            "text": "<p>“Superou minhas expectativas. Entrega foi rápida, material e acabamento da capa são impecáveis. Recomendo Kings capas”</p>",
             "name": "João Silva",
             "profession": "",
             "purchase_text": "",
