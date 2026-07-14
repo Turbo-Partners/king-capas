@@ -881,19 +881,19 @@ line-height: 140%; /* 15.4px */
 text-transform: uppercase;
 }
 
-/* Swatches de cor com legenda (nome da cor) — layout do Figma */
-.product-form__input--swatch {
+/* Swatches de cor com legenda (nome da cor) — layout do Figma. Escopado só na opção "Cor" */
+.product-form__input--color-swatch {
   gap: 12px;
 }
 
-.product-form__input--swatch .swatch-input__input + .swatch-input__label {
+.product-form__input--color-swatch .swatch-input__input + .swatch-input__label {
   --swatch-input--size: 56px;
   --swatch-input--border-radius: 5px;
   margin: 0;
 }
 
 @media screen and (min-width: 750px) {
-  .product-form__input--swatch .swatch-input__input + .swatch-input__label {
+  .product-form__input--color-swatch .swatch-input__input + .swatch-input__label {
     --swatch-input--size: 64px;
   }
 }

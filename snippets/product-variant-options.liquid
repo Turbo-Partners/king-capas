@@ -79,7 +79,7 @@
       shape: block.settings.swatch_shape,
       help_text: help_text,
       additional_props: input_dataset,
-      show_label: true
+      show_label: option.name == 'Cor'
     %}
   {%- elsif picker_type == 'button' -%}
     {%- liquid
