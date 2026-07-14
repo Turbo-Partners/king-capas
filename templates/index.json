@@ -406,6 +406,7 @@
         "background_type": "image",
         "background_color": "#ffffff",
         "background_gradient": "",
+        "background_image_mobile": "shopify://shop_images/1093_1.webp",
         "background_image_desktop": "shopify://shop_images/1093_1.webp",
         "pad_top_min": 0,
         "pad_top_max": 0,
