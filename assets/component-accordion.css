@@ -15,6 +15,18 @@
   color: var(--Gray-900, #101828);
 }
 
+.accordion .summary__title + .icon-arrow-bold {
+  width: 20px;
+  height: 20px;
+  color: var(--Gray-900, #101828);
+  transform: rotate(180deg);
+  transition: transform var(--duration-short, 150ms) ease;
+}
+
+.accordion details[open] > summary .icon-arrow-bold {
+  transform: rotate(0deg);
+}
+
 .accordion + .accordion {
   margin-top: 0;
   border-top: none;

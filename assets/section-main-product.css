@@ -236,7 +236,7 @@ product-info {
   position: absolute;
   right: 12px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) rotate(180deg);
   width: 20px;
   height: 20px;
   pointer-events: none;
