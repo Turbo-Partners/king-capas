@@ -517,6 +517,9 @@
         "card_HAcwxd",
         "card_EMDzkN"
       ],
+      "custom_css": [
+        ".template--19812436082870__tp_video_slides_nxdjP8 {background: linear-gradient(180deg, #090909 70.67%, #262525 100%);}"
+      ],
       "name": "TP - Slides de Vídeo",
       "settings": {
         "background_type": "image",
