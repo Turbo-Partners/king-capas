@@ -45,12 +45,13 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button",
+            "picker_type": "dropdown",
             "swatch_shape": "circle"
           }
         },
         "variant_picker_aPRT3c": {
           "type": "variant_picker",
+          "disabled": true,
           "settings": {
             "picker_type": "dropdown",
             "swatch_shape": "square"
@@ -67,6 +68,7 @@
         },
         "vehicle_model_7AXErM": {
           "type": "vehicle_model",
+          "disabled": true,
           "settings": {
             "label": "Informe o modelo e ano do veículo",
             "placeholder": "Ex: Exemplo: Gol G6 2014",
