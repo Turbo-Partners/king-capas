@@ -209,13 +209,27 @@
       {% else %}
         {% if section.settings.image_desktop != blank or section.settings.image_mobile != blank %}
           <picture class="tp-e-image-with-text-v1__picture">
+            {% if section.settings.image_mobile != blank %}
+              <source
+                media="(max-width: 749px)"
+                srcset="{{ section.settings.image_mobile | image_url: width: 750 }} 750w, {{ section.settings.image_mobile | image_url: width: 1100 }} 1100w"
+              >
+            {% endif %}
+            {% if section.settings.image_desktop != blank %}
+              <source
+                media="(min-width: 750px)"
+                srcset="{{ section.settings.image_desktop | image_url: width: 1100 }} 1100w, {{ section.settings.image_desktop | image_url: width: 1500 }} 1500w, {{ section.settings.image_desktop | image_url: width: 2000 }} 2000w"
+              >
+            {% endif %}
             {% if section_image != blank %}
               <img
-                src="{{ section_image | image_url }}"
+                src="{{ section_image | image_url: width: 1500 }}"
                 alt="{{ section_image_alt }}"
                 class="tp-e-image-with-text-v1__img"
                 loading="{{ loading }}"
                 fetchpriority="{{ fetch_priority }}"
+                width="{{ section_image.width }}"
+                height="{{ section_image.height }}"
               >
             {% endif %}
           </picture>
