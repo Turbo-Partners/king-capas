@@ -24,6 +24,8 @@
   assign image_padding_inline_desktop = section.settings.image_padding_inline_desktop
   assign section_image = section.settings.image_desktop | default: section.settings.image_mobile
   assign section_image_alt = section_image.alt | escape
+  assign title_bar_position = section.settings.title_bar_position
+  assign title_bar_align = section.settings.title_bar_align
 
   assign loading = 'eager'
   assign fetch_priority = 'high'
@@ -159,7 +161,7 @@
   >
     {% if section.settings.title != blank %}
       <div class="tp-e-image-with-text-v1__title tp-e-image-with-text-v1__title--above-image">
-        {% if section.settings.title_bar %}
+        {% if section.settings.title_bar and title_bar_position == 'title' %}
           <span class="tp-e-image-with-text-v1__bar" aria-hidden="true"></span>
         {% endif %}
         {{ section.settings.title }}
@@ -237,6 +239,9 @@
       {% endif %}
     </div>
     <div class="tp-e-image-with-text-v1__text-wrapper">
+      {% if section.settings.title_bar and title_bar_position == 'wrapper' %}
+        <span class="tp-e-image-with-text-v1__bar tp-e-image-with-text-v1__bar--{{ title_bar_align }}" aria-hidden="true"></span>
+      {% endif %}
       {% if section.settings.title_image != blank %}
         <div class="tp-e-image-with-text-v1__title-bar">
           <img src="{{ section.settings.title_image | image_url }}" alt="" aria-hidden="true">
@@ -244,7 +249,7 @@
       {% endif %}
       {% if section.settings.title != blank %}
         <div class="tp-e-image-with-text-v1__title tp-e-image-with-text-v1__title--in-wrapper">
-          {% if section.settings.title_bar %}
+          {% if section.settings.title_bar and title_bar_position == 'title' %}
             <span class="tp-e-image-with-text-v1__bar" aria-hidden="true"></span>
           {% endif %}
           {{ section.settings.title }}
@@ -539,6 +544,28 @@
       "id": "title_bar",
       "label": "Exibir barra colorida acima do título",
       "default": false
+    },
+    {
+      "type": "select",
+      "id": "title_bar_position",
+      "label": "Posição da barra",
+      "default": "title",
+      "options": [
+        { "value": "title", "label": "Acima do título" },
+        { "value": "wrapper", "label": "Acima do texto" }
+      ],
+      "visible_if": "{{ section.settings.title_bar }}"
+    },
+    {
+      "type": "select",
+      "id": "title_bar_align",
+      "label": "Alinhamento",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Esquerda" },
+        { "value": "right", "label": "Direita" }
+      ],
+      "visible_if": "{{ section.settings.title_bar and section.settings.title_bar_position == 'wrapper' }}"
     },
     {
       "type": "color",
