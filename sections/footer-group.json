@@ -253,6 +253,10 @@
         "contact_main",
         "contact_Vefgat"
       ],
+      "custom_css": [
+        "@media screen and (max-width: 1023px) {.tp-footer__contact-wrapper .tp-footer__socials-wrapper {display: none; }}",
+        "@media screen and (min-width: 1024px) {.tp-footer__logo-wrapper .tp-footer__socials-wrapper {display: none; }}"
+      ],
       "settings": {
         "background_type": "color",
         "background_color": "#090909",
