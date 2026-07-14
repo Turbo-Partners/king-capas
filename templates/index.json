@@ -666,7 +666,8 @@
       "custom_css": [
         "h2 strong {color: #0c111d;}",
         "h2 {color: #0c111d; font-size: clamp(2.6rem, calc(1.9314rem + 1.7143vw), 4.4rem);}",
-        "p {color: var(--Gray-600, #475467); font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem);}"
+        "p {color: var(--Gray-600, #475467); font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem);}",
+        "a {background: linear-gradient(90deg, #fe0 0%, #fecc27 100%), #ff0; color: #202020;font-family: Montserrat;font-size: 16px;font-style: normal;font-weight: 700;line-height: 140%; /* 22.4px */text-transform: uppercase;}"
       ],
       "name": "Imagem Com Texto V1",
       "settings": {
