@@ -483,6 +483,69 @@
         "pad_bottom_desktop": 0
       }
     },
+    "tp_video_slides_nxdjP8": {
+      "type": "tp-video-slides",
+      "blocks": {
+        "card_kyer37": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/1094_1.webp"
+          }
+        },
+        "card_rNnBPE": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/1095_1.webp"
+          }
+        },
+        "card_HAcwxd": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/1096_1.webp"
+          }
+        },
+        "card_EMDzkN": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/1097_1.webp"
+          }
+        }
+      },
+      "block_order": [
+        "card_kyer37",
+        "card_rNnBPE",
+        "card_HAcwxd",
+        "card_EMDzkN"
+      ],
+      "name": "TP - Slides de Vídeo",
+      "settings": {
+        "background_type": "color",
+        "background_color": "#FFF",
+        "background_gradient": "",
+        "title": "A experiência de quem já escolheu Kings",
+        "text": "Milhares de veículos protegidos em todo o Brasil com capas feitas sob medida.",
+        "button_url": "",
+        "button_text": "Texto do Botão",
+        "autoplay": true,
+        "tempo_autoplay": 3,
+        "pagination": true,
+        "pagination_color": "#B1BFAB",
+        "pagination_color_active": "#000",
+        "navigation": false,
+        "pad_top_min": 48,
+        "pad_top_max": 96,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
     "tp_e_categories_v1_aCGaPF": {
       "type": "tp-e-categories-V1",
       "blocks": {
@@ -939,6 +1002,7 @@
     "tp_featured_collection_RMqgGf",
     "tp_e_banner_slides_v1_TjLpQN",
     "tp_e_image_with_text_v1_wEKWeY",
+    "tp_video_slides_nxdjP8",
     "tp_e_categories_v1_aCGaPF",
     "tp_e_review_v2_QCxGqk",
     "featured_blog_CJ3dd4",
