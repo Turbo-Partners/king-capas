@@ -12,7 +12,7 @@
 
 .accordion .summary__title + .icon-caret {
   height: 12px;
-  color: black;
+  color: var(--Gray-900, #101828);
 }
 
 .accordion + .accordion {

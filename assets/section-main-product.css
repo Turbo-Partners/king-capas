@@ -171,12 +171,18 @@ product-info {
   background: #FFFFFF;
 }
 
+@media screen and (min-width: 750px) {
+  .complementary-products .card__inner {
+    border-radius: 16px;
+  }
+}
+
 .complementary-products .card--horizontal__quick-add {
   width: auto;
   flex: 0 0 auto;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #FFEE00 0%, #FECC27 100%);
-  color: #000;
+  border-radius: 2px;
+  background: #000;
+  color: #FFFEF3;
   font-family: Montserrat, sans-serif;
   font-size: 10px;
   font-weight: 700;
@@ -184,6 +190,14 @@ product-info {
   padding: 8px 12px;
   min-height: 0;
   border: none;
+}
+
+@media screen and (min-width: 750px) {
+  .complementary-products .card--horizontal__quick-add {
+    border-radius: 999px;
+    background: linear-gradient(90deg, #FFEE00 0%, #FECC27 100%);
+    color: #000;
+  }
 }
 
 .complementary-products .card--horizontal__quick-add .icon-wrap {
@@ -202,7 +216,7 @@ product-info {
 .tp-vehicle-antenna__select {
   width: 100%;
   height: 48px;
-  border: 1px solid var(--Gray-300, #D2D3D4);
+  border: 1px solid var(--Gray-200, #EAECF0);
   border-radius: 8px;
   padding: 10px 40px 10px 12px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -232,6 +246,12 @@ product-info {
 .tp-vehicle-antenna__arrow svg {
   width: 100%;
   height: 100%;
+}
+
+@media screen and (min-width: 750px) {
+  .tp-vehicle-antenna__select {
+    border-color: var(--Gray-300, #D2D3D4);
+  }
 }
 
 @media screen and (max-width: 749px) {
@@ -605,6 +625,11 @@ text-transform: uppercase;
 text-align: left;
 
 }
+product-info .select .icon-caret,
+product-info .svg-wrapper .icon-caret {
+  color: var(--Gray-900, #101828);
+}
+
 .select__select {
   color: var(--Gray-600, #475467);
 font-family: Helvetica;
@@ -811,6 +836,10 @@ text-transform: uppercase;
   gap: 2px;
   outline: none !important;
   box-shadow: none !important;
+}
+
+.swatch-input__label--captioned .swatch {
+  border: none;
 }
 
 .swatch-input__input:checked + .swatch-input__label--captioned .swatch,
