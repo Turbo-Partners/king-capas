@@ -114,20 +114,6 @@
             "content": "{{ product.metafields.custom.pdp_tempo_de_fabricacao | metafield_tag }}",
             "page": ""
           }
-        },
-        "product_details_meta_citgki": {
-          "type": "product_details_meta",
-          "settings": {
-            "heading": "Detalhes do Produto",
-            "icon": "none"
-          }
-        },
-        "protection_types_UggDPk": {
-          "type": "protection_types",
-          "settings": {
-            "heading": "Tipos de Proteção",
-            "icon": "none"
-          }
         }
       },
       "block_order": [
@@ -143,9 +129,7 @@
         "custom_buy_buttons_7VTA3y",
         "complementary_3L7t4e",
         "collapsible_tab_3WRmRF",
-        "collapsible_tab_V4UJpL",
-        "product_details_meta_citgki",
-        "protection_types_UggDPk"
+        "collapsible_tab_V4UJpL"
       ],
       "settings": {
         "enable_sticky_info": true,
