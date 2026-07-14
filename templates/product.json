@@ -149,8 +149,8 @@
         "show_frete_gratis": true,
         "frete_gratis_icon": "shopify://shop_images/tabler_truck_2.svg",
         "frete_gratis_text": "FRETE GRÁTIS",
-        "padding_top": 36,
-        "padding_bottom": 12
+        "padding_top": 64,
+        "padding_bottom": 64
       }
     },
     "tp_video_slides_cxanyn": {
@@ -552,8 +552,8 @@
         "title_bar_width_desktop": 264,
         "title_bar_width_mobile": 184,
         "title_bar_height": 8,
-        "title": "<h2>Proteção desenvolvida nos detalhes</h2>",
-        "richtext": "<p>Muito além de uma capa comum, a Kings foi criada para entregar uma experiência premium em cada detalhe: tecido exclusivo, acabamento refinado e ajuste sob medida para valorizar o veículo mesmo quando protegido.</p>",
+        "title": "<h2>Proteção, estéticae durabilidade no mesmo produto</h2>",
+        "richtext": "<p>O diferencial da Kings está no equilíbrio entre proteção real e visual sofisticado. O tecido acompanha as linhas do veículo, evitando aparência folgada e entregando um acabamento muito acima do padrão tradicional.</p>",
         "button_url": "shopify://collections/all",
         "button_text": "Comprar agora",
         "faq_icon_type": "arrow",
