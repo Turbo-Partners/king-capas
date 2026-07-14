@@ -353,6 +353,18 @@
     },
     "tp_e_image_with_text_v1_VEYzqR": {
       "type": "tp-e-image-with-text-v1",
+      "blocks": {
+        "benefit_gJWaLz": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/1116.svg",
+            "richtext": "<h6>Proteção real no dia a dia</h6><p>Protege contra poeira, riscos, sol, maresia e pequenos danos que desgastam o veículo com o tempo.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_gJWaLz"
+      ],
       "custom_css": [
         "h2 strong {color: #0c111d;}",
         "h2 {color: #0c111d; font-size: clamp(2.6rem, calc(1.9314rem + 1.7143vw), 4.4rem);}",
@@ -378,8 +390,8 @@
         "title_bar_width_desktop": 240,
         "title_bar_width_mobile": 184,
         "title_bar_height": 8,
-        "title": "<h2>Soluções sob medida para empresas e eventos</h2>",
-        "richtext": "<p>Conte com a Kings para fornecer capas personalizadas com acabamento premium, produção em escala e atendimento especializado para projetos de todos os portes.</p>",
+        "title": "",
+        "richtext": "",
         "button_url": "shopify://collections/all",
         "button_text": "saber mais",
         "faq_icon_type": "arrow",
