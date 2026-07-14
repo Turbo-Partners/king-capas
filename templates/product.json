@@ -327,7 +327,8 @@
       "custom_css": [
         ".tp-richtext__text-wrapper {gap: 0;}",
         "strong {color: var(--Gray-400, #98a2b3);}",
-        "h2 {font-size: clamp(2rem, calc(1.5543rem + 1.1429vw), 3.2rem);}"
+        "h2 {font-size: clamp(2rem, calc(1.5543rem + 1.1429vw), 3.2rem);}",
+        ".template--19812436246710__tp_richtext_QwrJEj {border-top: 8px solid #D9D9D9;}"
       ],
       "name": "Texto Rico",
       "settings": {
