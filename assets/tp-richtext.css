@@ -14,11 +14,6 @@
 
 }
 
-.tp-richtext__image img {
-    width: 64px;
-    height: 1px;
-}
-
 .tp-richtext__text-wrapper {
     display: flex;
     flex-direction: column;
@@ -29,13 +24,13 @@
 }
 
 .tp-richtext__text-wrapper h2 {
-    color: var(--Gray-900, #101828);
+    color: #0C111D;
     text-align: center;
-    font-family: "Helvetica Neue";
-    font-size: 24px;
+    font-family: Montserrat;
+    font-size: clamp(2.2000rem, calc(1.2343rem + 2.4762vw), 4.8000rem);
     font-style: normal;
     font-weight: 700;
-    line-height: 120%; /* 28.8px */
+    line-height: 120%; /* 57.6px */
     text-transform: uppercase;
     text-align: center;
 }

@@ -43,11 +43,6 @@
 
 <section class="tp-richtext {{ section.id }}">
     <div class="tp-wrapper tp-richtext__wrapper" id="section-wrapper-{{ section.id }}">
-        {% if section.settings.image != blank %}
-            <div class="tp-richtext__image">
-                <img src="{{ section.settings.image | image_url }}">
-            </div>
-        {% endif %}
         <div class="tp-richtext__text-wrapper">
             {{ section.settings.richtext }}
         </div>
