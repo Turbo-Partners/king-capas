@@ -63,6 +63,15 @@
     .{{ section.id }} .tp-e-image-with-text-v1__title--above-image { display: none; }
   {% endif %}
 
+  {% if section.settings.title_bar %}
+    .{{ section.id }} .tp-e-image-with-text-v1__bar {
+      display: block;
+      width: {{ section.settings.title_bar_width }}px;
+      height: {{ section.settings.title_bar_height }}px;
+      background: {{ section.settings.title_bar_color }};
+    }
+  {% endif %}
+
   {% if section.settings.title_custom %}
     .{{ section.id }} .tp-e-image-with-text-v1__title * {
       color: {{ section.settings.text_color_title }};
@@ -144,6 +153,9 @@
   >
     {% if section.settings.title != blank %}
       <div class="tp-e-image-with-text-v1__title tp-e-image-with-text-v1__title--above-image">
+        {% if section.settings.title_bar %}
+          <span class="tp-e-image-with-text-v1__bar" aria-hidden="true"></span>
+        {% endif %}
         {{ section.settings.title }}
       </div>
     {% endif %}
@@ -214,6 +226,9 @@
       {% endif %}
       {% if section.settings.title != blank %}
         <div class="tp-e-image-with-text-v1__title tp-e-image-with-text-v1__title--in-wrapper">
+          {% if section.settings.title_bar %}
+            <span class="tp-e-image-with-text-v1__bar" aria-hidden="true"></span>
+          {% endif %}
           {{ section.settings.title }}
         </div>
       {% endif %}
@@ -500,6 +515,41 @@
       "type": "image_picker",
       "id": "title_image",
       "label": "Imagem / barrinha acima do título"
+    },
+    {
+      "type": "checkbox",
+      "id": "title_bar",
+      "label": "Exibir barra colorida acima do título",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "title_bar_color",
+      "label": "Cor da barra",
+      "default": "#F7D046",
+      "visible_if": "{{ section.settings.title_bar }}"
+    },
+    {
+      "type": "range",
+      "id": "title_bar_width",
+      "label": "Largura da barra",
+      "min": 40,
+      "max": 300,
+      "step": 4,
+      "default": 120,
+      "unit": "px",
+      "visible_if": "{{ section.settings.title_bar }}"
+    },
+    {
+      "type": "range",
+      "id": "title_bar_height",
+      "label": "Espessura da barra",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4,
+      "unit": "px",
+      "visible_if": "{{ section.settings.title_bar }}"
     },
     {
       "type": "richtext",

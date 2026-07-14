@@ -16,6 +16,10 @@
     height: 1px;
 }
 
+.tp-e-image-with-text-v1__bar {
+    margin-bottom: var(--tp-space-3);
+}
+
 .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__media {
     width: 100%;
     display: flex;
