@@ -12,6 +12,7 @@
             flex-direction: column;
             gap: 8px;
             align-items: center;
+            max-width: 720px;
 
 			img {
 				width: 100%;
