@@ -168,6 +168,7 @@
       "settings": {
         "title": "",
         "title_alignment": "center",
+        "grayscale_hover": true,
         "background_type": "color",
         "bg_custom": false,
         "bg_color": "",
@@ -808,12 +809,13 @@
       ],
       "custom_css": [
         ".tp-midia__title-wrapper {color: var(--gray-900, #101828); font-family: Helvetica; font-size: clamp(1.2rem, calc(1.0514rem + 0.381vw), 1.6rem); font-style: normal; font-weight: 400; line-height: 120%; /* 19.2px */ text-transform: uppercase;}",
-        ".template--19812436082870__tp_midia_kGKQmW{border: none;}"
+        ".template--19812436082870__tp_midia_kGKQmW {border: none;}"
       ],
       "name": "Mídia",
       "settings": {
         "title": "a confiança das grande marcas",
         "title_alignment": "center",
+        "grayscale_hover": false,
         "background_type": "color",
         "bg_custom": false,
         "bg_color": "",
