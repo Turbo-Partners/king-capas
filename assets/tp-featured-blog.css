@@ -97,6 +97,7 @@
     text-decoration: none;
     text-transform: uppercase;
     width: fit-content;
+    margin-top: auto;
     transition: opacity var(--tp-transition-fast);
 }
 
@@ -121,6 +122,7 @@
 .tp-featured-blog__card--featured .tp-featured-blog__card-content {
     display: flex;
     flex-direction: column;
+    flex: 1;
     gap: var(--tp-space-3);
 }
 
@@ -162,7 +164,6 @@
 .tp-featured-blog__card--compact .tp-featured-blog__card-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: var(--tp-space-2);
     min-width: 0;
 }
