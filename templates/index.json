@@ -564,13 +564,13 @@
             "name": "João Silva",
             "profession": "",
             "purchase_text": "",
-            "bg_type": "default",
-            "bg_color": "",
+            "bg_type": "color",
+            "bg_color": "#FFFFFF",
             "bg_gradient": "",
             "show_border": false,
             "border_color": "#e5e7eb",
             "border_width": 1,
-            "card_radius": "xl",
+            "card_radius": "none",
             "show_accent": false,
             "accent_color": "#f7d046"
           }
