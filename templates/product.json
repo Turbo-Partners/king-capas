@@ -365,7 +365,7 @@
         "image_position_desktop": "left",
         "image_position_mobile": "second",
         "title_above_image_mobile": false,
-        "image_padding_inline_mobile": true,
+        "image_padding_inline_mobile": false,
         "image_padding_inline_desktop": false,
         "loading_image": true,
         "image_desktop": "shopify://shop_images/1121_1.webp",
