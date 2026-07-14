@@ -519,9 +519,11 @@
       ],
       "name": "TP - Slides de Vídeo",
       "settings": {
-        "background_type": "color",
+        "background_type": "image",
         "background_color": "#FFF",
         "background_gradient": "",
+        "background_image_mobile": "shopify://shop_images/1099_1.webp",
+        "background_image_desktop": "shopify://shop_images/1098_1.webp",
         "title": "A experiência de quem já escolheu Kings",
         "text": "Milhares de veículos protegidos em todo o Brasil com capas feitas sob medida.",
         "button_url": "",
