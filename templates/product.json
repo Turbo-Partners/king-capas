@@ -221,6 +221,107 @@
         "pad_bottom_desktop": 0
       }
     },
+    "tp_midia_CVqiTJ": {
+      "type": "tp-midia",
+      "blocks": {
+        "midia_item_DBBmxh": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/751.svg",
+            "link": ""
+          }
+        },
+        "midia_item_cLC9UC": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/705.webp",
+            "link": ""
+          }
+        },
+        "midia_item_xadK4g": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/706_1.webp",
+            "link": ""
+          }
+        },
+        "midia_item_brAhVM": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/707_1.webp",
+            "link": ""
+          }
+        },
+        "midia_item_rFjf7D": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/708_1.webp",
+            "link": ""
+          }
+        },
+        "midia_item_3QntBP": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/709_1.webp",
+            "link": ""
+          }
+        },
+        "midia_item_rCNPL3": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/710_1.webp",
+            "link": ""
+          }
+        },
+        "midia_item_8KnCB8": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/711_1.webp",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "midia_item_DBBmxh",
+        "midia_item_cLC9UC",
+        "midia_item_xadK4g",
+        "midia_item_brAhVM",
+        "midia_item_rFjf7D",
+        "midia_item_3QntBP",
+        "midia_item_rCNPL3",
+        "midia_item_8KnCB8"
+      ],
+      "custom_css": [
+        ".tp-midia__title-wrapper {color: var(--gray-900, #101828); font-family: Helvetica; font-size: clamp(1.2rem, calc(1.0514rem + 0.381vw), 1.6rem); font-style: normal; font-weight: 400; line-height: 120%; /* 19.2px */ text-transform: uppercase;}"
+      ],
+      "name": "Mídia",
+      "settings": {
+        "title": "",
+        "title_alignment": "center",
+        "grayscale_hover": true,
+        "background_type": "color",
+        "bg_custom": false,
+        "bg_color": "",
+        "bg_gradient": "",
+        "title_custom": false,
+        "title_color": "",
+        "title_size_desktop": 26,
+        "title_size_mobile": 16,
+        "title_weight": "600",
+        "pad_top_min": 12,
+        "pad_top_max": 16,
+        "pad_bottom_min": 16,
+        "pad_bottom_max": 24,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
     "tp_richtext_QwrJEj": {
       "type": "tp-richtext",
       "custom_css": [
@@ -933,6 +1034,7 @@
   "order": [
     "main",
     "tp_video_slides_cxanyn",
+    "tp_midia_CVqiTJ",
     "tp_richtext_QwrJEj",
     "tp_e_image_with_text_v1_9rAh74",
     "tp_e_image_with_text_v1_WHyGz8",
