@@ -59,6 +59,7 @@
         },
         "vehicle_antenna_qK7mXs": {
           "type": "vehicle_antenna",
+          "disabled": true,
           "settings": {
             "label": "Veículo possui antena?",
             "option_yes": "Sim",
@@ -84,6 +85,19 @@
             "button_text": "Comprar agora"
           }
         },
+        "complementary_3L7t4e": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "",
+            "make_collapsible_row": false,
+            "icon": "price_tag",
+            "product_list_limit": 1,
+            "products_per_page": 1,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": true
+          }
+        },
         "collapsible_tab_3WRmRF": {
           "type": "collapsible_tab",
           "settings": {
@@ -100,19 +114,6 @@
             "icon": "none",
             "content": "{{ product.metafields.custom.pdp_tempo_de_fabricacao | metafield_tag }}",
             "page": ""
-          }
-        },
-        "complementary_3L7t4e": {
-          "type": "complementary",
-          "settings": {
-            "block_heading": "",
-            "make_collapsible_row": false,
-            "icon": "price_tag",
-            "product_list_limit": 1,
-            "products_per_page": 1,
-            "pagination_style": "counter",
-            "image_ratio": "square",
-            "enable_quick_add": true
           }
         },
         "product_details_meta_citgki": {
