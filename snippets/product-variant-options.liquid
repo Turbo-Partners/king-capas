@@ -37,6 +37,23 @@
     if value.available
       assign option_disabled = false
     endif
+
+    assign is_color_option = false
+    assign option_name_lower = option.name | downcase
+    if option_name_lower contains 'cor'
+      assign is_color_option = true
+    endif
+
+    assign variant_image = null
+    if is_color_option
+      assign option_index = option.position | minus: 1
+      for variant in product.variants
+        if variant.options[option_index] == value.name
+          assign variant_image = variant.featured_image
+          break
+        endif
+      endfor
+    endif
   -%}
 
   {%- capture input_id -%}
@@ -79,7 +96,8 @@
       shape: block.settings.swatch_shape,
       help_text: help_text,
       additional_props: input_dataset,
-      show_label: option.name == 'Cor'
+      show_label: is_color_option,
+      image: variant_image
     %}
   {%- elsif picker_type == 'button' -%}
     {%- liquid

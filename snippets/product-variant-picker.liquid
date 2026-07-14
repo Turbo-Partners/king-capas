@@ -16,10 +16,14 @@
   >
     {%- for option in product.options_with_values -%}
       {%- liquid
-        assign swatch_count = option.values | map: 'swatch' | compact | size
         assign picker_type = block.settings.picker_type
+        assign is_color_option = false
+        assign option_name_lower = option.name | downcase
+        if option_name_lower contains 'cor'
+          assign is_color_option = true
+        endif
 
-        if swatch_count > 0 and block.settings.swatch_shape != 'none'
+        if is_color_option and block.settings.swatch_shape != 'none'
           if block.settings.picker_type == 'dropdown'
             assign picker_type = 'swatch_dropdown'
           else
@@ -28,7 +32,7 @@
         endif
       -%}
       {%- if picker_type == 'swatch' -%}
-        <fieldset class="js product-form__input product-form__input--swatch{% if option.name == 'Cor' %} product-form__input--color-swatch{% endif %}">
+        <fieldset class="js product-form__input product-form__input--swatch{% if is_color_option %} product-form__input--color-swatch{% endif %}">
           <legend class="form__label">
             {{ option.name }}:
             <span data-selected-value>
@@ -63,7 +67,7 @@
                 data-selected-value
                 class="dropdown-swatch"
               >
-                {% render 'swatch', swatch: option.selected_value.swatch, shape: block.settings.swatch_shape %}
+                {% render 'swatch', swatch: option.selected_value.swatch, shape: block.settings.swatch_shape, image: product.selected_or_first_available_variant.featured_image %}
               </span>
             {%- endif -%}
             <select
