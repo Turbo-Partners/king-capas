@@ -19,19 +19,24 @@
 			}
 
             h2 {
-                color: #000;
+                color: #FE0;
                 text-align: center;
-                font-family: Inter;
-                font-size: clamp(2.4rem, 1.5086rem + 2.2857vw, 4.8rem);
-                font-weight: 400;
+                font-family: Montserrat;
+                font-size: clamp(2.4000rem, calc(1.2114rem + 3.0476vw), 5.6000rem);
+                font-style: normal;
+                font-weight: 700;
+                line-height: 120%; /* 67.2px */
+                text-transform: uppercase;
             }
 
 			p {
-				color: #000;
-				text-align: center;
-                font-family: Inter;
-                font-size: clamp(1.6rem, 1.4514rem + 0.381vw, 2.0rem);
+				color: #FFF;
+                text-align: center;
+                font-family: Montserrat;
+                font-size: clamp(1.4000rem, calc(1.2514rem + 0.3810vw), 1.8000rem);
+                font-style: normal;
                 font-weight: 400;
+                line-height: 140%; /* 19.6px */
 			}
         }
 
