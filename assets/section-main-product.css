@@ -240,7 +240,7 @@ product-info {
   width: 20px;
   height: 20px;
   pointer-events: none;
-  color: var(--Gray-900, #101828);
+  color: #FECC27;
 }
 
 .tp-vehicle-antenna__arrow svg {

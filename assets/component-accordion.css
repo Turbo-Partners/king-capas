@@ -18,7 +18,7 @@
 .accordion .summary__title + .icon-arrow-bold {
   width: 20px;
   height: 20px;
-  color: var(--Gray-900, #101828);
+  color: #FECC27;
   transform: rotate(180deg);
   transition: transform var(--duration-short, 150ms) ease;
 }
