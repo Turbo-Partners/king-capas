@@ -378,11 +378,11 @@
             "text_position_horizontal_mobile": "center",
             "text_position_horizontal_desktop": "left",
             "text_position_vertical_mobile": "space_between",
-            "text_position_vertical_desktop": "bottom",
+            "text_position_vertical_desktop": "top",
             "bottom_mobile": 24,
             "bottom_desktop": 80,
             "top_mobile": 40,
-            "top_desktop": 200
+            "top_desktop": 80
           }
         }
       },
