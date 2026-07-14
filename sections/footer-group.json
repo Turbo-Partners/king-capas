@@ -154,7 +154,7 @@
         "logo_main": {
           "type": "logo",
           "settings": {
-            "alignment_mobile": "left",
+            "alignment_mobile": "center",
             "alignment_desktop": "left",
             "logo_image": "shopify://shop_images/1108.svg",
             "logo_url": "/",
