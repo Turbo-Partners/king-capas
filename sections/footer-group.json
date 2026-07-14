@@ -228,7 +228,7 @@
           "settings": {
             "alignment_mobile": "left",
             "alignment_desktop": "left",
-            "title": "",
+            "title": "Social",
             "informations": "",
             "rede_social1": true,
             "social1_url": "https://www.instagram.com/kings.capasautomotivas/",
@@ -257,7 +257,7 @@
         "background_type": "color",
         "background_color": "#090909",
         "background_gradient": "",
-        "columns_desktop": 4,
+        "columns_desktop": 5,
         "columns_tablet": 1,
         "columns_mobile": "1",
         "pagamento_mobile": "shopify://shop_images/726_1.webp",
