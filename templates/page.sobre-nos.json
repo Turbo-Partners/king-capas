@@ -168,17 +168,18 @@
         "pad_bottom_desktop": 0
       }
     },
-    "tp_richtext_htbg6N": {
+    "tp_richtext_e4YHkz": {
       "type": "tp-richtext",
       "custom_css": [
         ".tp-richtext__text-wrapper {gap: 0;}",
         "strong {color: var(--Gray-400, #98a2b3);}",
-        "h2 {font-size: clamp(2rem, calc(1.5543rem + 1.1429vw), 3.2rem);}"
+        "h2 {font-size: clamp(2rem, calc(1.5543rem + 1.1429vw), 3.2rem);}",
+        ".template--19812436246710__tp_richtext_QwrJEj {border-top: 8px solid #fe0;}"
       ],
       "name": "Texto Rico",
       "settings": {
         "image": "shopify://shop_images/752.svg",
-        "richtext": "<h2>Seu carro não é comum. </h2><h2><strong>A proteção também não deveria ser</strong></h2>",
+        "richtext": "<h2>Seu carro não é comum.</h2><h2>A proteção também não deveria ser</h2>",
         "background_type": "color",
         "background_color": "#ffffff",
         "background_gradient": "",
@@ -441,7 +442,7 @@
     "tp_e_banner_slides_v1_Q6VfXT",
     "main",
     "tp_e_image_with_text_v1_DyaAyP",
-    "tp_richtext_htbg6N",
+    "tp_richtext_e4YHkz",
     "tp_e_image_with_text_v1_UXdrGr",
     "tp_e_image_with_text_v1_jNyC6U",
     "tp_e_image_with_text_v1_fxLNBc"
