@@ -149,8 +149,8 @@
         "show_frete_gratis": true,
         "frete_gratis_icon": "shopify://shop_images/tabler_truck_2.svg",
         "frete_gratis_text": "FRETE GRÁTIS",
-        "padding_top": 36,
-        "padding_bottom": 12
+        "padding_top": 64,
+        "padding_bottom": 64
       }
     },
     "tp_video_slides_cxanyn": {
