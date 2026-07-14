@@ -65,6 +65,13 @@
         {% endif %}
         border-radius: {% if block.settings.card_radius == 'none' %}0{% else %}var(--tp-radius-{{ block.settings.card_radius }}){% endif %};
       }
+
+      {% if block.settings.show_accent %}
+        .{{ section.id }} .tp-e-reviews-v4__review-accent--{{ block.id }} {
+          background: {{ block.settings.accent_color }};
+          border-radius: {% if block.settings.card_radius == 'none' %}0{% else %}var(--tp-radius-{{ block.settings.card_radius }}){% endif %};
+        }
+      {% endif %}
     {% endif %}
   {% endfor %}
 
@@ -77,6 +84,10 @@
       .{{ section.id }} .tp-e-reviews-v4__header h2 {
         font-size: {{ section.settings.title_font_size_desktop }}px;
       }
+    }
+    .{{ section.id }} .tp-e-reviews-v4__header p,
+    .{{ section.id }} .tp-e-reviews-v4__header h6 {
+      color: {{ section.settings.subtitle_color }};
     }
   {% endif %}
 
@@ -107,37 +118,38 @@
   {% endif %}
 {% endstyle %}
 
-<section class="tp-e-reviews-v4 {{ section.id }} scroll-trigger animate--fade-in" id="section-wrapper-{{ section.id }}">
+<section class="tp-e-reviews-v4 {{ section.id }} tp-e-reviews-v4--{{ section.settings.layout }} scroll-trigger animate--fade-in" id="section-wrapper-{{ section.id }}">
 
-  {% if section.settings.title != blank or section.settings.title_image != blank %}
-    <div class="tp-wrapper">
-      <div class="tp-e-reviews-v4__header">
-        {% if section.settings.title_image != blank %}
-          {{ section.settings.title_image | image_url: width: 200 | image_tag:
-            class: 'tp-e-reviews-v4__header-image',
-            loading: 'lazy',
-            widths: '96, 128, 200',
-            alt: section.settings.title_image.alt | default: ''
-          }}
-        {% endif %}
-        {% if section.settings.title_bar %}
-          <span class="tp-e-reviews-v4__bar" aria-hidden="true"></span>
-        {% endif %}
-        {% if section.settings.title != blank %}
-          {{ section.settings.title }}
-        {% endif %}
+  <div class="tp-e-reviews-v4__body">
+    {% if section.settings.title != blank or section.settings.title_image != blank %}
+      <div class="tp-e-reviews-v4__header-wrapper">
+        <div class="tp-e-reviews-v4__header">
+          {% if section.settings.title_image != blank %}
+            {{ section.settings.title_image | image_url: width: 200 | image_tag:
+              class: 'tp-e-reviews-v4__header-image',
+              loading: 'lazy',
+              widths: '96, 128, 200',
+              alt: section.settings.title_image.alt | default: ''
+            }}
+          {% endif %}
+          {% if section.settings.title_bar %}
+            <span class="tp-e-reviews-v4__bar" aria-hidden="true"></span>
+          {% endif %}
+          {% if section.settings.title != blank %}
+            {{ section.settings.title }}
+          {% endif %}
+        </div>
       </div>
-    </div>
-  {% endif %}
+    {% endif %}
 
-  {% if section.blocks.size > 0 %}
-    <div class="tp-e-reviews-v4__carousel">
-      <div class="swiper tp-e-reviews-v4__swiper">
-        <div class="swiper-wrapper">
-          {% for block in section.blocks %}
-            <div class="swiper-slide" {{ block.shopify_attributes }}>
+    {% if section.blocks.size > 0 %}
+      <div class="tp-e-reviews-v4__carousel">
+        <div class="swiper tp-e-reviews-v4__swiper">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              <div class="swiper-slide" {{ block.shopify_attributes }}>
 
-              {% if block.type == 'image' %}
+                {% if block.type == 'image' %}
                 <div class="tp-e-reviews-v4__image">
                   {% if block.settings.image != blank %}
                     {{ block.settings.image | image_url: width: 800 | image_tag:
@@ -188,58 +200,63 @@
                 </div>
 
               {% elsif block.type == 'review' %}
-                <div class="tp-e-reviews-v4__review tp-e-reviews-v4__review--{{ block.id }}">
-                  {% if block.settings.stars > 0 %}
-                    <div class="tp-e-reviews-v4__review-stars">
-                      {% for i in (1..block.settings.stars) %}
-                        <span class="tp-e-reviews-v4__star" aria-hidden="true">
-                          {% if section.settings.star_icon != blank %}
-                            {{ section.settings.star_icon | image_url: width: 32 | image_tag:
-                              loading: 'lazy',
-                              widths: '16, 24, 32',
-                              sizes: '16px',
-                              alt: 'estrelas de avaliações'
-                            }}
-                          {% else %}
-                            {{ 'icon-star.svg' | inline_asset_content }}
-                          {% endif %}
-                        </span>
-                      {% endfor %}
-                    </div>
+                <div class="tp-e-reviews-v4__review-slide-inner">
+                  {% if block.settings.show_accent %}
+                    <span class="tp-e-reviews-v4__review-accent tp-e-reviews-v4__review-accent--{{ block.id }}" aria-hidden="true"></span>
                   {% endif %}
-                  {% if block.settings.title != blank %}
-                    <p class="tp-e-reviews-v4__review-title">{{ block.settings.title | escape }}</p>
-                  {% endif %}
-                  {% if block.settings.subtitle != blank %}
-                    <p class="tp-e-reviews-v4__review-subtitle">{{ block.settings.subtitle | escape }}</p>
-                  {% endif %}
-                  {% if block.settings.text != blank %}
-                    <div class="tp-e-reviews-v4__review-text">{{ block.settings.text }}</div>
-                  {% endif %}
-                  <div class="tp-e-reviews-v4__review-footer">
-                    <div class="tp-e-reviews-v4__review-author">
-                      {% if block.settings.name != blank %}
-                        <p class="tp-e-reviews-v4__review-name">{{ block.settings.name | escape }}</p>
-                      {% endif %}
-                      {% if block.settings.profession != blank %}
-                        <p class="tp-e-reviews-v4__review-profession">{{ block.settings.profession | escape }}</p>
-                      {% endif %}
-                    </div>
-                    {% if block.settings.purchase_text != blank or block.settings.purchase_icon != blank %}
-                      <div class="tp-e-reviews-v4__purchase">
-                        {% if block.settings.purchase_icon != blank %}
-                          {{ block.settings.purchase_icon | image_url: width: 48 | image_tag:
-                            loading: 'lazy',
-                            widths: '20, 32, 48',
-                            sizes: '20px',
-                            alt: ''
-                          }}
-                        {% endif %}
-                        {% if block.settings.purchase_text != blank %}
-                          <span>{{ block.settings.purchase_text | escape }}</span>
-                        {% endif %}
+                  <div class="tp-e-reviews-v4__review tp-e-reviews-v4__review--{{ block.id }}">
+                    {% if block.settings.stars > 0 %}
+                      <div class="tp-e-reviews-v4__review-stars">
+                        {% for i in (1..block.settings.stars) %}
+                          <span class="tp-e-reviews-v4__star" aria-hidden="true">
+                            {% if section.settings.star_icon != blank %}
+                              {{ section.settings.star_icon | image_url: width: 32 | image_tag:
+                                loading: 'lazy',
+                                widths: '16, 24, 32',
+                                sizes: '16px',
+                                alt: 'estrelas de avaliações'
+                              }}
+                            {% else %}
+                              {{ 'icon-star.svg' | inline_asset_content }}
+                            {% endif %}
+                          </span>
+                        {% endfor %}
                       </div>
                     {% endif %}
+                    {% if block.settings.title != blank %}
+                      <p class="tp-e-reviews-v4__review-title">{{ block.settings.title | escape }}</p>
+                    {% endif %}
+                    {% if block.settings.subtitle != blank %}
+                      <p class="tp-e-reviews-v4__review-subtitle">{{ block.settings.subtitle | escape }}</p>
+                    {% endif %}
+                    {% if block.settings.text != blank %}
+                      <div class="tp-e-reviews-v4__review-text">{{ block.settings.text }}</div>
+                    {% endif %}
+                    <div class="tp-e-reviews-v4__review-footer">
+                      <div class="tp-e-reviews-v4__review-author">
+                        {% if block.settings.name != blank %}
+                          <p class="tp-e-reviews-v4__review-name">{{ block.settings.name | escape }}</p>
+                        {% endif %}
+                        {% if block.settings.profession != blank %}
+                          <p class="tp-e-reviews-v4__review-profession">{{ block.settings.profession | escape }}</p>
+                        {% endif %}
+                      </div>
+                      {% if block.settings.purchase_text != blank or block.settings.purchase_icon != blank %}
+                        <div class="tp-e-reviews-v4__purchase">
+                          {% if block.settings.purchase_icon != blank %}
+                            {{ block.settings.purchase_icon | image_url: width: 48 | image_tag:
+                              loading: 'lazy',
+                              widths: '20, 32, 48',
+                              sizes: '20px',
+                              alt: ''
+                            }}
+                          {% endif %}
+                          {% if block.settings.purchase_text != blank %}
+                            <span>{{ block.settings.purchase_text | escape }}</span>
+                          {% endif %}
+                        </div>
+                      {% endif %}
+                    </div>
                   </div>
                 </div>
 
@@ -278,7 +295,8 @@
         <div class="swiper-pagination"></div>
       {% endif %}
     </div>
-  {% endif %}
+    {% endif %}
+  </div>
 
 </section>
 
@@ -410,8 +428,25 @@
       "visible_if": "{{ section.settings.title_custom }}"
     },
     {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Cor do subtítulo",
+      "default": "#667085",
+      "visible_if": "{{ section.settings.title_custom }}"
+    },
+    {
       "type": "header",
       "content": "Aparência"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "default": "empilhado",
+      "options": [
+        { "label": "Empilhado (título acima)", "value": "empilhado" },
+        { "label": "Lado a lado (título à esquerda)", "value": "lado_a_lado" }
+      ]
     },
     {
       "type": "select",
@@ -768,6 +803,19 @@
             { "label": "Extra Grande", "value": "xl" },
             { "label": "Completo", "value": "full" }
           ]
+        },
+        {
+          "type": "checkbox",
+          "id": "show_accent",
+          "label": "Exibir bloco de destaque atrás do card",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "accent_color",
+          "label": "Cor do destaque",
+          "default": "#F7D046",
+          "visible_if": "{{ block.settings.show_accent }}"
         }
       ]
     }
@@ -806,6 +854,64 @@
             "title": "Compra certa",
             "text": "<p>Atendimento ótimo e produto fiel à descrição.</p>",
             "name": "Pedro Rocha"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Depoimentos - Lado a Lado",
+      "category": "Personalizado",
+      "settings": {
+        "title": "<h2>Quem testa Kings aprova!</h2><p>Experiências reais de clientes que escolheram a Kings.</p>",
+        "title_custom": true,
+        "title_color": "#F7D046",
+        "subtitle_color": "#D5D5D5",
+        "layout": "lado_a_lado",
+        "background_type": "color",
+        "background_color": "#2B2B2B",
+        "navigation": false
+      },
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "title": "",
+            "text": "<p>Superou minhas expectativas. Entrega foi rápida, material e acabamento da capa são impecáveis. Recomendo Kings capas</p>",
+            "name": "Pedro Vianna",
+            "bg_type": "color",
+            "bg_color": "#FFFFFF",
+            "card_radius": "md",
+            "show_accent": true,
+            "accent_color": "#F7D046"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "title": "",
+            "text": "<p>Muito obrigada @kings.capasautomotivas pelo carinho e capricho! Produto impecável. Super recomendo.</p>",
+            "name": "@isapinheiro_sp",
+            "bg_type": "color",
+            "bg_color": "#FFFFFF",
+            "card_radius": "md",
+            "show_accent": true,
+            "accent_color": "#F7D046"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "title": "",
+            "text": "<p>Capa perfeita, muito bem acabada e fácil de instalar. Virei cliente fiel da Kings.</p>",
+            "name": "Rafael Souza",
+            "bg_type": "color",
+            "bg_color": "#FFFFFF",
+            "card_radius": "md",
+            "show_accent": true,
+            "accent_color": "#F7D046"
           }
         }
       ]
