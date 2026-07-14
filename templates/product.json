@@ -362,11 +362,11 @@
       "name": "Imagem Com Texto V1",
       "settings": {
         "media_type": "image",
-        "image_position_desktop": "right",
+        "image_position_desktop": "left",
         "image_position_mobile": "second",
         "title_above_image_mobile": false,
         "image_padding_inline_mobile": true,
-        "image_padding_inline_desktop": true,
+        "image_padding_inline_desktop": false,
         "loading_image": true,
         "image_desktop": "shopify://shop_images/1121_1.webp",
         "image_mobile": "shopify://shop_images/1121_1_8596071a-e609-45e1-895e-5b0443c60a2d.webp",
