@@ -50,3 +50,40 @@
         }
     }
 }
+
+/* ── Botão "Filtrar" (drawer mobile) — estilo do Figma ── */
+
+.tp-main-collection-product-grid .mobile-facets__open {
+    color: #202020;
+    gap: 2px;
+}
+
+.tp-main-collection-product-grid .mobile-facets__open:hover {
+    color: #202020;
+}
+
+.tp-main-collection-product-grid .mobile-facets__open > * + * {
+    margin-left: 0;
+}
+
+.tp-main-collection-product-grid .mobile-facets__open .svg-wrapper {
+    width: 18px;
+    height: 18px;
+}
+
+.tp-main-collection-product-grid .mobile-facets__open .icon-filter {
+    width: 18px;
+    height: 18px;
+}
+
+.tp-main-collection-product-grid .mobile-facets__open-label {
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #202020;
+}
+
+.tp-main-collection-product-grid .mobile-facets__open:hover .mobile-facets__open-label {
+    text-decoration: none;
+}
