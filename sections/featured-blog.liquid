@@ -40,7 +40,6 @@
   .{{ section.id }} .tp-featured-blog__card-btn {
     background: {{ section.settings.button_bg_color }};
     color: {{ section.settings.button_text_color }};
-    border-radius: {% if section.settings.button_radius == 'none' %}0{% else %}var(--tp-radius-{{ section.settings.button_radius }}){% endif %};
   }
 {%- endstyle -%}
 
@@ -287,19 +286,6 @@
       "id": "button_text_color",
       "label": "Cor do texto do botão",
       "default": "#191919"
-    },
-    {
-      "type": "select",
-      "id": "button_radius",
-      "label": "Arredondamento do botão",
-      "default": "sm",
-      "options": [
-        { "label": "Nenhum", "value": "none" },
-        { "label": "Pequeno", "value": "sm" },
-        { "label": "Médio", "value": "md" },
-        { "label": "Grande", "value": "lg" },
-        { "label": "Completo", "value": "full" }
-      ]
     },
     {
       "type": "header",
