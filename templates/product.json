@@ -535,7 +535,7 @@
       "settings": {
         "media_type": "image",
         "image_position_desktop": "left",
-        "image_position_mobile": "first",
+        "image_position_mobile": "second",
         "title_above_image_mobile": false,
         "image_padding_inline_mobile": false,
         "image_padding_inline_desktop": false,
