@@ -235,34 +235,26 @@ cart-drawer:not(.is-empty) .cart-drawer__collection {
 
 .cdv2-footer__btn-checkout {
   width: 100%;
-  height: 56px;
   padding: 24px 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--tp-h5-font, var(--tp-font-heading));
-  font-size: 24px;
-  font-weight: var(--tp-h5-weight, 400);
-  letter-spacing: 0.96px;
-  color: #fff;
-  background: #0e0e0e;
+  background-image: linear-gradient(90deg, #FFEE00 0%, #FECC27 100%);
   border: none;
   border-radius: 2px;
   cursor: pointer;
-  transition: background 0.2s ease;
-  line-height: 1.4;
-  color: #FFF;
-
-  /* Body/16/Semi */
-  font-family: Helvetica;
+  transition: opacity 0.2s ease;
+  color: #202020;
+  font-family: Montserrat, Helvetica, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
-  line-height: 140%; /* 22.4px */
+  line-height: 1.4;
+  text-transform: uppercase;
 }
 
 .cdv2-footer__btn-checkout:hover {
-  background: #1f1f1f;
+  opacity: 0.9;
 }
 
 .cdv2-footer__btn-checkout:disabled {
