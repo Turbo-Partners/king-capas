@@ -66,9 +66,15 @@
   {% if section.settings.title_bar %}
     .{{ section.id }} .tp-e-image-with-text-v1__bar {
       display: block;
-      width: {{ section.settings.title_bar_width }}px;
+      width: {{ section.settings.title_bar_width_mobile }}px;
       height: {{ section.settings.title_bar_height }}px;
       background: {{ section.settings.title_bar_color }};
+    }
+
+    @media screen and (min-width: 1024px) {
+      .{{ section.id }} .tp-e-image-with-text-v1__bar {
+        width: {{ section.settings.title_bar_width_desktop }}px;
+      }
     }
   {% endif %}
 
@@ -531,12 +537,23 @@
     },
     {
       "type": "range",
-      "id": "title_bar_width",
-      "label": "Largura da barra",
+      "id": "title_bar_width_desktop",
+      "label": "Largura da barra (desktop)",
       "min": 40,
       "max": 300,
       "step": 4,
       "default": 120,
+      "unit": "px",
+      "visible_if": "{{ section.settings.title_bar }}"
+    },
+    {
+      "type": "range",
+      "id": "title_bar_width_mobile",
+      "label": "Largura da barra (mobile)",
+      "min": 40,
+      "max": 300,
+      "step": 4,
+      "default": 80,
       "unit": "px",
       "visible_if": "{{ section.settings.title_bar }}"
     },

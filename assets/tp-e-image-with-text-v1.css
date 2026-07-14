@@ -17,7 +17,7 @@
 }
 
 .tp-e-image-with-text-v1__bar {
-    margin-bottom: var(--tp-space-3);
+    margin-bottom: clamp(3.2000rem, calc(2.0114rem + 3.0476vw), 6.4000rem);
 }
 
 .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__media {
