@@ -25,15 +25,12 @@
     line-height: var(--tp-h2-leading);
     letter-spacing: var(--tp-h2-tracking);
     color: var(--tp-e-faq-v1-title-color, var(--tp-color-text-primary));
-    color: var(--Gray-950, #0C111D);
-    text-align: center;
-    font-family: "Helvetica Neue";
-    font-size: clamp(2.4000rem, calc(2.1029rem + 0.7619vw), 3.2000rem);
+    color: #FF0;
+    font-family: Montserrat;
+    font-size: clamp(3.2000rem, calc(2.3086rem + 2.2857vw), 5.6000rem);
     font-style: normal;
     font-weight: 700;
-    line-height: 120%; /* 38.4px */
-    text-transform: uppercase;
-    width: 240px;
+    line-height: 120%; /* 67.2px */
 }
 
 .tp-e-faq-v1 .tp-e-faq-v1__title-wrapper p {
@@ -89,7 +86,7 @@
     font-size: var(--tp-e-faq-v1-question-size-mobile, var(--tp-font-size-xl));
     line-height: var(--tp-leading-normal);
     color: var(--tp-e-faq-v1-question-color, var(--tp-color-text-primary));
-    color: var(--Gray-950, #0C111D);
+    color: #FFF;
 
     /* Body/20/Medium */
     font-family: "Helvetica Neue";
@@ -112,6 +109,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color:#FFF;
     opacity: 1;
     transform: scale(1);
     transition: opacity var(--tp-transition-fast), transform var(--tp-transition-fast);
@@ -126,6 +124,7 @@
     opacity: 0;
     transform: scale(0.8);
     transition: opacity var(--tp-transition-fast), transform var(--tp-transition-fast);
+    color:#FFF;
 }
 
 .tp-e-faq-v1 .tp-e-faq-v1__sr-only {
@@ -156,7 +155,7 @@
     font-size: var(--tp-e-faq-v1-answer-size-mobile, var(--tp-font-size-base));
     line-height: var(--tp-body-leading);
     letter-spacing: var(--tp-body-tracking);
-    color: var(--tp-e-faq-v1-answer-color, var(--tp-color-text-primary));
+    color: #FFF;
 }
 
 .tp-e-faq-v1 .tp-e-faq-v1__details[open] .tp-e-faq-v1__icon-plus {
@@ -227,14 +226,7 @@
 }
 
 @media screen and (min-width: 1024px) {
-    .tp-e-faq-v1 .tp-e-faq-v1__title-wrapper h1,
-    .tp-e-faq-v1 .tp-e-faq-v1__title-wrapper h2,
-    .tp-e-faq-v1 .tp-e-faq-v1__title-wrapper h3,
-    .tp-e-faq-v1 .tp-e-faq-v1__title-wrapper h4,
-    .tp-e-faq-v1 .tp-e-faq-v1__title-wrapper h5,
-    .tp-e-faq-v1 .tp-e-faq-v1__title-wrapper h6 {
-        font-size: var(--tp-e-faq-v1-title-size-desktop, var(--tp-font-size-4xl));
-    }
+
     .tp-e-faq-v1 .tp-e-faq-v1__title-wrapper p {
         font-size: var(--tp-e-faq-v1-title-size-desktop, var(--tp-font-size-base));
     }
