@@ -392,8 +392,7 @@
       "custom_css": [
         "h2 strong {color: #0c111d;}",
         "h2 {color: #0c111d; font-size: clamp(2rem, calc(1.5543rem + 1.1429vw), 3.2rem);}",
-        "p {color: #475467; font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem);}",
-        "a {background: #000;}"
+        "p {color: #475467; font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem);}"
       ],
       "name": "Banner Slides V1",
       "settings": {
