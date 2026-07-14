@@ -850,6 +850,15 @@
         "view_all_url": "",
         "show_image": true,
         "color_scheme": "",
+        "background_type": "color",
+        "background_color": "#f7d046",
+        "background_gradient": "",
+        "heading_color": "#191919",
+        "card_bg_color": "#232323",
+        "card_title_color": "#ffffff",
+        "card_excerpt_color": "#b0b0b0",
+        "button_bg_color": "#f7d046",
+        "button_text_color": "#191919",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -905,7 +914,7 @@
       ],
       "custom_css": [
         "h2 strong {color: #fff;}",
-        "h2 {color: #fff; font-size: clamp(2rem, calc(1.5543rem + 1.1429vw), 3.2rem);}",
+        "h2 {color: #FE0; font-size: clamp(2rem, calc(1.5543rem + 1.1429vw), 3.2rem);}",
         "p {color: #fff; font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem);}",
         "a {background: #000;}"
       ],
