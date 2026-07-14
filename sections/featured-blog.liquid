@@ -11,6 +11,37 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .{{ section.id }} {
+    {%- if section.settings.background_type == 'gradient' and section.settings.background_gradient != blank -%}
+      background: {{ section.settings.background_gradient }};
+    {%- else -%}
+      background: {{ section.settings.background_color }};
+    {%- endif -%}
+  }
+
+  .{{ section.id }} .tp-featured-blog__title,
+  .{{ section.id }} .tp-featured-blog__view-all {
+    color: {{ section.settings.heading_color }};
+  }
+
+  .{{ section.id }} .tp-featured-blog__card {
+    background: {{ section.settings.card_bg_color }};
+  }
+
+  .{{ section.id }} .tp-featured-blog__card-title {
+    color: {{ section.settings.card_title_color }};
+  }
+
+  .{{ section.id }} .tp-featured-blog__card-excerpt {
+    color: {{ section.settings.card_excerpt_color }};
+  }
+
+  .{{ section.id }} .tp-featured-blog__card-btn {
+    background: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    border-radius: {% if section.settings.button_radius == 'none' %}0{% else %}var(--tp-radius-{{ section.settings.button_radius }}){% endif %};
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -18,9 +49,10 @@
   if section.settings.post_limit <= section.settings.blog.articles_count or section.settings.post_limit <= 4
     assign posts_displayed = section.settings.post_limit
   endif
+  assign list_count = posts_displayed | minus: 1
 -%}
 
-<section class="tp-featured-blog color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+<section class="tp-featured-blog {{ section.id }} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
   <div class="tp-wrapper tp-featured-blog__wrapper">
 
     <div class="tp-featured-blog__header">
@@ -37,14 +69,14 @@
 
     <div class="tp-featured-blog__grid">
       {%- if section.settings.blog != blank and section.settings.blog.articles_count > 0 -%}
-        {%- for article in section.settings.blog.articles limit: section.settings.post_limit -%}
-          <article class="tp-featured-blog__card">
+        {%- for article in section.settings.blog.articles limit: 1 -%}
+          <article class="tp-featured-blog__card tp-featured-blog__card--featured">
             {%- if section.settings.show_image and article.image != blank -%}
               <a href="{{ article.url }}" class="tp-featured-blog__card-media" tabindex="-1" aria-hidden="true">
                 {{ article.image | image_url: width: 800 | image_tag:
                   loading: 'lazy',
                   widths: '375, 600, 800',
-                  sizes: '(min-width: 750px) 33vw, 100vw',
+                  sizes: '(min-width: 750px) 50vw, 100vw',
                   class: 'tp-featured-blog__card-img'
                 }}
               </a>
@@ -60,23 +92,68 @@
             </div>
           </article>
         {%- endfor -%}
+
+        {%- if list_count > 0 -%}
+          <div class="tp-featured-blog__list">
+            {%- for article in section.settings.blog.articles offset: 1 limit: list_count -%}
+              <article class="tp-featured-blog__card tp-featured-blog__card--compact">
+                {%- if section.settings.show_image and article.image != blank -%}
+                  <a href="{{ article.url }}" class="tp-featured-blog__card-media" tabindex="-1" aria-hidden="true">
+                    {{ article.image | image_url: width: 300 | image_tag:
+                      loading: 'lazy',
+                      widths: '150, 220, 300',
+                      sizes: '120px',
+                      class: 'tp-featured-blog__card-img'
+                    }}
+                  </a>
+                {%- endif -%}
+                <div class="tp-featured-blog__card-content">
+                  <h3 class="tp-featured-blog__card-title">
+                    <a href="{{ article.url }}">{{ article.title }}</a>
+                  </h3>
+                  {%- if article.excerpt != blank -%}
+                    <p class="tp-featured-blog__card-excerpt">{{ article.excerpt | strip_html | truncate: 100 }}</p>
+                  {%- endif -%}
+                  <a href="{{ article.url }}" class="tp-featured-blog__card-btn">Ver mais</a>
+                </div>
+              </article>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
       {%- else -%}
-        {%- for i in (1..section.settings.post_limit) -%}
-          {%- assign placeholder_image_index = forloop.index0 | modulo: 3 | plus: 1 -%}
-          {%- assign placeholder_image = 'blog-apparel-' | append: placeholder_image_index -%}
-          <article class="tp-featured-blog__card">
-            <div class="tp-featured-blog__card-media">
-              {{ placeholder_image | placeholder_svg_tag: 'tp-featured-blog__card-img tp-featured-blog__card-img--placeholder' }}
-            </div>
-            <div class="tp-featured-blog__card-content">
-              <h3 class="tp-featured-blog__card-title">
-                <a href="#">{{ 'sections.featured_blog.onboarding_title' | t }}</a>
-              </h3>
-              <p class="tp-featured-blog__card-excerpt">{{ 'sections.featured_blog.onboarding_content' | t }}</p>
-              <a href="#" class="tp-featured-blog__card-btn">Ver mais</a>
-            </div>
-          </article>
-        {%- endfor -%}
+        <article class="tp-featured-blog__card tp-featured-blog__card--featured">
+          <div class="tp-featured-blog__card-media">
+            {{ 'blog-apparel-1' | placeholder_svg_tag: 'tp-featured-blog__card-img tp-featured-blog__card-img--placeholder' }}
+          </div>
+          <div class="tp-featured-blog__card-content">
+            <h3 class="tp-featured-blog__card-title">
+              <a href="#">{{ 'sections.featured_blog.onboarding_title' | t }}</a>
+            </h3>
+            <p class="tp-featured-blog__card-excerpt">{{ 'sections.featured_blog.onboarding_content' | t }}</p>
+            <a href="#" class="tp-featured-blog__card-btn">Ver mais</a>
+          </div>
+        </article>
+
+        {%- if list_count > 0 -%}
+          <div class="tp-featured-blog__list">
+            {%- for i in (1..list_count) -%}
+              {%- assign placeholder_image_index = forloop.index0 | modulo: 3 | plus: 1 -%}
+              {%- assign placeholder_image = 'blog-apparel-' | append: placeholder_image_index -%}
+              <article class="tp-featured-blog__card tp-featured-blog__card--compact">
+                <div class="tp-featured-blog__card-media">
+                  {{ placeholder_image | placeholder_svg_tag: 'tp-featured-blog__card-img tp-featured-blog__card-img--placeholder' }}
+                </div>
+                <div class="tp-featured-blog__card-content">
+                  <h3 class="tp-featured-blog__card-title">
+                    <a href="#">{{ 'sections.featured_blog.onboarding_title' | t }}</a>
+                  </h3>
+                  <p class="tp-featured-blog__card-excerpt">{{ 'sections.featured_blog.onboarding_content' | t }}</p>
+                  <a href="#" class="tp-featured-blog__card-btn">Ver mais</a>
+                </div>
+              </article>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
       {%- endif -%}
     </div>
 
@@ -111,7 +188,7 @@
       "min": 2,
       "max": 4,
       "step": 1,
-      "default": 3,
+      "default": 4,
       "label": "t:sections.featured-blog.settings.post_limit.label"
     },
     {
@@ -147,6 +224,82 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Aparência"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Tipo de fundo",
+      "default": "color",
+      "options": [
+        { "label": "Cor sólida", "value": "color" },
+        { "label": "Gradiente", "value": "gradient" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Cor de fundo",
+      "default": "#F7D046",
+      "visible_if": "{{ section.settings.background_type == 'color' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Gradiente de fundo",
+      "visible_if": "{{ section.settings.background_type == 'gradient' }}"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Cor do título e do link \"Conhecer blog\"",
+      "default": "#191919"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Cor de fundo dos cards",
+      "default": "#232323"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Cor do título do card",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_excerpt_color",
+      "label": "Cor do texto do card",
+      "default": "#B0B0B0"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Cor de fundo do botão",
+      "default": "#F7D046"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Cor do texto do botão",
+      "default": "#191919"
+    },
+    {
+      "type": "select",
+      "id": "button_radius",
+      "label": "Arredondamento do botão",
+      "default": "sm",
+      "options": [
+        { "label": "Nenhum", "value": "none" },
+        { "label": "Pequeno", "value": "sm" },
+        { "label": "Médio", "value": "md" },
+        { "label": "Grande", "value": "lg" },
+        { "label": "Completo", "value": "full" }
+      ]
     },
     {
       "type": "header",

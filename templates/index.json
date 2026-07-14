@@ -842,7 +842,7 @@
       "name": "t:sections.featured-blog.presets.name",
       "settings": {
         "blog": "novidades",
-        "post_limit": 3,
+        "post_limit": 4,
         "heading": "BLOG KINGS",
         "show_view_all": true,
         "view_all_url": "",
