@@ -360,10 +360,26 @@
             "image": "shopify://shop_images/1116.svg",
             "richtext": "<h6>Proteção real no dia a dia</h6><p>Protege contra poeira, riscos, sol, maresia e pequenos danos que desgastam o veículo com o tempo.</p>"
           }
+        },
+        "benefit_nYEKV9": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/1114.svg",
+            "richtext": "<h6>Ajuste feito para o seu carro</h6><p>Cada capa é produzida sob medida para garantir encaixe perfeito e visual muito mais sofisticado.</p>"
+          }
+        },
+        "benefit_XBceJG": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/1117.svg",
+            "richtext": "<h6>Material premium e durável</h6><p>Produzida com tecido exclusivo de alta qualidade, pensado para oferecer resistência e longa durabilidade.</p>"
+          }
         }
       },
       "block_order": [
-        "benefit_gJWaLz"
+        "benefit_gJWaLz",
+        "benefit_nYEKV9",
+        "benefit_XBceJG"
       ],
       "custom_css": [
         "h2 strong {color: #0c111d;}",
