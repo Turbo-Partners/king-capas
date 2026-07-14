@@ -16,8 +16,8 @@
           "type": "slide",
           "settings": {
             "media_type": "image",
-            "image_mobile": "shopify://shop_images/759_1.webp",
-            "image_desktop": "shopify://shop_images/758_1.webp",
+            "image_mobile": "shopify://shop_images/1113_1.webp",
+            "image_desktop": "shopify://shop_images/1112_1.webp",
             "link": "",
             "title": "",
             "richtext": "",
@@ -65,6 +65,7 @@
         "pagination": true,
         "pagination_color": "#b1bfab",
         "pagination_color_active": "#000",
+        "padding_on_section": false,
         "background_type": "color",
         "background_color": "#ffffff",
         "background_gradient": "",
