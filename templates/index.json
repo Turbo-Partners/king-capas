@@ -624,7 +624,7 @@
         "review_jGm7Mx"
       ],
       "custom_css": [
-        ".template--19812436082870__tp_e_reviews_v4_9qtWCN {border-top: 8px solid #FEC300;}"
+        ".template--19812436082870__tp_e_reviews_v4_9qtWCN {border-top: 8px solid #fec300;}"
       ],
       "name": "Depoimentos V4",
       "settings": {
@@ -638,9 +638,11 @@
         "title_font_size_mobile": 28,
         "subtitle_color": "#667085",
         "layout": "lado_a_lado",
-        "background_type": "color",
+        "background_type": "image",
         "background_color": "#262525",
         "background_gradient": "",
+        "background_image_mobile": "shopify://shop_images/1102_1.webp",
+        "background_image_desktop": "shopify://shop_images/1101_1.webp",
         "pagination": false,
         "pagination_color": "#b1bfab",
         "pagination_color_active": "#000000",
