@@ -170,18 +170,25 @@ product-info {
 }
 
 .complementary-products .card--horizontal {
-  border: 1px solid var(--Gray-300, #D9D9D9);
-  border-radius: 8px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.08);
-  background: #FFFFFF;
+  border: 1px solid var(--Gray-300, #D9D9D9) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.08) !important;
+  background: #FFFFFF !important;
   padding: 16px;
   gap: 8px;
   align-items: center;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.complementary-products .card--horizontal:before,
+.complementary-products .card--horizontal:after {
+  content: none !important;
 }
 
 @media screen and (min-width: 750px) {
   .complementary-products .card--horizontal {
-    border-radius: 16px;
+    border-radius: 16px !important;
     padding: 12px;
     gap: 16px;
   }
@@ -190,6 +197,9 @@ product-info {
 .complementary-products .card__inner {
   flex-shrink: 0;
   width: 48px;
+  background: transparent !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
 }
 
 .complementary-products .card__content {
@@ -199,6 +209,7 @@ product-info {
   justify-content: space-between;
   gap: 16px;
   width: 100%;
+  min-width: 0;
   padding: 0;
 }
 
@@ -208,7 +219,19 @@ product-info {
   padding: 0;
 }
 
+.complementary-products .card-information {
+  min-width: 0;
+}
+
 .complementary-products .card__heading {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.complementary-products .card__heading a {
+  display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -219,26 +242,29 @@ product-info {
 }
 
 .complementary-products .card--horizontal__quick-add {
-  width: auto;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
   flex: 0 0 auto;
-  border-radius: 2px;
-  background: #000;
-  color: #FFFEF3;
+  border-radius: 999px !important;
+  background: linear-gradient(90deg, #FFEE00 0%, #FECC27 100%) !important;
+  color: #000 !important;
   font-family: Montserrat, sans-serif;
   font-size: 10px;
   font-weight: 700;
+  line-height: 1.2;
   text-transform: uppercase;
-  padding: 8px 12px;
-  min-height: 0;
-  border: none;
+  white-space: nowrap;
+  padding: 8px 12px !important;
+  min-height: 0 !important;
+  height: auto !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
-@media screen and (min-width: 750px) {
-  .complementary-products .card--horizontal__quick-add {
-    border-radius: 999px;
-    background: linear-gradient(90deg, #FFEE00 0%, #FECC27 100%);
-    color: #000;
-  }
+.complementary-products .card--horizontal__quick-add:before,
+.complementary-products .card--horizontal__quick-add:after {
+  content: none !important;
 }
 
 .complementary-products .card--horizontal__quick-add .icon-wrap {
