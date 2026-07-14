@@ -13,6 +13,7 @@
   - shape: {String} swatch shape. Accepts 'square', defaults to circle (optional)
   - help_text: {String} additional content to render inside the label (optional)
   - additional_props: {String} (optional) additional properties to attach to the input
+  - show_label: {Boolean} renders a visible caption with the value below the swatch (optional)
 
   Usage:
    {% render 'swatch-input',
@@ -45,8 +46,11 @@
 <label
   for="{{ id }}"
   title="{{ value }}"
-  class="swatch-input__label{% if shape == 'square' %} swatch-input__label--square{% endif %}"
+  class="swatch-input__label{% if shape == 'square' %} swatch-input__label--square{% endif %}{% if show_label %} swatch-input__label--captioned{% endif %}"
 >
   {% render 'swatch', swatch: swatch, shape: shape, color_name: color_name %}
+  {%- if show_label -%}
+    <span class="swatch-input__value-label" aria-hidden="true">{{ value }}</span>
+  {%- endif -%}
   {{ help_text }}
 </label>

@@ -647,6 +647,29 @@
 
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+              {%- when 'vehicle_antenna' -%}
+                <div class="tp-vehicle-antenna" {{ block.shopify_attributes }}>
+                  {%- assign va_label = block.settings.label | default: 'Veículo possui antena?' -%}
+                  {%- assign va_yes = block.settings.option_yes | default: 'Sim' -%}
+                  {%- assign va_no = block.settings.option_no | default: 'Não' -%}
+                  <label class="tp-vehicle-antenna__label form__label" for="VehicleAntenna-{{ section.id }}">
+                    {{ va_label }}
+                  </label>
+                  <div class="tp-vehicle-antenna__select-wrapper">
+                    <select
+                      id="VehicleAntenna-{{ section.id }}"
+                      name="properties[{{ va_label | escape }}]"
+                      class="tp-vehicle-antenna__select"
+                      form="{{ product_form_id }}"
+                    >
+                      <option value="{{ va_yes | escape }}">{{ va_yes }}</option>
+                      <option value="{{ va_no | escape }}">{{ va_no }}</option>
+                    </select>
+                    <span class="tp-vehicle-antenna__arrow" aria-hidden="true">
+                      {{- 'icon-caret.svg' | inline_asset_content -}}
+                    </span>
+                  </div>
+                </div>
               {%- when 'vehicle_model' -%}
                 <div class="tp-vehicle-model" {{ block.shopify_attributes }}>
                   {%- assign vm_label = block.settings.label | default: 'Modelo do Veículo' -%}
@@ -835,7 +858,8 @@
                                         quick_add: quick_add,
                                         section_id: section.id,
                                         horizontal_class: true,
-                                        horizontal_quick_add: true
+                                        horizontal_quick_add: true,
+                                        quick_add_label: 'Levar junto!'
                                       %}
                                     </li>
                                     {%- assign skip_card_product_styles = true -%}
@@ -1264,6 +1288,31 @@
             }
           ],
           "default": "circle"
+        }
+      ]
+    },
+    {
+      "type": "vehicle_antenna",
+      "name": "Veículo Possui Antena?",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label do campo",
+          "default": "Veículo possui antena?"
+        },
+        {
+          "type": "text",
+          "id": "option_yes",
+          "label": "Opção \"Sim\"",
+          "default": "Sim"
+        },
+        {
+          "type": "text",
+          "id": "option_no",
+          "label": "Opção \"Não\"",
+          "default": "Não"
         }
       ]
     },

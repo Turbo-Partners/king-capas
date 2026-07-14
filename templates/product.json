@@ -53,15 +53,23 @@
         "variant_picker_aPRT3c": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "dropdown",
-            "swatch_shape": "circle"
+            "picker_type": "button",
+            "swatch_shape": "square"
+          }
+        },
+        "vehicle_antenna_qK7mXs": {
+          "type": "vehicle_antenna",
+          "settings": {
+            "label": "Veículo possui antena?",
+            "option_yes": "Sim",
+            "option_no": "Não"
           }
         },
         "vehicle_model_7AXErM": {
           "type": "vehicle_model",
           "settings": {
-            "label": "Modelo do Veículo",
-            "placeholder": "Ex: Honda Civic 2022",
+            "label": "Informe o modelo e ano do veículo",
+            "placeholder": "Ex: Exemplo: Gol G6 2014",
             "required": true,
             "error_message": "Por favor, informe o modelo do veículo."
           }
@@ -129,6 +137,7 @@
         "tp_beneficios_W7FDUc",
         "variant_picker",
         "variant_picker_aPRT3c",
+        "vehicle_antenna_qK7mXs",
         "vehicle_model_7AXErM",
         "tp_price_bmC7KB",
         "custom_buy_buttons_7VTA3y",
