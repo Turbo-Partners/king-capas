@@ -120,7 +120,7 @@
 
 <section class="tp-e-reviews-v4 {{ section.id }} tp-e-reviews-v4--{{ section.settings.layout }} scroll-trigger animate--fade-in" id="section-wrapper-{{ section.id }}">
 
-  <div class="tp-e-reviews-v4__body">
+  <div class="tp-e-reviews-v4__body tp-wrapper">
     {% if section.settings.title != blank or section.settings.title_image != blank %}
       <div class="tp-e-reviews-v4__header-wrapper">
         <div class="tp-e-reviews-v4__header">
@@ -304,31 +304,30 @@
   document.addEventListener('DOMContentLoaded', function () {
     new Swiper('.{{ section.id }} .tp-e-reviews-v4__swiper', {
       slidesPerView: 1.2,
-      spaceBetween: 8,
+      spaceBetween: 16,
       watchOverflow: true,
       centeredSlides: true,
-      initialSlide: 2,
       breakpointsBase: 'container',
       breakpoints: {
         640: {
           slidesPerView: 1.8,
           centeredSlides: false,
-          spaceBetween: 8
+          spaceBetween: 16
         },
         1024: {
           slidesPerView: 2.8,
           centeredSlides: false,
-          spaceBetween: 8
+          spaceBetween: 16
         },
         1280: {
           slidesPerView: 3.5,
           centeredSlides: false,
-          spaceBetween: 8
+          spaceBetween: 32
         },
         1440: {
           slidesPerView: 4,
           centeredSlides: false,
-          spaceBetween: 8
+          spaceBetween: 32
         },
         1920: {
           slidesPerView: 5
