@@ -633,7 +633,7 @@
         "title_font_size_desktop": 36,
         "title_font_size_mobile": 28,
         "subtitle_color": "#667085",
-        "layout": "empilhado",
+        "layout": "lado_a_lado",
         "background_type": "color",
         "background_color": "#ffffff",
         "background_gradient": "",
