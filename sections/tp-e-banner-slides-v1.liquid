@@ -68,7 +68,7 @@
 {% endstyle %}
 
 <section class="tp-e-banner-slides-v1 {{ section.id }}">
-    <div class="tp-wrapper--full-width tp-e-banner-slides-v1__wrapper" id="section-wrapper-{{ section.id }}">
+    <div class="{% if section.settings.padding_on_section == true %} tp-wrapper {% else %} tp-wrapper--full-width {% endif %} tp-e-banner-slides-v1__wrapper" id="section-wrapper-{{ section.id }}">
         <div class="swiper tp-e-banner-slides-v1__swiper">
             <div class="swiper-wrapper tp-e-banner-slides-v1__swiper-wrapper">
                 {% for block in section.blocks %}
@@ -358,6 +358,16 @@
       "default": "#000",
       "id": "pagination_color_active",
       "visible_if": "{{ section.settings.pagination }}"
+    },
+    {
+      "type": "header",
+      "content": "Aparência"
+    },
+    {
+      "type": "checkbox",
+      "id": "padding_on_section",
+      "label": "Limitar largura (com padding)",
+      "default": false
     },
     {
       "type": "header",
