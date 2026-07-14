@@ -27,9 +27,22 @@
             "text_style": "body"
           }
         },
-        "tp_icons_with_text_pf4W9f": {
-          "type": "tp_icons_with_text",
-          "settings": {}
+        "tp_beneficios_W7FDUc": {
+          "type": "tp-beneficios",
+          "settings": {
+            "beneficio1_image": "shopify://shop_images/760.svg",
+            "beneficio1_text": "Lavável na máquina",
+            "beneficio2_image": "shopify://shop_images/761.svg",
+            "beneficio2_text": "100% à prova de riscos",
+            "beneficio3_image": "shopify://shop_images/762.svg",
+            "beneficio3_text": "Resistente à poeira",
+            "beneficio4_image": "shopify://shop_images/763.svg",
+            "beneficio4_text": "100% respirável",
+            "beneficio5_image": "shopify://shop_images/764.svg",
+            "beneficio5_text": "Proteje do sol e raios uv",
+            "beneficio6_image": "shopify://shop_images/765.svg",
+            "beneficio6_text": "Mantêm a boa aparência"
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -126,30 +139,13 @@
             "heading": "Tipos de Proteção",
             "icon": "none"
           }
-        },
-        "tp_beneficios_W7FDUc": {
-          "type": "tp-beneficios",
-          "settings": {
-            "beneficio1_image": "shopify://shop_images/760.svg",
-            "beneficio1_text": "Lavável na máquina",
-            "beneficio2_image": "shopify://shop_images/761.svg",
-            "beneficio2_text": "100% à prova de riscos",
-            "beneficio3_image": "shopify://shop_images/762.svg",
-            "beneficio3_text": "Resistente à poeira",
-            "beneficio4_image": "shopify://shop_images/763.svg",
-            "beneficio4_text": "100% respirável",
-            "beneficio5_image": "shopify://shop_images/764.svg",
-            "beneficio5_text": "Proteje do sol e raios uv",
-            "beneficio6_image": "shopify://shop_images/765.svg",
-            "beneficio6_text": "Mantêm a boa aparência"
-          }
         }
       },
       "block_order": [
         "areviews_reviews_importer_areviews_title_rating_UEbCLB",
         "title",
         "text_4E7ye9",
-        "tp_icons_with_text_pf4W9f",
+        "tp_beneficios_W7FDUc",
         "variant_picker",
         "variant_picker_aPRT3c",
         "vehicle_model_7AXErM",
@@ -162,8 +158,7 @@
         "collapsible_tab_V4UJpL",
         "complementary_3L7t4e",
         "product_details_meta_citgki",
-        "protection_types_UggDPk",
-        "tp_beneficios_W7FDUc"
+        "protection_types_UggDPk"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -266,6 +261,11 @@
         "video_file": "shopify://files/videos/767.mov",
         "video_url": "",
         "video_autoplay": true,
+        "title_bar": false,
+        "title_bar_color": "#f7d046",
+        "title_bar_width_desktop": 120,
+        "title_bar_width_mobile": 80,
+        "title_bar_height": 4,
         "title": "",
         "richtext": "",
         "button_url": "#tp-main-product",
@@ -329,6 +329,11 @@
         "video_url": "",
         "video_autoplay": true,
         "title_image": "shopify://shop_images/752.svg",
+        "title_bar": false,
+        "title_bar_color": "#f7d046",
+        "title_bar_width_desktop": 120,
+        "title_bar_width_mobile": 80,
+        "title_bar_height": 4,
         "title": "<h2>Proteção desenvolvida nos detalhes</h2>",
         "richtext": "<p>Muito além de uma capa comum, a Kings foi criada para entregar uma experiência premium em cada detalhe: tecido exclusivo, acabamento refinado e ajuste sob medida para valorizar o veículo mesmo quando protegido.</p>",
         "button_url": "#tp-main-product",
@@ -392,6 +397,11 @@
         "video_url": "",
         "video_autoplay": true,
         "title_image": "shopify://shop_images/752.svg",
+        "title_bar": false,
+        "title_bar_color": "#f7d046",
+        "title_bar_width_desktop": 120,
+        "title_bar_width_mobile": 80,
+        "title_bar_height": 4,
         "title": "<h2>Proteção, estética e durabilidade no mesmo produto</h2>",
         "richtext": "<p>O diferencial da Kings está no equilíbrio entre proteção real e visual sofisticado. O tecido acompanha as linhas do veículo, evitando aparência folgada e entregando um acabamento muito acima do padrão tradicional.</p>",
         "button_url": "#tp-main-product",
@@ -862,6 +872,7 @@
         "pagination": true,
         "pagination_color": "#b1bfab",
         "pagination_color_active": "#000",
+        "padding_on_section": false,
         "background_type": "color",
         "background_color": "#ffffff",
         "background_gradient": "",
