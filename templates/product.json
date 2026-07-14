@@ -38,10 +38,8 @@
             "beneficio3_text": "Resistente à poeira",
             "beneficio4_image": "shopify://shop_images/763.svg",
             "beneficio4_text": "100% respirável",
-            "beneficio5_image": "shopify://shop_images/764.svg",
-            "beneficio5_text": "Proteje do sol e raios uv",
-            "beneficio6_image": "shopify://shop_images/765.svg",
-            "beneficio6_text": "Mantêm a boa aparência"
+            "beneficio5_text": "",
+            "beneficio6_text": ""
           }
         },
         "variant_picker": {
