@@ -686,6 +686,7 @@
         "background_type": "image",
         "background_color": "#ffffff",
         "background_gradient": "",
+        "background_image_mobile": "shopify://shop_images/1127_1.webp",
         "background_image_desktop": "shopify://shop_images/1126_1.webp",
         "faq_layout": "split",
         "title": "<h2>Dúvidas frequentes</h2>",
