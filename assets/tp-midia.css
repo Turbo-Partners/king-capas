@@ -91,11 +91,14 @@ tp-midia {
   max-width: 140px;
   height: 52px;
   object-fit: contain;
-  filter: grayscale(100%);
   transition: filter var(--tp-transition-base), opacity var(--tp-transition-base);
 }
 
-.tp-midia__swiper-slide:hover .tp-midia__block-image {
+.tp-midia--grayscale-hover .tp-midia__block-image {
+  filter: grayscale(100%);
+}
+
+.tp-midia--grayscale-hover .tp-midia__swiper-slide:hover .tp-midia__block-image {
   filter: grayscale(0%);
 }
 

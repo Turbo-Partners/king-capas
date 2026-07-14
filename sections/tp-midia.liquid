@@ -45,7 +45,7 @@
   {% endif %}
 {% endstyle %}
 
-<section class="tp-midia {{ section.id }}">
+<section class="tp-midia {{ section.id }}{% if section.settings.grayscale_hover %} tp-midia--grayscale-hover{% endif %}">
     <div class="tp-wrapper tp-midia__wrapper" id="section-wrapper-{{ section.id }}">
         <div class="tp-midia__title-wrapper">
             {{ section.settings.title }}
@@ -146,6 +146,12 @@
     {
       "type": "header",
       "content": "Aparência"
+    },
+    {
+      "type": "checkbox",
+      "id": "grayscale_hover",
+      "label": "Imagens em preto e branco (cor apenas no hover)",
+      "default": false
     },
     {
       "type": "select",
