@@ -663,6 +663,11 @@
     },
     "tp_e_image_with_text_v1_8N3nN3": {
       "type": "tp-e-image-with-text-v1",
+      "custom_css": [
+        "h2 strong {color: #0c111d;}",
+        "h2 {color: #0c111d; font-size: clamp(2rem, calc(1.5543rem + 1.1429vw), 3.2rem);}",
+        "p {color: #475467; font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem);}"
+      ],
       "name": "Imagem Com Texto V1",
       "settings": {
         "media_type": "image",
