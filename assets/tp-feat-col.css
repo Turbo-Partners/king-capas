@@ -1,7 +1,7 @@
 .tp-featured-collection {
     width: 100%;
 
-    .tp-wrapper--full-width {
+    .tp-wrapper {
         display: flex;
         flex-direction: column;
         gap: clamp(2.4rem, 1.5086rem + 2.2857vw, 4.8rem);
