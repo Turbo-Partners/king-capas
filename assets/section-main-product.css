@@ -164,17 +164,58 @@ product-info {
 }
 
 /* "Levar junto!" — card do produto complementar, estilo do Figma */
-.complementary-products .card__inner {
+.complementary-products {
+  padding-top: 16px;
+  border-top: 1px solid var(--Gray-200, #EAECF0);
+}
+
+.complementary-products .card--horizontal {
   border: 1px solid var(--Gray-300, #D9D9D9);
   border-radius: 8px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.08);
   background: #FFFFFF;
+  padding: 16px;
+  gap: 8px;
+  align-items: center;
 }
 
 @media screen and (min-width: 750px) {
-  .complementary-products .card__inner {
+  .complementary-products .card--horizontal {
     border-radius: 16px;
+    padding: 12px;
+    gap: 16px;
   }
+}
+
+.complementary-products .card__inner {
+  flex-shrink: 0;
+  width: 48px;
+}
+
+.complementary-products .card__content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 0;
+}
+
+.complementary-products .card__information {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0;
+}
+
+.complementary-products .card__heading {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.complementary-products .quick-add {
+  flex-shrink: 0;
 }
 
 .complementary-products .card--horizontal__quick-add {
@@ -773,6 +814,8 @@ line-height: 140%; /* 19.6px */
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   justify-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--Gray-200, #EAECF0);
 }
 
 .tp-pdp-beneficio {
