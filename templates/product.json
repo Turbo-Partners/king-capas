@@ -160,42 +160,42 @@
           "type": "benefit",
           "settings": {
             "image": "shopify://shop_images/icon.svg",
-            "text": "Lavável na máquina"
+            "text": "<p>Lavável <br/>na máquina</p>"
           }
         },
         "benefit_F9LFKg": {
           "type": "benefit",
           "settings": {
             "image": "shopify://shop_images/1134.svg",
-            "text": "100% à prova de riscos"
+            "text": "<p>100% à prova <br/>de riscos</p>"
           }
         },
         "benefit_fQ6487": {
           "type": "benefit",
           "settings": {
             "image": "shopify://shop_images/1135.svg",
-            "text": "Resistente à poeira"
+            "text": "<p>Resistente <br/>à poeira</p>"
           }
         },
         "benefit_8q6DLK": {
           "type": "benefit",
           "settings": {
             "image": "shopify://shop_images/1136.svg",
-            "text": "100%respirável"
+            "text": "<p>100%<br/>respirável</p>"
           }
         },
         "benefit_k4FNUN": {
           "type": "benefit",
           "settings": {
             "image": "shopify://shop_images/1137.svg",
-            "text": "Proteje do sol e raios uv"
+            "text": "<p>Proteje do<br/> sol e raios uv</p>"
           }
         },
         "benefit_DznJWe": {
           "type": "benefit",
           "settings": {
             "image": "shopify://shop_images/1138.svg",
-            "text": "Mantêm a boa aparência"
+            "text": "<p>Mantêm a <br/>boa aparência</p>"
           }
         }
       },
