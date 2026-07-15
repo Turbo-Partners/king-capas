@@ -65,14 +65,12 @@
             {% for block in section.blocks %}
                 <div class="tp-block">
                     {% if block.settings.image != blank %}
-                        <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt | default: block.settings.text | escape }}" loading="lazy">
+                        <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt | default: block.settings.text | strip_html | escape }}" loading="lazy">
                     {% endif %}
 
                     {% if block.settings.text != blank %}
                         <div class="tp-block__text-wrapper">
-                            {% if block.settings.text != blank %}
-                                <p>{{ block.settings.text }}</p>
-                            {% endif %}
+                            {{ block.settings.text }}
                         </div>
                     {% endif %}
                 </div>
@@ -342,10 +340,10 @@
           "label": "Icon"
         },
         {
-          "type": "text",
+          "type": "richtext",
           "id": "text",
           "label": "Text",
-          "default": "Beneficio"
+          "default": "<p>Beneficio</p>"
         }
       ]
     }
