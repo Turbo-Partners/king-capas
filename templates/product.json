@@ -155,6 +155,46 @@
     },
     "tp_beneficios_zeH3LL": {
       "type": "tp-beneficios",
+      "blocks": {
+        "benefit_mFJaDM": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/icon.svg",
+            "text": "Lavável na máquina"
+          }
+        },
+        "benefit_F9LFKg": {
+          "type": "benefit",
+          "settings": {
+            "text": "Beneficio"
+          }
+        },
+        "benefit_fQ6487": {
+          "type": "benefit",
+          "settings": {
+            "text": "Beneficio"
+          }
+        },
+        "benefit_8q6DLK": {
+          "type": "benefit",
+          "settings": {
+            "text": "Beneficio"
+          }
+        },
+        "benefit_k4FNUN": {
+          "type": "benefit",
+          "settings": {
+            "text": "Beneficio"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_mFJaDM",
+        "benefit_F9LFKg",
+        "benefit_fQ6487",
+        "benefit_8q6DLK",
+        "benefit_k4FNUN"
+      ],
       "name": "TP - Benefícios",
       "settings": {
         "background_type": "color",
@@ -163,8 +203,8 @@
         "columns_mobile": "1",
         "columns_tablet": "3",
         "columns_desktop": "3",
-        "title": "Beneficios",
-        "subtitle": "Subtitle",
+        "title": "",
+        "subtitle": "",
         "pad_top_min": 48,
         "pad_top_max": 96,
         "pad_bottom_min": 48,
