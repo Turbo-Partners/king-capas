@@ -166,19 +166,22 @@
         "benefit_F9LFKg": {
           "type": "benefit",
           "settings": {
-            "text": "Beneficio"
+            "image": "shopify://shop_images/1134.svg",
+            "text": "100% à prova de riscos"
           }
         },
         "benefit_fQ6487": {
           "type": "benefit",
           "settings": {
-            "text": "Beneficio"
+            "image": "shopify://shop_images/1135.svg",
+            "text": "Resistente à poeira"
           }
         },
         "benefit_8q6DLK": {
           "type": "benefit",
           "settings": {
-            "text": "Beneficio"
+            "image": "shopify://shop_images/1136.svg",
+            "text": "100%respirável"
           }
         },
         "benefit_k4FNUN": {
