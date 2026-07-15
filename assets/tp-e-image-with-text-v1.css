@@ -11,6 +11,26 @@
     gap: var(--tp-space-6);
 }
 
+.tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--image-up .tp-e-image-with-text-v1__media {
+    order: 1;
+}
+
+.tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--image-up .tp-e-image-with-text-v1__text-wrapper {
+    order: 2;
+}
+
+.tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--image-down .tp-e-image-with-text-v1__text-wrapper {
+    order: 1;
+}
+
+.tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--image-down .tp-e-image-with-text-v1__media {
+    order: 2;
+}
+
+.tp-e-image-with-text-v1 .tp-e-image-with-text-v1__cta {
+    order: 3;
+}
+
 .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__title-bar img {
     width: 64px;
     height: 1px;
@@ -63,7 +83,15 @@
     gap: var(--tp-space-5);
     width: 100%;
     justify-content: center;
-    max-width: 688px;
+}
+
+.tp-e-image-with-text-v1 .tp-e-image-with-text-v1__cta {
+    display: none;
+    width: 100%;
+}
+
+.tp-e-image-with-text-v1 .tp-e-image-with-text-v1__button--mobile {
+    margin-top: 0;
 }
 
 .tp-e-image-with-text-v1__title h2 {
@@ -169,10 +197,6 @@
     outline-offset: 2px;
 }
 
-.tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--no-padding-desktop {
-    max-width: 100%;
-}
-
 @media screen and (min-width: 768px) {
     .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__button {
         height: var(--tp-space-12);
@@ -190,18 +214,41 @@
     }
     .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__media {
         width: 50%;
+        order: initial;
     }
     .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__text-wrapper {
         width: 50%;
+        order: initial;
     }
-    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--image-right {
-        flex-direction: row-reverse;
+    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--image-right .tp-e-image-with-text-v1__media {
+        order: 2;
     }
-    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--image-left {
-        flex-direction: row;
+    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--image-right .tp-e-image-with-text-v1__text-wrapper {
+        order: 1;
     }
-    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--no-padding-desktop .tp-e-image-with-text-v1__text-wrapper {
-        padding-inline: var(--tp-space-16);
+    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--image-left .tp-e-image-with-text-v1__media {
+        order: 1;
+    }
+    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--image-left .tp-e-image-with-text-v1__text-wrapper {
+        order: 2;
+    }
+    /* No-padding desktop: a imagem deve ir até a borda real da tela (ignora o cap de 1440px
+       do tp-wrapper), enquanto o texto continua alinhado ao container padrão (max-width 1440 + padding).
+       Usamos `order` (não row-reverse) para que margin-left/right continuem se referindo sempre
+       ao lado físico correto, sem a inversão de semântica que row-reverse causa. */
+    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--no-padding-desktop .tp-e-image-with-text-v1__text-wrapper,
+    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--no-padding-desktop .tp-e-image-with-text-v1__cta {
+        padding-inline: var(--tp-wrapper-pad-inline);
+    }
+    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--no-padding-desktop.tp-e-image-with-text-v1__wrapper--image-left .tp-e-image-with-text-v1__media {
+        width: calc(50% + max(0px, (100vw - 1440px) / 2));
+        margin-left: calc(-1 * max(0px, (100vw - 1440px) / 2));
+        flex: none;
+    }
+    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--no-padding-desktop.tp-e-image-with-text-v1__wrapper--image-right .tp-e-image-with-text-v1__media {
+        width: calc(50% + max(0px, (100vw - 1440px) / 2));
+        margin-right: calc(-1 * max(0px, (100vw - 1440px) / 2));
+        flex: none;
     }
     .tp-e-image-with-text-v1__block-wrapper {
         gap: var(--tp-space-5);
@@ -217,23 +264,21 @@
 }
 
 @media screen and (max-width: 1023px) {
-    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--image-up {
-        flex-direction: column;
+    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__button {
+        max-width: 100%;
     }
-    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--image-down {
-        flex-direction: column-reverse;
+    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__button--desktop {
+        display: none;
+    }
+    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__cta {
+        display: flex;
     }
     .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--no-padding-mobile {
         padding-inline: 0;
     }
-    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--no-padding-mobile .tp-e-image-with-text-v1__text-wrapper {
-        padding-inline: var(--tp-space-8);
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--no-padding-mobile .tp-e-image-with-text-v1__text-wrapper {
-        padding-inline: var(--tp-space-4);
+    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--no-padding-mobile .tp-e-image-with-text-v1__text-wrapper,
+    .tp-e-image-with-text-v1 .tp-e-image-with-text-v1__wrapper--no-padding-mobile .tp-e-image-with-text-v1__cta {
+        padding-inline: var(--tp-wrapper-pad-inline);
     }
 }
 

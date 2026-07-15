@@ -332,11 +332,18 @@
       {% endif %}
 
       {% if section.settings.button_text != blank and section.settings.button_url != blank %}
-        <a class="tp-e-image-with-text-v1__button" href="{{ section.settings.button_url }}">
+        <a class="tp-e-image-with-text-v1__button tp-e-image-with-text-v1__button--desktop" href="{{ section.settings.button_url }}">
           {{- section.settings.button_text -}}
         </a>
       {% endif %}
     </div>
+    {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+      <div class="tp-e-image-with-text-v1__cta">
+        <a class="tp-e-image-with-text-v1__button tp-e-image-with-text-v1__button--mobile" href="{{ section.settings.button_url }}">
+          {{- section.settings.button_text -}}
+        </a>
+      </div>
+    {% endif %}
   </div>
 </section>
 
