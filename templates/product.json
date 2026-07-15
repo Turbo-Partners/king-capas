@@ -215,7 +215,7 @@
         "background_type": "color",
         "background_color": "#ffffff",
         "background_gradient": "",
-        "columns_mobile": "1",
+        "columns_mobile": "3",
         "columns_tablet": "3",
         "columns_desktop": "6",
         "title": "",
