@@ -207,6 +207,9 @@
         "benefit_k4FNUN",
         "benefit_DznJWe"
       ],
+      "custom_css": [
+        ".tp-wrapper {max-width: 1040px;}"
+      ],
       "name": "TP - Benefícios",
       "settings": {
         "background_type": "color",
