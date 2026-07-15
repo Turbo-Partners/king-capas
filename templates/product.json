@@ -187,7 +187,8 @@
         "benefit_k4FNUN": {
           "type": "benefit",
           "settings": {
-            "text": "Beneficio"
+            "image": "shopify://shop_images/1137.svg",
+            "text": "Proteje do sol e raios uv"
           }
         }
       },
