@@ -1,0 +1,249 @@
+/* ==========================================================================
+   E__IMG_WITH_TEXT_BENEFITS__V2 — Imagem com hotspots interativos
+   Imagem full-bleed com pontos que revelam benefícios ao clicar/tocar.
+   ========================================================================== */
+
+.tp-e-img-text-benefits {
+  display: block;
+  position: relative;
+  padding-top: var(--tp-pad-top, 0px);
+  padding-bottom: var(--tp-pad-bottom, 0px);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Cabeçalho opcional -------------------------------------------------------- */
+.tp-e-img-text-benefits__header {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--tp-space-4) var(--tp-space-6);
+  text-align: center;
+  color: var(--tp-color-text-primary);
+}
+
+/* Mídia (imagem em proporção fixa 1440:800) --------------------------------- */
+.tp-e-img-text-benefits__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1440 / 800;
+}
+
+.tp-e-img-text-benefits__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tp-e-img-text-benefits__image--desktop {
+  display: block;
+}
+
+.tp-e-img-text-benefits__image--mobile {
+  display: none;
+}
+
+.tp-e-img-text-benefits--has-mobile .tp-e-img-text-benefits__image--desktop {
+  display: none;
+}
+
+.tp-e-img-text-benefits--has-mobile .tp-e-img-text-benefits__image--mobile {
+  display: block;
+}
+
+/* Camadas de pontos e tooltips ---------------------------------------------- */
+.tp-e-img-text-benefits__points,
+.tp-e-img-text-benefits__tooltips {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Ponto (hotspot) ----------------------------------------------------------- */
+.tp-e-img-text-benefits__point {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  border-radius: var(--tp-radius-full);
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tp-e-img-text-benefits__point:focus-visible {
+  outline: 2px solid var(--tp-color-text-light, #ffffff);
+  outline-offset: 3px;
+}
+
+.tp-e-img-text-benefits__dot {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--tp-radius-full);
+  background: #ffffff;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.22), var(--tp-shadow-md);
+  transition: transform var(--tp-transition-base), box-shadow var(--tp-transition-base);
+}
+
+.tp-e-img-text-benefits__dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--tp-radius-full);
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55);
+  animation: tp-itb-pulse 2.4s ease-out infinite;
+}
+
+.tp-e-img-text-benefits__point:hover .tp-e-img-text-benefits__dot {
+  transform: scale(1.15);
+}
+
+.tp-e-img-text-benefits__point.is-active .tp-e-img-text-benefits__dot {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.35), var(--tp-shadow-lg);
+}
+
+.tp-e-img-text-benefits__point.is-active .tp-e-img-text-benefits__dot::after {
+  animation: none;
+}
+
+@keyframes tp-itb-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+/* Tooltip — mobile-first: card ancorado na base da seção -------------------- */
+.tp-e-img-text-benefits__tooltip {
+  position: absolute;
+  left: var(--tp-space-3);
+  right: var(--tp-space-3);
+  bottom: var(--tp-space-3);
+  z-index: 2;
+  padding: var(--tp-space-4);
+  background: var(--tp-color-bg-primary, #ffffff);
+  border-radius: var(--tp-radius-lg);
+  box-shadow: var(--tp-shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--tp-transition-base), visibility var(--tp-transition-base);
+  pointer-events: none;
+}
+
+.tp-e-img-text-benefits__tooltip.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.tp-e-img-text-benefits__tooltip-title {
+  margin: 0 0 var(--tp-space-1);
+  font-family: var(--tp-h5-font, var(--tp-font-heading));
+  font-size: var(--tp-font-size-lg);
+  font-weight: var(--tp-font-semibold);
+  line-height: var(--tp-leading-tight);
+  color: var(--tp-color-text-primary);
+}
+
+.tp-e-img-text-benefits__tooltip-text,
+.tp-e-img-text-benefits__tooltip-text p {
+  margin: 0;
+  font-size: var(--tp-font-size-sm);
+  line-height: var(--tp-leading-normal);
+  color: var(--tp-color-text-secondary);
+}
+
+/* Tooltip — desktop: ancorado ao ponto -------------------------------------- */
+@media screen and (min-width: 768px) {
+  .tp-e-img-text-benefits__tooltip {
+    left: var(--x);
+    top: var(--y);
+    right: auto;
+    bottom: auto;
+    width: max-content;
+    max-width: 260px;
+  }
+
+  .tp-e-img-text-benefits__tooltip--center.tp-e-img-text-benefits__tooltip--below {
+    transform: translate(-50%, 26px);
+  }
+
+  .tp-e-img-text-benefits__tooltip--center.tp-e-img-text-benefits__tooltip--above {
+    transform: translate(-50%, calc(-100% - 26px));
+  }
+
+  .tp-e-img-text-benefits__tooltip--left.tp-e-img-text-benefits__tooltip--below {
+    transform: translate(-26px, 26px);
+  }
+
+  .tp-e-img-text-benefits__tooltip--left.tp-e-img-text-benefits__tooltip--above {
+    transform: translate(-26px, calc(-100% - 26px));
+  }
+
+  .tp-e-img-text-benefits__tooltip--right.tp-e-img-text-benefits__tooltip--below {
+    transform: translate(calc(-100% + 26px), 26px);
+  }
+
+  .tp-e-img-text-benefits__tooltip--right.tp-e-img-text-benefits__tooltip--above {
+    transform: translate(calc(-100% + 26px), calc(-100% - 26px));
+  }
+
+  /* Setinha apontando para o ponto */
+  .tp-e-img-text-benefits__tooltip::before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--tp-color-bg-primary, #ffffff);
+    transform: rotate(45deg);
+  }
+
+  .tp-e-img-text-benefits__tooltip--below::before {
+    top: -5px;
+  }
+
+  .tp-e-img-text-benefits__tooltip--above::before {
+    bottom: -5px;
+  }
+
+  .tp-e-img-text-benefits__tooltip--center::before {
+    left: 50%;
+    margin-left: -6px;
+  }
+
+  .tp-e-img-text-benefits__tooltip--left::before {
+    left: 20px;
+  }
+
+  .tp-e-img-text-benefits__tooltip--right::before {
+    right: 20px;
+  }
+}
+
+/* Acessibilidade — reduz movimento ------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .tp-e-img-text-benefits__dot,
+  .tp-e-img-text-benefits__dot::after,
+  .tp-e-img-text-benefits__tooltip {
+    animation: none;
+    transition: none;
+  }
+}

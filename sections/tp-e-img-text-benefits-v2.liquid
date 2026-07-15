@@ -1,0 +1,501 @@
+{{ 'tp-e-img-text-benefits-v2.css' | asset_url | stylesheet_tag }}
+
+{% render 'tp-section-padding',
+  pad_top_min: section.settings.pad_top_min,
+  pad_top_max: section.settings.pad_top_max,
+  pad_bottom_min: section.settings.pad_bottom_min,
+  pad_bottom_max: section.settings.pad_bottom_max,
+  enable_pad_top_mobile: section.settings.enable_pad_top_mobile,
+  pad_top_mobile: section.settings.pad_top_mobile,
+  enable_pad_bottom_mobile: section.settings.enable_pad_bottom_mobile,
+  pad_bottom_mobile: section.settings.pad_bottom_mobile,
+  enable_pad_top_desktop: section.settings.enable_pad_top_desktop,
+  pad_top_desktop: section.settings.pad_top_desktop,
+  enable_pad_bottom_desktop: section.settings.enable_pad_bottom_desktop,
+  pad_bottom_desktop: section.settings.pad_bottom_desktop
+%}
+
+{% liquid
+  assign background_type = section.settings.background_type
+  assign has_mobile = ''
+  if section.settings.image_mobile != blank
+    assign has_mobile = 'tp-e-img-text-benefits--has-mobile'
+  endif
+%}
+
+{% style %}
+  .{{ section.id }} {
+    {% if background_type == 'image' and section.settings.background_image_mobile != blank %}
+      background-image: url('{{ section.settings.background_image_mobile | image_url: width: 1200 }}');
+    {% elsif background_type == 'color' %}
+      background-color: {{ section.settings.background_color }};
+    {% elsif background_type == 'gradient' %}
+      background: {{ section.settings.background_gradient }};
+    {% endif %}
+  }
+
+  {% if background_type == 'image' and section.settings.background_image_desktop != blank %}
+    @media screen and (min-width: 1024px) {
+      .{{ section.id }} {
+        background-image: url('{{ section.settings.background_image_desktop | image_url: width: 2400 }}');
+      }
+    }
+  {% endif %}
+{% endstyle %}
+
+<tp-img-text-benefits
+  class="tp-e-img-text-benefits {{ section.id }} {{ has_mobile }} scroll-trigger animate--fade-in"
+  id="section-wrapper-{{ section.id }}"
+>
+  {% if section.settings.title != blank %}
+    <div class="tp-e-img-text-benefits__header">
+      {{ section.settings.title }}
+    </div>
+  {% endif %}
+
+  <div class="tp-e-img-text-benefits__media">
+    {% if section.settings.image_desktop != blank %}
+      {{ section.settings.image_desktop
+        | image_url: width: 2000
+        | image_tag:
+          class: 'tp-e-img-text-benefits__image tp-e-img-text-benefits__image--desktop',
+          loading: 'lazy',
+          sizes: '100vw',
+          widths: '750, 1100, 1500, 1780, 2000, 2400',
+          alt: section.settings.image_desktop.alt
+      }}
+    {% else %}
+      {{ 'image' | placeholder_svg_tag: 'tp-e-img-text-benefits__image tp-e-img-text-benefits__image--desktop' }}
+    {% endif %}
+
+    {% if section.settings.image_mobile != blank %}
+      {{ section.settings.image_mobile
+        | image_url: width: 1100
+        | image_tag:
+          class: 'tp-e-img-text-benefits__image tp-e-img-text-benefits__image--mobile',
+          loading: 'lazy',
+          sizes: '100vw',
+          widths: '375, 550, 750, 1100',
+          alt: section.settings.image_mobile.alt
+      }}
+    {% endif %}
+
+    <div class="tp-e-img-text-benefits__points">
+      {% for block in section.blocks %}
+        <button
+          type="button"
+          class="tp-e-img-text-benefits__point"
+          style="--x: {{ block.settings.position_x }}%; --y: {{ block.settings.position_y }}%;"
+          aria-expanded="false"
+          aria-controls="tip-{{ section.id }}-{{ forloop.index }}"
+          aria-label="{{ block.settings.title | default: 'Ver benefício' | escape }}"
+          {{ block.shopify_attributes }}
+        >
+          <span class="tp-e-img-text-benefits__dot" aria-hidden="true"></span>
+        </button>
+      {% endfor %}
+    </div>
+
+    <div class="tp-e-img-text-benefits__tooltips">
+      {% for block in section.blocks %}
+        {% liquid
+          assign px = block.settings.position_x
+          assign py = block.settings.position_y
+          assign xclass = 'tp-e-img-text-benefits__tooltip--center'
+          if px <= 30
+            assign xclass = 'tp-e-img-text-benefits__tooltip--left'
+          elsif px >= 70
+            assign xclass = 'tp-e-img-text-benefits__tooltip--right'
+          endif
+          assign yclass = 'tp-e-img-text-benefits__tooltip--below'
+          if py >= 55
+            assign yclass = 'tp-e-img-text-benefits__tooltip--above'
+          endif
+        %}
+        <div
+          class="tp-e-img-text-benefits__tooltip {{ xclass }} {{ yclass }}"
+          id="tip-{{ section.id }}-{{ forloop.index }}"
+          style="--x: {{ px }}%; --y: {{ py }}%;"
+          role="tooltip"
+          aria-hidden="true"
+        >
+          {% if block.settings.title != blank %}
+            <p class="tp-e-img-text-benefits__tooltip-title">{{ block.settings.title | escape }}</p>
+          {% endif %}
+          {% if block.settings.description != blank %}
+            <div class="tp-e-img-text-benefits__tooltip-text">{{ block.settings.description }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</tp-img-text-benefits>
+
+<script defer>
+  if (!customElements.get('tp-img-text-benefits')) {
+    class TpImgTextBenefits extends HTMLElement {
+      connectedCallback() {
+        this.points = Array.from(this.querySelectorAll('.tp-e-img-text-benefits__point'));
+        if (!this.points.length) return;
+
+        this.hoverCapable = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        this.openId = null;
+        this.pinned = false;
+
+        this.points.forEach((btn) => {
+          const id = btn.getAttribute('aria-controls');
+
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (this.openId === id && this.pinned) {
+              this.close();
+            } else {
+              this.open(id);
+              this.pinned = true;
+            }
+          });
+
+          if (this.hoverCapable) {
+            btn.addEventListener('mouseenter', () => {
+              if (!this.pinned) this.open(id);
+            });
+            btn.addEventListener('focus', () => this.open(id));
+          }
+        });
+
+        this._onLeave = () => {
+          if (!this.pinned) this.close();
+        };
+        this._onFocusOut = (e) => {
+          if (e.relatedTarget && !this.contains(e.relatedTarget)) this.close();
+        };
+        this._onDocClick = (e) => {
+          if (!this.contains(e.target)) this.close();
+        };
+        this._onKey = (e) => {
+          if (e.key === 'Escape') this.close();
+        };
+
+        if (this.hoverCapable) this.addEventListener('mouseleave', this._onLeave);
+        this.addEventListener('focusout', this._onFocusOut);
+        document.addEventListener('click', this._onDocClick);
+        document.addEventListener('keydown', this._onKey);
+
+        this._observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) this.close();
+            });
+          },
+          { threshold: 0 }
+        );
+        this._observer.observe(this);
+      }
+
+      open(id) {
+        if (this.openId && this.openId !== id) this._toggle(this.openId, false);
+        this.openId = id;
+        this._toggle(id, true);
+      }
+
+      close() {
+        if (this.openId) this._toggle(this.openId, false);
+        this.openId = null;
+        this.pinned = false;
+      }
+
+      _toggle(id, state) {
+        const selector = window.CSS && CSS.escape ? CSS.escape(id) : id;
+        const tip = this.querySelector('#' + selector);
+        const btn = this.querySelector(
+          '.tp-e-img-text-benefits__point[aria-controls="' + id + '"]'
+        );
+        if (tip) {
+          tip.classList.toggle('is-active', state);
+          tip.setAttribute('aria-hidden', String(!state));
+        }
+        if (btn) {
+          btn.classList.toggle('is-active', state);
+          btn.setAttribute('aria-expanded', String(state));
+        }
+      }
+
+      disconnectedCallback() {
+        document.removeEventListener('click', this._onDocClick);
+        document.removeEventListener('keydown', this._onKey);
+        if (this._observer) this._observer.disconnect();
+      }
+    }
+
+    customElements.define('tp-img-text-benefits', TpImgTextBenefits);
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Imagem com Hotspots",
+  "class": "E__IMG_WITH_TEXT_BENEFITS__V2",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Conteúdo"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Título (opcional)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Imagem desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Imagem mobile"
+    },
+    {
+      "type": "paragraph",
+      "content": "As posições dos hotspots são compartilhadas entre desktop e mobile. Use imagens com o mesmo enquadramento para os pontos ficarem alinhados."
+    },
+    {
+      "type": "header",
+      "content": "Aparência"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Tipo de fundo",
+      "default": "gradient",
+      "options": [
+        { "label": "Cor sólida", "value": "color" },
+        { "label": "Gradiente", "value": "gradient" },
+        { "label": "Imagem", "value": "image" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Cor",
+      "default": "#FFEE00",
+      "visible_if": "{{ section.settings.background_type == 'color' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Gradiente",
+      "default": "linear-gradient(110deg, #FFEE00 0%, #FECC27 100%)",
+      "visible_if": "{{ section.settings.background_type == 'gradient' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Imagem de fundo mobile",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_desktop",
+      "label": "Imagem de fundo desktop",
+      "visible_if": "{{ section.settings.background_type == 'image' }}"
+    },
+    {
+      "type": "header",
+      "content": "Espaçamento"
+    },
+    {
+      "type": "range",
+      "id": "pad_top_min",
+      "label": "Padding superior mínimo (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pad_top_max",
+      "label": "Padding superior máximo (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_min",
+      "label": "Padding inferior mínimo (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_max",
+      "label": "Padding inferior máximo (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Sobrescrita de espaçamento (opcional)"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_top_mobile",
+      "label": "Ativar padding superior no mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_top_mobile",
+      "label": "Padding superior no mobile (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_top_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_bottom_mobile",
+      "label": "Ativar padding inferior no mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_mobile",
+      "label": "Padding inferior no mobile (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_bottom_mobile }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_top_desktop",
+      "label": "Ativar padding superior no desktop",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_top_desktop",
+      "label": "Padding superior no desktop (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_top_desktop }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_pad_bottom_desktop",
+      "label": "Ativar padding inferior no desktop",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom_desktop",
+      "label": "Padding inferior no desktop (px)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 0,
+      "visible_if": "{{ section.settings.enable_pad_bottom_desktop }}"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hotspot",
+      "name": "Ponto de benefício",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position_x",
+          "label": "Posição horizontal (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "position_y",
+          "label": "Posição vertical (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Benefício"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Descrição",
+          "default": "<p>Descreva o benefício aqui.</p>"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Imagem com Hotspots",
+      "category": "Imagem",
+      "settings": {
+        "background_type": "gradient",
+        "background_gradient": "linear-gradient(110deg, #FFEE00 0%, #FECC27 100%)"
+      },
+      "blocks": [
+        {
+          "type": "hotspot",
+          "settings": {
+            "position_x": 72,
+            "position_y": 44,
+            "title": "Ajuste sob medida",
+            "description": "<p>Modelada de acordo com o modelo e ano do seu veículo, para um encaixe preciso.</p>"
+          }
+        },
+        {
+          "type": "hotspot",
+          "settings": {
+            "position_x": 53,
+            "position_y": 80,
+            "title": "Não risca a pintura",
+            "description": "<p>Tecido macio em lycra com elastano, que protege a pintura sem causar riscos ou manchas.</p>"
+          }
+        },
+        {
+          "type": "hotspot",
+          "settings": {
+            "position_x": 42,
+            "position_y": 49,
+            "title": "Proteção diária",
+            "description": "<p>Ajuda a proteger contra poeira, riscos leves, sol e maresia no dia a dia.</p>"
+          }
+        },
+        {
+          "type": "hotspot",
+          "settings": {
+            "position_x": 26,
+            "position_y": 58,
+            "title": "Material premium",
+            "description": "<p>Acabamento superior e alta durabilidade, com bolsa exclusiva para transporte.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
