@@ -190,6 +190,13 @@
             "image": "shopify://shop_images/1137.svg",
             "text": "Proteje do sol e raios uv"
           }
+        },
+        "benefit_DznJWe": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/1138.svg",
+            "text": "Mantêm a boa aparência"
+          }
         }
       },
       "block_order": [
@@ -197,16 +204,17 @@
         "benefit_F9LFKg",
         "benefit_fQ6487",
         "benefit_8q6DLK",
-        "benefit_k4FNUN"
+        "benefit_k4FNUN",
+        "benefit_DznJWe"
       ],
       "name": "TP - Benefícios",
       "settings": {
         "background_type": "color",
-        "background_color": "#FFFFFF",
+        "background_color": "#ffffff",
         "background_gradient": "",
         "columns_mobile": "1",
         "columns_tablet": "3",
-        "columns_desktop": "3",
+        "columns_desktop": "6",
         "title": "",
         "subtitle": "",
         "pad_top_min": 48,
