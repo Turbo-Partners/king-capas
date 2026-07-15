@@ -31,7 +31,7 @@
 
         .tp-grid {
             display: grid;
-            gap: clamp(3.2rem, 2.3086rem + 2.2857vw, 5.6rem);
+            gap: clamp(0.8000rem, calc(0.5029rem + 0.7619vw), 1.6000rem);
 
             grid-template-columns: repeat(var(--tp-cols-mobile, 1), 1fr);
 
@@ -46,12 +46,13 @@
             .tp-block {
                 display: flex;
                 flex-direction: column;
-                align-items: flex-start;
                 justify-content: center;
-                gap: 20px;
+                justify-content: center;
+                align-items: center;
+                gap: clamp(0.4000rem, calc(0.2514rem + 0.3810vw), 0.8000rem);
 
                 img {
-                    width: clamp(4.8rem, 3.6114rem + 3.0476vw, 8.0rem);
+                    width: clamp(6.8000rem, calc(5.7600rem + 2.6667vw), 9.6000rem);
                     height: auto;
                 }
 
@@ -70,12 +71,15 @@
                     }
 
                     p {
-                        color: #000;
-                        font-family: Inter;
-                        font-size: clamp(1.4rem, 1.3257rem + 0.1905vw, 1.6rem);
+                        color: var(--Gray-900, #101828);
+                        text-align: center;
+                        font-family: Montserrat;
+                        font-size: clamp(1.0000rem, calc(0.8514rem + 0.3810vw), 1.4000rem);
                         font-style: normal;
-                        font-weight: 400;
-                        line-height: normal;
+                        font-weight: 700;
+                        line-height: 120%; /* 16.8px */
+                        letter-spacing: 0.28px;
+                        text-transform: uppercase;
                     }
                 }
             }
