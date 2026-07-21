@@ -226,7 +226,7 @@
             "rede_social1": true,
             "social1_url": "https://www.instagram.com/kings.capasautomotivas/",
             "social1_image": "shopify://shop_images/1109.svg",
-            "rede_social2": true,
+            "rede_social2": false,
             "social2_url": "/",
             "social2_image": "shopify://shop_images/1110.svg",
             "rede_social3": false,
