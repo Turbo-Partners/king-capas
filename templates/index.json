@@ -200,7 +200,7 @@
           "settings": {
             "image_desktop": "shopify://shop_images/1087_1.webp",
             "title": "Capas para Carros",
-            "link": ""
+            "link": "shopify://collections/capas-para-carros"
           }
         },
         "category_adfjq6": {
@@ -208,7 +208,7 @@
           "settings": {
             "image_desktop": "shopify://shop_images/1088_1.webp",
             "title": "Capas para Motos",
-            "link": ""
+            "link": "shopify://collections/capa-para-motos"
           }
         },
         "category_FHb8qd": {
@@ -216,7 +216,7 @@
           "settings": {
             "image_desktop": "shopify://shop_images/1089_1.webp",
             "title": "Capas Aeronáuticas",
-            "link": ""
+            "link": "shopify://collections/capa-para-aeronave"
           }
         },
         "category_LWQVVC": {
@@ -224,7 +224,7 @@
           "settings": {
             "image_desktop": "shopify://shop_images/1090_1.webp",
             "title": "Capas para Barcos",
-            "link": ""
+            "link": "shopify://collections/capa-nautica"
           }
         }
       },
@@ -285,15 +285,15 @@
         "title": "<p>Escolha a sua capa ideal</p>",
         "collection": "",
         "product_list": [
+          "capa-premium-peluciada-camionete",
           "capa-para-carros-sedan",
           "capa-para-carros-sedan-grande",
           "capa-carro-suv",
           "capa-para-carro-saco-de-dormir",
+          "premium-peluciada-carros-esportivos",
           "capa-para-fusca",
           "capa-para-kombi",
-          "capa-premium-modelos-de-carros-suv",
-          "premium-peluciada-carros-esportivos",
-          "capa-premium-peluciada-camionete"
+          "capa-premium-modelos-de-carros-suv"
         ],
         "accent_color_from": "#fec300",
         "accent_color_via": "#ffd548",
