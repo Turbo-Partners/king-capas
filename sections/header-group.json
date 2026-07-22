@@ -20,6 +20,13 @@
     "announcement_bar_46Jw7L": {
       "type": "announcement-bar",
       "blocks": {
+        "announcement_khRAMk": {
+          "type": "announcement",
+          "settings": {
+            "text": "10%OFF na  1ª compra + Brindes!",
+            "link": ""
+          }
+        },
         "announcement_MTFjjY": {
           "type": "announcement",
           "settings": {
@@ -29,13 +36,14 @@
         }
       },
       "block_order": [
+        "announcement_khRAMk",
         "announcement_MTFjjY"
       ],
       "name": "t:sections.announcement-bar.presets.name",
       "settings": {
-        "auto_rotate": false,
+        "auto_rotate": true,
         "enable_arrows": false,
-        "change_slides_speed": 5,
+        "change_slides_speed": 3,
         "color_scheme": "",
         "show_line_separator": true,
         "show_social": false,
