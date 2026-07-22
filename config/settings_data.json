@@ -132,6 +132,7 @@
     "installment": true,
     "installment_number": 2,
     "minimum_installment_value": 50,
+    "whatsapp_phone": "+5511939142683",
     "tp_pc_title_align": "left",
     "tp_pc_price_align": "flex-start",
     "tp_pc_installments_align": "left",
@@ -191,7 +192,7 @@
         "settings": {
           "background": "#000000",
           "background_gradient": "",
-          "text": "#FF0000",
+          "text": "#ff0000",
           "button": "#ffffff",
           "button_label": "#121212",
           "secondary_button_label": "#ffffff",
