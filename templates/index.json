@@ -509,21 +509,18 @@
         "card_rNnBPE": {
           "type": "card",
           "settings": {
-            "card_image": "shopify://shop_images/1095_1.webp",
             "card_video": "shopify://files/videos/Fusca nicole - Capa Peluciada.mp4"
           }
         },
         "card_HAcwxd": {
           "type": "card",
           "settings": {
-            "card_image": "shopify://shop_images/1096_1.webp",
             "card_video": "shopify://files/videos/BMW barbara.mp4"
           }
         },
         "card_EMDzkN": {
           "type": "card",
           "settings": {
-            "card_image": "shopify://shop_images/1097_1.webp",
             "card_video": "shopify://files/videos/Honda Civic.mp4"
           }
         }
