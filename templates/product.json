@@ -576,8 +576,8 @@
           "settings": {
             "position_x": 72,
             "position_y": 44,
-            "title": "Material premium",
-            "description": "<p>Acabamento superior e alta durabilidade, com bolsa exclusiva para transporte.</p>"
+            "title": "Praticidade e conservação",
+            "description": "<p>Fácil de colocar e remover, ajuda a reduzir lavagens, mantendo o veículo protegido por mais tempo.</p>"
           }
         }
       },
@@ -591,7 +591,7 @@
       "name": "Imagem com Hotspots",
       "settings": {
         "title": "",
-        "image_desktop": "shopify://shop_images/E__IMG_WHIT_TEXT_BENEFITS__V2.webp",
+        "image_desktop": "shopify://shop_images/E__IMG_WHIT_TEXT_BENEFITS__V2.png",
         "background_type": "gradient",
         "background_color": "#ffee00",
         "background_gradient": "linear-gradient(110deg, rgba(255, 238, 0, 1), rgba(254, 204, 39, 1) 100%)",
