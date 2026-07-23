@@ -235,7 +235,7 @@ cart-drawer:not(.is-empty) .cart-drawer__collection {
 
 .cdv2-footer__btn-checkout {
   width: 100%;
-  padding: 24px 32px;
+  padding: 16px 32px;
   display: flex;
   align-items: center;
   justify-content: center;
