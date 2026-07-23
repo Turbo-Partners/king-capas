@@ -82,6 +82,7 @@
   position: absolute;
   inset: 0;
   z-index: 2;
+  display: block;
 }
 
 .tp-e-categories-v5__image {
