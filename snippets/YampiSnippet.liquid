@@ -138,9 +138,11 @@
                                 if (getCheckoutBtn.length == undefined) {
                                     var inptBtn = `<button type='submit' class='`+getCheckoutBtn.className+` ymp_check_mainBtn ymp_elem_mainBtn' id='`+getSubBtnId+`'>`+buttonValue+`</button>`;
                                     getCheckoutBtn.insertAdjacentHTML('afterEnd', inptBtn);
+                                    getCheckoutBtn.style.setProperty('display', 'none', 'important');
                                 } else {
                                     var inptBtn = `<button type='submit' class='`+getCheckoutBtn[getCheckoutBtn.length - 1].className+` ymp_check_mainBtn ymp_elem_mainBtn' id='`+getSubBtnId+`'>`+buttonValue+`</button>`;
                                     getCheckoutBtn[getCheckoutBtn.length - 1].insertAdjacentHTML('afterEnd', inptBtn);
+                                    getCheckoutBtn[getCheckoutBtn.length - 1].style.setProperty('display', 'none', 'important');
                                 }
 
                                 document.getElementById(getSubBtnId).addEventListener('click', fakeClick);
