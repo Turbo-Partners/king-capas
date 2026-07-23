@@ -274,7 +274,10 @@
         });
     }
 
-    function yampiClick() {
+    function yampiClick(event) {
+        if (event) {
+            event.preventDefault();
+        }
 
         showYampiLoader();
 
