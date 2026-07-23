@@ -488,10 +488,88 @@
         "hotspot_mdaqUG",
         "hotspot_3W8JWL"
       ],
+      "disabled": true,
       "name": "Imagem com Hotspots",
       "settings": {
         "title": "",
         "image_desktop": "shopify://shop_images/E__IMG_WHIT_TEXT_BENEFITS__V2.webp",
+        "background_type": "gradient",
+        "background_color": "#ffee00",
+        "background_gradient": "linear-gradient(110deg, rgba(255, 238, 0, 1), rgba(254, 204, 39, 1) 100%)",
+        "pad_top_min": 0,
+        "pad_top_max": 0,
+        "pad_bottom_min": 0,
+        "pad_bottom_max": 0,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_e_img_text_benefits_v2_q7na6G": {
+      "type": "tp-e-img-text-benefits-v2",
+      "blocks": {
+        "hotspot_pwygmU": {
+          "type": "hotspot",
+          "settings": {
+            "position_x": 57,
+            "position_y": 33,
+            "title": "Ajuste sob medida",
+            "description": "<p>Modelada de acordo com o modelo e ano do seu veículo, para um encaixe preciso.</p>"
+          }
+        },
+        "hotspot_Mmc6g9": {
+          "type": "hotspot",
+          "settings": {
+            "position_x": 53,
+            "position_y": 80,
+            "title": "Não risca a pintura",
+            "description": "<p>Tecido macio em lycra com elastano, que protege a pintura sem causar riscos ou manchas.</p>"
+          }
+        },
+        "hotspot_KfErei": {
+          "type": "hotspot",
+          "settings": {
+            "position_x": 42,
+            "position_y": 49,
+            "title": "Proteção diária",
+            "description": "<p>Ajuda a proteger contra poeira, riscos leves, sol e maresia no dia a dia.</p>"
+          }
+        },
+        "hotspot_q9a4Jf": {
+          "type": "hotspot",
+          "settings": {
+            "position_x": 26,
+            "position_y": 58,
+            "title": "Material premium",
+            "description": "<p>Acabamento superior e alta durabilidade, com bolsa exclusiva para transporte.</p>"
+          }
+        },
+        "hotspot_inRQq9": {
+          "type": "hotspot",
+          "settings": {
+            "position_x": 72,
+            "position_y": 44,
+            "title": "Praticidade e conservação",
+            "description": "<p>Fácil de colocar e remover, ajuda a reduzir lavagens, mantendo o veículo protegido por mais tempo.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_pwygmU",
+        "hotspot_Mmc6g9",
+        "hotspot_KfErei",
+        "hotspot_q9a4Jf",
+        "hotspot_inRQq9"
+      ],
+      "name": "Imagem com Hotspots",
+      "settings": {
+        "title": "",
+        "image_desktop": "shopify://shop_images/E__IMG_WHIT_TEXT_BENEFITS__V2.png",
         "background_type": "gradient",
         "background_color": "#ffee00",
         "background_gradient": "linear-gradient(110deg, rgba(255, 238, 0, 1), rgba(254, 204, 39, 1) 100%)",
@@ -518,6 +596,7 @@
     "tp_e_image_with_text_v1_npgPCt",
     "tp_e_image_with_text_v1_MKAxaf",
     "tp_e_image_with_text_v1_dKqz3W",
-    "tp_e_img_text_benefits_v2_ULNgLn"
+    "tp_e_img_text_benefits_v2_ULNgLn",
+    "tp_e_img_text_benefits_v2_q7na6G"
   ]
 }
