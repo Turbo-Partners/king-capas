@@ -240,25 +240,25 @@
         "card_KLj4cd": {
           "type": "card",
           "settings": {
-            "card_image": "shopify://shop_images/1094_1.webp"
+            "card_video": "shopify://files/videos/BMW 320 M - Video.mp4"
           }
         },
         "card_GjFi7M": {
           "type": "card",
           "settings": {
-            "card_image": "shopify://shop_images/1095_1.webp"
+            "card_video": "shopify://files/videos/Realista Porsche.mp4"
           }
         },
         "card_KD3rhC": {
           "type": "card",
           "settings": {
-            "card_image": "shopify://shop_images/1096_1.webp"
+            "card_video": "shopify://files/videos/Fusca nicole - Capa Peluciada.mp4"
           }
         },
         "card_4Mjbg7": {
           "type": "card",
           "settings": {
-            "card_image": "shopify://shop_images/1097_1.webp"
+            "card_video": "shopify://files/videos/BMW barbara.mp4"
           }
         }
       },
