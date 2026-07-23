@@ -570,13 +570,23 @@
             "title": "Material premium",
             "description": "<p>Acabamento superior e alta durabilidade, com bolsa exclusiva para transporte.</p>"
           }
+        },
+        "hotspot_8aj3Pw": {
+          "type": "hotspot",
+          "settings": {
+            "position_x": 72,
+            "position_y": 44,
+            "title": "Material premium",
+            "description": "<p>Acabamento superior e alta durabilidade, com bolsa exclusiva para transporte.</p>"
+          }
         }
       },
       "block_order": [
         "hotspot_t3qpGT",
         "hotspot_LyB99d",
         "hotspot_pRqL4D",
-        "hotspot_7dw89X"
+        "hotspot_7dw89X",
+        "hotspot_8aj3Pw"
       ],
       "name": "Imagem com Hotspots",
       "settings": {
