@@ -502,7 +502,9 @@
       "blocks": {
         "card_QxB9ex": {
           "type": "card",
-          "settings": {}
+          "settings": {
+            "card_video": "shopify://files/videos/Chevette @Louise.malinski.mp4"
+          }
         },
         "card_CNcxpQ": {
           "type": "card",
