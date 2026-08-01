@@ -80,9 +80,9 @@
     "header": {
       "type": "header",
       "settings": {
-        "logo_position": "middle-center",
+        "logo_position": "top-left",
         "mobile_logo_position": "center",
-        "menu": "header-menu",
+        "menu": "main-menu",
         "menu_position_desktop": "center",
         "menu_type_desktop": "dropdown",
         "menu_mobile_style": "v1",
