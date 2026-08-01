@@ -283,7 +283,7 @@
         "background_color": "#ffffff",
         "background_gradient": "",
         "title": "<p>Escolha a sua capa ideal</p>",
-        "collection": "",
+        "collection": "destaque",
         "product_list": [
           "capa-premium-peluciada-camionete",
           "capa-para-carros-sedan",
