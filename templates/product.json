@@ -683,7 +683,7 @@
         "background_gradient": "",
         "background_image_mobile": "shopify://shop_images/1119_1.webp",
         "background_image_desktop": "shopify://shop_images/1118_1.webp",
-        "pad_top_min": 48,
+        "pad_top_min": 28,
         "pad_top_max": 96,
         "pad_bottom_min": 48,
         "pad_bottom_max": 96,
