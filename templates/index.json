@@ -310,7 +310,7 @@
         "title_weight": "700",
         "button_text": "Escolher minha capa",
         "button_url": "shopify://collections/destaque",
-        "button_animation": "none",
+        "button_animation": "swap-bg",
         "button_custom": false,
         "button_bg_color": "",
         "button_text_color": "",
