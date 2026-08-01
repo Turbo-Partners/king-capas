@@ -237,6 +237,12 @@
     "tp_video_slides_cxanyn": {
       "type": "tp-video-slides",
       "blocks": {
+        "card_4e4wYP": {
+          "type": "card",
+          "settings": {
+            "card_video": "shopify://files/videos/Chevette @Louise.malinski.mp4"
+          }
+        },
         "card_M79fHH": {
           "type": "card",
           "settings": {
@@ -269,6 +275,7 @@
         }
       },
       "block_order": [
+        "card_4e4wYP",
         "card_M79fHH",
         "card_KLj4cd",
         "card_GjFi7M",
