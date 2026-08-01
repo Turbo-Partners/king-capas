@@ -414,7 +414,7 @@
       "name": "Texto Rico",
       "settings": {
         "image": "shopify://shop_images/752.svg",
-        "richtext": "<h2>Seu carro não é comum.</h2><h2>A proteção também não deveria ser</h2>",
+        "richtext": "<h2>Seu carro não é comum</h2><h2>A proteção também não deveria ser</h2>",
         "background_type": "color",
         "background_color": "#ffffff",
         "background_gradient": "",
