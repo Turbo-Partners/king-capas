@@ -734,7 +734,7 @@
         "title_bar_height": 8,
         "title": "<h2>Soluções sob medida para empresas e eventos</h2>",
         "richtext": "<p>Conte com a Kings para fornecer capas personalizadas com acabamento premium, produção em escala e atendimento especializado para projetos de todos os portes.</p>",
-        "button_url": "shopify://collections/all",
+        "button_url": "shopify://collections/destaque",
         "button_text": "saber mais",
         "faq_icon_type": "arrow",
         "faq_first_open": true,
