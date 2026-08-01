@@ -243,16 +243,16 @@
             "card_video": "shopify://files/videos/Chevette @Louise.malinski.mp4"
           }
         },
-        "card_pHmz7h": {
-          "type": "card",
-          "settings": {
-            "card_video": "shopify://files/videos/Ford territory 2024 - video.mp4"
-          }
-        },
         "card_M79fHH": {
           "type": "card",
           "settings": {
             "card_video": "shopify://files/videos/Fusca  Flavia_Trim.mp4"
+          }
+        },
+        "card_pHmz7h": {
+          "type": "card",
+          "settings": {
+            "card_video": "shopify://files/videos/Ford territory 2024 - video.mp4"
           }
         },
         "card_KLj4cd": {
@@ -282,8 +282,8 @@
       },
       "block_order": [
         "card_4e4wYP",
-        "card_pHmz7h",
         "card_M79fHH",
+        "card_pHmz7h",
         "card_KLj4cd",
         "card_GjFi7M",
         "card_KD3rhC",
