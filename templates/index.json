@@ -500,6 +500,22 @@
     "tp_video_slides_nxdjP8": {
       "type": "tp-video-slides",
       "blocks": {
+        "card_QxB9ex": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_CNcxpQ": {
+          "type": "card",
+          "settings": {
+            "card_video": "shopify://files/videos/Ford territory 2024 - video.mp4"
+          }
+        },
+        "card_4cDcCa": {
+          "type": "card",
+          "settings": {
+            "card_video": "shopify://files/videos/Fusca  Flavia_Trim.mp4"
+          }
+        },
         "card_kyer37": {
           "type": "card",
           "settings": {
@@ -532,6 +548,9 @@
         }
       },
       "block_order": [
+        "card_QxB9ex",
+        "card_CNcxpQ",
+        "card_4cDcCa",
         "card_kyer37",
         "card_nwKcNP",
         "card_rNnBPE",
