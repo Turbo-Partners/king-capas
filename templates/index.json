@@ -303,7 +303,7 @@
         "title_size_mobile": 24,
         "title_weight": "700",
         "button_text": "Escolher minha capa",
-        "button_url": "shopify://collections/all",
+        "button_url": "shopify://collections/destaque",
         "button_animation": "none",
         "button_custom": false,
         "button_bg_color": "",
