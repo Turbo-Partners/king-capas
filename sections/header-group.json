@@ -23,20 +23,28 @@
         "announcement_khRAMk": {
           "type": "announcement",
           "settings": {
-            "text": "PRIMEIRA COMPRA KINGS: Até 10% Off no seu pedido + Brindes",
+            "text": "SUPER PIX KINGS: 10% OFF em pagamentos via PIX + Brindes",
+            "link": ""
+          }
+        },
+        "announcement_MFtJmM": {
+          "type": "announcement",
+          "settings": {
+            "text": "Parcele em até 3x sem juros",
             "link": ""
           }
         },
         "announcement_MTFjjY": {
           "type": "announcement",
           "settings": {
-            "text": "Entrega para todo o Brasil",
+            "text": "🚚 Frete grátis para Sul e Sudeste",
             "link": ""
           }
         }
       },
       "block_order": [
         "announcement_khRAMk",
+        "announcement_MFtJmM",
         "announcement_MTFjjY"
       ],
       "name": "t:sections.announcement-bar.presets.name",
