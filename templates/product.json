@@ -512,7 +512,7 @@
         "title_bar_height": 8,
         "title": "",
         "richtext": "",
-        "button_url": "",
+        "button_url": "shopify://collections/all",
         "button_text": "Comprar agora",
         "faq_icon_type": "arrow",
         "faq_first_open": true,
