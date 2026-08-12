@@ -26,55 +26,113 @@
     "tp_e_banner_slides_v1_bcytL9"
   ],
   "sections": {
-    "1779720329753c98c3": {
-      "block_order": [
-        "areviews_reviews_importer_areviews_display_reviews_789dWK"
-      ],
+    "main": {
+      "type": "main-product",
       "blocks": {
-        "areviews_reviews_importer_areviews_display_reviews_789dWK": {
+        "areviews_reviews_importer_areviews_title_rating_UEbCLB": {
+          "type": "shopify://apps/areviews-reviews-importer/blocks/AreviewsTitleRating/ab0ec5fe-c95b-4fd6-bfb8-db2a30d0756f",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "text_4E7ye9": {
+          "type": "text",
           "settings": {
-            "areviews_stars_colors": "#f3c621",
-            "areviews_theme_font": "inherit",
-            "areviews_write_reviews_botton_color": "#373737",
-            "hide_areviews_title_rating": false
-          },
-          "type": "shopify://apps/areviews-reviews-importer/blocks/AreviewsDisplayReviews/ab0ec5fe-c95b-4fd6-bfb8-db2a30d0756f"
+            "text": "{{ product.metafields.custom.pequena_descricao.value }}",
+            "text_style": "body"
+          }
+        },
+        "tp_beneficios_W7FDUc": {
+          "type": "tp-beneficios",
+          "settings": {
+            "beneficio1_image": "shopify://shop_images/1114.svg",
+            "beneficio1_text": "Feita sob medida",
+            "beneficio2_image": "shopify://shop_images/1115.svg",
+            "beneficio2_text": "Não risca a pintura",
+            "beneficio3_image": "shopify://shop_images/1116.svg",
+            "beneficio3_text": "Proteje do sol e poeira",
+            "beneficio4_image": "shopify://shop_images/1117.svg",
+            "beneficio4_text": "Material premium",
+            "beneficio5_text": "",
+            "beneficio6_text": ""
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "square"
+          }
+        },
+        "variant_picker_aPRT3c": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown",
+            "swatch_shape": "square"
+          }
+        },
+        "vehicle_antenna_qK7mXs": {
+          "type": "vehicle_antenna",
+          "disabled": true,
+          "settings": {
+            "label": "Veículo possui antena?",
+            "option_yes": "Sim",
+            "option_no": "Não"
+          }
+        },
+        "vehicle_model_7AXErM": {
+          "type": "vehicle_model",
+          "settings": {
+            "label": "Informe o modelo e ano do veículo",
+            "placeholder": "Ex: Exemplo: Gol G6 2014",
+            "required": true,
+            "error_message": "Por favor, informe o modelo do veículo."
+          }
+        },
+        "tp_price_bmC7KB": {
+          "type": "tp_price",
+          "settings": {}
+        },
+        "custom_buy_buttons_7VTA3y": {
+          "type": "custom_buy_buttons",
+          "settings": {
+            "button_text": "Comprar agora"
+          }
+        },
+        "complementary_3L7t4e": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "",
+            "make_collapsible_row": false,
+            "icon": "price_tag",
+            "product_list_limit": 1,
+            "products_per_page": 1,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": true
+          }
+        },
+        "collapsible_tab_3WRmRF": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Tecido e Detalhes do Produto",
+            "icon": "none",
+            "content": "{{ product.metafields.custom.detalhes_do_produto | metafield_tag }}",
+            "page": ""
+          }
+        },
+        "collapsible_tab_V4UJpL": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Tempo de fabricação",
+            "icon": "none",
+            "content": "{{ product.metafields.custom.pdp_tempo_de_fabricacao | metafield_tag }}",
+            "page": ""
+          }
         }
       },
-      "settings": {
-        "background_color": "#ffffff",
-        "background_gradient": "",
-        "background_type": "color",
-        "button_link": "",
-        "button_text": "@instagram",
-        "enable_pad_bottom_desktop": false,
-        "enable_pad_bottom_mobile": false,
-        "enable_pad_top_desktop": false,
-        "enable_pad_top_mobile": false,
-        "instagram": false,
-        "instagram_text": "Siga a gente no instagram",
-        "pad_bottom_desktop": 0,
-        "pad_bottom_max": 96,
-        "pad_bottom_min": 48,
-        "pad_bottom_mobile": 0,
-        "pad_top_desktop": 0,
-        "pad_top_max": 96,
-        "pad_top_min": 48,
-        "pad_top_mobile": 0
-      },
-      "type": "apps"
-    },
-    "custom_liquid_expUC9": {
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "color_scheme": "",
-        "custom_liquid": "<style>\n.tp-e-image-with-text-v1__block {\nalign-items:flex-start;\n}\n.tp-e-image-with-text-v1__title--above-image {\ntext-align:center;\n}\n</style>",
-        "padding_bottom": 0,
-        "padding_top": 0
-      },
-      "type": "custom-liquid"
-    },
-    "main": {
       "block_order": [
         "areviews_reviews_importer_areviews_title_rating_UEbCLB",
         "title",
@@ -90,154 +148,74 @@
         "collapsible_tab_3WRmRF",
         "collapsible_tab_V4UJpL"
       ],
-      "blocks": {
-        "areviews_reviews_importer_areviews_title_rating_UEbCLB": {
-          "settings": {},
-          "type": "shopify://apps/areviews-reviews-importer/blocks/AreviewsTitleRating/ab0ec5fe-c95b-4fd6-bfb8-db2a30d0756f"
-        },
-        "collapsible_tab_3WRmRF": {
-          "settings": {
-            "content": "{{ product.metafields.custom.detalhes_do_produto | metafield_tag }}",
-            "heading": "Tecido e Detalhes do Produto",
-            "icon": "none",
-            "page": ""
-          },
-          "type": "collapsible_tab"
-        },
-        "collapsible_tab_V4UJpL": {
-          "settings": {
-            "content": "{{ product.metafields.custom.pdp_tempo_de_fabricacao | metafield_tag }}",
-            "heading": "Tempo de fabricação",
-            "icon": "none",
-            "page": ""
-          },
-          "type": "collapsible_tab"
-        },
-        "complementary_3L7t4e": {
-          "settings": {
-            "block_heading": "",
-            "enable_quick_add": true,
-            "icon": "price_tag",
-            "image_ratio": "square",
-            "make_collapsible_row": false,
-            "pagination_style": "counter",
-            "product_list_limit": 1,
-            "products_per_page": 1
-          },
-          "type": "complementary"
-        },
-        "custom_buy_buttons_7VTA3y": {
-          "settings": {
-            "button_text": "Comprar agora"
-          },
-          "type": "custom_buy_buttons"
-        },
-        "text_4E7ye9": {
-          "settings": {
-            "text": "{{ product.metafields.custom.pequena_descricao.value }}",
-            "text_style": "body"
-          },
-          "type": "text"
-        },
-        "title": {
-          "settings": {},
-          "type": "title"
-        },
-        "tp_beneficios_W7FDUc": {
-          "settings": {
-            "beneficio1_image": "shopify://shop_images/1114.svg",
-            "beneficio1_text": "Feita sob medida",
-            "beneficio2_image": "shopify://shop_images/1115.svg",
-            "beneficio2_text": "Não risca a pintura",
-            "beneficio3_image": "shopify://shop_images/1116.svg",
-            "beneficio3_text": "Proteje do sol e poeira",
-            "beneficio4_image": "shopify://shop_images/1117.svg",
-            "beneficio4_text": "Material premium",
-            "beneficio5_text": "",
-            "beneficio6_text": ""
-          },
-          "type": "tp-beneficios"
-        },
-        "tp_price_bmC7KB": {
-          "settings": {},
-          "type": "tp_price"
-        },
-        "variant_picker": {
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "square"
-          },
-          "type": "variant_picker"
-        },
-        "variant_picker_aPRT3c": {
-          "settings": {
-            "picker_type": "dropdown",
-            "swatch_shape": "square"
-          },
-          "type": "variant_picker"
-        },
-        "vehicle_antenna_qK7mXs": {
-          "disabled": true,
-          "settings": {
-            "label": "Veículo possui antena?",
-            "option_no": "Não",
-            "option_yes": "Sim"
-          },
-          "type": "vehicle_antenna"
-        },
-        "vehicle_model_7AXErM": {
-          "settings": {
-            "error_message": "Por favor, informe o modelo do veículo.",
-            "label": "Informe o modelo e ano do veículo",
-            "placeholder": "Ex: Exemplo: Gol G6 2014",
-            "required": true
-          },
-          "type": "vehicle_model"
-        }
-      },
       "settings": {
+        "enable_sticky_info": true,
         "color_scheme": "",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "show_compra_segura": true,
         "compra_segura_icon": "shopify://shop_images/carbon_security_2.svg",
         "compra_segura_text": "COMPRA SEGURA",
-        "constrain_to_viewport": true,
-        "enable_sticky_info": true,
-        "enable_video_looping": false,
+        "show_frete_gratis": true,
         "frete_gratis_icon": "shopify://shop_images/tabler_truck_2.svg",
         "frete_gratis_text": "FRETE GRÁTIS",
-        "gallery_layout": "stacked",
-        "hide_variants": true,
-        "image_zoom": "lightbox",
-        "media_fit": "contain",
-        "media_position": "left",
-        "media_size": "medium",
-        "mobile_thumbnails": "hide",
-        "padding_bottom": 64,
         "padding_top": 64,
-        "show_compra_segura": true,
-        "show_frete_gratis": true
-      },
-      "type": "main-product"
-    },
-    "related-products": {
-      "disabled": true,
-      "settings": {
-        "color_scheme": "background-1",
-        "columns_desktop": 4,
-        "columns_mobile": "2",
-        "heading": "You may also like",
-        "heading_size": "h2",
-        "image_ratio": "square",
-        "image_shape": "default",
-        "padding_bottom": 28,
-        "padding_top": 36,
-        "products_to_show": 4,
-        "show_rating": false,
-        "show_secondary_image": true,
-        "show_vendor": false
-      },
-      "type": "related-products"
+        "padding_bottom": 64
+      }
     },
     "tp_beneficios_zeH3LL": {
+      "type": "tp-beneficios",
+      "blocks": {
+        "benefit_mFJaDM": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/icon.svg",
+            "text": "<p>Lavável <br/>na máquina</p>"
+          }
+        },
+        "benefit_F9LFKg": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/1134.svg",
+            "text": "<p>100% à prova <br/>de riscos</p>"
+          }
+        },
+        "benefit_fQ6487": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/1135.svg",
+            "text": "<p>Resistente <br/>à poeira</p>"
+          }
+        },
+        "benefit_8q6DLK": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/1136.svg",
+            "text": "<p>100%<br/>respirável</p>"
+          }
+        },
+        "benefit_k4FNUN": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/1137.svg",
+            "text": "<p>Proteje do<br/> sol e raios uv</p>"
+          }
+        },
+        "benefit_DznJWe": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/1138.svg",
+            "text": "<p>Mantêm a <br/>boa aparência</p>"
+          }
+        }
+      },
       "block_order": [
         "benefit_mFJaDM",
         "benefit_F9LFKg",
@@ -246,159 +224,616 @@
         "benefit_k4FNUN",
         "benefit_DznJWe"
       ],
-      "blocks": {
-        "benefit_8q6DLK": {
-          "settings": {
-            "image": "shopify://shop_images/1136.svg",
-            "text": "<p>100%<br/>respirável</p>"
-          },
-          "type": "benefit"
-        },
-        "benefit_DznJWe": {
-          "settings": {
-            "image": "shopify://shop_images/1138.svg",
-            "text": "<p>Mantêm a <br/>boa aparência</p>"
-          },
-          "type": "benefit"
-        },
-        "benefit_F9LFKg": {
-          "settings": {
-            "image": "shopify://shop_images/1134.svg",
-            "text": "<p>100% à prova <br/>de riscos</p>"
-          },
-          "type": "benefit"
-        },
-        "benefit_fQ6487": {
-          "settings": {
-            "image": "shopify://shop_images/1135.svg",
-            "text": "<p>Resistente <br/>à poeira</p>"
-          },
-          "type": "benefit"
-        },
-        "benefit_k4FNUN": {
-          "settings": {
-            "image": "shopify://shop_images/1137.svg",
-            "text": "<p>Proteje do<br/> sol e raios uv</p>"
-          },
-          "type": "benefit"
-        },
-        "benefit_mFJaDM": {
-          "settings": {
-            "image": "shopify://shop_images/icon.svg",
-            "text": "<p>Lavável <br/>na máquina</p>"
-          },
-          "type": "benefit"
-        }
-      },
       "custom_css": [
         ".tp-wrapper {max-width: 1040px;}"
       ],
       "name": "TP - Benefícios",
       "settings": {
+        "background_type": "color",
         "background_color": "#ffffff",
         "background_gradient": "",
-        "background_type": "color",
-        "columns_desktop": "6",
         "columns_mobile": "3",
         "columns_tablet": "3",
-        "enable_pad_bottom_desktop": false,
-        "enable_pad_bottom_mobile": false,
-        "enable_pad_top_desktop": false,
-        "enable_pad_top_mobile": false,
-        "pad_bottom_desktop": 0,
-        "pad_bottom_max": 96,
-        "pad_bottom_min": 48,
-        "pad_bottom_mobile": 0,
-        "pad_top_desktop": 0,
-        "pad_top_max": 96,
-        "pad_top_min": 48,
-        "pad_top_mobile": 0,
+        "columns_desktop": "6",
+        "title": "",
         "subtitle": "",
-        "title": ""
-      },
-      "type": "tp-beneficios"
+        "pad_top_min": 48,
+        "pad_top_max": 96,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
     },
-    "tp_e_banner_slides_v1_bcytL9": {
-      "block_order": [
-        "slide_PEiEGY"
-      ],
+    "tp_video_slides_cxanyn": {
+      "type": "tp-video-slides",
       "blocks": {
-        "slide_PEiEGY": {
+        "card_KLj4cd": {
+          "type": "card",
           "settings": {
-            "bottom_desktop": 80,
-            "bottom_mobile": 40,
-            "button_animation": "none",
-            "button_bg_color": "",
-            "button_border_radius": "default",
-            "button_custom": false,
-            "button_font_size": 16,
-            "button_font_weight": "600",
-            "button_link": "shopify://collections/all",
-            "button_text": "",
-            "button_text_color": "",
-            "description_color": "#667085",
-            "description_custom": false,
-            "description_font_size_desktop": 18,
-            "description_font_size_mobile": 16,
-            "description_font_weight": "400",
-            "image_desktop": "shopify://shop_images/756_1.webp",
-            "image_mobile": "shopify://shop_images/757_1.webp",
-            "link": "",
-            "media_type": "image",
-            "richtext": "<p>Cada capa Kings é desenvolvida sob medida para acompanhar perfeitamente as linhas do veículo. Da escolha do tecido ao acabamento final, todo o processo é pensado para entregar proteção, ajuste impecável e um visual muito acima das capas comuns do mercado.</p>",
-            "text_alignment_desktop": "left",
-            "text_alignment_mobile": "left",
-            "text_position_horizontal_desktop": "right",
-            "text_position_horizontal_mobile": "left",
-            "text_position_vertical_desktop": "center",
-            "text_position_vertical_mobile": "bottom",
-            "text_width_desktop": 520,
-            "text_width_mobile": 520,
-            "title": "<h2>Produzida nos detalhes</h2>",
-            "title_color": "#2b2b2b",
-            "title_custom": false,
-            "title_font_size_desktop": 48,
-            "title_font_size_mobile": 36,
-            "title_font_weight": "700",
-            "top_desktop": 200,
-            "top_mobile": 40
-          },
-          "type": "slide"
+            "card_image": "shopify://shop_images/1094_1.webp"
+          }
+        },
+        "card_GjFi7M": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/1095_1.webp"
+          }
+        },
+        "card_KD3rhC": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/1096_1.webp"
+          }
+        },
+        "card_4Mjbg7": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/1097_1.webp"
+          }
         }
       },
-      "custom_css": [
-        "h2 strong {color: #fff;}",
-        "h2 {color: #fe0; font-size: clamp(2rem, calc(1.5543rem + 1.1429vw), 3.2rem); text-transform: capitalize;}",
-        "p {color: #fff; font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem);}",
-        "a {background: #000;}"
+      "block_order": [
+        "card_KLj4cd",
+        "card_GjFi7M",
+        "card_KD3rhC",
+        "card_4Mjbg7"
       ],
-      "name": "Banner Slides V1",
+      "custom_css": [
+        ".template--19812436082870__tp_video_slides_nxdjP8 {background: linear-gradient(180deg, #090909 70.67%, #262525 100%);}"
+      ],
+      "name": "TP - Slides de Vídeo",
       "settings": {
-        "autoplay": true,
-        "background_color": "#ffffff",
+        "background_type": "image",
+        "background_color": "#fff",
         "background_gradient": "",
-        "background_type": "color",
-        "enable_pad_bottom_desktop": false,
-        "enable_pad_bottom_mobile": false,
-        "enable_pad_top_desktop": false,
-        "enable_pad_top_mobile": false,
-        "pad_bottom_desktop": 0,
-        "pad_bottom_max": 0,
-        "pad_bottom_min": 0,
-        "pad_bottom_mobile": 0,
-        "pad_top_desktop": 0,
-        "pad_top_max": 0,
-        "pad_top_min": 0,
-        "pad_top_mobile": 0,
-        "padding_on_section": false,
-        "pagination": true,
+        "background_image_mobile": "shopify://shop_images/1104_1.webp",
+        "background_image_desktop": "shopify://shop_images/1103_1.webp",
+        "title": "A experiência de quem já escolheu Kings",
+        "text": "Milhares de veículos protegidos em todo o Brasil com capas feitas sob medida.",
+        "button_url": "",
+        "button_text": "Texto do Botão",
+        "autoplay": true,
+        "tempo_autoplay": 3,
+        "pagination": false,
         "pagination_color": "#b1bfab",
         "pagination_color_active": "#000",
-        "tempo_autoplay": 4
+        "navigation": false,
+        "pad_top_min": 48,
+        "pad_top_max": 96,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_midia_CVqiTJ": {
+      "type": "tp-midia",
+      "blocks": {
+        "midia_item_DBBmxh": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/751.svg",
+            "link": ""
+          }
+        },
+        "midia_item_cLC9UC": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/705.webp",
+            "link": ""
+          }
+        },
+        "midia_item_xadK4g": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/706_1.webp",
+            "link": ""
+          }
+        },
+        "midia_item_brAhVM": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/707_1.webp",
+            "link": ""
+          }
+        },
+        "midia_item_rFjf7D": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/708_1.webp",
+            "link": ""
+          }
+        },
+        "midia_item_3QntBP": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/709_1.webp",
+            "link": ""
+          }
+        },
+        "midia_item_rCNPL3": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/710_1.webp",
+            "link": ""
+          }
+        },
+        "midia_item_8KnCB8": {
+          "type": "midia_item",
+          "settings": {
+            "image": "shopify://shop_images/711_1.webp",
+            "link": ""
+          }
+        }
       },
-      "type": "tp-e-banner-slides-v1"
+      "block_order": [
+        "midia_item_DBBmxh",
+        "midia_item_cLC9UC",
+        "midia_item_xadK4g",
+        "midia_item_brAhVM",
+        "midia_item_rFjf7D",
+        "midia_item_3QntBP",
+        "midia_item_rCNPL3",
+        "midia_item_8KnCB8"
+      ],
+      "custom_css": [
+        ".tp-midia__title-wrapper {color: var(--gray-900, #101828); font-family: Helvetica; font-size: clamp(1.2rem, calc(1.0514rem + 0.381vw), 1.6rem); font-style: normal; font-weight: 400; line-height: 120%; /* 19.2px */ text-transform: uppercase;}"
+      ],
+      "name": "Mídia",
+      "settings": {
+        "title": "",
+        "title_alignment": "center",
+        "grayscale_hover": true,
+        "background_type": "color",
+        "bg_custom": false,
+        "bg_color": "",
+        "bg_gradient": "",
+        "title_custom": false,
+        "title_color": "",
+        "title_size_desktop": 26,
+        "title_size_mobile": 16,
+        "title_weight": "600",
+        "pad_top_min": 12,
+        "pad_top_max": 16,
+        "pad_bottom_min": 16,
+        "pad_bottom_max": 24,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_richtext_QwrJEj": {
+      "type": "tp-richtext",
+      "custom_css": [
+        ".tp-richtext__text-wrapper {gap: 0;}",
+        "strong {color: var(--Gray-400, #98a2b3);}",
+        "h2 {font-size: clamp(2rem, calc(1.5543rem + 1.1429vw), 3.2rem);}",
+        ".template--19812436246710__tp_richtext_QwrJEj {border-top: 8px solid #fe0;}"
+      ],
+      "name": "Texto Rico",
+      "settings": {
+        "image": "shopify://shop_images/752.svg",
+        "richtext": "<h2>Seu carro não é comum.</h2><h2>A proteção também não deveria ser</h2>",
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "pad_top_min": 40,
+        "pad_top_max": 64,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 80,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_e_image_with_text_v1_VEYzqR": {
+      "type": "tp-e-image-with-text-v1",
+      "blocks": {
+        "benefit_gJWaLz": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/1116.svg",
+            "richtext": "<h6>Proteção real no dia a dia</h6><p>Protege contra poeira, riscos, sol, maresia e pequenos danos que desgastam o veículo com o tempo.</p>"
+          }
+        },
+        "benefit_nYEKV9": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/1114.svg",
+            "richtext": "<h6>Ajuste feito para o seu carro</h6><p>Cada capa é produzida sob medida para garantir encaixe perfeito e visual muito mais sofisticado.</p>"
+          }
+        },
+        "benefit_XBceJG": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/1117.svg",
+            "richtext": "<h6>Material premium e durável</h6><p>Produzida com tecido exclusivo de alta qualidade, pensado para oferecer resistência e longa durabilidade.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_gJWaLz",
+        "benefit_nYEKV9",
+        "benefit_XBceJG"
+      ],
+      "custom_css": [
+        "h2 strong {color: #0c111d;}",
+        "h2 {color: #0c111d; font-size: clamp(2.6rem, calc(1.9314rem + 1.7143vw), 4.4rem);}",
+        "p {color: var(--Gray-600, #475467); font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem);}",
+        "a {background: linear-gradient(90deg, #fe0 0%, #fecc27 100%), #ff0; color: #202020; font-family: Montserrat; font-size: 16px; font-style: normal; font-weight: 700; line-height: 140%; /* 22.4px */ text-transform: uppercase;}"
+      ],
+      "name": "Imagem Com Texto V1",
+      "settings": {
+        "media_type": "image",
+        "image_position_desktop": "left",
+        "image_position_mobile": "first",
+        "title_above_image_mobile": false,
+        "image_padding_inline_mobile": false,
+        "image_padding_inline_desktop": false,
+        "loading_image": true,
+        "image_desktop": "shopify://shop_images/1121_1.webp",
+        "image_mobile": "shopify://shop_images/1122_1_89c18271-912a-44ef-9e4a-909a06d1c50e.webp",
+        "video_source": "hosted",
+        "video_url": "",
+        "video_autoplay": true,
+        "title_bar": true,
+        "title_bar_position": "wrapper",
+        "title_bar_align": "right",
+        "title_bar_color": "#f7d046",
+        "title_bar_width_desktop": 264,
+        "title_bar_width_mobile": 184,
+        "title_bar_height": 8,
+        "title": "",
+        "richtext": "",
+        "button_url": "#tp-main-product",
+        "button_text": "Comprar agora",
+        "faq_icon_type": "arrow",
+        "faq_first_open": true,
+        "data_animate": true,
+        "title_custom": false,
+        "text_color_title": "#2b2b2b",
+        "font_weight": "700",
+        "font_size_title": 36,
+        "font_size_title_mobile": 28,
+        "content_custom": false,
+        "text_color_content": "#2b2b2b",
+        "content_font_weight": "400",
+        "font_size_content": 16,
+        "font_size_content_mobile": 16,
+        "button_custom": false,
+        "text_color_btn": "#ffffff",
+        "bg_color_btn": "#443fd2",
+        "button_font_weight": "600",
+        "button_font_size_desktop": 16,
+        "button_font_size_mobile": 16,
+        "radius_btn": 100,
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "background_image_mobile": "shopify://shop_images/1107_1.webp",
+        "background_image_desktop": "shopify://shop_images/1106_1.webp",
+        "pad_top_min": 48,
+        "pad_top_max": 96,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_e_image_with_text_v1_H6wqB4": {
+      "type": "tp-e-image-with-text-v1",
+      "custom_css": [
+        "h2 strong {color: #0c111d;}",
+        "h2 {color: #0c111d; font-size: clamp(2.6rem, calc(1.9314rem + 1.7143vw), 4.4rem);}",
+        "p {color: var(--Gray-600, #475467); font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem);}",
+        "a {background: linear-gradient(90deg, #fe0 0%, #fecc27 100%), #ff0; color: #202020; font-family: Montserrat; font-size: 16px; font-style: normal; font-weight: 700; line-height: 140%; /* 22.4px */ text-transform: uppercase;}"
+      ],
+      "name": "Imagem Com Texto V1",
+      "settings": {
+        "media_type": "image",
+        "image_position_desktop": "right",
+        "image_position_mobile": "second",
+        "title_above_image_mobile": false,
+        "image_padding_inline_mobile": false,
+        "image_padding_inline_desktop": false,
+        "loading_image": true,
+        "image_desktop": "shopify://shop_images/1120_1.webp",
+        "image_mobile": "shopify://shop_images/1120_1.webp",
+        "video_source": "hosted",
+        "video_url": "",
+        "video_autoplay": true,
+        "title_bar": true,
+        "title_bar_position": "title",
+        "title_bar_align": "left",
+        "title_bar_color": "#f7d046",
+        "title_bar_width_desktop": 264,
+        "title_bar_width_mobile": 184,
+        "title_bar_height": 8,
+        "title": "<h2>Proteção desenvolvida nos detalhes</h2>",
+        "richtext": "<p>Muito além de uma capa comum, a Kings foi criada para entregar uma experiência premium em cada detalhe: tecido exclusivo, acabamento refinado e ajuste sob medida para valorizar o veículo mesmo quando protegido.</p>",
+        "button_url": "",
+        "button_text": "Comprar agora",
+        "faq_icon_type": "arrow",
+        "faq_first_open": true,
+        "data_animate": true,
+        "title_custom": false,
+        "text_color_title": "#2b2b2b",
+        "font_weight": "700",
+        "font_size_title": 36,
+        "font_size_title_mobile": 28,
+        "content_custom": false,
+        "text_color_content": "#2b2b2b",
+        "content_font_weight": "400",
+        "font_size_content": 16,
+        "font_size_content_mobile": 16,
+        "button_custom": false,
+        "text_color_btn": "#ffffff",
+        "bg_color_btn": "#443fd2",
+        "button_font_weight": "600",
+        "button_font_size_desktop": 16,
+        "button_font_size_mobile": 16,
+        "radius_btn": 100,
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "background_image_mobile": "shopify://shop_images/1119_1.webp",
+        "background_image_desktop": "shopify://shop_images/1118_1.webp",
+        "pad_top_min": 48,
+        "pad_top_max": 96,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_e_image_with_text_v1_LajEXE": {
+      "type": "tp-e-image-with-text-v1",
+      "custom_css": [
+        "h2 strong {color: #0c111d;}",
+        "h2 {color: #0c111d; font-size: clamp(2.6rem, calc(1.9314rem + 1.7143vw), 4.4rem);}",
+        "p {color: var(--Gray-600, #475467); font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem);}",
+        "a {background: linear-gradient(90deg, #fe0 0%, #fecc27 100%), #ff0; color: #202020; font-family: Montserrat; font-size: 16px; font-style: normal; font-weight: 700; line-height: 140%; /* 22.4px */ text-transform: uppercase;}"
+      ],
+      "name": "Imagem Com Texto V1",
+      "settings": {
+        "media_type": "image",
+        "image_position_desktop": "left",
+        "image_position_mobile": "second",
+        "title_above_image_mobile": false,
+        "image_padding_inline_mobile": false,
+        "image_padding_inline_desktop": false,
+        "loading_image": true,
+        "image_desktop": "shopify://shop_images/1123_1.webp",
+        "image_mobile": "shopify://shop_images/1125_1.webp",
+        "video_source": "hosted",
+        "video_url": "",
+        "video_autoplay": true,
+        "title_bar": true,
+        "title_bar_position": "wrapper",
+        "title_bar_align": "right",
+        "title_bar_color": "#f7d046",
+        "title_bar_width_desktop": 264,
+        "title_bar_width_mobile": 184,
+        "title_bar_height": 8,
+        "title": "<h2>Proteção, estética e durabilidade no mesmo produto</h2>",
+        "richtext": "<p>O diferencial da Kings está no equilíbrio entre proteção real e visual sofisticado. O tecido acompanha as linhas do veículo, evitando aparência folgada e entregando um acabamento muito acima do padrão tradicional.</p>",
+        "button_url": "#tp-main-product",
+        "button_text": "Comprar agora",
+        "faq_icon_type": "arrow",
+        "faq_first_open": true,
+        "data_animate": true,
+        "title_custom": false,
+        "text_color_title": "#2b2b2b",
+        "font_weight": "700",
+        "font_size_title": 36,
+        "font_size_title_mobile": 28,
+        "content_custom": false,
+        "text_color_content": "#2b2b2b",
+        "content_font_weight": "400",
+        "font_size_content": 16,
+        "font_size_content_mobile": 16,
+        "button_custom": false,
+        "text_color_btn": "#ffffff",
+        "bg_color_btn": "#443fd2",
+        "button_font_weight": "600",
+        "button_font_size_desktop": 16,
+        "button_font_size_mobile": 16,
+        "radius_btn": 100,
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "background_image_mobile": "shopify://shop_images/1119_1.webp",
+        "background_image_desktop": "shopify://shop_images/1118_1.webp",
+        "pad_top_min": 48,
+        "pad_top_max": 96,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
+    },
+    "tp_e_img_text_benefits_v2_9QnUcc": {
+      "type": "tp-e-img-text-benefits-v2",
+      "blocks": {
+        "hotspot_t3qpGT": {
+          "type": "hotspot",
+          "settings": {
+            "position_x": 57,
+            "position_y": 33,
+            "title": "Ajuste sob medida",
+            "description": "<p>Modelada de acordo com o modelo e ano do seu veículo, para um encaixe preciso.</p>"
+          }
+        },
+        "hotspot_LyB99d": {
+          "type": "hotspot",
+          "settings": {
+            "position_x": 53,
+            "position_y": 80,
+            "title": "Não risca a pintura",
+            "description": "<p>Tecido macio em lycra com elastano, que protege a pintura sem causar riscos ou manchas.</p>"
+          }
+        },
+        "hotspot_pRqL4D": {
+          "type": "hotspot",
+          "settings": {
+            "position_x": 42,
+            "position_y": 49,
+            "title": "Proteção diária",
+            "description": "<p>Ajuda a proteger contra poeira, riscos leves, sol e maresia no dia a dia.</p>"
+          }
+        },
+        "hotspot_7dw89X": {
+          "type": "hotspot",
+          "settings": {
+            "position_x": 26,
+            "position_y": 58,
+            "title": "Material premium",
+            "description": "<p>Acabamento superior e alta durabilidade, com bolsa exclusiva para transporte.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_t3qpGT",
+        "hotspot_LyB99d",
+        "hotspot_pRqL4D",
+        "hotspot_7dw89X"
+      ],
+      "name": "Imagem com Hotspots",
+      "settings": {
+        "title": "",
+        "image_desktop": "shopify://shop_images/E__IMG_WHIT_TEXT_BENEFITS__V2.webp",
+        "background_type": "gradient",
+        "background_color": "#ffee00",
+        "background_gradient": "linear-gradient(110deg, rgba(255, 238, 0, 1), rgba(254, 204, 39, 1) 100%)",
+        "pad_top_min": 0,
+        "pad_top_max": 0,
+        "pad_bottom_min": 0,
+        "pad_bottom_max": 0,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
     },
     "tp_e_faq_v1_HkcVUV": {
+      "type": "tp-e-faq-v1",
+      "blocks": {
+        "question_WPPrXR": {
+          "type": "question",
+          "settings": {
+            "question": "O que fazer se eu tiver informado algum dado incorreto do veículo?",
+            "answer": "<p>Entre em contato com nossa equipe o mais rápido possível para verificarmos a possibilidade de correção antes do início da fabricação.</p>"
+          }
+        },
+        "question_ga7dma": {
+          "type": "question",
+          "settings": {
+            "question": "Posso parcelar minha compra?",
+            "answer": "<p>Sim. Oferecemos opções de parcelamento em até 12x no cartão de crédito.</p>"
+          }
+        },
+        "question_9P3FpH": {
+          "type": "question",
+          "settings": {
+            "question": "Qual é a garantia do produto?",
+            "answer": "<p>Todos os nossos produtos possuem garantia de 12 meses contra defeitos de fabricação, contados a partir da data de entrega.</p>"
+          }
+        },
+        "question_n4F4jc": {
+          "type": "question",
+          "settings": {
+            "question": "Como acompanho o envio do meu pedido?",
+            "answer": "<p>Assim que o pedido for enviado, você receberá um código de rastreamento por e-mail para acompanhar a entrega.</p>"
+          }
+        },
+        "question_4FmbHc": {
+          "type": "question",
+          "settings": {
+            "question": "Quanto tempo leva para fabricar minha capa?",
+            "answer": "<p>Como cada capa é produzida sob medida, o prazo de fabricação é de 3 a 7 dias úteis após a confirmação do pedido.</p>"
+          }
+        },
+        "question_ECmVyD": {
+          "type": "question",
+          "settings": {
+            "question": "A capa acompanha algum acessório?",
+            "answer": "<p>Sim. Todas as capas acompanham uma bolsa para armazenamento quando não estiverem em uso.</p>"
+          }
+        },
+        "question_bFfXpM": {
+          "type": "question",
+          "settings": {
+            "question": "A capa é fácil de colocar e remover?",
+            "answer": "<p>Sim. As capas foram desenvolvidas para proporcionar praticidade no uso diário, facilitando tanto a colocação quanto a remoção.</p>"
+          }
+        },
+        "question_GXmki4": {
+          "type": "question",
+          "settings": {
+            "question": "A capa é feita sob medida para o meu veículo?",
+            "answer": "<p>Sim. Todas as nossas capas são confeccionadas sob medida para o modelo do veículo informado no momento da compra, garantindo melhor ajuste e acabamento.</p>"
+          }
+        },
+        "question_fDxbCw": {
+          "type": "question",
+          "settings": {
+            "question": "Como informo os dados do meu veículo?",
+            "answer": "<p>Após selecionar o produto, basta informar os dados solicitados para que a capa seja produzida de acordo com as especificações do seu veículo.</p>"
+          }
+        },
+        "question_HTdciz": {
+          "type": "question",
+          "settings": {
+            "question": "A capa risca a pintura?",
+            "answer": "<p>Não. Nossas capas são produzidas com materiais desenvolvidos para proteger o veículo e preservar a pintura quando utilizadas corretamente.</p>"
+          }
+        }
+      },
       "block_order": [
         "question_WPPrXR",
         "question_ga7dma",
@@ -411,670 +846,235 @@
         "question_fDxbCw",
         "question_HTdciz"
       ],
-      "blocks": {
-        "question_4FmbHc": {
-          "settings": {
-            "answer": "<p>Como cada capa é produzida sob medida, o prazo de fabricação é de 3 a 7 dias úteis após a confirmação do pedido.</p>",
-            "question": "Quanto tempo leva para fabricar minha capa?"
-          },
-          "type": "question"
-        },
-        "question_9P3FpH": {
-          "settings": {
-            "answer": "<p>Todos os nossos produtos possuem garantia de 12 meses contra defeitos de fabricação, contados a partir da data de entrega.</p>",
-            "question": "Qual é a garantia do produto?"
-          },
-          "type": "question"
-        },
-        "question_ECmVyD": {
-          "settings": {
-            "answer": "<p>Sim. Todas as capas acompanham uma bolsa para armazenamento quando não estiverem em uso.</p>",
-            "question": "A capa acompanha algum acessório?"
-          },
-          "type": "question"
-        },
-        "question_GXmki4": {
-          "settings": {
-            "answer": "<p>Sim. Todas as nossas capas são confeccionadas sob medida para o modelo do veículo informado no momento da compra, garantindo melhor ajuste e acabamento.</p>",
-            "question": "A capa é feita sob medida para o meu veículo?"
-          },
-          "type": "question"
-        },
-        "question_HTdciz": {
-          "settings": {
-            "answer": "<p>Não. Nossas capas são produzidas com materiais desenvolvidos para proteger o veículo e preservar a pintura quando utilizadas corretamente.</p>",
-            "question": "A capa risca a pintura?"
-          },
-          "type": "question"
-        },
-        "question_WPPrXR": {
-          "settings": {
-            "answer": "<p>Entre em contato com nossa equipe o mais rápido possível para verificarmos a possibilidade de correção antes do início da fabricação.</p>",
-            "question": "O que fazer se eu tiver informado algum dado incorreto do veículo?"
-          },
-          "type": "question"
-        },
-        "question_bFfXpM": {
-          "settings": {
-            "answer": "<p>Sim. As capas foram desenvolvidas para proporcionar praticidade no uso diário, facilitando tanto a colocação quanto a remoção.</p>",
-            "question": "A capa é fácil de colocar e remover?"
-          },
-          "type": "question"
-        },
-        "question_fDxbCw": {
-          "settings": {
-            "answer": "<p>Após selecionar o produto, basta informar os dados solicitados para que a capa seja produzida de acordo com as especificações do seu veículo.</p>",
-            "question": "Como informo os dados do meu veículo?"
-          },
-          "type": "question"
-        },
-        "question_ga7dma": {
-          "settings": {
-            "answer": "<p>Sim. Oferecemos opções de parcelamento em até 12x no cartão de crédito.</p>",
-            "question": "Posso parcelar minha compra?"
-          },
-          "type": "question"
-        },
-        "question_n4F4jc": {
-          "settings": {
-            "answer": "<p>Assim que o pedido for enviado, você receberá um código de rastreamento por e-mail para acompanhar a entrega.</p>",
-            "question": "Como acompanho o envio do meu pedido?"
-          },
-          "type": "question"
-        }
-      },
       "name": "Perguntas Frequentes",
       "settings": {
-        "answer_color": "#111111",
-        "answer_custom": false,
-        "answer_size_desktop": 18,
-        "answer_size_mobile": 16,
-        "answer_weight": "400",
-        "background_color": "#ffffff",
-        "background_gradient": "",
-        "background_image_desktop": "shopify://shop_images/1126_1.webp",
-        "background_image_mobile": "shopify://shop_images/1127_1.webp",
         "background_type": "image",
-        "enable_pad_bottom_desktop": false,
-        "enable_pad_bottom_mobile": false,
-        "enable_pad_top_desktop": false,
-        "enable_pad_top_mobile": false,
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "background_image_mobile": "shopify://shop_images/1127_1.webp",
+        "background_image_desktop": "shopify://shop_images/1126_1.webp",
         "faq_layout": "split",
-        "pad_bottom_desktop": 0,
-        "pad_bottom_max": 96,
-        "pad_bottom_min": 48,
-        "pad_bottom_mobile": 0,
-        "pad_top_desktop": 0,
-        "pad_top_max": 96,
-        "pad_top_min": 48,
-        "pad_top_mobile": 0,
-        "question_color": "#111111",
-        "question_custom": false,
-        "question_size_desktop": 24,
-        "question_size_mobile": 20,
-        "question_weight": "400",
         "title": "<h2>Dúvidas frequentes</h2>",
+        "title_custom": false,
         "title_color": "#111111",
-        "title_custom": false,
-        "title_size_desktop": 48,
         "title_size_mobile": 36,
-        "title_weight": "600"
-      },
-      "type": "tp-e-faq-v1"
-    },
-    "tp_e_image_with_text_v1_H6wqB4": {
-      "custom_css": [
-        "h2 strong {color: #0c111d;}",
-        "h2 {color: #0c111d; font-size: clamp(2.6rem, calc(1.9314rem + 1.7143vw), 4.4rem);}",
-        "p {color: var(--Gray-600, #475467); font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem);}",
-        "a {background: linear-gradient(90deg, #fe0 0%, #fecc27 100%), #ff0; color: #202020; font-family: Montserrat; font-size: 16px; font-style: normal; font-weight: 700; line-height: 140%; /* 22.4px */ text-transform: uppercase;}"
-      ],
-      "name": "Imagem Com Texto V1",
-      "settings": {
-        "background_color": "#ffffff",
-        "background_gradient": "",
-        "background_image_desktop": "shopify://shop_images/1118_1.webp",
-        "background_image_mobile": "shopify://shop_images/1119_1.webp",
-        "background_type": "color",
-        "bg_color_btn": "#443fd2",
-        "button_custom": false,
-        "button_font_size_desktop": 16,
-        "button_font_size_mobile": 16,
-        "button_font_weight": "600",
-        "button_text": "Comprar agora",
-        "button_url": "",
-        "content_custom": false,
-        "content_font_weight": "400",
-        "data_animate": true,
-        "enable_pad_bottom_desktop": false,
-        "enable_pad_bottom_mobile": false,
-        "enable_pad_top_desktop": false,
-        "enable_pad_top_mobile": false,
-        "faq_first_open": true,
-        "faq_icon_type": "arrow",
-        "font_size_content": 16,
-        "font_size_content_mobile": 16,
-        "font_size_title": 36,
-        "font_size_title_mobile": 28,
-        "font_weight": "700",
-        "image_desktop": "shopify://shop_images/1120_1.webp",
-        "image_mobile": "shopify://shop_images/1120_1.webp",
-        "image_padding_inline_desktop": false,
-        "image_padding_inline_mobile": false,
-        "image_position_desktop": "right",
-        "image_position_mobile": "second",
-        "loading_image": true,
-        "media_type": "image",
-        "pad_bottom_desktop": 0,
-        "pad_bottom_max": 96,
-        "pad_bottom_min": 48,
-        "pad_bottom_mobile": 0,
-        "pad_top_desktop": 0,
-        "pad_top_max": 96,
+        "title_size_desktop": 48,
+        "title_weight": "600",
+        "question_custom": false,
+        "question_color": "#111111",
+        "question_size_mobile": 20,
+        "question_size_desktop": 24,
+        "question_weight": "400",
+        "answer_custom": false,
+        "answer_color": "#111111",
+        "answer_size_mobile": 16,
+        "answer_size_desktop": 18,
+        "answer_weight": "400",
         "pad_top_min": 48,
-        "pad_top_mobile": 0,
-        "radius_btn": 100,
-        "richtext": "<p>Muito além de uma capa comum, a Kings foi criada para entregar uma experiência premium em cada detalhe: tecido exclusivo, acabamento refinado e ajuste sob medida para valorizar o veículo mesmo quando protegido.</p>",
-        "text_color_btn": "#ffffff",
-        "text_color_content": "#2b2b2b",
-        "text_color_title": "#2b2b2b",
-        "title": "<h2>Proteção desenvolvida nos detalhes</h2>",
-        "title_above_image_mobile": false,
-        "title_bar": true,
-        "title_bar_align": "left",
-        "title_bar_color": "#f7d046",
-        "title_bar_height": 8,
-        "title_bar_position": "title",
-        "title_bar_width_desktop": 264,
-        "title_bar_width_mobile": 184,
-        "title_custom": false,
-        "video_autoplay": true,
-        "video_source": "hosted",
-        "video_url": ""
-      },
-      "type": "tp-e-image-with-text-v1"
-    },
-    "tp_e_image_with_text_v1_LajEXE": {
-      "custom_css": [
-        "h2 strong {color: #0c111d;}",
-        "h2 {color: #0c111d; font-size: clamp(2.6rem, calc(1.9314rem + 1.7143vw), 4.4rem);}",
-        "p {color: var(--Gray-600, #475467); font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem);}",
-        "a {background: linear-gradient(90deg, #fe0 0%, #fecc27 100%), #ff0; color: #202020; font-family: Montserrat; font-size: 16px; font-style: normal; font-weight: 700; line-height: 140%; /* 22.4px */ text-transform: uppercase;}"
-      ],
-      "name": "Imagem Com Texto V1",
-      "settings": {
-        "background_color": "#ffffff",
-        "background_gradient": "",
-        "background_image_desktop": "shopify://shop_images/1118_1.webp",
-        "background_image_mobile": "shopify://shop_images/1119_1.webp",
-        "background_type": "color",
-        "bg_color_btn": "#443fd2",
-        "button_custom": false,
-        "button_font_size_desktop": 16,
-        "button_font_size_mobile": 16,
-        "button_font_weight": "600",
-        "button_text": "Comprar agora",
-        "button_url": "shopify://collections/all",
-        "content_custom": false,
-        "content_font_weight": "400",
-        "data_animate": true,
-        "enable_pad_bottom_desktop": false,
-        "enable_pad_bottom_mobile": false,
-        "enable_pad_top_desktop": false,
-        "enable_pad_top_mobile": false,
-        "faq_first_open": true,
-        "faq_icon_type": "arrow",
-        "font_size_content": 16,
-        "font_size_content_mobile": 16,
-        "font_size_title": 36,
-        "font_size_title_mobile": 28,
-        "font_weight": "700",
-        "image_desktop": "shopify://shop_images/1123_1.webp",
-        "image_mobile": "shopify://shop_images/1125_1.webp",
-        "image_padding_inline_desktop": false,
-        "image_padding_inline_mobile": false,
-        "image_position_desktop": "left",
-        "image_position_mobile": "second",
-        "loading_image": true,
-        "media_type": "image",
-        "pad_bottom_desktop": 0,
-        "pad_bottom_max": 96,
-        "pad_bottom_min": 48,
-        "pad_bottom_mobile": 0,
-        "pad_top_desktop": 0,
         "pad_top_max": 96,
-        "pad_top_min": 48,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
         "pad_top_mobile": 0,
-        "radius_btn": 100,
-        "richtext": "<p>O diferencial da Kings está no equilíbrio entre proteção real e visual sofisticado. O tecido acompanha as linhas do veículo, evitando aparência folgada e entregando um acabamento muito acima do padrão tradicional.</p>",
-        "text_color_btn": "#ffffff",
-        "text_color_content": "#2b2b2b",
-        "text_color_title": "#2b2b2b",
-        "title": "<h2>Proteção, estética e durabilidade no mesmo produto</h2>",
-        "title_above_image_mobile": false,
-        "title_bar": true,
-        "title_bar_align": "right",
-        "title_bar_color": "#f7d046",
-        "title_bar_height": 8,
-        "title_bar_position": "wrapper",
-        "title_bar_width_desktop": 264,
-        "title_bar_width_mobile": 184,
-        "title_custom": false,
-        "video_autoplay": true,
-        "video_source": "hosted",
-        "video_url": ""
-      },
-      "type": "tp-e-image-with-text-v1"
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
     },
-    "tp_e_image_with_text_v1_VEYzqR": {
-      "block_order": [
-        "benefit_gJWaLz",
-        "benefit_nYEKV9",
-        "benefit_XBceJG"
-      ],
+    "1779720329753c98c3": {
+      "type": "apps",
       "blocks": {
-        "benefit_XBceJG": {
+        "areviews_reviews_importer_areviews_display_reviews_789dWK": {
+          "type": "shopify://apps/areviews-reviews-importer/blocks/AreviewsDisplayReviews/ab0ec5fe-c95b-4fd6-bfb8-db2a30d0756f",
           "settings": {
-            "image": "shopify://shop_images/1117.svg",
-            "richtext": "<h6>Material premium e durável</h6><p>Produzida com tecido exclusivo de alta qualidade, pensado para oferecer resistência e longa durabilidade.</p>"
-          },
-          "type": "benefit"
-        },
-        "benefit_gJWaLz": {
-          "settings": {
-            "image": "shopify://shop_images/1116.svg",
-            "richtext": "<h6>Proteção real no dia a dia</h6><p>Protege contra poeira, riscos, sol, maresia e pequenos danos que desgastam o veículo com o tempo.</p>"
-          },
-          "type": "benefit"
-        },
-        "benefit_nYEKV9": {
-          "settings": {
-            "image": "shopify://shop_images/1114.svg",
-            "richtext": "<h6>Ajuste feito para o seu carro</h6><p>Cada capa é produzida sob medida para garantir encaixe perfeito e visual muito mais sofisticado.</p>"
-          },
-          "type": "benefit"
+            "hide_areviews_title_rating": false,
+            "areviews_theme_font": "inherit",
+            "areviews_stars_colors": "#f3c621",
+            "areviews_write_reviews_botton_color": "#373737"
+          }
         }
       },
-      "custom_css": [
-        "h2 strong {color: #0c111d;}",
-        "h2 {color: #0c111d; font-size: clamp(2.6rem, calc(1.9314rem + 1.7143vw), 4.4rem);}",
-        "p {color: var(--Gray-600, #475467); font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem);}",
-        "a {background: linear-gradient(90deg, #fe0 0%, #fecc27 100%), #ff0; color: #202020; font-family: Montserrat; font-size: 16px; font-style: normal; font-weight: 700; line-height: 140%; /* 22.4px */ text-transform: uppercase;}"
+      "block_order": [
+        "areviews_reviews_importer_areviews_display_reviews_789dWK"
       ],
-      "name": "Imagem Com Texto V1",
       "settings": {
+        "background_type": "color",
         "background_color": "#ffffff",
         "background_gradient": "",
-        "background_image_desktop": "shopify://shop_images/1106_1.webp",
-        "background_image_mobile": "shopify://shop_images/1107_1.webp",
-        "background_type": "color",
-        "bg_color_btn": "#443fd2",
-        "button_custom": false,
-        "button_font_size_desktop": 16,
-        "button_font_size_mobile": 16,
-        "button_font_weight": "600",
-        "button_text": "Comprar agora",
-        "button_url": "#template--19812436246710__main",
-        "content_custom": false,
-        "content_font_weight": "400",
-        "data_animate": true,
-        "enable_pad_bottom_desktop": false,
-        "enable_pad_bottom_mobile": false,
-        "enable_pad_top_desktop": false,
-        "enable_pad_top_mobile": false,
-        "faq_first_open": true,
-        "faq_icon_type": "arrow",
-        "font_size_content": 16,
-        "font_size_content_mobile": 16,
-        "font_size_title": 36,
-        "font_size_title_mobile": 28,
-        "font_weight": "700",
-        "image_desktop": "shopify://shop_images/1121_1.webp",
-        "image_mobile": "shopify://shop_images/1122_1_89c18271-912a-44ef-9e4a-909a06d1c50e.webp",
-        "image_padding_inline_desktop": false,
-        "image_padding_inline_mobile": false,
-        "image_position_desktop": "left",
-        "image_position_mobile": "first",
-        "loading_image": true,
-        "media_type": "image",
-        "pad_bottom_desktop": 0,
-        "pad_bottom_max": 96,
-        "pad_bottom_min": 48,
-        "pad_bottom_mobile": 0,
-        "pad_top_desktop": 0,
-        "pad_top_max": 96,
+        "instagram": false,
+        "instagram_text": "Siga a gente no instagram",
+        "button_text": "@instagram",
+        "button_link": "",
         "pad_top_min": 48,
-        "pad_top_mobile": 0,
-        "radius_btn": 100,
-        "richtext": "",
-        "text_color_btn": "#ffffff",
-        "text_color_content": "#2b2b2b",
-        "text_color_title": "#2b2b2b",
-        "title": "",
-        "title_above_image_mobile": false,
-        "title_bar": true,
-        "title_bar_align": "right",
-        "title_bar_color": "#f7d046",
-        "title_bar_height": 8,
-        "title_bar_position": "wrapper",
-        "title_bar_width_desktop": 264,
-        "title_bar_width_mobile": 184,
-        "title_custom": false,
-        "video_autoplay": true,
-        "video_source": "hosted",
-        "video_url": ""
-      },
-      "type": "tp-e-image-with-text-v1"
-    },
-    "tp_e_img_text_benefits_v2_9QnUcc": {
-      "block_order": [
-        "hotspot_t3qpGT",
-        "hotspot_LyB99d",
-        "hotspot_pRqL4D",
-        "hotspot_7dw89X"
-      ],
-      "blocks": {
-        "hotspot_7dw89X": {
-          "settings": {
-            "description": "<p>Acabamento superior e alta durabilidade, com bolsa exclusiva para transporte.</p>",
-            "position_x": 26,
-            "position_y": 58,
-            "title": "Material premium"
-          },
-          "type": "hotspot"
-        },
-        "hotspot_LyB99d": {
-          "settings": {
-            "description": "<p>Tecido macio em lycra com elastano, que protege a pintura sem causar riscos ou manchas.</p>",
-            "position_x": 53,
-            "position_y": 80,
-            "title": "Não risca a pintura"
-          },
-          "type": "hotspot"
-        },
-        "hotspot_pRqL4D": {
-          "settings": {
-            "description": "<p>Ajuda a proteger contra poeira, riscos leves, sol e maresia no dia a dia.</p>",
-            "position_x": 42,
-            "position_y": 49,
-            "title": "Proteção diária"
-          },
-          "type": "hotspot"
-        },
-        "hotspot_t3qpGT": {
-          "settings": {
-            "description": "<p>Modelada de acordo com o modelo e ano do seu veículo, para um encaixe preciso.</p>",
-            "position_x": 57,
-            "position_y": 33,
-            "title": "Ajuste sob medida"
-          },
-          "type": "hotspot"
-        }
-      },
-      "name": "Imagem com Hotspots",
-      "settings": {
-        "background_color": "#ffee00",
-        "background_gradient": "linear-gradient(110deg, rgba(255, 238, 0, 1), rgba(254, 204, 39, 1) 100%)",
-        "background_type": "gradient",
-        "enable_pad_bottom_desktop": false,
-        "enable_pad_bottom_mobile": false,
-        "enable_pad_top_desktop": false,
+        "pad_top_max": 96,
+        "pad_bottom_min": 48,
+        "pad_bottom_max": 96,
         "enable_pad_top_mobile": false,
-        "image_desktop": "shopify://shop_images/E__IMG_WHIT_TEXT_BENEFITS__V2.webp",
-        "pad_bottom_desktop": 0,
-        "pad_bottom_max": 0,
-        "pad_bottom_min": 0,
-        "pad_bottom_mobile": 0,
-        "pad_top_desktop": 0,
-        "pad_top_max": 0,
-        "pad_top_min": 0,
         "pad_top_mobile": 0,
-        "title": ""
-      },
-      "type": "tp-e-img-text-benefits-v2"
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
     },
     "tp_e_related_products_v1_BzYJCp": {
+      "type": "tp-e-related-products-v1",
+      "disabled": true,
       "custom_css": [
         ".tp-wrapper--full-width {border-top: 1px solid var(--Gray-200, #eaecf0); border-bottom: 1px solid var(--Gray-200, #eaecf0);}"
       ],
-      "disabled": true,
       "name": "Produtos Relacionados",
       "settings": {
-        "autoplay": false,
-        "autoplay_time": 3,
+        "background_type": "color",
         "background_color": "#ffffff",
         "background_gradient": "",
-        "background_type": "color",
-        "button_below_mobile": false,
-        "button_text": "",
-        "button_url": "",
-        "enable_pad_bottom_desktop": false,
-        "enable_pad_bottom_mobile": false,
-        "enable_pad_top_desktop": false,
-        "enable_pad_top_mobile": false,
-        "mobile_columns": "1",
-        "navigation": true,
-        "navigation_next_image": "shopify://shop_images/Frame_1000006404.svg",
-        "navigation_prev_image": "shopify://shop_images/Frame_1261154230.svg",
-        "pad_bottom_desktop": 0,
-        "pad_bottom_max": 96,
-        "pad_bottom_min": 48,
-        "pad_bottom_mobile": 0,
-        "pad_top_desktop": 0,
-        "pad_top_max": 96,
-        "pad_top_min": 48,
-        "pad_top_mobile": 0,
-        "pagination": false,
-        "pagination_bullet_border_color": "#000000",
-        "pagination_bullet_border_width": 2,
-        "pagination_color": "#B1BFAB",
-        "pagination_color_active": "#000000",
-        "pagination_custom_bullet": false,
-        "products_to_show": 5,
         "title": "Veja também",
         "title_alignment": "left",
         "title_bar": false,
-        "title_bar_color": "#000000"
-      },
-      "type": "tp-e-related-products-v1"
-    },
-    "tp_midia_CVqiTJ": {
-      "block_order": [
-        "midia_item_DBBmxh",
-        "midia_item_cLC9UC",
-        "midia_item_xadK4g",
-        "midia_item_brAhVM",
-        "midia_item_rFjf7D",
-        "midia_item_3QntBP",
-        "midia_item_rCNPL3",
-        "midia_item_8KnCB8"
-      ],
-      "blocks": {
-        "midia_item_3QntBP": {
-          "settings": {
-            "image": "shopify://shop_images/709_1.webp",
-            "link": ""
-          },
-          "type": "midia_item"
-        },
-        "midia_item_8KnCB8": {
-          "settings": {
-            "image": "shopify://shop_images/711_1.webp",
-            "link": ""
-          },
-          "type": "midia_item"
-        },
-        "midia_item_DBBmxh": {
-          "settings": {
-            "image": "shopify://shop_images/751.svg",
-            "link": ""
-          },
-          "type": "midia_item"
-        },
-        "midia_item_brAhVM": {
-          "settings": {
-            "image": "shopify://shop_images/707_1.webp",
-            "link": ""
-          },
-          "type": "midia_item"
-        },
-        "midia_item_cLC9UC": {
-          "settings": {
-            "image": "shopify://shop_images/705.webp",
-            "link": ""
-          },
-          "type": "midia_item"
-        },
-        "midia_item_rCNPL3": {
-          "settings": {
-            "image": "shopify://shop_images/710_1.webp",
-            "link": ""
-          },
-          "type": "midia_item"
-        },
-        "midia_item_rFjf7D": {
-          "settings": {
-            "image": "shopify://shop_images/708_1.webp",
-            "link": ""
-          },
-          "type": "midia_item"
-        },
-        "midia_item_xadK4g": {
-          "settings": {
-            "image": "shopify://shop_images/706_1.webp",
-            "link": ""
-          },
-          "type": "midia_item"
-        }
-      },
-      "custom_css": [
-        ".tp-midia__title-wrapper {color: var(--gray-900, #101828); font-family: Helvetica; font-size: clamp(1.2rem, calc(1.0514rem + 0.381vw), 1.6rem); font-style: normal; font-weight: 400; line-height: 120%; /* 19.2px */ text-transform: uppercase;}"
-      ],
-      "name": "Mídia",
-      "settings": {
-        "background_type": "color",
-        "bg_color": "",
-        "bg_custom": false,
-        "bg_gradient": "",
-        "enable_pad_bottom_desktop": false,
-        "enable_pad_bottom_mobile": false,
-        "enable_pad_top_desktop": false,
-        "enable_pad_top_mobile": false,
-        "grayscale_hover": true,
-        "pad_bottom_desktop": 0,
-        "pad_bottom_max": 24,
-        "pad_bottom_min": 16,
-        "pad_bottom_mobile": 0,
-        "pad_top_desktop": 0,
-        "pad_top_max": 16,
-        "pad_top_min": 12,
-        "pad_top_mobile": 0,
-        "title": "",
-        "title_alignment": "center",
-        "title_color": "",
-        "title_custom": false,
-        "title_size_desktop": 26,
-        "title_size_mobile": 16,
-        "title_weight": "600"
-      },
-      "type": "tp-midia"
-    },
-    "tp_richtext_QwrJEj": {
-      "custom_css": [
-        ".tp-richtext__text-wrapper {gap: 0;}",
-        "strong {color: var(--Gray-400, #98a2b3);}",
-        "h2 {font-size: clamp(2rem, calc(1.5543rem + 1.1429vw), 3.2rem);}",
-        ".template--19812436246710__tp_richtext_QwrJEj {border-top: 8px solid #fe0;}"
-      ],
-      "name": "Texto Rico",
-      "settings": {
-        "background_color": "#ffffff",
-        "background_gradient": "",
-        "background_type": "color",
-        "enable_pad_bottom_desktop": false,
-        "enable_pad_bottom_mobile": false,
-        "enable_pad_top_desktop": false,
-        "enable_pad_top_mobile": false,
-        "image": "shopify://shop_images/752.svg",
-        "pad_bottom_desktop": 0,
-        "pad_bottom_max": 80,
+        "title_bar_color": "#000000",
+        "button_text": "",
+        "button_url": "",
+        "button_below_mobile": false,
+        "products_to_show": 5,
+        "mobile_columns": "1",
+        "autoplay": false,
+        "autoplay_time": 3,
+        "pagination": false,
+        "pagination_color": "#B1BFAB",
+        "pagination_color_active": "#000000",
+        "pagination_custom_bullet": false,
+        "pagination_bullet_border_color": "#000000",
+        "pagination_bullet_border_width": 2,
+        "navigation": true,
+        "navigation_prev_image": "shopify://shop_images/Frame_1261154230.svg",
+        "navigation_next_image": "shopify://shop_images/Frame_1000006404.svg",
+        "pad_top_min": 48,
+        "pad_top_max": 96,
         "pad_bottom_min": 48,
-        "pad_bottom_mobile": 0,
-        "pad_top_desktop": 0,
-        "pad_top_max": 64,
-        "pad_top_min": 40,
+        "pad_bottom_max": 96,
+        "enable_pad_top_mobile": false,
         "pad_top_mobile": 0,
-        "richtext": "<h2>Seu carro não é comum.</h2><h2>A proteção também não deveria ser</h2>"
-      },
-      "type": "tp-richtext"
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
     },
-    "tp_video_slides_cxanyn": {
-      "block_order": [
-        "card_KLj4cd",
-        "card_GjFi7M",
-        "card_KD3rhC",
-        "card_4Mjbg7"
-      ],
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "custom_liquid_expUC9": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n.tp-e-image-with-text-v1__block {\nalign-items:flex-start;\n}\n.tp-e-image-with-text-v1__title--above-image {\ntext-align:center;\n}\n</style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "tp_e_banner_slides_v1_bcytL9": {
+      "type": "tp-e-banner-slides-v1",
       "blocks": {
-        "card_4Mjbg7": {
+        "slide_PEiEGY": {
+          "type": "slide",
           "settings": {
-            "card_image": "shopify://shop_images/1097_1.webp"
-          },
-          "type": "card"
-        },
-        "card_GjFi7M": {
-          "settings": {
-            "card_image": "shopify://shop_images/1095_1.webp"
-          },
-          "type": "card"
-        },
-        "card_KD3rhC": {
-          "settings": {
-            "card_image": "shopify://shop_images/1096_1.webp"
-          },
-          "type": "card"
-        },
-        "card_KLj4cd": {
-          "settings": {
-            "card_image": "shopify://shop_images/1094_1.webp"
-          },
-          "type": "card"
+            "media_type": "image",
+            "image_mobile": "shopify://shop_images/757_1.webp",
+            "image_desktop": "shopify://shop_images/756_1.webp",
+            "link": "",
+            "title": "<h2>Produzida nos detalhes</h2>",
+            "richtext": "<p>Cada capa Kings é desenvolvida sob medida para acompanhar perfeitamente as linhas do veículo. Da escolha do tecido ao acabamento final, todo o processo é pensado para entregar proteção, ajuste impecável e um visual muito acima das capas comuns do mercado.</p>",
+            "button_link": "shopify://collections/all",
+            "button_text": "",
+            "button_animation": "none",
+            "button_custom": false,
+            "button_bg_color": "",
+            "button_text_color": "",
+            "button_border_radius": "default",
+            "button_font_size": 16,
+            "button_font_weight": "600",
+            "title_custom": false,
+            "title_color": "#2b2b2b",
+            "title_font_size_mobile": 36,
+            "title_font_size_desktop": 48,
+            "title_font_weight": "700",
+            "description_custom": false,
+            "description_color": "#667085",
+            "description_font_size_mobile": 16,
+            "description_font_size_desktop": 18,
+            "description_font_weight": "400",
+            "text_width_mobile": 520,
+            "text_width_desktop": 520,
+            "text_alignment_mobile": "left",
+            "text_alignment_desktop": "left",
+            "text_position_horizontal_mobile": "left",
+            "text_position_horizontal_desktop": "right",
+            "text_position_vertical_mobile": "bottom",
+            "text_position_vertical_desktop": "center",
+            "bottom_mobile": 40,
+            "bottom_desktop": 80,
+            "top_mobile": 40,
+            "top_desktop": 200
+          }
         }
       },
-      "custom_css": [
-        ".template--19812436082870__tp_video_slides_nxdjP8 {background: linear-gradient(180deg, #090909 70.67%, #262525 100%);}"
+      "block_order": [
+        "slide_PEiEGY"
       ],
-      "name": "TP - Slides de Vídeo",
+      "custom_css": [
+        "h2 strong {color: #fff;}",
+        "h2 {color: #fe0; font-size: clamp(2rem, calc(1.5543rem + 1.1429vw), 3.2rem); text-transform: capitalize;}",
+        "p {color: #fff; font-size: clamp(1.4rem, calc(1.3257rem + 0.1905vw), 1.6rem);}",
+        "a {background: #000;}"
+      ],
+      "name": "Banner Slides V1",
       "settings": {
         "autoplay": true,
-        "background_color": "#fff",
-        "background_gradient": "",
-        "background_image_desktop": "shopify://shop_images/1103_1.webp",
-        "background_image_mobile": "shopify://shop_images/1104_1.webp",
-        "background_type": "image",
-        "button_text": "Texto do Botão",
-        "button_url": "",
-        "enable_pad_bottom_desktop": false,
-        "enable_pad_bottom_mobile": false,
-        "enable_pad_top_desktop": false,
-        "enable_pad_top_mobile": false,
-        "navigation": false,
-        "pad_bottom_desktop": 0,
-        "pad_bottom_max": 96,
-        "pad_bottom_min": 48,
-        "pad_bottom_mobile": 0,
-        "pad_top_desktop": 0,
-        "pad_top_max": 96,
-        "pad_top_min": 48,
-        "pad_top_mobile": 0,
-        "pagination": false,
+        "tempo_autoplay": 4,
+        "pagination": true,
         "pagination_color": "#b1bfab",
         "pagination_color_active": "#000",
-        "tempo_autoplay": 3,
-        "text": "Milhares de veículos protegidos em todo o Brasil com capas feitas sob medida.",
-        "title": "A experiência de quem já escolheu Kings"
-      },
-      "type": "tp-video-slides"
+        "padding_on_section": false,
+        "background_type": "color",
+        "background_color": "#ffffff",
+        "background_gradient": "",
+        "pad_top_min": 0,
+        "pad_top_max": 0,
+        "pad_bottom_min": 0,
+        "pad_bottom_max": 0,
+        "enable_pad_top_mobile": false,
+        "pad_top_mobile": 0,
+        "enable_pad_bottom_mobile": false,
+        "pad_bottom_mobile": 0,
+        "enable_pad_top_desktop": false,
+        "pad_top_desktop": 0,
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
+      }
     }
   }
 }
