@@ -2,6 +2,10 @@ product-info {
   display: block;
 }
 
+.tp-main-product-anchor {
+  scroll-margin-top: calc(var(--header-height, 0px) + 2.4rem);
+}
+
 .product {
   margin: 0;
 }
