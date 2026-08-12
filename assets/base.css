@@ -700,6 +700,10 @@ summary::-webkit-details-marker {
   }
 }
 
+.complementary-slider .quick-add {
+  display: flex;
+}
+
 .placeholder-svg {
   height: 100%;
   width: 100%;
