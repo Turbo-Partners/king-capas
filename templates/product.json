@@ -86,7 +86,6 @@
         },
         "complementary_3L7t4e": {
           "type": "complementary",
-          "disabled": true,
           "settings": {
             "block_heading": "",
             "make_collapsible_row": false,
