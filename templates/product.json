@@ -147,9 +147,9 @@
         "show_compra_segura": true,
         "compra_segura_icon": "shopify://shop_images/carbon_security_2.svg",
         "compra_segura_text": "Pagamento 100% Seguro",
-        "show_frete_gratis": false,
-        "frete_gratis_icon": "shopify://shop_images/tabler_truck_2.svg",
-        "frete_gratis_text": "FRETE GRÁTIS",
+        "show_frete_gratis": true,
+        "frete_gratis_icon": "shopify://shop_images/icon-card.svg",
+        "frete_gratis_text": "em até 3x s/juros",
         "padding_top": 64,
         "padding_bottom": 64
       }
