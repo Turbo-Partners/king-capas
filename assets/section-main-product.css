@@ -818,6 +818,13 @@ a.product__text {
   display:flex;
   align-items:center;
   justify-content:space-between;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+.wrapper-title-app > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .product__text.inline-richtext {
