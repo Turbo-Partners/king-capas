@@ -235,6 +235,8 @@
         "video_url": "",
         "video_autoplay": true,
         "title_bar": false,
+        "title_bar_position": "title",
+        "title_bar_align": "left",
         "title_bar_color": "#f7d046",
         "title_bar_width_desktop": 120,
         "title_bar_width_mobile": 80,
@@ -303,6 +305,8 @@
         "video_autoplay": true,
         "title_image": "shopify://shop_images/752.svg",
         "title_bar": false,
+        "title_bar_position": "title",
+        "title_bar_align": "left",
         "title_bar_color": "#f7d046",
         "title_bar_width_desktop": 120,
         "title_bar_width_mobile": 80,
@@ -371,6 +375,8 @@
         "video_autoplay": true,
         "title_image": "shopify://shop_images/752.svg",
         "title_bar": false,
+        "title_bar_position": "title",
+        "title_bar_align": "left",
         "title_bar_color": "#f7d046",
         "title_bar_width_desktop": 120,
         "title_bar_width_mobile": 80,
@@ -549,73 +555,73 @@
         "pad_bottom_desktop": 60
       }
     },
-    "tp_e_faq_v1_HkcVUV": {
+    "tp_e_faq_v1_GKUVtV": {
       "type": "tp-e-faq-v1",
       "blocks": {
-        "question_WPPrXR": {
+        "question_XAh9Jb": {
           "type": "question",
           "settings": {
             "question": "O que fazer se eu tiver informado algum dado incorreto do veículo?",
             "answer": "<p>Entre em contato com nossa equipe o mais rápido possível para verificarmos a possibilidade de correção antes do início da fabricação.</p>"
           }
         },
-        "question_ga7dma": {
+        "question_HRBDba": {
           "type": "question",
           "settings": {
             "question": "Posso parcelar minha compra?",
             "answer": "<p>Sim. Oferecemos opções de parcelamento em até 12x no cartão de crédito.</p>"
           }
         },
-        "question_9P3FpH": {
+        "question_BqWWA9": {
           "type": "question",
           "settings": {
             "question": "Qual é a garantia do produto?",
             "answer": "<p>Todos os nossos produtos possuem garantia de 12 meses contra defeitos de fabricação, contados a partir da data de entrega.</p>"
           }
         },
-        "question_n4F4jc": {
+        "question_hLfQii": {
           "type": "question",
           "settings": {
             "question": "Como acompanho o envio do meu pedido?",
             "answer": "<p>Assim que o pedido for enviado, você receberá um código de rastreamento por e-mail para acompanhar a entrega.</p>"
           }
         },
-        "question_4FmbHc": {
+        "question_H8qjPB": {
           "type": "question",
           "settings": {
             "question": "Quanto tempo leva para fabricar minha capa?",
             "answer": "<p>Como cada capa é produzida sob medida, o prazo de fabricação é de 3 a 7 dias úteis após a confirmação do pedido.</p>"
           }
         },
-        "question_ECmVyD": {
+        "question_7Retjk": {
           "type": "question",
           "settings": {
             "question": "A capa acompanha algum acessório?",
             "answer": "<p>Sim. Todas as capas acompanham uma bolsa para armazenamento quando não estiverem em uso.</p>"
           }
         },
-        "question_bFfXpM": {
+        "question_YbgaX7": {
           "type": "question",
           "settings": {
             "question": "A capa é fácil de colocar e remover?",
             "answer": "<p>Sim. As capas foram desenvolvidas para proporcionar praticidade no uso diário, facilitando tanto a colocação quanto a remoção.</p>"
           }
         },
-        "question_GXmki4": {
+        "question_cpzb3y": {
           "type": "question",
           "settings": {
             "question": "A capa é feita sob medida para o meu veículo?",
             "answer": "<p>Sim. Todas as nossas capas são confeccionadas sob medida para o modelo do veículo informado no momento da compra, garantindo melhor ajuste e acabamento.</p>"
           }
         },
-        "question_fDxbCw": {
+        "question_3GcAG4": {
           "type": "question",
           "settings": {
             "question": "Como informo os dados do meu veículo?",
             "answer": "<p>Após selecionar o produto, basta informar os dados solicitados para que a capa seja produzida de acordo com as especificações do seu veículo.</p>"
           }
         },
-        "question_HTdciz": {
+        "question_dWGmVf": {
           "type": "question",
           "settings": {
             "question": "A capa risca a pintura?",
@@ -624,23 +630,25 @@
         }
       },
       "block_order": [
-        "question_WPPrXR",
-        "question_ga7dma",
-        "question_9P3FpH",
-        "question_n4F4jc",
-        "question_4FmbHc",
-        "question_ECmVyD",
-        "question_bFfXpM",
-        "question_GXmki4",
-        "question_fDxbCw",
-        "question_HTdciz"
+        "question_XAh9Jb",
+        "question_HRBDba",
+        "question_BqWWA9",
+        "question_hLfQii",
+        "question_H8qjPB",
+        "question_7Retjk",
+        "question_YbgaX7",
+        "question_cpzb3y",
+        "question_3GcAG4",
+        "question_dWGmVf"
       ],
       "name": "Perguntas Frequentes",
       "settings": {
-        "background_type": "color",
+        "background_type": "image",
         "background_color": "#ffffff",
         "background_gradient": "",
-        "faq_layout": "stack",
+        "background_image_mobile": "shopify://shop_images/1127_1.webp",
+        "background_image_desktop": "shopify://shop_images/1126_1.webp",
+        "faq_layout": "split",
         "title": "<h2>Dúvidas frequentes</h2>",
         "title_custom": false,
         "title_color": "#111111",
@@ -872,7 +880,7 @@
     "tp_e_image_with_text_v1_gmBHLg",
     "tp_e_img_benefits_v2_KKfGxA",
     "tp_slider_bump_RFGtQR",
-    "tp_e_faq_v1_HkcVUV",
+    "tp_e_faq_v1_GKUVtV",
     "1779720329753c98c3",
     "tp_e_related_products_v1_BzYJCp",
     "related-products",
