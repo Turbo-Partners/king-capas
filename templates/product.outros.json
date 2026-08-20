@@ -699,77 +699,81 @@
         "pad_bottom_desktop": 0
       }
     },
-    "tp_slider_bump_RFGtQR": {
-      "type": "tp-slider-bump",
+    "tp_e_img_text_benefits_v2_mhjF8m": {
+      "type": "tp-e-img-text-benefits-v2",
       "blocks": {
-        "card_Up6mHj": {
-          "type": "card",
+        "hotspot_BHVMfT": {
+          "type": "hotspot",
           "settings": {
-            "card_image": "shopify://shop_images/701_1.webp",
-            "product": "adicional-de-logomarca-personalizada"
+            "position_x": 57,
+            "position_y": 33,
+            "title": "Ajuste sob medida",
+            "description": "<p>Modelada de acordo com o modelo e ano do seu veículo, para um encaixe preciso.</p>"
           }
         },
-        "card_jYkjxq": {
-          "type": "card",
+        "hotspot_AaUMQD": {
+          "type": "hotspot",
           "settings": {
-            "card_image": "shopify://shop_images/702_1.webp",
-            "product": "capa-apresentacao-showroom"
+            "position_x": 53,
+            "position_y": 80,
+            "title": "Não risca a pintura",
+            "description": "<p>Tecido macio em lycra com elastano, que protege a pintura sem causar riscos ou manchas.</p>"
           }
         },
-        "card_3gcJcc": {
-          "type": "card",
+        "hotspot_VypjDn": {
+          "type": "hotspot",
           "settings": {
-            "card_image": "shopify://shop_images/703_1.webp",
-            "product": "capa-para-caminhao"
+            "position_x": 42,
+            "position_y": 49,
+            "title": "Proteção diária",
+            "description": "<p>Ajuda a proteger contra poeira, riscos leves, sol e maresia no dia a dia.</p>"
           }
         },
-        "card_NLAhmc": {
-          "type": "card",
+        "hotspot_WMk3Cd": {
+          "type": "hotspot",
           "settings": {
-            "card_image": "shopify://shop_images/704_1.webp",
-            "product": "capa-para-carros-sedan"
+            "position_x": 26,
+            "position_y": 58,
+            "title": "Material premium",
+            "description": "<p>Acabamento superior e alta durabilidade, com bolsa exclusiva para transporte.</p>"
           }
         },
-        "card_tmmWLC": {
-          "type": "card",
+        "hotspot_Bkepw9": {
+          "type": "hotspot",
           "settings": {
-            "card_image": "shopify://shop_images/701_1.webp",
-            "product": "adicional-de-logomarca-personalizada"
+            "position_x": 72,
+            "position_y": 44,
+            "title": "Praticidade e conservação",
+            "description": "<p>Fácil de colocar e remover, ajuda a reduzir lavagens, mantendo o veículo protegido por mais tempo.</p>"
           }
         }
       },
       "block_order": [
-        "card_Up6mHj",
-        "card_jYkjxq",
-        "card_3gcJcc",
-        "card_NLAhmc",
-        "card_tmmWLC"
+        "hotspot_BHVMfT",
+        "hotspot_AaUMQD",
+        "hotspot_VypjDn",
+        "hotspot_WMk3Cd",
+        "hotspot_Bkepw9"
       ],
-      "name": "TP - Slider Bump",
+      "name": "Imagem com Hotspots",
       "settings": {
-        "background_color": "#000000",
-        "badge_text": "",
-        "title_image": "shopify://shop_images/752.svg",
-        "title": "<h2>A experiência de quem já escolheu Kings</h2>",
-        "subtitle": "Milhares de veículos protegidos em todo o Brasil com capas feitas sob medida.",
-        "button_url": "",
-        "button_text": "",
-        "initial_slide": 3,
-        "autoplay": true,
-        "tempo_autoplay": 3,
-        "navigation": true,
-        "pad_top_min": 32,
-        "pad_top_max": 80,
-        "pad_bottom_min": 32,
-        "pad_bottom_max": 80,
+        "title": "",
+        "image_desktop": "shopify://shop_images/E__IMG_WHIT_TEXT_BENEFITS__V2.png",
+        "background_type": "gradient",
+        "background_color": "#ffee00",
+        "background_gradient": "linear-gradient(110deg, rgba(255, 238, 0, 1), rgba(254, 204, 39, 1) 100%)",
+        "pad_top_min": 0,
+        "pad_top_max": 0,
+        "pad_bottom_min": 0,
+        "pad_bottom_max": 0,
         "enable_pad_top_mobile": false,
         "pad_top_mobile": 0,
         "enable_pad_bottom_mobile": false,
         "pad_bottom_mobile": 0,
         "enable_pad_top_desktop": false,
         "pad_top_desktop": 0,
-        "enable_pad_bottom_desktop": true,
-        "pad_bottom_desktop": 60
+        "enable_pad_bottom_desktop": false,
+        "pad_bottom_desktop": 0
       }
     },
     "tp_e_faq_v1_GKUVtV": {
@@ -1098,7 +1102,7 @@
     "tp_e_image_with_text_v1_xReixn",
     "tp_e_image_with_text_v1_GEGYdJ",
     "tp_e_image_with_text_v1_egP8HY",
-    "tp_slider_bump_RFGtQR",
+    "tp_e_img_text_benefits_v2_mhjF8m",
     "tp_e_faq_v1_GKUVtV",
     "1779720329753c98c3",
     "tp_e_related_products_v1_BzYJCp",
