@@ -20,6 +20,13 @@
     "announcement_bar_46Jw7L": {
       "type": "announcement-bar",
       "blocks": {
+        "announcement_TQnmHJ": {
+          "type": "announcement",
+          "settings": {
+            "text": "Bem-vindo à nossa loja",
+            "link": ""
+          }
+        },
         "announcement_khRAMk": {
           "type": "announcement",
           "settings": {
@@ -43,6 +50,7 @@
         }
       },
       "block_order": [
+        "announcement_TQnmHJ",
         "announcement_khRAMk",
         "announcement_MFtJmM",
         "announcement_MTFjjY"
