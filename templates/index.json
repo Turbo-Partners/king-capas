@@ -223,8 +223,8 @@
           "type": "category",
           "settings": {
             "image_desktop": "shopify://shop_images/1090_1.webp",
-            "title": "Capas para Barcos",
-            "link": "shopify://collections/capa-nautica"
+            "title": "Capas para Aeronave",
+            "link": "shopify://collections/capa-para-aeronave"
           }
         }
       },
