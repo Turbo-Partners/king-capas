@@ -22,6 +22,7 @@
       "blocks": {
         "announcement_TQnmHJ": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "Bem-vindo à nossa loja",
             "link": ""
