@@ -22,7 +22,6 @@
       "blocks": {
         "announcement_TQnmHJ": {
           "type": "announcement",
-          "disabled": true,
           "settings": {
             "text": "Bem-vindo à nossa loja",
             "link": ""
@@ -31,7 +30,7 @@
         "announcement_khRAMk": {
           "type": "announcement",
           "settings": {
-            "text": "👑 KINGS 10.10 - FERIADÃO DE OFERTAS + BRINDES",
+            "text": "PRIMEIRA COMPRA - Até 10% OFF no seu Pedido + Brindes KINGS",
             "link": ""
           }
         },
